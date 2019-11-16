@@ -1,0 +1,45 @@
+.c-footer{
+    padding: 40px;
+    &__heading{
+        font-size: 18px;
+        font-family: $sub-font;
+        margin-bottom: 20px;
+    }
+    &__menu-list{
+        padding-left: 0;
+        display: block;
+    }
+    &__list-item{
+        display: block;
+        margin-bottom: 10px;
+    }
+    &__link{
+        color: $base-color;
+        text-decoration: none;
+        font-size: 14px;
+        &:hover{
+            text-decoration: none;
+            color: $brand-color-1;
+        }
+    }
+    &__col{
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        margin-bottom: 40px;
+        @media (min-width: 768px){
+            width: 50%;
+        }
+        @media(min-width: 1200px){
+            &--1, &--5{
+                width: 25%;
+            }
+            &--2,&--3,&--4{
+                width: 16.5%;
+            }
+        }
+    }
+    &__text{
+        font-size: 14px;
+    }
+}

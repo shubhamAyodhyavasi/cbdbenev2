@@ -1,0 +1,51 @@
+.c-btn{
+    padding: 5px;
+    display: inline-block;
+    font-family: $sub-font;
+    font-size: 15px;
+    text-align: center;
+    color: $base-color;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    // font-weight: 500;
+    transition: all .3s;
+    &:hover{
+        text-decoration: none;
+        color: $base-color;
+    }
+    &:focus{
+        outline: none;
+    }
+    &--btm-br{
+        position: relative;
+        margin-right: 50px;
+        &:after{
+            content: "";
+            display: block;
+            width: 100%;
+            position: absolute;
+            bottom: 3px;
+            right: -50px;
+            height: 1px;
+            background-color: currentColor;
+            transition: all .3s;
+        }
+        &:hover{
+            &:after{
+                right: 0;   
+            }
+        }
+    }
+    &--outline{
+        min-width: 150px;
+        border: 1px solid $base-color;
+        padding: 6px 25px;
+        // font-weight: 600;
+        letter-spacing: 0.5px;
+        &:hover{
+            background: $base-color;
+            color: #fff; 
+        }
+    }
+}

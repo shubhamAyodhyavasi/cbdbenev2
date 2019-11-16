@@ -1,0 +1,10 @@
+.c-hh-section{
+    padding: 40px;  
+    &__img-wrapper{
+        display: flex;
+        align-items: flex-end;
+    }
+    &--light-2{
+        background-color: $light-color-2;
+    }
+}

@@ -1,0 +1,23 @@
+.c-header{
+    padding: 25px 35px;
+    display: flex;
+    align-items: center;
+    &__nav{
+        width: 50%;
+        &.nav--right{
+            text-align: right;
+        }
+    }
+    &--fixed{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 99;
+    }
+    &--light{
+        * {
+            color: #fff;
+        }
+    }
+}

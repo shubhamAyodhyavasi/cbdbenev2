@@ -1,0 +1,25 @@
+.c-lr-section{
+    padding: 40px;
+    &__heading{
+        font-size: 50px;
+        letter-spacing: 1px;
+        @media (min-width: 1200px){
+            font-size: 90px;
+        }
+    }
+    &__sub-heading{
+        font-size: 30px;
+        color: $brand-color-1;
+        letter-spacing: 0.5px;
+        font-family: $sub-font;
+        @media (min-width: 1200px){
+            font-size: 40px;
+        }
+    }
+    &__content-wrap{
+        text-align: justify;
+    }
+    &__btn-wrapper{
+        text-align: right;
+    }
+}
