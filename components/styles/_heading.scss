@@ -1,7 +1,7 @@
 .c-heading{
     font-family: $main-font;
     color: $base-color;
-
+    font-weight: 400;
     //versions
     &--default{
         font-size: 28px;
@@ -12,6 +12,9 @@
     }
     &--upper{
         text-transform: uppercase;
+    }
+    &--light{
+        font-weight: 300;
     }
 }
 .c-sub-heading{

@@ -1,11 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
-import './styles/app.scss'
+import { Drawer } from 'antd'
 import { FiPlus, FiMinus } from 'react-icons/fi'
+import './styles/app.scss'
 
 const Nav = ({parent, items, isRight}) => {
   const [isOpen, setOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const onClick = (e, action)=> {
+    if(action === "link"){
+
+    }
+    if(action === "cart"){
+      setIsCartOpen(!isCartOpen)
+    }
+  }
   return (
     <nav className={classNames("c-nav", {
       [`${parent}__nav`]: parent,
@@ -15,12 +25,24 @@ const Nav = ({parent, items, isRight}) => {
         {items.map((el, ind)=> <li key={ind} className={classNames("c-nav__list-item", {
           "c-nav__list-item--has-sub-menu": el.subMenus
         })}>
-          <Link href={el.link}>
-            <a className="c-nav__link">
+          {
+            el.link ?
+            <Link href={el.link}>
+              <a onClick={(e)=> {
+                onClick(e, el.action)
+              }} className="c-nav__link">
+                {el.label}
+                {el.icon}
+              </a>
+            </Link>
+            : 
+            <span onClick={(e)=> {
+              onClick(e, el.action)
+            }} className="c-nav__link">
               {el.label}
               {el.icon}
-            </a>
-          </Link>
+            </span>
+          }
           {
             el.subMenus && <span onClick={()=> setOpen(!isOpen)} className={classNames("c-nav__sub-menu-tgl", {
               "c-nav__sub-menu-tgl--opened": isOpen
@@ -39,6 +61,9 @@ const Nav = ({parent, items, isRight}) => {
           }
         </li>)}
       </ul>
+      <Drawer placement="right" onClose={()=> setIsCartOpen(false)} visible={isCartOpen} >
+        asf
+      </Drawer>
     </nav>
   )
 }

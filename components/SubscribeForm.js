@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from './form-components/Button'
 const SubscribeForm = ({email, onEmailChange}) => (
     <div className="c-subscribe-from">
         <form className="c-subscribe-from__from">

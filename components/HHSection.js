@@ -1,5 +1,5 @@
 import Heading from "./Heading"
-import Button from "./Button"
+import Button from "./form-components/Button"
 import classNames from 'classnames'
 const HHSection = ({heading, subHeading, linkText, link, images, bg}) => {
 

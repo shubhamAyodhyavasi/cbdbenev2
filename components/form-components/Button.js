@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import classNames from 'classnames'
-const Button = ({type, value, children, onClick, link, theme}) => {
+const Button = ({type, value, children, onClick, link, theme, parentClass}) => {
+    const parent = `${parentClass}__btn`
     const onBtnClick = () => {
         if(typeof onClick === "function") onClick()
     }
@@ -9,7 +10,8 @@ const Button = ({type, value, children, onClick, link, theme}) => {
         case "submit":
             return (
                 <button className={classNames("c-btn", {
-                    [`c-btn--${theme}`]: theme
+                    [`c-btn--${theme}`]: theme,
+                    [parent]: parentClass
                 })} type={type} onClick={onBtnClick} >
                     {value}{children}
                 </button>
@@ -17,7 +19,8 @@ const Button = ({type, value, children, onClick, link, theme}) => {
         case "link":
             return (<Link href={link}>
                 <a className={classNames("c-btn", {
-                    [`c-btn--${theme}`]: theme
+                    [`c-btn--${theme}`]: theme,
+                    [parent]: parentClass
                 })}  onClick={onBtnClick} >{value}{children}</a>
             </Link>)
         
@@ -25,7 +28,8 @@ const Button = ({type, value, children, onClick, link, theme}) => {
         default:
             return (
                 <button className={classNames("c-btn", {
-                    [`c-btn--${theme}`]: theme
+                    [`c-btn--${theme}`]: theme,
+                    [parent]: parentClass
                 })} type={type} onClick={onBtnClick} >
                     {value}{children}
                 </button>

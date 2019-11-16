@@ -1,0 +1,23 @@
+.c-quantity{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-family: $sub-font;
+    &__input{
+        appearance: none;
+        border: none;
+        width: auto;
+        text-align: center;
+        display: inline-block;
+        padding: 5px;
+        width: 60px;
+    }
+    &__btn{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+}

@@ -7,6 +7,7 @@
     position: relative;
     color: $brand-color-1;
     text-align: right;
+    margin-top: -$header-height;
     &__bg{
         @include full-abs;
         width: 100%;

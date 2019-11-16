@@ -1,0 +1,21 @@
+.c-title-list{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    &__title-wrap{
+        width: 130px;
+        padding-right: 20px;
+    }
+    &__detail-wrap{
+        padding-left: 20px;
+        width: calc(100% - 130px);
+        border-left: 1px solid $brand-color-1;
+    }
+    &__content{
+        margin-bottom: auto;
+    }
+    &__title{
+        margin-bottom: auto;
+        font-weight: 500;
+    }
+}

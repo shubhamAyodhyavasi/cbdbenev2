@@ -2,6 +2,11 @@
     padding: 25px 35px;
     display: flex;
     align-items: center;
+    transition: all .3s;
+    &__affix{
+        position: relative;
+        z-index: 99;
+    }
     &__nav{
         width: 50%;
         &.nav--right{
@@ -15,9 +20,22 @@
         top: 0;
         z-index: 99;
     }
+    &--pinned{
+        background-color: #222222;
+    }
     &--light{
         * {
             color: #fff;
+        }
+    }
+    &--dark {
+        * {
+            color: #222222;
+        }
+        &.c-header{
+            &--pinned{
+                background-color: #fff;
+            }
         }
     }
 }

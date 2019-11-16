@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from './form-components/Button'
 import Heading from './Heading'
 const LRSection = ({heading, subHeading, content, children, link, linkText, image, alt}) => (
     <div className="c-lr-section">

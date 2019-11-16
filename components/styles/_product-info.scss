@@ -1,0 +1,58 @@
+.c-product-info{
+    padding: 220px 40px 100px;
+    margin-top: -$header-height;
+    &__image-col{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    &__title-wrap{
+        display: flex;
+    }
+    &__rating-wrapper{
+        padding-left: 20px;
+    }
+    &__review{
+        font-family: $main-font;
+        font-size: 16px;
+        // font-weight: 300;
+        line-height: 1.19;
+        letter-spacing: 1.38px;
+    }
+    &__size{
+        font-size: 24px;
+        text-align: center;
+        font-family: $sub-font;
+    }
+    &__description{
+        padding-top: 50px;
+    }
+    &__list{
+        padding-top: 50px;
+    }
+    &__title-list{
+        border-bottom: 1px solid #000;
+    }
+    &__subscribe-wrapper{
+        padding-top: 20px;
+    }
+    &__atc-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__price{
+        font-size: 32px;
+        font-family: $sub-font;
+        margin-bottom: 0;
+    }
+    &__btn{
+        font-size: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
+        @media (min-width: 1200px){
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+    }
+}
