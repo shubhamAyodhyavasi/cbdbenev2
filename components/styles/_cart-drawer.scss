@@ -1,0 +1,29 @@
+.c-cart-drawer{
+    .ant-drawer-header{
+        border-bottom: none;
+        background-color: #222;
+        color: $brand-color-1;
+    }
+    .ant-drawer-content{
+        background-color: #222;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+.c-cart-title{
+    &__logo{
+        .c-logo{
+            &__img{
+                width: 40px;
+            }
+        }
+    }
+    &__go-back-wrapper{
+        color: $brand-color-1;
+        cursor: pointer;
+    }
+    &__back{
+        font-size: 20px;
+        color: $brand-color-1;
+    }
+}

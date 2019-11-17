@@ -16,7 +16,10 @@ const Quantity = ({min, max, value, onChange, parentClass}) => {
             <div onClick={()=> {
                 onInputChange(inputValue - 1)
             }} className="c-quantity__btn c-quantity__btn--minus">-</div>
-            <input className="c-quantity__input" type="number" onChange={onInputChange} min={min} max={max} value={inputValue} />
+            {/* <input className="c-quantity__input" type="number" onChange={onInputChange} min={min} max={max} value={inputValue} /> */}
+            <span className="c-quantity__input">
+                {inputValue}
+            </span>
             <div onClick={()=> {
                 onInputChange(inputValue + 1)
             }} className="c-quantity__btn c-quantity__btn--plus">+</div>

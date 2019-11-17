@@ -16,6 +16,12 @@
     &--light{
         font-weight: 300;
     }
+    &--gold{
+        color: $brand-color-1
+    }
+    &--white{
+        color: #ffffff;
+    }
 }
 .c-sub-heading{
     font-family: $sub-font;
@@ -35,5 +41,11 @@
     }
     &--upper{
         text-transform: uppercase;
+    }
+    &--gold{
+        color: $brand-color-1
+    }
+    &--white{
+        color: #ffffff;
     }
 }

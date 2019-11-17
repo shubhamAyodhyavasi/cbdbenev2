@@ -17,6 +17,10 @@
     &:focus{
         outline: none;
     }
+    &--block{
+        display: block;
+        width: 100%;
+    }
     &--btm-br{
         position: relative;
         margin-right: 50px;
@@ -46,6 +50,18 @@
         &:hover{
             background: $base-color;
             color: #fff; 
+        }
+    }
+    &--outline-gold{
+        min-width: 150px;
+        border: 1px solid $brand-color-1;
+        padding: 6px 25px;
+        color: $brand-color-1;
+        // font-weight: 600;
+        letter-spacing: 0.5px;
+        &:hover{
+            @include goldGradient;
+            color: $base-color;
         }
     }
 }

@@ -1,0 +1,39 @@
+.c-cart-item{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $brand-color-1;
+    &__close{
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    &__heading{
+        font-size: 24px;
+        &.c-heading{
+
+        }
+    }
+    &__sub-heading{
+        font-size: 24px;
+        &.c-sub-heading{
+            &--small{
+                font-size: 16px;
+            }
+            &--default{
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+        }
+    }
+    &__quantity{
+        color: #fff;
+        input{
+            background-color: transparent;
+        }
+    }
+    &--total{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: none;
+    }
+}

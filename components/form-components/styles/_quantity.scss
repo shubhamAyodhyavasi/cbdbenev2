@@ -11,6 +11,11 @@
         display: inline-block;
         padding: 5px;
         width: 60px;
+        &::-webkit-inner-spin-button, 
+        &::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
     }
     &__btn{
         width: 40px;

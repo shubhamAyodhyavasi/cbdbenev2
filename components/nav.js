@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { Drawer } from 'antd'
 import { FiPlus, FiMinus } from 'react-icons/fi'
 import './styles/app.scss'
+import CartDrawer from './CartDrawer'
 
 const Nav = ({parent, items, isRight}) => {
   const [isOpen, setOpen] = useState(false)
@@ -61,9 +62,7 @@ const Nav = ({parent, items, isRight}) => {
           }
         </li>)}
       </ul>
-      <Drawer placement="right" onClose={()=> setIsCartOpen(false)} visible={isCartOpen} >
-        asf
-      </Drawer>
+      <CartDrawer onClose={()=> setIsCartOpen(false)} visible={isCartOpen} />
     </nav>
   )
 }
