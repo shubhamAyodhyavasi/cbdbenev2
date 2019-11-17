@@ -1,3 +1,4 @@
+import { withRedux } from '../redux'
 import React, { useState } from 'react'
 import Layout from '../components/Layouts/Layout'
 import Banner from '../components/Banner'
@@ -61,4 +62,4 @@ const Home = () => {
 )
 }
 
-export default Home
+export default withRedux(Home)

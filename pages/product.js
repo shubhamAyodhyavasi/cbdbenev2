@@ -38,6 +38,16 @@ class Product extends React.Component {
             ]
         }
     }
+    getInitialProps = async context => {
+        console.log("start")
+        
+        const res = await getProductById("5d3c3b29ed89356fe6812348")
+        const res1 = fetch("http://localhost:4000/products/api/getbyid/5d3c3b29ed89356fe6812348")
+        console.log({res})
+        return {
+            res1: res
+        }
+    }
     componentDidMount(){
         getProductById("5d3c3b29ed89356fe6812348")
         .then(res => res.json() )
@@ -57,6 +67,9 @@ class Product extends React.Component {
             product_details: product,
             productList
         } = this.state
+        console.log({
+            props: this.props
+        })
         const productAttr = getProductAttributes(product)
         const image = getProductImage(product, "sectionB") || "/images/cbd-oil.png"
         return (
@@ -91,16 +104,6 @@ class Product extends React.Component {
                 </div>
             </Layout>
         )
-    }
-}
-Product.getInitialProps = async context => {
-    console.log("start")
-    
-    const res = await getProductById("5d3c3b29ed89356fe6812348")
-    const res1 = fetch("http://localhost:4000/products/api/getbyid/5d3c3b29ed89356fe6812348")
-    console.log({res})
-    return {
-        res1: res
     }
 }
 
