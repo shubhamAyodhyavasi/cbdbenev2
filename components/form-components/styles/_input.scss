@@ -1,0 +1,14 @@
+.c-input{
+    display: block;
+    &__input{
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid ;
+        &:focus,&:hover{
+            outline: none;
+            box-shadow: none;
+            border-bottom: 1px solid $dark-color-2;
+        }
+    }
+}

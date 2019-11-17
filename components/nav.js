@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
-import { Drawer } from 'antd'
 import { FiPlus, FiMinus } from 'react-icons/fi'
 import './styles/app.scss'
+import Drawer from './Drawer'
 import CartDrawer from './CartDrawer'
 
 const Nav = ({parent, items, isRight}) => {
@@ -62,7 +62,9 @@ const Nav = ({parent, items, isRight}) => {
           }
         </li>)}
       </ul>
-      <CartDrawer onClose={()=> setIsCartOpen(false)} visible={isCartOpen} />
+      <Drawer onClose={()=> setIsCartOpen(false)} title="Cart" visible={isCartOpen} >
+          <CartDrawer />
+      </Drawer>
     </nav>
   )
 }

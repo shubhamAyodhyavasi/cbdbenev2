@@ -1,7 +1,7 @@
-import ReactSvg from 'react-svg'
+// import ReactSvg from 'react-svg'
 import classNames from 'classnames'
-const Checkbox = ({checked, onChange, parentClass, versions, children, inputId, label}) => {
-    const componentClass = 'c-checkbox'
+const Radio = ({checked, onChange, parentClass, versions, children, inputId, label}) => {
+    const componentClass = 'c-radio'
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
     const parent = `${parentClass}__${componentClass.replace("c-", "")}`
     const className = classNames(componentClass, {
@@ -10,22 +10,22 @@ const Checkbox = ({checked, onChange, parentClass, versions, children, inputId, 
     })
     return (
         <div className={className}>
-            <label className="c-checkbox__label">
+            <label className="c-radio__label">
                 <input 
                     onChange={onChange} 
                     checked={checked} 
-                    type="checkbox" 
-                    className="c-checkbox__input"/>
-                <span className="c-checkbox__icon">
-                    <ReactSvg src="/images/checkbox-icon.svg" />
+                    type="radio" 
+                    className="c-radio__input"/>
+                <span className="c-radio__icon">
+                    {/* <ReactSvg src="/images/radio-icon.svg" /> */}
                 </span>
-                <span className="c-checkbox__label-text">{label}{children}</span>
+                <span className="c-radio__label-text">{label}{children}</span>
             </label>
         </div>
     )
 }
-Checkbox.defaultProps = {
+Radio.defaultProps = {
     inputId: `${parseInt(Math.random() * new Date().getTime())}`,
     versions: []
 }
-export default Checkbox
+export default Radio

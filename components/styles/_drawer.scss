@@ -1,16 +1,16 @@
-.c-cart-drawer{
+.c-drawer{
     .ant-drawer-header{
         border-bottom: none;
-        background-color: $dark-color-2;
+        background-color: $dark-color-1;
         color: $brand-color-1;
     }
     .ant-drawer-content{
-        background-color: $dark-color-2;
+        background-color: $dark-color-1;
         padding-left: 40px;
         padding-right: 40px;
     }
 }
-.c-cart-title{
+.c-drawer-title{
     &__logo{
         .c-logo{
             &__img{

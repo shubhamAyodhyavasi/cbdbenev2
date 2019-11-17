@@ -5,7 +5,7 @@ import HImgSection from '../components/HImgSection'
 import {getProductImage, getProductAttributes} from '../services/helpers/product'
 import Heading from '../components/Heading'
 import TitleList from '../components/TItleList'
-import Tabs from '../components/Tabs'
+// import Tabs from '../components/Tabs'
 import ProductDetailsTab from '../components/ProductDetailsTab'
 import ProductSlider from '../components/ProductSlider'
 // import fetch from 'isomorphic-unfetch';

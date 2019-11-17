@@ -1,19 +1,21 @@
-.c-checkbox{
+.c-radio{
     &__input{
         display: none;
-        &:checked + .c-checkbox__icon{
+        &:checked + .c-radio__icon{
+            background-color: $brand-color-1;
             &:after{
                 content: "";
                 display: block;
-                width: 10px;
-                height: 10px;
+                width: 5px;
+                height: 5px;
                 position: absolute;
                 top: 0;
                 bottom: 0;
                 left: 0;
                 right: 0;
                 margin: auto;
-                background-color: $brand-color-1;
+                border-radius: 50%;
+                background-color: $light-color;
             }
         }
     }
@@ -25,13 +27,18 @@
     
     &__icon{
         position: relative;
-        svg {
-            width: 50px;
-            height: auto;
-        }
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid $brand-color-1;
+        margin-right: 10px;
+        // svg {
+        //     width: 50px;
+        //     height: auto;
+        // }
     }
     &--gold{
-        .c-checkbox{
+        .c-radio{
             &__label{
                 color: $brand-color-1;
             }

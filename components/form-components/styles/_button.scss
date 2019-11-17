@@ -49,7 +49,7 @@
         letter-spacing: 0.5px;
         &:hover{
             background: $base-color;
-            color: #fff; 
+            color: $light-color; 
         }
     }
     &--outline-gold{

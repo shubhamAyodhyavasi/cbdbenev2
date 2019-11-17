@@ -2,12 +2,13 @@ import Heading from './Heading'
 import Link from 'next/link'
 import footerMenu from '../constants/footerMenu'
 import SubscribeForm from './SubscribeForm'
+import Logo from './Logo'
 const Footer = () => (
     <div className="c-footer">
         
         <div className="c-footer__inner">
             <div className="c-footer__logo-wrapper">
-                
+                <Logo full={true} parentClass="c-footer" />
             </div>
             <div className="row">
                 {

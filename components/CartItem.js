@@ -1,10 +1,18 @@
+import classNames from 'classnames'
 import Heading from "./Heading";
 import Quantity from './form-components/Quantity'
 import {Icon} from 'antd'
-const CartItem = ({title, subTitle, price, quantity, onRemove, onQtyChange, total}) => {
+const CartItem = ({title, subTitle, price, quantity, onRemove, onQtyChange, total, parentClass, versions}) => {
+    const componentClass = "c-cart-item"
+    const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
+    const parent = `${parentClass}__${componentClass.replace("c-", "")}`
+    const className = classNames(componentClass, {
+        [versionClass]: versions,
+        [parent]: parentClass,
+    })
     if(total){
         return (
-            <div className="c-cart-item c-cart-item--total">
+            <div className={className}>
                 <div className="row c-cart-item__row">
                     <div className="col c-cart-item__title-wrapper">
                         <Heading parentClass="c-cart-item" versions={["default", "white", "upper"]} >
@@ -21,7 +29,7 @@ const CartItem = ({title, subTitle, price, quantity, onRemove, onQtyChange, tota
         )
     }
     return (
-        <div className="c-cart-item">
+        <div className={className}>
             <div className="row c-cart-item__row">
                 <div className="col c-cart-item__title-wrapper">
                     <Heading parentClass="c-cart-item" versions={["default", "white"]} >
@@ -49,4 +57,7 @@ const CartItem = ({title, subTitle, price, quantity, onRemove, onQtyChange, tota
     )
 }
 
+CartItem.defaultProps = {
+    versions: []
+}
 export default CartItem

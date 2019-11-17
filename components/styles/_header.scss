@@ -21,20 +21,20 @@
         z-index: 99;
     }
     &--pinned{
-        background-color: #222222;
+        background-color: $dark-color-1;
     }
     &--light{
         * {
-            color: #fff;
+            color: $light-color-2;
         }
     }
     &--dark {
         * {
-            color: #222222;
+            color: $base-color;
         }
         &.c-header{
             &--pinned{
-                background-color: #fff;
+                background-color: $light-color-2;
             }
         }
     }

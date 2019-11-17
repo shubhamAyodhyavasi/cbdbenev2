@@ -1,0 +1,26 @@
+.c-checkout-layout{
+    &__main{
+        padding-top: 100px;
+        padding-left: 40px;
+        padding-right: 60px;
+        background-color: $light-color-2;
+        @media(min-width: 1400px){
+            padding-left: 80px;
+            padding-right: 100px;
+        }
+    }
+    &__logo{
+        margin-bottom: 40px;
+        display: block;
+        .c-logo__img{
+            width: 100px;
+        }
+    }
+    &__cart-col{
+        background: $dark-color-1;
+        padding: 40px;
+        @media(min-width: 1400px){
+            padding: 80px;
+        }
+    }
+}
