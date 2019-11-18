@@ -1,0 +1,1 @@
+export const encodeUrlFn = url => url.replace(/-/g, "_").replace(/ /g, "-");

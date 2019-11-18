@@ -5,26 +5,27 @@ import { SET_PRODUCTS, SET_PRODUCT, CLEAR_PRODUCT } from "../actions/type";
 //   // filteredAttr,
 //   // getAttrListing
 // } from "../services/extra/productHelpers";
+
+import {getVisibleProducts, getFeaturedProduct, getCategoriesProducts} from '../../services/helpers/product'
 const initialState = {
   products: [],
   product: null,
-  featured: []
+  featured: [],
+  categories: []
 };
 
 export default (state = initialState, action) => {
   const { payload, type } = action;
-
   switch (type) {
     case SET_PRODUCTS:
-      // return {
-      //   ...state,
-      //   products: [
-      //     ...getVisibleProducts(payload)
-      //   ],
-      //   featured: getFeaturedProduct(payload)
-      // };
-
-      return {}
+      return {
+        ...state,
+        products: [
+          ...getVisibleProducts(payload)
+        ],
+        featured: getFeaturedProduct(payload),
+        categories: getCategoriesProducts(payload)
+      };
 
     case SET_PRODUCT:
       return {
