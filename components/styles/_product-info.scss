@@ -11,6 +11,10 @@
     }
     &__rating-wrapper{
         padding-left: 20px;
+        width: 190px;
+    }
+    &__title-col{
+        width: calc(100% - 190px);
     }
     &__review{
         font-family: $main-font;

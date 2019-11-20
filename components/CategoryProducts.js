@@ -1,6 +1,7 @@
 import Heading from "./Heading"
 import classNames from 'classnames'
 import projectSettings from '../constants/projectSettings'
+import Link from "next/link"
 const CategoryProducts = ({heading, categoryList, activeCategory, onCategoryChange, products, bg, pp}) => {
     const className = classNames("c-category-products", {
         [`c-category-products--${bg}`]: bg
@@ -23,9 +24,12 @@ const CategoryProducts = ({heading, categoryList, activeCategory, onCategoryChan
             </div>
             <div className="row c-category-products__product-list">
                 {
-                    products.map((el, i)=> <div key={i} className="col-lg-4 c-category-products__product">
+                    products.map((el, i)=> <Link href={`/shop/${el._id}`} >
+                        <div key={i} className="col-lg-4 c-category-products__product">
                     <img src={projectSettings.serverUrl+el.productImage} alt={el.title} className="c-category-products__img img-fluid"/>
-                </div>)
+                    </div>
+                    </Link>
+                )
                 }
             </div>
         </div>
