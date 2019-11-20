@@ -5,15 +5,20 @@ import Checkbox from "./form-components/Checkbox";
 import Button from "./form-components/Button";
 import Quantity from "./form-components/Quantity";
 import { useState } from "react";
-import { getProductPrice, getBasicPrice } from "../services/helpers/product";
+import { getBasicPrice, directAddToCart } from "../services/helpers/product";
 import { numberFormat } from "../services/helpers/misc";
-
-const ProductInfo = ({image, product, productAttr}) => {
+import { addToCart } from '../redux/actions/cart'
+import {connect} from 'react-redux'
+const ProductInfo = ({image, product, productAttr, addToCart, cart}) => {
     // const size = ("");
     const [qty, setQty] = useState(1)
     const [isSubscribed, setIsSubscribed] = useState(false)
     const basePrice = getBasicPrice(product)
     const price = parseFloat(basePrice.sale_price || 0) * qty
+    console.log({cart})
+    const addToCartFn = () =>{
+        addToCart(directAddToCart(product, qty))
+    }
     return (
         <div className="c-product-info container">
             <div className="row c-product-info__row">
@@ -53,7 +58,7 @@ const ProductInfo = ({image, product, productAttr}) => {
                     </div>
                     <div className="c-product-info__atc-wrapper">
                         <div className="c-product-info__btn-wrapper">
-                            <Button parentClass="c-product-info" theme="outline" >Add to cart</Button>
+                            <Button onClick={addToCartFn} parentClass="c-product-info" theme="outline" >Add to cart</Button>
                         </div>
                         <div className="c-product-info__price-wrapper">
                             <p className="c-product-info__price">$ {numberFormat(price)}</p>
@@ -67,5 +72,7 @@ const ProductInfo = ({image, product, productAttr}) => {
         </div>
     )
 }
-
-export default ProductInfo
+const mapStateToProps = state => ({
+    cart : state.cart
+})
+export default connect(mapStateToProps, {addToCart})(ProductInfo)

@@ -11,35 +11,30 @@ import {
   SET_CART,
   SET_CART_NULL_ITEM
 } from "../actions/type";
-// import {
-//   modifyProduct,
-//   addItem,
-//   removeItem,
-//   setSlugInCart
-// } from "../services/extra/cartHealpers";
-// import { initialCart } from "../components/Constants";
-const initialCart = {
+import {
+  modifyProduct,
+  addItem,
+  removeItem,
+  setSlugInCart
+} from "../../services/helpers/cart";
+import { initialCart } from "../../constants/reduxInitialStates";
 
-}
 export default (state = initialCart, action) => {
   const { payload, type } = action;
   switch (type) {
     case ADD_ITEM:
       if (payload) {
-        // return setSlugInCart(addItem(state, payload));
-        return {}
+        return setSlugInCart(addItem(state, payload));
       }
       return state;
 
     case REMOVE_ITEM:
-      // return setSlugInCart(removeItem(state, payload));
-      return {}
+      return setSlugInCart(removeItem(state, payload));
 
     case MODIFY_ITEM:
       if (payload.newItem && payload.oldItem) {
         const { newItem, oldItem } = payload;
-        // return setSlugInCart(modifyProduct(oldItem, newItem, state));
-        return {}
+        return setSlugInCart(modifyProduct(oldItem, newItem, state));
       }
       return state;
     // break;

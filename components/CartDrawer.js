@@ -1,29 +1,31 @@
 import CartItem from './CartItem'
 import Button from './form-components/Button'
-
-const CartDrawer = ({ complete })=>  {
-    const items = [
-        {
-            title: "lorem ipsum",
-            subTitle: "This is dummy title",
-            price: "$123",
-            quantity: 4
-        },
-        {
-            title: "lorem ipsum",
-            subTitle: "This is dummy title",
-            price: "$332",
-            quantity: 3
-        },
-    ]
+import {connect} from 'react-redux'
+import { getProductTitle, getProductShortDesc } from '../services/helpers/product'
+import { numberFormat } from '../services/helpers/misc'
+import { initialCart } from '../constants/reduxInitialStates'
+import {modifyItem} from '../redux/actions/cart'
+const CartDrawer = ({ complete, cart, modifyItem })=>  {
+    const qtyChange = (qty, oldItem)=> {
+        modifyItem(
+            {
+              oldItem,
+              newItem: {
+                ...oldItem,
+                qty
+              }
+            },
+          );
+    }
     return (
         <div className="c-cart-drawer" >
             {
-                items.map((el, i) => <CartItem key={i}
-                    title={el.title}
-                    subTitle={el.subTitle}
-                    price={el.price}
-                    quantity={el.quantity}
+                cart.items.map((el, i) => <CartItem key={i}
+                    title={getProductTitle(el)}
+                    subTitle={getProductShortDesc(el)}
+                    price={`$${numberFormat(parseFloat(el.saleprice) * el.qty)}`}
+                    quantity={el.qty}
+                    onQtyChange={(e)=> qtyChange(e, el)}
                 />)
             }
             {
@@ -31,7 +33,7 @@ const CartDrawer = ({ complete })=>  {
                 <CartItem
                     small={true}
                     title={"Subtotal"}
-                    price={"$123"}
+                    price={`$${numberFormat(parseFloat(cart.subTotal))}`}
                     total={true}
                     versions={["small", "no-border"]}
                 />
@@ -67,7 +69,7 @@ const CartDrawer = ({ complete })=>  {
             }
             {!complete && <CartItem
                 title={"subtotal"}
-                price={"$123"}
+                price={`$${numberFormat(parseFloat(cart.subTotal))}`}
                 total={true}
                 versions={["no-border"]}
             />}
@@ -79,7 +81,10 @@ const CartDrawer = ({ complete })=>  {
 }
 
 CartDrawer.defaultProps = {
-    complete: false
+    complete: false,
+    cart: initialCart
 }
-
-export default CartDrawer
+const mapStateToProps = state => ({
+    cart: state.cart
+})
+export default connect(mapStateToProps, {modifyItem})(CartDrawer)

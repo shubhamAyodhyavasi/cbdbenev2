@@ -1,4 +1,5 @@
 import { encodeUrlFn, getParentage, numberFormat } from './misc'
+import { variablePriceSet } from './cart'
 export const getProductImage = (product = {}, image = "main") => {
   if (image === "main") {
     if (product.productid) {
@@ -38,11 +39,36 @@ export const getProductAttributes = (product = {}, allProducts = []) => {
 }
 export const getProductDescription = product => {
   if (product) {
-    if(product.productid){
+    if (product.productid) {
       return product.productid.description;
     }
-    if(product.description){
+    if (product.description) {
       return product.description
+    }
+  }
+  return ""
+}
+export const getProductTitle = product => {
+  if (product) {
+    if(product.title){
+      return product.title
+    }
+    if (product.productid) {
+      return product.productid.producttitle;
+    }
+    if (product.producttitle) {
+      return product.producttitle
+    }
+  }
+  return ""
+}
+export const getProductShortDesc = product => {
+  if (product) {
+    if(product.sdescription){
+      return product.sdescription
+    }
+    if (product.productid) {
+      return product.productid.sdescription;
     }
   }
   return ""
@@ -217,7 +243,7 @@ export const getProductPrice = (product, qty, state) => {
   }
   let value = 0;
   const qtyVal =
-    qty 
+    qty
       ? parseInt(qty) > 0
         ? parseInt(qty)
         : 1
@@ -288,4 +314,40 @@ export const getBasicPrice = product => {
     regular_price: 0,
     sale_price: 0
   };
+};
+
+
+export const directAddToCart = (product, qty = 1) => {
+  const { verifiedAttr } = product;
+  const arr =
+    verifiedAttr && verifiedAttr.constructor === Array
+      ? verifiedAttr.map(el => {
+        const keys = Object.keys(el);
+        return keys.map(elx => {
+          return {
+            [elx]: {
+              label: el[elx],
+              value: el[elx]
+            }
+          };
+        });
+      })
+      : [];
+  const obj = arr.map(el => {
+    return el.reduce((a, b) => {
+      return { ...a, ...b };
+    }, {});
+  });
+
+  const newVariation =
+    obj && obj.length
+      ? {
+        ...obj[0]
+      }
+      : {};
+  return variablePriceSet({
+    ...product,
+    ...newVariation,
+    qty
+  });
 };
