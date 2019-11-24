@@ -81,7 +81,7 @@ class Home extends React.Component {
           image="/images/oranic-img.png"
         >
           In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.
-    </LRSection>
+        </LRSection>
         <HHSection
           heading="Bundles of awesomeness!"
           subHeading="Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off."

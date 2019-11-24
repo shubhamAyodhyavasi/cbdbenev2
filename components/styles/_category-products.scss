@@ -42,6 +42,16 @@
         align-items: center;
         justify-content: flex-end;
     }
+    &__slider{
+        width: 100%;
+        overflow: hidden;
+        &:focus{
+            outline: none;
+        }
+        .flickity-button{
+            display: none;
+        }
+    }
     //versions
     &--light-2{
         background-color: $light-color-2;

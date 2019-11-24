@@ -10,17 +10,13 @@
             font-size: 45px;
         }
     }
-    &--upper{
-        text-transform: uppercase;
-    }
     &--light{
         font-weight: 300;
     }
-    &--gold{
-        color: $brand-color-1
-    }
-    &--white{
-        color: $light-color;
+    &--large{
+        @media (min-width: 1200px){
+            font-size: 48px;
+        }
     }
 }
 .c-sub-heading{
@@ -35,10 +31,10 @@
             font-size: 18px;
         }
     }
-    &--lft-br{
-        padding-left: 20px;
-        border-left: 1px solid $brand-color-1;
-    }
+}
+.c-heading,
+.c-sub-heading{
+    //versions
     &--upper{
         text-transform: uppercase;
     }
@@ -47,5 +43,9 @@
     }
     &--white{
         color: $light-color;
+    }
+    &--lft-br{
+        padding-left: 20px;
+        border-left: 1px solid $brand-color-1;
     }
 }

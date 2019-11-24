@@ -1,7 +1,7 @@
 .c-banner{
     width: 100%;
-    min-height: 100vh;
     min-height: -webkit-fill-available;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -21,6 +21,7 @@
         max-width: 100%;
     }
     &__heading{
+        color: $brand-color-1;
         font-size: 38px;
         @media (min-width: 992px) {
             font-size: 64px;
