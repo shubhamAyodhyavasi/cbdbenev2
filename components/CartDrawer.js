@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import { getProductTitle, getProductShortDesc } from '../services/helpers/product'
 import { numberFormat } from '../services/helpers/misc'
 import { initialCart } from '../constants/reduxInitialStates'
-import {modifyItem} from '../redux/actions/cart'
-const CartDrawer = ({ complete, cart, modifyItem })=>  {
+import { modifyItem, removeFromCart } from '../redux/actions/cart'
+const CartDrawer = ({ complete, cart, modifyItem, removeFromCart })=>  {
     const qtyChange = (qty, oldItem)=> {
         modifyItem(
             {
@@ -25,6 +25,7 @@ const CartDrawer = ({ complete, cart, modifyItem })=>  {
                     subTitle={getProductShortDesc(el)}
                     price={`$${numberFormat(parseFloat(el.saleprice) * el.qty)}`}
                     quantity={el.qty}
+                    onRemove={()=> removeFromCart(el)}
                     onQtyChange={(e)=> qtyChange(e, el)}
                 />)
             }
@@ -87,4 +88,4 @@ CartDrawer.defaultProps = {
 const mapStateToProps = state => ({
     cart: state.cart
 })
-export default connect(mapStateToProps, {modifyItem})(CartDrawer)
+export default connect(mapStateToProps, {modifyItem, removeFromCart})(CartDrawer)
