@@ -64,4 +64,16 @@
             color: $base-color;
         }
     }
+    &--gold{
+        min-width: 150px;
+        border: 1px solid $brand-color-1;
+        padding: 6px 25px;
+        @include goldGradient;
+        color: $base-color;
+        letter-spacing: 0.5px;
+        &:hover{
+            background: $base-color;
+            color: $brand-color-1;
+        }
+    }
 }

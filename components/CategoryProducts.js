@@ -19,9 +19,6 @@ const CategoryProducts = ({ heading, categoryList, activeCategory, onCategoryCha
                     if(!isNaN(progress)){
                         let pos = `${progress * 80}%`;
                         sliderLine.current.style.left = pos
-                        console.log({
-                            sliderLine
-                        })
                     }
                 });
             }

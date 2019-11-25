@@ -1566,6 +1566,11 @@ braces@^2.3.1, braces@^2.3.2:
     split-string "^3.0.2"
     to-regex "^3.0.1"
 
+breakpoint-sass@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/breakpoint-sass/-/breakpoint-sass-2.7.1.tgz#8ef6c4744dcc25ba83d969b6c9a17e5daa29980a"
+  integrity sha1-jvbEdE3MJbqD2Wm2yaF+XaopmAo=
+
 broadcast-channel@^2.3.3:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/broadcast-channel/-/broadcast-channel-2.3.4.tgz#cede8a9cded517c7273063582da71fa4f809ee2c"
@@ -6958,6 +6963,11 @@ supports-color@^6.1.0:
   integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
+
+susy@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/susy/-/susy-3.0.5.tgz#92167b47e60d0c03e93569fc8695c6fa2067ea7d"
+  integrity sha512-Adc67mYO0n7eKn0lnyVOMN9lqA3JrHE/NAMfOQQnm2g8yvcZpmcrNfiHjfQXVodXdZE1PyluPnUjPhezaKGztA==
 
 symbol-observable@^1.2.0:
   version "1.2.0"

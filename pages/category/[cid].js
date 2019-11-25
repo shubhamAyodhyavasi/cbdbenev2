@@ -26,8 +26,8 @@ const Category = (props) => {
     )
 }
 Category.getInitialProps = async ({query}) => {
-    const res  = await fetch("http://localhost:4000/products/api/bycategory/"+query.cid)
-    const productObj = await res.json()
+    // const res  = await fetch("http://localhost:4000/products/api/bycategory/"+query.cid)
+    // const productObj = await res.json()
     // const product = getVisibleProducts([productObj.product_details])
     return {
         category: query.cid,

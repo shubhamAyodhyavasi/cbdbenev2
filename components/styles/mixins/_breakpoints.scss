@@ -1,0 +1,97 @@
+//////////////////////////
+// Breakpoint Mixins    //
+//////////////////////////
+
+//min-width breakpoints
+
+@mixin bp-xs {
+	@include breakpoint($g-bp-xs) {
+		@content;
+	}
+}
+
+@mixin bp-sm {
+	@include breakpoint($g-bp-sm) {
+		@content;
+	}
+}
+
+@mixin bp-md {
+	@include breakpoint($g-bp-md) {
+		@content;
+	}
+}
+
+@mixin bp-lg {
+	@include breakpoint($g-bp-lg) {
+		@content;
+	}
+}
+
+@mixin bp-xl {
+	@include breakpoint($g-bp-xl) {
+		@content;
+	}
+}
+
+@mixin bp-xxl {
+	@include breakpoint($g-bp-xxl) {
+		@content;
+	}
+}
+
+//max-width breakpoints
+@mixin bpm-xxs {
+	@include breakpoint(max-width ($g-bp-xxs - 1)) {
+		@content;
+	}
+}
+
+@mixin bpm-xs {
+	@include breakpoint(max-width ($g-bp-xs - 1)) {
+		@content;
+	}
+}
+
+@mixin bpm-sm {
+	@include breakpoint(max-width ($g-bp-sm - 1)) {
+		@content;
+	}
+}
+
+@mixin bpm-md {
+	@include breakpoint(max-width ($g-bp-md - 1)) {
+		@content;
+	}
+}
+
+@mixin bp-nav {
+	@include breakpoint(977px) {
+		@content;
+	}
+}
+
+@mixin bpm-nav {
+	@include breakpoint(max-width (977px - 1)) {
+		@content;
+	}
+}
+
+
+@mixin bpm-lg {
+	@include breakpoint(max-width ($g-bp-lg - 1)) {
+		@content;
+	}
+}
+
+@mixin bpm-xl {
+	@include breakpoint(max-width ($g-bp-xl - 1)) {
+		@content;
+	}
+}
+
+@mixin bpm-xxl {
+	@include breakpoint(max-width ($g-bp-xxl - 1)) {
+		@content;
+	}
+}

@@ -1,0 +1,8 @@
+.c-home{
+    &__btn{
+        @include bp-xl{
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    }
+}
