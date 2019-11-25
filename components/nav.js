@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
+import {Flip } from 'react-reveal';
 import classNames from 'classnames'
 import { FiPlus, FiMinus } from 'react-icons/fi'
 import './styles/app.scss'
@@ -28,7 +29,7 @@ const Nav = ({parent, items, isRight}) => {
         })}>
           {
             el.link ?
-            <Link href={el.link}>
+            <Link as={el.as || el.link} href={el.link}>
               <a onClick={(e)=> {
                 onClick(e, el.action)
               }} className="c-nav__link">
@@ -51,13 +52,17 @@ const Nav = ({parent, items, isRight}) => {
           }
           {
             el.subMenus && <ul className="c-nav__sub-menu">
-              {el.subMenus.map((elx, i)=> <li key={i} className="c-nav__sub-menu-item">
-              <Link href={elx.link}>
-                <a className="c-nav__link c-nav__link--sub">
-                  {elx.label}
-                </a>
-              </Link>
-              </li> )}
+              {el.subMenus.map((elx, i)=> 
+              <Flip  key={i} left opposite when={isOpen}>
+                <li key={i} className="c-nav__sub-menu-item">
+                <Link as={elx.as || elx.link} href={elx.link}>
+                  <a className="c-nav__link c-nav__link--sub">
+                    {elx.label}
+                  </a>
+                </Link>
+                </li> 
+              </Flip>
+              )}
             </ul>
           }
         </li>)}

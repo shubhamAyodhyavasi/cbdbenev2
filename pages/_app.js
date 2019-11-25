@@ -36,7 +36,7 @@ class MyApp extends App {
         const {Component, pageProps, store} = this.props; 
         return (
                 <Provider store={store}>
-            <PersistGate loading={null} persistor={store.__persistor} loading={<div>Loading</div>} >
+            <PersistGate loading={null} persistor={store.__persistor} loading={<Component {...pageProps} />} >
                     <Component {...pageProps} />
             </PersistGate>
                 </Provider>

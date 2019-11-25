@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import Button from './form-components/Button'
-const ProductCard = ({versions, parentClass, image, title, subTitle}) => {
+const ProductCard = ({versions, parentClass, image, title, subTitle, price}) => {
     const componentClass = `c-product-card`
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
     const parent = `${parentClass}__${componentClass.replace("c-", "")}`
@@ -19,6 +19,9 @@ const ProductCard = ({versions, parentClass, image, title, subTitle}) => {
                 </p>
                 <p className={`${componentClass}__sub-title`}>
                     {subTitle}
+                </p>
+                <p className={`${componentClass}__price`}>
+                    {price}
                 </p>
             </div>
             <div className={`${componentClass}__btn-wrapper`}>

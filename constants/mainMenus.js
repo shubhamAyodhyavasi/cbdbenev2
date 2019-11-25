@@ -5,28 +5,33 @@ const mainMenus = [
         subMenus: [
             {
                 label: "Topicals",
-                link: "/shop/topicals",
+                link: "/category/?cid=topicals",
                 action: "link",
+                as: "/category/topicals",
             },
             {
                 label: "Pets",
-                link: "/shop/pets",
+                link: "/category/?cid=pets",
                 action: "link",
+                as: "/category/pets",
             },
             {
                 label: "Edibles",
-                link: "/shop/edibles",
+                link: "/category/?cid=edibles",
                 action: "link",
+                as: "/category/edibles",
             },
             {
                 label: "Capsules",
-                link: "/shop/capsules",
+                link: "/category/?cid=capsules",
                 action: "link",
+                as: "/category/capsules",
             },
             {
                 label: "Oils",
-                link: "/shop/oils",
+                link: "/category/?cid=oils",
                 action: "link",
+                as: "/category/oils",
             },
         ]
     }

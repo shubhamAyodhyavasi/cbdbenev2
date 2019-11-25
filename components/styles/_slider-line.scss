@@ -1,0 +1,13 @@
+.c-slider-line {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 5px;
+    &__dragger{
+        position: absolute;
+        top: 0;
+        height: 4px;
+        border-radius: 5px;
+        background-color: $brand-color-1;
+    }
+}

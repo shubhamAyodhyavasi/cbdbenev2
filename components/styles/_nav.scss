@@ -3,6 +3,8 @@
     &__list{
         display: flex;
         padding: 0;
+        margin-bottom: auto;
+        margin-top: auto;
     }
     &__link{
         text-decoration: none;
