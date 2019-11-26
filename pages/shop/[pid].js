@@ -92,7 +92,11 @@ const Product = ({product, ...props}) => {
         )
 }
 Product.getInitialProps = async ({query}) => {
-    const res  = await fetch("http://localhost:4000/products/api/getbyid/"+query.pid)
+    
+    const {
+        baseUrl
+    } = projectSettings
+    const res  = await fetch(baseUrl+"/products/api/getbyid/"+query.pid)
     const productObj = await res.json()
     const product = getVisibleProducts([productObj.product_details])
     return {

@@ -10,6 +10,8 @@ export const SET_CART = "SET_CART";
 export const SET_CART_NULL_ITEM = "SET_CART_NULL_ITEM";
 
 export const TOGGLE_CART_BAR = "TOGGLE_CART_BAR";
+export const SHOW_CART_BAR = "SHOW_CART_BAR";
+export const HIDE_CART_BAR = "HIDE_CART_BAR";
 
 export const SET_USER = "SET_USER";
 export const UNSET_USER = "UNSET_USER";

@@ -37,11 +37,64 @@
         opacity: 0;
         transition: all .3s;
     }
+    &__btn-wrapper{
+        margin-top: auto;
+    }
+    &__overlay-link{
+        color: $base-color;
+        &:hover{
+            text-decoration: none;
+            color: $base-color;
+        }
+    }
     &:hover{
         .c-product-card{
             &__info,&__btn-wrapper{
                 opacity: 1;
             }
         }
+    }
+    //versions
+    &--show-price{
+        .c-product-card{
+            &__info,&__btn-wrapper{
+                opacity: 1;
+            }
+            &__btn-wrapper{
+                position: relative;
+            }
+            &__price{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                pointer-events: none;
+                transition: all .3s;
+            }
+            &__btn{
+                opacity: 0;
+                transition: all .3s;
+            }
+        }
+        &:hover{
+            .c-product-card{
+                &__price{
+                    opacity: 0;
+                }
+                &__btn{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &--full-height{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 }

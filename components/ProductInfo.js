@@ -8,16 +8,17 @@ import { useState } from "react";
 import { getBasicPrice, directAddToCart } from "../services/helpers/product";
 import { numberFormat } from "../services/helpers/misc";
 import { addToCart } from '../redux/actions/cart'
+import { showCartBar } from '../redux/actions/cartSideBar'
 import {connect} from 'react-redux'
-const ProductInfo = ({image, product, productAttr, addToCart, cart}) => {
+const ProductInfo = ({image, product, productAttr, addToCart, cart, showCartBar}) => {
     // const size = ("");
     const [qty, setQty] = useState(1)
     const [isSubscribed, setIsSubscribed] = useState(false)
     const basePrice = getBasicPrice(product)
     const price = parseFloat(basePrice.sale_price || 0) * qty
-    console.log({cart})
     const addToCartFn = () =>{
         addToCart(directAddToCart(product, qty))
+        showCartBar()
     }
     return (
         <div className="c-product-info container">
@@ -75,4 +76,4 @@ const ProductInfo = ({image, product, productAttr, addToCart, cart}) => {
 const mapStateToProps = state => ({
     cart : state.cart
 })
-export default connect(mapStateToProps, {addToCart})(ProductInfo)
+export default connect(mapStateToProps, {addToCart, showCartBar})(ProductInfo)

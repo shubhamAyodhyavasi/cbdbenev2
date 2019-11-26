@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {connect} from 'react-redux'
 import Link from 'next/link'
 import {Flip } from 'react-reveal';
 import classNames from 'classnames'
@@ -6,16 +7,18 @@ import { FiPlus, FiMinus } from 'react-icons/fi'
 import './styles/app.scss'
 import Drawer from './Drawer'
 import CartDrawer from './CartDrawer'
+import { toggleCartBar, hideCartBar } from '../redux/actions/cartSideBar'
 
-const Nav = ({parent, items, isRight}) => {
+const Nav = ({parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar}) => {
   const [isOpen, setOpen] = useState(false)
-  const [isCartOpen, setIsCartOpen] = useState(false)
+  // const [isCartOpen, setIsCartOpen] = useState(false)
   const onClick = (e, action)=> {
     if(action === "link"){
 
     }
     if(action === "cart"){
-      setIsCartOpen(!isCartOpen)
+      toggleCartBar();
+      // setIsCartOpen(!isCartOpen)
     }
   }
   return (
@@ -67,7 +70,7 @@ const Nav = ({parent, items, isRight}) => {
           }
         </li>)}
       </ul>
-      <Drawer onClose={()=> setIsCartOpen(false)} title="Cart" visible={isCartOpen} >
+      <Drawer onClose={hideCartBar} title="Cart" visible={isCartOpen} >
           <CartDrawer />
       </Drawer>
     </nav>
@@ -77,5 +80,5 @@ const Nav = ({parent, items, isRight}) => {
 Nav.defaultProps = {
   items: []
 }
-
-export default Nav
+const mapStateToProps = state => ({isCartOpen : state.cartSideBar.isOpen})
+export default connect(mapStateToProps, {toggleCartBar, hideCartBar})(Nav)
