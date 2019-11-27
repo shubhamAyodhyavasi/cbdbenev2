@@ -5,5 +5,6 @@ const {
 const apiList = {
     getAllProducts: `${baseUrl}/products/api/all/`,
     getProductById: `${baseUrl}/products/api/getbyid/`,
+    userRegistration: `${baseUrl}/users/api/register`,
 }
 export default apiList

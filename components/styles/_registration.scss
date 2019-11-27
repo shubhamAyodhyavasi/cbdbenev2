@@ -1,0 +1,16 @@
+.c-registration{
+    &__heading{
+        color: $light-color-2;
+        font-size: 28px;
+        @include bp-xl{
+            font-size: 40px;
+        }
+    }
+    &__info{
+        color: $brand-color-1;
+        font-family: $sub-font;
+        @include bp-xl{
+            font-size: 20px;
+        }
+    }
+}

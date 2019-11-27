@@ -17,6 +17,10 @@ const rightMenus = [
         action: "link"
     },
     {
+        icon: <AiOutlineUser />,
+        action: "reg"
+    },
+    {
         icon: <FiShoppingCart />,
         action: "cart"
     },

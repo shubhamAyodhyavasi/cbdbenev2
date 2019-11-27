@@ -7,9 +7,13 @@ import { FiPlus, FiMinus } from 'react-icons/fi'
 import './styles/app.scss'
 import Drawer from './Drawer'
 import CartDrawer from './CartDrawer'
-import { toggleCartBar, hideCartBar } from '../redux/actions/cartSideBar'
+import { toggleCartBar, hideCartBar, toggleRegBar } from '../redux/actions/drawers'
+import Registration from './popups/Registration';
 
-const Nav = ({parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar}) => {
+const Nav = ({
+  parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
+  toggleRegBar, isRegOpen
+}) => {
   const [isOpen, setOpen] = useState(false)
   // const [isCartOpen, setIsCartOpen] = useState(false)
   const onClick = (e, action)=> {
@@ -19,6 +23,9 @@ const Nav = ({parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar}) =
     if(action === "cart"){
       toggleCartBar();
       // setIsCartOpen(!isCartOpen)
+    }
+    if(action === "reg"){
+      toggleRegBar()
     }
   }
   return (
@@ -73,6 +80,9 @@ const Nav = ({parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar}) =
       <Drawer onClose={hideCartBar} title="Cart" visible={isCartOpen} >
           <CartDrawer />
       </Drawer>
+      <Drawer onClose={toggleRegBar} title="Registration" visible={isRegOpen} >
+          <Registration />
+      </Drawer>
     </nav>
   )
 }
@@ -80,5 +90,8 @@ const Nav = ({parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar}) =
 Nav.defaultProps = {
   items: []
 }
-const mapStateToProps = state => ({isCartOpen : state.cartSideBar.isOpen})
-export default connect(mapStateToProps, {toggleCartBar, hideCartBar})(Nav)
+const mapStateToProps = state => ({
+  isCartOpen : state.drawers.isCartOpen,
+  isRegOpen: state.drawers.isRegOpen
+})
+export default connect(mapStateToProps, {toggleCartBar, hideCartBar, toggleRegBar})(Nav)

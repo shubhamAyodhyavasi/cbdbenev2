@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addToCart } from '../redux/actions/cart'
 import { directAddToCart } from '../services/helpers/product'
 import Link from 'next/link'
-import { showCartBar } from '../redux/actions/cartSideBar'
+import { showCartBar } from '../redux/actions/drawers'
 const ProductCard = ({ versions, parentClass, image, title, subTitle, price, addToCart, product, showCartBar }) => {
     const componentClass = `c-product-card`
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")

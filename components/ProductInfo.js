@@ -8,7 +8,7 @@ import { useState } from "react";
 import { getBasicPrice, directAddToCart } from "../services/helpers/product";
 import { numberFormat } from "../services/helpers/misc";
 import { addToCart } from '../redux/actions/cart'
-import { showCartBar } from '../redux/actions/cartSideBar'
+import { showCartBar } from '../redux/actions/drawers'
 import {connect} from 'react-redux'
 const ProductInfo = ({image, product, productAttr, addToCart, cart, showCartBar}) => {
     // const size = ("");

@@ -11,7 +11,7 @@ export * from "./address";
 export * from "./cards";
 export * from "./reviews";
 export * from "./firstSetting";
-export * from "./cartSideBar";
+export * from "./drawers";
 export * from "./subMenus";
 export * from "./errors";
 export * from "./extras";

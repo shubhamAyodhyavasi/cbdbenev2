@@ -11,7 +11,7 @@ import address from "./address";
 import cards from "./cards";
 import reviews from "./reviews";
 import firstSetting from "./firstSetting";
-import cartSideBar from "./cartSideBar";
+import drawers from "./drawers";
 import subMenus from "./subMenus";
 import errors from "./errors";
 import extras from "./extras";
@@ -30,7 +30,7 @@ export default {
   cards,
   reviews,
   firstSetting,
-  cartSideBar,
+  drawers,
   subMenus,
   errors,
   extras
