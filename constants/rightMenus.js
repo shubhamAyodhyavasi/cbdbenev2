@@ -14,11 +14,13 @@ const rightMenus = [
     {
         icon: <AiOutlineUser />,
         link: "/user",
-        action: "link"
+        action: "link",
+        onlyLogin: true
     },
     {
         icon: <AiOutlineUser />,
-        action: "reg"
+        action: "reg",
+        onlyLogin: false
     },
     {
         icon: <FiShoppingCart />,

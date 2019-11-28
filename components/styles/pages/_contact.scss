@@ -1,0 +1,9 @@
+.c-contact{
+    &__container{
+        padding: 40px;
+        background-color: $light-color-2;
+        @include bp-lg{
+            padding-top: 100px;
+        }
+    }
+}

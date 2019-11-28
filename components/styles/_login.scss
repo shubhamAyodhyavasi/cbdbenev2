@@ -1,4 +1,4 @@
-.c-registration{
+.c-login{
     &__heading{
         color: $light-color-2;
         font-size: 28px;
@@ -37,5 +37,12 @@
         color: $light-color-2;
         cursor: pointer;
         text-decoration: underline;
+        &--gold{
+            color: $brand-color-1;
+        }
+    }
+    &__forget{
+        text-align: right;
+        font-size: .95em;
     }
 }

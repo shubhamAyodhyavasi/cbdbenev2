@@ -33,4 +33,42 @@
         margin: 30px 0;
         line-height: 2;
     }
+    &__logo{
+        display: inline-block;
+    }
+    //versions 
+    &--hf-content{
+        .c-banner{
+            &__content{
+                width: 100%;
+                @include bp-md{
+                    width: 50%;
+                }
+            }
+        }
+    }
+    &--align-left{
+        text-align: left;
+    }
+    &--heading-l-br{
+        .c-banner{
+            &__heading{
+                padding-left: 20px;
+                border-left: 1px solid $brand-color-1;
+            }
+        }
+    }
+    &--btm-logo{
+        padding-top: 100px;
+        .c-banner{
+            &__content{
+                display: flex;
+                flex-direction: column;
+                min-height: -webkit-fill-available;
+            }
+            &__logo{
+                margin-top: auto;
+            }
+        }
+    }
 }

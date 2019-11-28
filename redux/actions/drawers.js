@@ -1,6 +1,7 @@
 import { 
   TOGGLE_CART_BAR, SHOW_CART_BAR, HIDE_CART_BAR,
   TOGGLE_REGISTRATION_BAR, SHOW_REGISTRATION_BAR, HIDE_REGISTRATION_BAR,
+  HAS_LOGIN
 } from "./type";
 
 export const toggleCartBar = () => dispatch => {
@@ -39,3 +40,11 @@ export const hideRegBar = () => dispatch => {
   });
   document.body.classList.remove("drawer-open");
 };
+export const hideHasLogin = () => ({
+  type: HAS_LOGIN,
+  payload: false
+});
+export const showHasLogin = () => ({
+  type: HAS_LOGIN,
+  payload: true
+});

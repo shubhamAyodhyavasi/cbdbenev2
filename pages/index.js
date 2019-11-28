@@ -88,7 +88,7 @@ class Home extends React.Component {
         >
           <Button parentClass="c-home" theme={'gold'} >Shop all products</Button>
         </Banner>
-        {products && products.length && <CategoryProducts
+        {(products && products.length > 0) && <CategoryProducts
           bg="light-2"
           categoryList={categoryList}
           activeCategory={activeCategory}

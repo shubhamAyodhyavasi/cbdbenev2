@@ -1,12 +1,22 @@
-import { Form } from 'antd';
+import { Form, Spin, Icon } from 'antd';
 import Heading from "../Heading"
 import Input from '../form-components/Input';
 import Checkbox from '../form-components/Checkbox';
 import { connect } from 'react-redux'
 import Button from '../form-components/Button';
 import { registerUser } from '../../services/apis/user';
+import { showHasLogin, toggleRegBar } from '../../redux/actions/drawers'
+import { setUser } from '../../redux/actions/user'
 
 class RegistrationForm extends React.Component{
+    constructor(){
+        super()
+        this.state = {
+            isLoading: false,
+            error: null,
+            isAlreadyUser: false
+        }
+    }
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -15,29 +25,72 @@ class RegistrationForm extends React.Component{
             const {
                 email, password
             } = values
+            this.setState({
+                isLoading: true,
+                error: null
+            })
             registerUser({
                 email, password, password2: password,
-                firstname: "",
-                lastname: "",
-                phonenumber: ""
+                firstname: "null",
+                lastname: "null",
+                phonenumber: "null"
             })
             .then(res => {
+                this.setState({
+                    isLoading: false
+                })
                 console.log({res})
+                if(res.status === 200){
+                    if(res.data.status){
+                        this.props.setUser(res.data.user)
+                        this.props.toggleRegBar()
+                    }else{
+                        const {
+                            error
+                        } = res.data
+                        if(error.endsWith("is already taken")){
+                            this.setState({
+                                isAlreadyUser: true
+                            })
+                        }else{
+                            this.setState({
+                                error: res.data.error
+                            })
+                        }
+                    }
+                }else{
+                    this.setState({
+                        error: "something wrong"
+                    })
+                }
             })
-            .catch(console.log)
+            .catch(err=> {
+                console.log({err});
+                this.setState({
+                    isLoading: false,
+                    error: "something wrong"
+                })
+            })
           }
         });
     }
     render(){
         const {
-            getFieldDecorator 
-        } = this.props.form
+            showHasLogin, form: {
+                getFieldDecorator
+            }
+        } = this.props
+        const {
+            isLoading, error, isAlreadyUser
+        } = this.state
         return (
             <div className="c-registration">
-                <Heading parentClass="c-registration" >Welcome to bene</Heading>
-                <p className="c-registration__info">Fill in your details to create an account</p>
+                <Heading parentClass="c-registration" >{
+                    isAlreadyUser ? <span>Looks like you already<br/>have an account</span> : "Welcome to bene"
+                }</Heading>
+                {!isAlreadyUser && <p className="c-registration__info">Fill in your details to create an account</p>}
     
-                <Form onSubmit={this.handleSubmit} className="c-ant-from c-registration__form" >
+                {!isAlreadyUser && <Form onSubmit={this.handleSubmit} className="c-ant-from c-registration__form" >
                     <Form.Item>
                         {getFieldDecorator('email', {
                             rules: [
@@ -72,14 +125,36 @@ class RegistrationForm extends React.Component{
 
                         })(<Checkbox versions={["gold"]} >I agree to  Terms and Conditions and Privacy Policy</Checkbox>)}
                         </Form.Item>
+                        <p className="c-registration__inst">Already have an account? <span 
+                            onClick={showHasLogin}
+                            className="c-registration__link">SIGN IN</span></p>
                     </div>
-                    <Button theme='outline-gold' versions={["block"]} >Register</Button>
-                </Form>
+                    <div className="c-registration__error-block">
+                        {
+                            isLoading && <Icon type="loading" className="c-registration__spinner c-spinner" style={{ fontSize: 24 }} spin />
+                        }
+                        {
+                            error && <p className="c-registration__error">{error}</p>
+                        }
+                    </div>
+                    <Button theme='outline-gold' disabled={isLoading} versions={["block"]} >Register</Button>
+                </Form>}
+                {isAlreadyUser && <div className="c-registration__no-form-wrapper">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                        <p className="c-registration__inst">You can login from <span 
+                            onClick={showHasLogin}
+                            className="c-registration__link">HERE</span></p>
+                </div>}
             </div>
         )
     }
 }
 
 const Registration = Form.create({name: 'registration'})(RegistrationForm)
-
-export default connect(state => state)(Registration)
+const mapActionToProps = ({
+    showHasLogin, setUser, toggleRegBar
+})
+export default connect(state => state, mapActionToProps)(Registration)

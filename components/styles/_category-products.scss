@@ -34,6 +34,16 @@
     }
     &__heading{
         margin-bottom: 40px;
+        flex: 1 0 100%;
+        @include bp-lg{
+            flex: 1 0 50%
+        }
+    }
+    &__sub-heading{
+        flex: 1 0 100%;
+        @include bp-lg{
+            flex: 1 0 50%
+        }
     }
     &__product{
         cursor: pointer;
@@ -50,6 +60,14 @@
         }
         .flickity-button{
             display: none;
+        }
+    }
+    &__heading-wrapper{
+        display: flex;
+        flex-direction: column;
+        @include bp-lg{
+            align-items: flex-start;
+            flex-direction: row;
         }
     }
     //versions

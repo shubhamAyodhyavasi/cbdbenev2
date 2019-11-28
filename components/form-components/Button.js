@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import classNames from 'classnames'
-const Button = ({type, value, children, onClick, link, theme, parentClass, versions}) => {
+const Button = ({type, value, children, onClick, link, theme, parentClass, versions, disabled}) => {
     const parent = `${parentClass}__btn`
     const versionClass = versions.map(el => (`c-btn--${el}`)).join(" ")
 
@@ -16,7 +16,7 @@ const Button = ({type, value, children, onClick, link, theme, parentClass, versi
         case "button":
         case "submit":
             return (
-                <button className={className} type={type} onClick={onBtnClick} >
+                <button disabled={disabled} className={className} type={type} onClick={onBtnClick} >
                     {value}{children}
                 </button>
             )
@@ -28,7 +28,7 @@ const Button = ({type, value, children, onClick, link, theme, parentClass, versi
     
         default:
             return (
-                <button className={className} type={type} onClick={onBtnClick} >
+                <button disabled={disabled} className={className} type={type} onClick={onBtnClick} >
                     {value}{children}
                 </button>
             )
@@ -36,6 +36,7 @@ const Button = ({type, value, children, onClick, link, theme, parentClass, versi
 }
 
 Button.defaultProps = {
-    versions: []
+    versions: [],
+    disabled: false
 }
 export default Button

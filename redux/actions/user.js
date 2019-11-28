@@ -1,40 +1,48 @@
-// import { SET_USER, UNSET_USER, SET_CART } from "./type";
-// import { getSingleUserApi, setCartApi } from "../services/api";
+import { SET_USER, UNSET_USER, SET_CART } from "./type";
+import { getUserDetails } from "../../services/apis/user";
 // // import { initialCart } from "../components";
 
-// export const setUser = (user, cart = null) => dispatch => {
-//   // console.log({ user });
-//   if (user._id) {
-//     getSingleUserApi(user._id)
-//       .then(res => res.json())
-//       .then(res => {
-//         console.log({ res });
+export const setUser = (user, cart = null) => dispatch => {
+  // console.log({ user });
+  if (user._id) {
+    getUserDetails(user._id)
+      .then(res => {
+        console.log({ res });
 
-//         if (res.status && res.user) {
-//           dispatch(getUserMeta(res.user._id, cart));
-//           if (cart) {
-//             setCartApi({
-//               usermetaid: res.user._id,
-//               cart: cart
-//             });
-//           } else if (res.user.cart) {
-//             console.log({
-//               cart,
-//               res
-//             });
-//             dispatch({
-//               type: SET_CART,
-//               payload: res.user.cart
-//             });
-//           }
-//         }
-//       });
-//   }
-//   dispatch({
-//     type: SET_USER,
-//     payload: user
-//   });
-// };
+        if (res.data.status && res.user) {
+        //   dispatch(getUserMeta(res.data.user._id, cart));
+        dispatch({
+            type: SET_USER,
+            payload: {
+                ...res.user.userid,
+                userMetaId: res.user._id,
+                userMetaObj: res.user,
+                userObj: res.user.userid,
+            }
+        })
+          if (cart) {
+            setCartApi({
+              usermetaid: res.data.user._id,
+              cart: cart
+            });
+          } else if (res.data.user.cart) {
+            console.log({
+              cart,
+              res
+            });
+            // dispatch({
+            //   type: SET_CART,
+            //   payload: res.data.user.cart
+            // });
+          }
+        }
+      });
+  }
+  dispatch({
+    type: SET_USER,
+    payload: user
+  });
+};
 // export const updateUserMeta = userId => {
 //   // console.log("get user id ", { userId });
 
@@ -94,7 +102,7 @@
 //       }
 //     });
 // };
-// export const unsetUser = () => ({
-//   type: UNSET_USER,
-//   payload: {}
-// });
+export const unsetUser = () => ({
+  type: UNSET_USER,
+  payload: {}
+});

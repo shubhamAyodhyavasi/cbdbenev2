@@ -15,7 +15,7 @@ const footerMenu = [
                 title: "FAQ"
             },
             {
-                slug: "#",
+                slug: "/contact",
                 title: "Contact Us"
             },
         ]

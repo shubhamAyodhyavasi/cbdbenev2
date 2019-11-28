@@ -5,7 +5,7 @@ import projectSettings from '../constants/projectSettings';
 import Flickity from 'react-flickity-component';
 import Link from 'next/link';
 import SliderLine from './SliderLine';
-const CategoryProducts = ({ heading, categoryList, activeCategory, onCategoryChange, products, bg, pp }) => {
+const CategoryProducts = ({ heading, subHeading, categoryList, activeCategory, onCategoryChange, products, bg, pp }) => {
     
     const sliderLine = useRef(null)
 	const className = classNames('c-category-products', {
@@ -34,6 +34,11 @@ const CategoryProducts = ({ heading, categoryList, activeCategory, onCategoryCha
 				<Heading parentClass="c-category-products" versions={[ 'default', 'upper' ]}>
 					{heading}
 				</Heading>
+                {
+                    subHeading && <Heading subHeading={true} parentClass="c-category-products" versions={[ 'default', 'lft-br' ]}>
+					{subHeading}
+				</Heading>
+                }
 			</div>
 			<div className="c-category-products__list">
                 {categoryList.map((el, i) => (
@@ -69,8 +74,8 @@ const CategoryProducts = ({ heading, categoryList, activeCategory, onCategoryCha
                     className="c-category-products__slider"
 				>
                     {products.map((el, i) => (
-                        <Link href={`/shop/${el._id}`}>
-                            <div key={i} className="col-lg-4 c-category-products__product">
+                        <Link key={i} href={`/shop/${el._id}`}>
+                            <div className="col-lg-4 c-category-products__product">
                                 <img
                                     src={projectSettings.serverUrl + el.productImage}
                                     alt={el.title}
