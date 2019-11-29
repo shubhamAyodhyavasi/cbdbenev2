@@ -5,7 +5,8 @@ import { Affix } from 'antd'
 import classNames from 'classnames'
 import mainMenus from '../constants/mainMenus'
 import rightMenus from "../constants/rightMenus";
-const Header = ({bg, theme}) => {
+const Header = ({bg, theme, versions}) => {
+    const versionClass = versions.map(el => (`c-header--${el}`)).join(" ")
     const [isFixed, setIsFixed] = useState(false)
     return (
         <Affix className="c-header__affix" offsetTop={0} onChange={e => setIsFixed(e)}>
@@ -13,7 +14,8 @@ const Header = ({bg, theme}) => {
                 "c-header--light": true,
                 "c-header--fixed": false,
                 "c-header--pinned": isFixed || bg,
-                ["c-header--"+theme]: theme
+                ["c-header--"+theme]: theme,
+                [versionClass]: versions
             })}>
                 {/* <nav className="c-header__nav nav nav--main">
                 left nav
@@ -27,7 +29,8 @@ const Header = ({bg, theme}) => {
 }
 
 Header.defaultProps = {
-    bg: false
+    bg: false,
+    versions: []
 }
 
 

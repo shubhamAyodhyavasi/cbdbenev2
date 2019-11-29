@@ -45,3 +45,35 @@
         }
     }
 }
+
+// change default radio
+.ant-radio{
+    * {
+        box-shadow: none !important;
+    }
+    &-inner{
+        width: 20px;
+        height: 20px;
+        border: 1px solid $brand-color-1;
+        &:after{
+            top: 5px;
+            left: 5px;
+        }
+    }
+    &-checked{
+        .ant-radio{
+            &-inner{
+                border-color: $brand-color-1 !important;
+                background-color: $brand-color-1;
+                box-shadow: none !important;
+                &:after{
+                    background-color: #fff;
+                    border-color: $brand-color-1;
+                }
+            }
+        }
+        &:after{
+            border-color: $brand-color-1;
+        }
+    }
+}

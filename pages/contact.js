@@ -5,6 +5,7 @@ import { getProducts } from '../redux/actions'
 import CategoryProducts from '../components/CategoryProducts'
 import categoryList from '../constants/categoryList'
 import Heading from '../components/Heading'
+import ContactFrom from '../components/forms/ContactForm'
 
 class Contact extends React.Component {
     constructor(props) {
@@ -85,6 +86,7 @@ class Contact extends React.Component {
                     What can we help you with?
                 </Heading>
                 <p>Please select a topic below related to your inquiry.</p>
+                <ContactFrom />
             </div>
             {(products && products.length > 0) && <CategoryProducts
               bg="light-2"

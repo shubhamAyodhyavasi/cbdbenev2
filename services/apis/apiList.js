@@ -8,5 +8,6 @@ const apiList = {
     userRegistration: `${baseUrl}/users/api/register/`,
     userLogin: `${baseUrl}/users/api/login/`,
     getUserDetails: `${baseUrl}/users/api/profile/`,
+    contact: `${baseUrl}/contact-us/`,
 }
 export default apiList

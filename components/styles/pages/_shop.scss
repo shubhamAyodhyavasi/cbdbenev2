@@ -1,0 +1,12 @@
+.c-shop-page{
+    &__products-wrapper{
+        padding: 40px;
+        background-color: $light-color-2;
+    }
+    &__row{
+        padding: 40px;
+        &--light-bg{
+            background-color: $light-color-2;
+        }
+    }
+}

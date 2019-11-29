@@ -1,0 +1,10 @@
+.c-search-box {
+    position: relative;
+    &__search-icon{
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}

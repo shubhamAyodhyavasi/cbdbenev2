@@ -1,4 +1,3 @@
-import rest from '../rest'
 import projectSettings from "../../constants/projectSettings";
 import axios from 'axios'
 

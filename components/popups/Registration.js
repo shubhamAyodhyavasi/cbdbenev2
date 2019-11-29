@@ -4,7 +4,7 @@ import Input from '../form-components/Input';
 import Checkbox from '../form-components/Checkbox';
 import { connect } from 'react-redux'
 import Button from '../form-components/Button';
-import { registerUser } from '../../services/apis/user';
+import { registerUser } from '../../services/api';
 import { showHasLogin, toggleRegBar } from '../../redux/actions/drawers'
 import { setUser } from '../../redux/actions/user'
 
