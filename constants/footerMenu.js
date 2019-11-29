@@ -59,15 +59,11 @@ const footerMenu = [
         heading: "Terms",
         menus: [
             {
-                slug: "#",
-                title: "Privacy and"
+                slug: "/privacy",
+                title: "Privacy and Cookies"
             },
             {
-                slug: "#",
-                title: "Cookies"
-            },
-            {
-                slug: "#",
+                slug: "/accessibility",
                 title: "Accessibility"
             },
         ]
