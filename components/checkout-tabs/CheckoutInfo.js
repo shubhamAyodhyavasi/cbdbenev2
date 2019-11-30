@@ -5,6 +5,7 @@ import Button from '../form-components/Button'
 import { showRegBar } from '../../redux/actions/drawers'
 import TitleList from '../TitleList'
 import { Form } from 'antd'
+import validator from "../../services/helpers/validator";
 import PlacesAutocomplete from "react-places-autocomplete";
 
 class CheckoutInfo extends React.Component {
@@ -15,6 +16,8 @@ class CheckoutInfo extends React.Component {
             address: ''
         }
     }
+
+    
     handleChange = address => {
       this.setState({ address });
     };
@@ -57,14 +60,23 @@ class CheckoutInfo extends React.Component {
         } = this.state
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = form
         const isLogin = user._id ? true : false
+        
+       
+    
+
+
         return (
+            
             <div className={componentClass}>
                 <Form onSubmit={this.onSubmit} >
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
+
                     <TitleList versions={["sm-border"]} parentClass={componentClass} title="Contact Information" >
                         <Form.Item>
                             {getFieldDecorator('email', {
-                                rules: [{ required: true, message: 'Please input your Password!' }],
-                                initialValue: user.email,
+                                rules: [{ required: true, message: 'Please input your Password!' },  { validator: validator.email }],
+                              
+                                initialValue: user.email
                             })(
                                 <Input label="E-mail" />,
                             )}
@@ -75,6 +87,7 @@ class CheckoutInfo extends React.Component {
                                 className={componentClass + "__login-btn"}>SIGN IN</span>
                         </div>}
                     </TitleList>
+                  
                     <TitleList versions={["sm-border"]} parentClass={componentClass} title="Shipping Information" >
                         {/* {isLogin && <div className={componentClass + "__login-wrapper"}>
                             ----

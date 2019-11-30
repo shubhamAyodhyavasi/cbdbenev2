@@ -16,6 +16,8 @@ const CheckoutLayout = ({title, children,isRegOpen,
   <div className="c-checkout-layout container-fluid">
     <Head>
       <title>{title ? title : projectSettings.projectName}</title>
+      
+    {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script> */}
       <link rel='icon' href='/favicon.ico' />
     </Head>
     <div className="c-checkout-layout__row row">
