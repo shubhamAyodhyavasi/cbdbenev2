@@ -4,8 +4,15 @@ import projectSettings from '../../constants/projectSettings'
 import '../styles/app.scss'
 import Logo from '../Logo'
 import CartDrawer from '../CartDrawer'
+import { connect } from 'react-redux'
+import Drawer from '../Drawer'
+import Registration from '../popups/Registration';
+import Login from '../popups/Login';
+import {toggleRegBar} from '../../redux/actions/drawers'
 
-const CheckoutLayout = ({title, children}) => (
+const CheckoutLayout = ({title, children,isRegOpen,
+  hasLogin, toggleRegBar
+}) => (
   <div className="c-checkout-layout container-fluid">
     <Head>
       <title>{title ? title : projectSettings.projectName}</title>
@@ -22,7 +29,18 @@ const CheckoutLayout = ({title, children}) => (
           <CartDrawer complete={true} />
         </div>
     </div>
+    <Drawer onClose={toggleRegBar} title={
+      hasLogin? "Login" : "Registration"
+      } visible={isRegOpen} >
+        {!hasLogin && <Registration />}
+        {hasLogin && <Login />}
+    </Drawer>
   </div>
 )
 
-export default CheckoutLayout
+const mapStateToProps = state => ({
+  isRegOpen: state.drawers.isRegOpen,
+  hasLogin: state.drawers.hasLogin,
+  user: state.user
+})
+export default connect(mapStateToProps, {toggleRegBar})(CheckoutLayout)

@@ -18,7 +18,7 @@ class Input extends React.Component {
             <div className={className}>
                 <AntInput 
                     onChange={onChange} 
-                    id={inputId} 
+                    // id={inputId} 
                     type={type} 
                     value={value}
                     placeholder={label}

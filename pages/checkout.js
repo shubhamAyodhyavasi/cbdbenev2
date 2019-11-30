@@ -1,11 +1,13 @@
 import {useState} from 'react'
 import CheckoutLayout from '../components/Layouts/CheckoutLayout'
 import Heading from '../components/Heading'
-import TitleList from '../components/TItleList'
+import TitleList from '../components/TitleList'
 import AddressForm from '../components/AddressForm'
 import Checkbox from '../components/form-components/Checkbox'
 import Button from '../components/form-components/Button'
 import Radio from '../components/form-components/Radio'
+import { Steps } from 'antd'
+import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
 const Checkout  = () => {
     const [activeAddress, setActiveAddress] = useState(1)
     const address = [
@@ -22,24 +24,31 @@ const Checkout  = () => {
             id: 3
         },
     ]
+    const onInfoSubmit = (e, values) => {
+        console.log({
+            e, values
+        })
+    }
     return (
         <CheckoutLayout>
             <div className="c-checkout">
                 <Heading parentClass="c-checkout" versions={["default", "upper"]}>Checkout</Heading>
                 <div className="c-checkout__nav-wrapper">
-                    ----
+                    <Steps>
+                        <Steps.Step title="first step" />
+                        <Steps.Step title="second step" />
+                        <Steps.Step title="third step" />
+                    </Steps>
                 </div>
-                <TitleList parentClass="c-checkout" title="Contact Information" >
-                    <form>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum officia mollitia, reprehenderit molestiae nisi deserunt minus hic eligendi explicabo possimus porro perspiciatis dignissimos distinctio ducimus atque facilis quaerat inventore sed labore exercitationem quo! Voluptatum eos voluptate ut vel quasi, soluta sequi illum labore cupiditate distinctio odit, laboriosam inventore sapiente officiis!
-                    </form>
-                </TitleList>
-                {address.length && <TitleList parentClass="c-checkout" versions={["sm-border"]} title="Shipping Information" >
+                <div className="c-checkout__main-wrapper">
+                    <CheckoutInfo onSubmit={onInfoSubmit} />
+                </div>
+                {/* {address.length && <TitleList parentClass="c-checkout" versions={["sm-border"]} title="Shipping Information" >
                     {
                         address.map((el, i)=> <Radio key={i} checked={el.id === activeAddress} onChange={()=>setActiveAddress(el.id)} >{el.address}</Radio>)
                     }
                     
-                </TitleList>}
+                </TitleList>} */}
                 {!address.length && 
                     <>
                         <TitleList parentClass="c-checkout" versions={["sm-border"]} title="Shipping Information" >
