@@ -8,7 +8,12 @@ import Button from '../components/form-components/Button'
 import Radio from '../components/form-components/Radio'
 import { Steps } from 'antd'
 import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
-const Checkout  = () => {
+import {addAddress} from '../redux/actions/address'
+import { connect } from 'react-redux'
+
+const Checkout  = ({
+    addAddress, user, ...props
+}) => {
     const [activeAddress, setActiveAddress] = useState(1)
     const address = [
         {
@@ -28,6 +33,42 @@ const Checkout  = () => {
         console.log({
             e, values
         })
+        const {
+            city,
+            country,
+            email,
+            firstname,
+            lastname,
+            phone,
+            sameShipping,
+            saveaddress,
+            state,
+            zip,
+        } = values
+        if(saveaddress){
+            console.log("aa")
+            const newAddress = {
+                city,
+                country,
+                email,
+                firstname,
+                lastname,
+                phone,
+                state,
+                zip,
+                id: new Date().getTime()
+            }
+            const allAddresses = props.address.address || []
+            const isDuplicate  = checkAddressDuplicate(newAddress, allAddresses)
+            console.log({
+                isDuplicate
+            })
+            if(!isDuplicate || allAddresses.length < 1){
+                addAddress(user._id, newAddress, props.address, allAddresses)
+            }
+        }else{
+            alert("a")
+        }
     }
     return (
         <CheckoutLayout>
@@ -73,4 +114,12 @@ const Checkout  = () => {
     )
 }
 
-export default Checkout
+const mapStateToProps = state => ({
+    address: state.address,
+    user: state.user,
+})
+const mapActionToProps = {
+    addAddress
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Checkout)

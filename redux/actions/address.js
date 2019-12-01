@@ -1,10 +1,12 @@
+import { updateUserDetails } from "../../services/apis/user";
+
 // import { SET_ADDRESS } from "./type";
 // import { getSingleUserApi, addUpdateUserDetails } from "../services/api";
 
-// export const setAddress = payload => ({
-//   type: SET_ADDRESS,
-//   payload
-// });
+export const setAddress = payload => ({
+  type: SET_ADDRESS,
+  payload
+});
 
 // export const getAddress = id => async dispatch => {
 //   getSingleUserApi(id)
@@ -23,83 +25,84 @@
 //     })
 //     .catch(err => console.log({ err }));
 // };
-// const returnAddress = res => {
-//   if (res.user) {
-//     if (res.user.shippingdetails) {
-//       return res.user.shippingdetails;
-//     }
-//   }
-//   return {};
-// };
-// export const addAddress = (
-//   userid,
-//   address,
-//   oldDetail = {},
-//   oldAddress = []
-// ) => dispatch => {
-//   if (address.constructor === Array) {
-//     const addressArr = address.filter(el => el);
-//     const addresses1 = [...oldAddress, ...addressArr].map(elx => {
-//       return elx
-//     })
-//     const hasDefault = addresses1.find(el => el.isDefault === true)
-//     const addresses2 = addresses1.map((el, index)=> {
-//       if(index === 0 && !hasDefault){
-//         return ({
-//           ...el,
-//           isDefault: true
-//         })
-//       }
-//       return el
-//     })
-//     addUpdateUserDetails({
-//       userid,
-//       shippingdetails: {
-//         ...oldDetail,
-//         address: addresses2
-//       }
-//     })
-//       .then(res => res.json())
-//       .then(res => {
-//         console.log({ res });
-//         const address = returnAddress(res);
-//         dispatch(setAddress(address));
-//       })
-//       .catch(err => {
-//         console.log({ err });
-//       });
-//   } else {
-//     const addresses1 = [...oldAddress, address].map(elx => {
-//       return elx
-//     })
-//     const hasDefault = addresses1.find(el => el.isDefault === true)
-//     const addresses2 = addresses1.map((el, index)=> {
-//       if(index === 0 && !hasDefault){
-//         return ({
-//           ...el,
-//           isDefault: true
-//         })
-//       }
-//       return el
-//     })
-//     addUpdateUserDetails({
-//       userid,
-//       shippingdetails: {
-//         ...oldDetail,
-//         address: addresses2
-//       }
-//     })
-//       .then(res => res.json())
-//       .then(res => {
-//         console.log({ res });
-//         const address = returnAddress(res);
-//         dispatch(setAddress(address));
-//       })
-//       .catch(err => {
-//         console.log({ err });
-//       });
-//   }
-// };
+const returnAddress = res => {
+  if (res.user) {
+    if (res.user.shippingdetails) {
+      return res.user.shippingdetails;
+    }
+  }
+  return {};
+};
+export const addAddress = (
+  userid,
+  address,
+  oldDetail = {},
+  oldAddress = []
+) => dispatch => {
+    console.log({
+        userid, address
+    })
+  if (address.constructor === Array) {
+    const addressArr = address.filter(el => el);
+    const addresses1 = [...oldAddress, ...addressArr].map(elx => {
+      return elx
+    })
+    const hasDefault = addresses1.find(el => el.isDefault === true)
+    const addresses2 = addresses1.map((el, index)=> {
+      if(index === 0 && !hasDefault){
+        return ({
+          ...el,
+          isDefault: true
+        })
+      }
+      return el
+    })
+    updateUserDetails({
+      userid,
+      shippingdetails: {
+        ...oldDetail,
+        address: addresses2
+      }
+    })
+      .then(res => {
+        console.log({ res });
+        const address = returnAddress(res.data);
+        dispatch(setAddress(address));
+      })
+      .catch(err => {
+        console.log({ err });
+      });
+  } else {
+    const addresses1 = [...oldAddress, address].map(elx => {
+      return elx
+    })
+    const hasDefault = addresses1.find(el => el.isDefault === true)
+    const addresses2 = addresses1.map((el, index)=> {
+      if(index === 0 && !hasDefault){
+        return ({
+          ...el,
+          isDefault: true
+        })
+      }
+      return el
+    })
+    updateUserDetails({
+      userid,
+      shippingdetails: {
+        ...oldDetail,
+        address: addresses2
+      }
+    })
+      .then(res => {
+        console.log({ res });
+        const address = returnAddress(res.data);
+        dispatch(setAddress(address));
+      })
+      .catch(err => {
+        console.log({ err });
+      });
+  }
+};
 // export const deleteAddress = (
 //   userid,
 //   id,
@@ -116,7 +119,7 @@
 //     }
 //     return el
 //   })
-//   addUpdateUserDetails({
+//   updateUserDetails({
 //     userid,
 //     shippingdetails: {
 //       ...oldDetail,
@@ -146,7 +149,7 @@
 //     };
 //   });
 
-//   addUpdateUserDetails({
+//   updateUserDetails({
 //     userid,
 //     shippingdetails: {
 //       ...oldDetail,
@@ -174,7 +177,7 @@
 
 //     return el;
 //   });
-//   addUpdateUserDetails({
+//   updateUserDetails({
 //     userid,
 //     shippingdetails: {
 //       ...oldDetail,

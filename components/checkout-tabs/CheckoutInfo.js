@@ -6,27 +6,88 @@ import { showRegBar } from '../../redux/actions/drawers'
 import TitleList from '../TitleList'
 import { Form } from 'antd'
 import validator from "../../services/helpers/validator";
-import PlacesAutocomplete from "react-places-autocomplete";
+import PlacesAutocomplete, {geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import projectSettings from '../../constants/projectSettings';
+import { searchAddress } from '../../services/api';
+import regex from '../../services/helpers/regex';
 
 class CheckoutInfo extends React.Component {
     constructor() {
         super()
         this.state = {
             sameShipping: true,
-            address: ''
+            address: {
+                addressStr: "",
+                country: "",
+                state: "",
+                city: "",
+                other: "",
+                zip: ""
+            },
+            addressShip: {
+                addressStr: "",
+                country: "",
+                state: "",
+                city: "",
+                other: "",
+                zip: ""
+            }
         }
     }
 
     
-    handleChange = address => {
-      this.setState({ address });
+    handleChange = addressStr => {
+        this.changeAddress({addressStr})
     };
    
-    handleSelect = address => {
-      geocodeByAddress(address)
-        .then(results => getLatLng(results[0]))
-        .then(latLng => console.log('Success', latLng))
-        .catch(error => console.error('Error', error));
+    handleSelect = addressStr => {
+        const arr = addressStr.split(",");
+        const size = arr.length;
+        const country = arr[size - 1].trim();
+        const state = arr[size - 2];
+        const city = arr[size - 3];
+        const other = arr[0];
+        const address = {
+            addressStr,
+            country,
+            state,
+            city,
+            other,
+            zip: ""
+        }
+        searchAddress(addressStr)
+        .then(res => {
+            if(res.data && res.data.results){
+                const {
+                    results 
+                } = res.data
+                const addStr = results[0].address_components;
+                const zipObj = addStr.find(
+                    el => el.types && el.types.includes("postal_code")
+                );
+                if (zipObj && zipObj.short_name) {
+                    const zip = zipObj.short_name;
+                    this.changeAddress({
+                            ...address,
+                            zip
+                        })
+                }else{
+                    this.changeAddress({
+                        ...address
+                    })
+                }
+            }else{
+                this.changeAddress({
+                    ...address
+                })
+            }
+        })
+        .catch(err => {
+            console.log({err})
+            this.changeAddress({
+                ...address
+            })
+        })
     };
     onSubmit = e => {
         e.preventDefault()
@@ -49,6 +110,14 @@ class CheckoutInfo extends React.Component {
             sameShipping: e.target.checked
         })
     }
+    changeAddress = ({...address}, key = "address") => {
+        this.setState(prevState => ({
+            [key]: {
+                ...prevState[key],
+                ...address
+            }
+        }))
+    }
     render() {
         const componentClass = "c-checkout-info"
         const {
@@ -56,26 +125,31 @@ class CheckoutInfo extends React.Component {
             user, form
         } = this.props
         const {
-            sameShipping
+            sameShipping,
+            address
         } = this.state
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = form
         const isLogin = user._id ? true : false
         
-       
-    
-
-
         return (
             
             <div className={componentClass}>
                 <Form onSubmit={this.onSubmit} >
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
+                <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
 
                     <TitleList versions={["sm-border"]} parentClass={componentClass} title="Contact Information" >
                         <Form.Item>
                             {getFieldDecorator('email', {
-                                rules: [{ required: true, message: 'Please input your Password!' },  { validator: validator.email }],
-                              
+                                rules: [
+                                    { 
+                                        required: true, 
+                                        message: 'Please input your E-mail!' 
+                                    },
+                                    { 
+                                        pattern: regex.email, 
+                                        message: 'Please enter a valid E-mail!' 
+                                    },
+                                ],
                                 initialValue: user.email
                             })(
                                 <Input label="E-mail" />,
@@ -124,18 +198,16 @@ class CheckoutInfo extends React.Component {
                                     </div>
                                     <div className="col-12">
                                         <PlacesAutocomplete 
-                                        value={this.state.address}
+                                        value={address.addressStr}
                                         onChange={this.handleChange}
                                         onSelect={this.handleSelect}
                                 
                                         >{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                             <div>
-                                                <input
-                                                    {...getInputProps({
+                                                <Input {...getInputProps({
                                                         placeholder: 'Search Places ...',
                                                         className: 'location-search-input',
-                                                    })}
-                                                />
+                                                    })} parentClass="c-address-form" label="Search Places ..." />
                                                 <div className="autocomplete-dropdown-container">
                                                     {loading && <div>Loading...</div>}
                                                     {suggestions.map(suggestion => {
@@ -161,14 +233,21 @@ class CheckoutInfo extends React.Component {
                                             </div>
                                         )}
                                         </PlacesAutocomplete>
-                                        <Input parentClass="c-address-form" label="Search Your Address" />
                                     </div>
                                     <div className="col-12">
                                         <Form.Item>
                                             {getFieldDecorator('city', {
                                                 rules: [{ required: true, message: 'Please input your city!' }],
+                                                setFieldsValue: address.city,
+                                                initialValue: address.city
                                             })(
-                                                <Input parentClass="c-address-form" label="City" />
+                                                <Input 
+                                                    onChange={e=> {
+                                                        const city = e.target.value
+                                                        this.changeAddress({city})
+                                                    }}
+                                                    parentClass="c-address-form" 
+                                                    label="City" />
                                             )}
                                         </Form.Item>
                                     </div>
@@ -178,8 +257,16 @@ class CheckoutInfo extends React.Component {
                                         <Form.Item>
                                             {getFieldDecorator('country', {
                                                 rules: [{ required: true, message: 'Please input your Country!' }],
+                                                setFieldsValue: address.country,
+                                                initialValue: address.country
                                             })(
-                                                <Input parentClass="c-address-form" label="Country" />
+                                                <Input 
+                                                    onChange={e=> {
+                                                        const country = e.target.value
+                                                        this.changeAddress({country})
+                                                    }}
+                                                    parentClass="c-address-form" 
+                                                    label="Country" />
                                             )}
                                         </Form.Item>
                                     </div>
@@ -187,8 +274,16 @@ class CheckoutInfo extends React.Component {
                                         <Form.Item>
                                             {getFieldDecorator('state', {
                                                 rules: [{ required: true, message: 'Please input your state!' }],
+                                                setFieldsValue: address.state,
+                                                initialValue: address.state
                                             })(
-                                                <Input parentClass="c-address-form" label="state" />
+                                                <Input 
+                                                    onChange={e=> {
+                                                        const country = e.target.value
+                                                        this.changeAddress({country})
+                                                    }} 
+                                                    parentClass="c-address-form" 
+                                                    label="state" />
                                             )}
                                         </Form.Item>
                                     </div>
@@ -196,8 +291,16 @@ class CheckoutInfo extends React.Component {
                                         <Form.Item>
                                             {getFieldDecorator('zip', {
                                                 rules: [{ required: true, message: 'Please input your ZIP code!' }],
+                                                setFieldsValue: address.zip,
+                                                initialValue: address.zip
                                             })(
-                                                <Input parentClass="c-address-form" label="ZIP code" />
+                                                <Input 
+                                                    onChange={e=> {
+                                                        const zip = e.target.value
+                                                        this.changeAddress({zip})
+                                                    }} 
+                                                    parentClass="c-address-form" 
+                                                    label="ZIP code" />
                                             )}
                                         </Form.Item>
                                     </div>
