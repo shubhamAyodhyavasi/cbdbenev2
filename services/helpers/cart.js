@@ -1,4 +1,7 @@
+import { combineLoop } from "box-dimension-calculator";
 import { addSlugToProduct } from "./product";
+import _ from 'lodash'
+import projectSettings from "../../constants/projectSettings";
 
 export const getItemTotal = item => {
   if (item) {
@@ -354,3 +357,251 @@ export const removeItem = (state, item) => {
     totalVolume: getTotalVolume(newItems)
   };
 };
+export const getItemsHeightWidth = items => {
+  var height = 0;
+  var width = 0;
+  var length = 0;
+  var weight = 0;
+  function flatten(arr) {
+    return arr.reduce(function (flat, toFlatten) {
+      return flat.concat(
+        Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten
+      );
+    }, []);
+  }
+  const item = flatten(
+    items.map(el => {
+      const qty = el.qty ? parseInt(el.qty) : 1;
+      if (qty > 1) return new Array(qty).fill(el);
+
+      return el;
+    })
+  );
+  const getGreater = (a, b) => {
+    if (a > b) return a;
+    return b;
+  };
+  if (item.length > 0) {
+    item.forEach(itm => {
+      weight = weight + itm.weight;
+    });
+  }
+  const itemsB = items.map(el => ({
+    h: el.shipping_height,
+    l: el.shipping_length,
+    w: el.shipping_width,
+    qty: el.qty
+  }))
+  const itemsC = [].concat.apply([], itemsB);
+  const itemsD = combineLoop(itemsC)[0]
+
+  return {
+    height: itemsD.h,
+    width: itemsD.w,
+    length: itemsD.l,
+    weight
+  };
+}
+export const filterShippingRates = rateArr => {
+  if (rateArr.length > 0) {
+    const filteredRates = _.uniqBy(rateArr, function (e) {
+      return e.service;
+    });
+    const smallSorted = filteredRates.sort((a, b) => parseFloat(a.rate || 0) - parseFloat(b.rate || 0))
+    const Smallest = smallSorted[0];
+    const Smallest1 = smallSorted[1];
+    const Smallest2 = smallSorted[2];
+    const PriorityRaw = filteredRates.find(el => el.service === "Priority");
+    const ExpressRaw = filteredRates.find(el => el.service === "Express");
+    const {
+      shippingExtraRate
+    } = projectSettings
+    const standard = Smallest && {
+      ...Smallest,
+      customName: "Standard",
+      customRate: parseFloat(Smallest.rate) + shippingExtraRate
+    };
+    const Priority = Smallest1 && {
+      ...Smallest1,
+      customName: "Priority",
+      customRate: parseFloat(Smallest1.rate) + shippingExtraRate
+    };
+    const Express = Smallest2 && {
+      ...Smallest2,
+      customName: "Express",
+      customRate: parseFloat(Smallest2.rate) + shippingExtraRate
+    };
+    return [standard, Priority, Express].filter(el => el);
+  }
+  return rateArr;
+
+};
+// --------------------------
+
+const multiply = (a, b) => {
+  return parseFloat(a) * parseFloat(b);
+}
+const getSelectedAttributes = item => {
+  if (item.producttype === "variable")
+    return item.attributes
+      .map(el => ({
+        [el.names]: item[el.names].value
+      }))
+      .filter(el => el)
+      .reduce(
+        (a, b) => ({
+          ...a,
+          ...b
+        }),
+        {}
+      );
+  return null;
+};
+const getDiscount = (discount, subTotal) => {
+  return (discount * subTotal) / 100 || 0;
+}
+const removeEmpty = obj => {
+  Object.keys(obj).forEach(key => obj[key] === null && delete obj[key]);
+};
+const parseOrderProduct = (item) => {
+  console.log({ item });
+  const isCombo = item.combo ? true : false,
+    comboId = item.combo ? item._id : null,
+    productId = item.combo ? null : item.productid._id,
+    productMeta = item.combo ? null : item._id,
+    isSubscribed = item.subscribed ? true : false,
+    subscriptionMeta = item.subscribed
+      ? {
+          duration: item.subscribedTime
+        }
+      : null,
+    itemId = item._id,
+    _id = item._id,
+    qty = item.qty,
+    title = item.combo ? item.title : item.productid.producttitle,
+    unitPrice = item.saleprice ? item.saleprice : item.regularprice,
+    subTotal = item.saleprice
+      ? multiply(item.saleprice, item.qty)
+      : multiply(item.regularprice, item.qty),
+    attribute = getSelectedAttributes(item),
+    height = item.shipping_height,
+    width = item.shipping_width,
+    length = item.shipping_length,
+    volume = item.volume,
+    weight = item.weight;
+
+  const order = {
+    isCombo,
+    comboId,
+    productId,
+    productMeta,
+    isSubscribed,
+    subscriptionMeta,
+    itemId,
+    _id,
+    qty,
+    unitPrice,
+    subTotal,
+    attribute,
+    width,
+    length,
+    height,
+    title,
+    volume,
+    weight
+  };
+  removeEmpty(order);
+  return order;
+}
+const getHeightWeight = (items) => {
+  console.log({ items });
+  const height = items.map(el => el.height * parseFloat(el.qty));
+  const width = items.map(el => el.width * parseFloat(el.qty));
+  const length = items.map(el => el.length * parseFloat(el.qty));
+  console.log({
+    height: height.reduce((a, b) => a + b, 0),
+    width,
+    length
+  });
+  const shape = {
+    height: height.reduce((a, b) => a + b, 0),
+    width: width.reduce((a, b) => a + b, 0),
+    length: length.reduce((a, b) => a + b, 0)
+  };
+  return shape;
+}
+const getGrandTotal = (subTotal, taxPresent, shippingCharge, discount) => {
+  const amountWithTax = subTotal + taxPresent * subTotal + shippingCharge;
+  const discountAmount = getDiscount(discount, subTotal);
+  const total =
+    parseFloat(amountWithTax || 0) - parseFloat(discountAmount || 0);
+  return parseFloat(total.toFixed(2));
+}
+export const generateOrderObj = ({stateObj,
+  referralId,
+  cart,
+  user,
+  confirmShipRes}) => {
+    console.log({stateObj,
+      referralId,
+      cart,
+      user,
+      confirmShipRes})
+    const { service, ...confirmRest } = confirmShipRes;
+    const { paymentMethod, address } = stateObj;
+    const {
+      items,
+      shippingCharge,
+      subTotal,
+      totalWeight,
+      totalVolume,
+      taxValue,
+      taxPersent,
+      taxCouponDiscount,
+      taxCouponCode
+    } = cart;
+    const orderProducts = items.map(el => parseOrderProduct(el));
+    const {
+      height: totalHeight,
+      length: totalLength,
+      width: totalWidth
+    } = getHeightWeight(orderProducts);
+    const order = {
+      totalVolume,
+      totalWeight,
+      shippingMethod: service,
+      products: orderProducts,
+      countryTax: taxPersent * 100,
+      taxAmount:
+        taxValue ||
+        parseFloat(cart.subTotal || 0) * parseFloat(taxPersent || 0) ||
+        0,
+      shippingCharge,
+      userDetails: address,
+      orderStatus: projectSettings.defaultOrderStatus,
+      paymentMethod: paymentMethod === "stripe" ? "Authorize" : paymentMethod,
+      status: projectSettings.defaultStatusInOrder,
+      wholeSubtotal: parseFloat(subTotal.toFixed(2)),
+      wasReferred: referralId ? true : false,
+      referral: referralId ? referralId : null,
+      isCoupon: taxCouponCode ? true : false,
+      couponId: taxCouponCode,
+      couponDisc: taxCouponCode ? taxCouponDiscount : null,
+      grandTotal: getGrandTotal(
+        subTotal,
+        taxPersent,
+        shippingCharge,
+        taxCouponDiscount
+      ),
+      isGuest: user._id ? false : true,
+      userId: user._id ? user._id : null,
+      userMetaId: user.userMetaId ? user.userMetaId : null,
+      totalHeight,
+      totalWidth,
+      totalLength,
+      refPercentage: projectSettings.referralPresent,
+      ...confirmRest
+    };
+    removeEmpty(order);
+    return order;
+}

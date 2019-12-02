@@ -60,6 +60,16 @@
             left: 5px;
         }
     }
+    &-group{
+        &.bordered{
+            .ant-radio-wrapper{
+                padding: 8px 15px;
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid $brand-color-1;
+            }
+        }
+    }
     &-checked{
         .ant-radio{
             &-inner{

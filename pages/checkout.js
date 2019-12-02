@@ -10,11 +10,20 @@ import { Steps } from 'antd'
 import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
 import {addAddress} from '../redux/actions/address'
 import { connect } from 'react-redux'
+import checkAddressDuplicate from '../services/helpers/address'
+import CheckoutShipping from '../components/checkout-tabs/CheckoutShipping'
+import CheckoutPayment from '../components/checkout-tabs/CheckoutPayment'
 
 const Checkout  = ({
     addAddress, user, ...props
 }) => {
     const [activeAddress, setActiveAddress] = useState(1)
+    const [currentStep, setCurrentStep] = useState(0)
+    const [infoDetails, setInfoDetails] = useState({})
+    const [mainAddress, setMainAddress] = useState(null)
+    const [shipAddress, setShipAddress] = useState(null)
+    const [shippingDetail, setShippingDetail] = useState(null)
+    const [shippingSendData, setShippingSendData] = useState(null)
     const address = [
         {
             address: "125th St, New York, NY 10027, USA",
@@ -29,7 +38,7 @@ const Checkout  = ({
             id: 3
         },
     ]
-    const onInfoSubmit = (e, values) => {
+    const onInfoSubmit = (e, values, address, addressShip) => {
         console.log({
             e, values
         })
@@ -64,25 +73,51 @@ const Checkout  = ({
                 isDuplicate
             })
             if(!isDuplicate || allAddresses.length < 1){
+                const userId = user._id
+                console.log({
+                    userId
+                })
                 addAddress(user._id, newAddress, props.address, allAddresses)
             }
         }else{
-            alert("a")
+            
         }
+        setInfoDetails({...values})
+        setCurrentStep(1)
+        setMainAddress(address)
+        setShipAddress(addressShip)
+    }
+    const onShippingSubmit = (e, values, shippingSendData) => {
+        setShippingDetail(values)
+        setCurrentStep(2)
+        setShippingSendData(shippingSendData)
+    }
+    const onPaymentSubmit = (e, values) => {
+        
     }
     return (
         <CheckoutLayout>
             <div className="c-checkout">
                 <Heading parentClass="c-checkout" versions={["default", "upper"]}>Checkout</Heading>
                 <div className="c-checkout__nav-wrapper">
-                    <Steps>
-                        <Steps.Step title="first step" />
-                        <Steps.Step title="second step" />
-                        <Steps.Step title="third step" />
+                    <Steps 
+                        current={currentStep}
+                    >
+                        <Steps.Step title="Information" />
+                        <Steps.Step title="Shipping" />
+                        <Steps.Step title="Payment" />
                     </Steps>
                 </div>
                 <div className="c-checkout__main-wrapper">
-                    <CheckoutInfo onSubmit={onInfoSubmit} />
+                    {(currentStep === 0) && <CheckoutInfo oldValues={infoDetails} onSubmit={onInfoSubmit} />}
+                    {(currentStep === 1) && <CheckoutShipping oldValues={shippingDetail} email={infoDetails.email} address={mainAddress} onSubmit={onShippingSubmit} />}
+                    {(currentStep === 2) && <CheckoutPayment 
+                        oldValues={null} 
+                        email={infoDetails.email} 
+                        shippingDetail={shippingDetail} 
+                        address={mainAddress} 
+                        shippingSendData={shippingSendData}
+                        onSubmit={onPaymentSubmit} />}
                 </div>
                 {/* {address.length && <TitleList parentClass="c-checkout" versions={["sm-border"]} title="Shipping Information" >
                     {
@@ -104,11 +139,11 @@ const Checkout  = ({
                     </>
                 }
                 
-                <TitleList parentClass="c-checkout" versions={["sm-border"]} >
+                {/* <TitleList parentClass="c-checkout" versions={["sm-border"]} >
                     <div className="col-12">
                         <Button parentClass="c-checkout" theme="outline" versions={["block"]} >Continue to Shipping</Button>
                     </div>
-                </TitleList>
+                </TitleList> */}
             </div>
         </CheckoutLayout>
     )

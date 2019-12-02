@@ -35,7 +35,16 @@ class CheckoutInfo extends React.Component {
         }
     }
 
-    
+    componentDidMount(){
+        const {
+            form, oldValues
+        } = this.props
+        if(oldValues){
+            form.setFieldsValue({
+                ...oldValues
+            })
+        }
+    }
     handleChange = addressStr => {
         this.changeAddress({addressStr})
     };
@@ -94,13 +103,16 @@ class CheckoutInfo extends React.Component {
         const {
             onSubmit
         } = this.props
+        const {
+            address, addressShip
+        } = this.state
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log({
                     values
                 })
                 if (typeof onSubmit === "function") {
-                    onSubmit(e, values)
+                    onSubmit(e, values, address, addressShip)
                 }
             }
         })

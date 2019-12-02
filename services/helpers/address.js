@@ -1,4 +1,7 @@
 const checkAddressDuplicate = (address, allAddresses) => {
+    console.log({
+        address, allAddresses
+    })
     const checkAdd = allAddresses.some(el => {
         const {
             id,
@@ -12,3 +15,5 @@ const checkAddressDuplicate = (address, allAddresses) => {
     })
     return checkAdd
 }
+
+export default checkAddressDuplicate

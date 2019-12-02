@@ -1149,6 +1149,11 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
+antd-mask-input@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/antd-mask-input/-/antd-mask-input-0.1.12.tgz#8b75b1cdd4edacf52f76e9d7bf4ae0efa4558ebf"
+  integrity sha512-pUR5Q5JSlQfwAGHiTdTUYUx3kHGH9F6sufPuSdi7UpUQhjLasOHZxyyKvGElrX/Li4EI40SpW5Ec9TPA9CQKzQ==
+
 antd@^3.25.1:
   version "3.25.1"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.25.1.tgz#c23732e63fc01fed30d9ab708e9ef4e71527ed82"
@@ -1541,6 +1546,11 @@ bootstrap@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
   integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
+
+box-dimension-calculator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/box-dimension-calculator/-/box-dimension-calculator-1.0.0.tgz#665241a4e3e3ece0d99a5d59d837f60e3e3f0fef"
+  integrity sha512-Ct14kkZ4EefbLy6m6knT4KfdYjyzxF92TThwWy0kDGJVk9qAa7rdkyesELf2VzTnxxF8b+kbWH3YpmZ5BbiLAQ==
 
 brace-expansion@^1.1.7:
   version "1.1.11"

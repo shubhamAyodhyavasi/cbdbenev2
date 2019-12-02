@@ -16,3 +16,12 @@ export const numberFormat = (nbr) => {
 }
 
 export const getParentage = (parValue, totalValue) => ((parseFloat(parValue) * parseFloat(totalValue)) / 100)
+
+export const getSingleElementByMultipleObject = (arrayData, f) => {
+  const result = arrayData.reduce(function(r, a) {
+    r[a.carrier] = r[a.carrier] || [];
+    r[a.carrier].push(a);
+    return r;
+  }, {});
+  return result;
+}
