@@ -4,7 +4,7 @@ export const initialCart = {
   unSubscribeProductAmount: 0,
   shippingCharge: 0,
   shippingType: "standard",
-  taxPresent: 0,
+  taxPercent: 0,
   taxCountry: null,
   totalWeight: 0,
   totalVolume: 0,

@@ -10,6 +10,7 @@ import PlacesAutocomplete, {geocodeByAddress, getLatLng } from "react-places-aut
 import projectSettings from '../../constants/projectSettings';
 import { searchAddress } from '../../services/api';
 import regex from '../../services/helpers/regex';
+import { getCountryCode } from '../../services/helpers/misc';
 
 class CheckoutInfo extends React.Component {
     constructor() {
@@ -57,11 +58,11 @@ class CheckoutInfo extends React.Component {
         const city = arr[size - 3];
         const other = arr[0];
         const address = {
-            addressStr,
-            country,
-            state,
-            city,
-            other,
+            addressStr : addressStr.trim(),
+            country : country.trim(),
+            state : state.trim(),
+            city : city.trim(),
+            other : other.trim(),
             zip: ""
         }
         searchAddress(addressStr)
@@ -78,7 +79,7 @@ class CheckoutInfo extends React.Component {
                     const zip = zipObj.short_name;
                     this.changeAddress({
                             ...address,
-                            zip
+                            zip : zip.trim()
                         })
                 }else{
                     this.changeAddress({
@@ -110,6 +111,13 @@ class CheckoutInfo extends React.Component {
             if (!err) {
                 console.log({
                     values
+                })
+                const {
+                    country
+                } = values
+                const aa = getCountryCode(country)
+                console.log({
+                    aa
                 })
                 if (typeof onSubmit === "function") {
                     onSubmit(e, values, address, addressShip)
@@ -184,7 +192,12 @@ class CheckoutInfo extends React.Component {
                                     <div className="col-md-6">
                                         <Form.Item>
                                             {getFieldDecorator('firstname', {
-                                                rules: [{ required: true, message: 'Please input first name!' }],
+                                                rules: [{ required: true, message: 'Please input first name!' },
+                                                { 
+                                                    pattern: regex.name, 
+                                                    message: 'Please enter a valid name!' 
+                                                },
+                                            ],
                                             })(
                                                 <Input parentClass="c-address-form" label="First Name" />
                                             )}
@@ -193,7 +206,12 @@ class CheckoutInfo extends React.Component {
                                     <div className="col-md-6">
                                         <Form.Item>
                                             {getFieldDecorator('lastname', {
-                                                rules: [{ required: true, message: 'Please input last name!' }],
+                                                rules: [{ required: true, message: 'Please input last name!' },
+                                                { 
+                                                    pattern: regex.name, 
+                                                    message: 'Please enter a valid name!' 
+                                                },
+                                            ],
                                             })(
                                                 <Input parentClass="c-address-form" label="Last Name" />
                                             )}
@@ -202,7 +220,12 @@ class CheckoutInfo extends React.Component {
                                     <div className="col-12">
                                         <Form.Item>
                                             {getFieldDecorator('phone', {
-                                                rules: [{ required: true, message: 'Please input phone number!' }],
+                                                rules: [{ required: true, message: 'Please input phone number!' },
+                                                { 
+                                                    pattern: regex.phone, 
+                                                    message: 'Please enter a valid number!' 
+                                                },
+                                            ],
                                             })(
                                                 <Input parentClass="c-address-form" label="Phone Number" />
                                             )}
@@ -340,7 +363,11 @@ class CheckoutInfo extends React.Component {
                                         <div className="col-md-6">
                                             <Form.Item>
                                                 {getFieldDecorator('firstname_ship', {
-                                                    rules: [{ required: true, message: 'Please input first name!' }],
+                                                    rules: [{ required: true, message: 'Please input first name!' },
+                                                    { 
+                                                        pattern: regex.name, 
+                                                        message: 'Please enter a valid name!' 
+                                                    },],
                                                 })(
                                                     <Input parentClass="c-address-form" label="First Name" />
                                                 )}
@@ -349,7 +376,11 @@ class CheckoutInfo extends React.Component {
                                         <div className="col-md-6">
                                             <Form.Item>
                                                 {getFieldDecorator('lastname_ship', {
-                                                    rules: [{ required: true, message: 'Please input last name!' }],
+                                                    rules: [{ required: true, message: 'Please input last name!' },
+                                                    { 
+                                                        pattern: regex.name, 
+                                                        message: 'Please enter a valid name!' 
+                                                    },],
                                                 })(
                                                     <Input parentClass="c-address-form" label="Last Name" />
                                                 )}
@@ -358,7 +389,11 @@ class CheckoutInfo extends React.Component {
                                         <div className="col-12">
                                             <Form.Item>
                                                 {getFieldDecorator('phone_ship', {
-                                                    rules: [{ required: true, message: 'Please input phone number!' }],
+                                                    rules: [{ required: true, message: 'Please input phone number!' },
+                                                    { 
+                                                        pattern: regex.phone, 
+                                                        message: 'Please enter a valid number!' 
+                                                    },],
                                                 })(
                                                     <Input parentClass="c-address-form" label="Phone Number" />
                                                 )}

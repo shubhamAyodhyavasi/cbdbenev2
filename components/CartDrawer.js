@@ -2,9 +2,11 @@ import CartItem from './CartItem'
 import Button from './form-components/Button'
 import {connect} from 'react-redux'
 import { getProductTitle, getProductShortDesc } from '../services/helpers/product'
+import { getGrandTotal } from '../services/helpers/cart'
 import { numberFormat } from '../services/helpers/misc'
 import { initialCart } from '../constants/reduxInitialStates'
 import { modifyItem, removeFromCart } from '../redux/actions/cart'
+import Link from 'next/link'
 const CartDrawer = ({ complete, cart, modifyItem, removeFromCart })=>  {
     const qtyChange = (qty, oldItem)=> {
         modifyItem(
@@ -17,6 +19,12 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart })=>  {
             },
           );
     }
+    const grandTotal = getGrandTotal(
+        cart.subTotal,
+        cart.taxPercent,
+        cart.shippingCharge,
+        cart.taxCouponDiscount
+    )
     return (
         <div className="c-cart-drawer" >
             {
@@ -44,7 +52,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart })=>  {
                 <CartItem
                     small={true}
                     title={"Shipping"}
-                    price={"$123"}
+                    price={`$${cart.shippingCharge}`}
                     total={true}
                     versions={["small", "no-border"]}
                 />
@@ -54,7 +62,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart })=>  {
                 <CartItem
                     small={true}
                     title={"Taxes"}
-                    price={"$123"}
+                    price={`${(cart.taxCountry) ? cart.taxCountry : 0 }`}
                     total={true}
                     versions={["small"]}
                 />
@@ -63,7 +71,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart })=>  {
                 complete && 
                 <CartItem
                     title={"Total"}
-                    price={"$123"}
+                    price={grandTotal}
                     total={true}
                     versions={["no-border"]}
                 />
@@ -74,9 +82,11 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart })=>  {
                 total={true}
                 versions={["no-border"]}
             />}
-            <div className="c-cart-drawer__btn-wrapper">
-                <Button versions={["block"]} theme="outline-gold" >Proceed to checkout</Button>
-            </div>
+            {!complete && <div className="c-cart-drawer__btn-wrapper">
+                <Link href="/checkout">
+                    <a className="c-btn c-btn--block c-btn--outline-gold" >Proceed to checkout</a>
+                </Link>
+            </div>}
         </div>
     )
 }

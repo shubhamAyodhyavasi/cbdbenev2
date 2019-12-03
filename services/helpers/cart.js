@@ -530,11 +530,12 @@ const getHeightWeight = (items) => {
   };
   return shape;
 }
-const getGrandTotal = (subTotal, taxPresent, shippingCharge, discount) => {
-  const amountWithTax = subTotal + taxPresent * subTotal + shippingCharge;
+export const getGrandTotal = (subTotal, taxPercent, shippingCharge, discount) => {
+  const amountWithTax = subTotal + (taxPercent || 0) * subTotal + shippingCharge;
   const discountAmount = getDiscount(discount, subTotal);
   const total =
-    parseFloat(amountWithTax || 0) - parseFloat(discountAmount || 0);
+  parseFloat(amountWithTax || 0) - parseFloat(discountAmount || 0);
+  console.log({amountWithTax, discountAmount})
   return parseFloat(total.toFixed(2));
 }
 export const generateOrderObj = ({stateObj,
@@ -550,13 +551,17 @@ export const generateOrderObj = ({stateObj,
     const { service, ...confirmRest } = confirmShipRes;
     const { paymentMethod, address } = stateObj;
     const {
+      addressStr,
+      ...addressRest
+    } = address
+    const {
       items,
       shippingCharge,
       subTotal,
       totalWeight,
       totalVolume,
       taxValue,
-      taxPersent,
+      taxPercent,
       taxCouponDiscount,
       taxCouponCode
     } = cart;
@@ -571,13 +576,16 @@ export const generateOrderObj = ({stateObj,
       totalWeight,
       shippingMethod: service,
       products: orderProducts,
-      countryTax: taxPersent * 100,
+      countryTax: (taxPercent || 0) * 100,
       taxAmount:
         taxValue ||
-        parseFloat(cart.subTotal || 0) * parseFloat(taxPersent || 0) ||
+        parseFloat(cart.subTotal || 0) * parseFloat(taxPercent || 0) ||
         0,
       shippingCharge,
-      userDetails: address,
+      userDetails: {
+        address: addressStr,
+        ...addressRest
+      },
       orderStatus: projectSettings.defaultOrderStatus,
       paymentMethod: paymentMethod === "stripe" ? "Authorize" : paymentMethod,
       status: projectSettings.defaultStatusInOrder,
@@ -589,7 +597,7 @@ export const generateOrderObj = ({stateObj,
       couponDisc: taxCouponCode ? taxCouponDiscount : null,
       grandTotal: getGrandTotal(
         subTotal,
-        taxPersent,
+        taxPercent,
         shippingCharge,
         taxCouponDiscount
       ),

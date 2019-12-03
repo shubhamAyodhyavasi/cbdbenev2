@@ -54,7 +54,7 @@ export default (state = initialCart, action) => {
     case SET_TAX_VALUE:
       return {
         ...state,
-        taxPersent: payload.taxPersent,
+        taxPercent: payload.taxPercent,
         taxCountry: payload.taxCountry
       };
 

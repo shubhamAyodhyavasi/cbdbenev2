@@ -170,7 +170,7 @@ export const setTax = (tax, cart = null, userMetaId = null) => dispatch => {
       usermetaid: userMetaId,
       cart: {
         ...cart,
-        taxPersent: tax.taxPersent,
+        taxPercent: tax.taxPercent,
         taxCountry: tax.taxCountry
       }
     });

@@ -185,6 +185,9 @@ class CheckoutPayment extends React.Component {
         const {
             onSubmit, shippingSendData, address
         } = this.props
+        console.log({
+            cart: this.props
+        })
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log({
@@ -209,6 +212,9 @@ class CheckoutPayment extends React.Component {
                                         cardname,
                                         expiry: expDate
                                     } = values
+                                    console.log({
+                                        order
+                                    })
                                     const expiry = "20" + expDate
                                         .split("/")
                                         .reverse()
@@ -221,7 +227,11 @@ class CheckoutPayment extends React.Component {
                                         products
                                     } = order;
                                     const customAmount = amount;
-
+                                    const {
+                                        addressStr,
+                                        state,
+                                        ...addressRest
+                                    } = address
                                     const data = {
                                         cardnumber,
                                         expiry,
@@ -242,8 +252,17 @@ class CheckoutPayment extends React.Component {
                                             quantity: el.qty,
                                             unitPrice: el.unitPrice
                                         })),
-                                        billto: address,
-                                        shipTo: address
+                                        billto: {
+                                            address: addressStr,
+                                            company: "",
+                                            firstName: "",
+                                            lastName: "",
+                                            ...addressRest
+                                        },
+                                        shipTo: {
+                                            address: addressStr,
+                                            ...addressRest
+                                        }
                                     };
 
                                     authorizeCharge(data)

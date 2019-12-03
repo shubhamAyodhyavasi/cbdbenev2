@@ -1,3 +1,5 @@
+import { AllCountryObj } from "../../constants/allCountry";
+
 export const encodeUrlFn = url => url.replace(/-/g, "_").replace(/ /g, "-");
 export const numberFormat = (nbr) => {
     if (nbr === 0 && nbr === "") {
@@ -25,3 +27,28 @@ export const getSingleElementByMultipleObject = (arrayData, f) => {
   }, {});
   return result;
 }
+
+
+export const getCountryName = code => {
+  let country = AllCountryObj.map(el => {
+    if (el.code === code) {
+      return el.name;
+    }
+
+    return null;
+  });
+  return country.join("");
+};
+
+export const getCountryCode = countryName => {
+  let country = AllCountryObj.map(el => {
+    if(countryName){
+      if (el.name.trim().toLowerCase() === countryName.trim().toLowerCase()) {
+        return el.code;
+      }
+    }
+
+    return null;
+  });
+  return country.join("");
+};
