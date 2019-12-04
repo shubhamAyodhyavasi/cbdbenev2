@@ -1,0 +1,14 @@
+
+//overriding ant design
+
+.ant-select{
+    &-selection__rendered{
+
+    }
+    &-selection{    
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        border-bottom: 1px solid $brand-color-1;
+    }
+}

@@ -23,4 +23,17 @@
             padding: 80px;
         }
     }
+
+    // override and design
+
+    
+    .ant-steps-item-icon{
+        display: none !important;
+    }
+    .ant-steps-item-title::after{
+        display: none !important;
+    }
+    .ant-steps-item{
+        flex: none !important;
+    }
 }

@@ -1,0 +1,16 @@
+.c-checkout-payment{
+    
+    // ant design override
+    .ant-collapse-header{
+        display: none !important;
+    }
+    .ant-collapse-content-box{
+        padding: 0 !important;
+    }
+    .ant-collapse-item{
+        border: none !important;
+    }
+    .ant-collapse-borderless{
+        background-color: transparent !important;
+    }
+}

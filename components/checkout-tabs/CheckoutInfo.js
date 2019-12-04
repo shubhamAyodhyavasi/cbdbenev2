@@ -58,11 +58,11 @@ class CheckoutInfo extends React.Component {
         const city = arr[size - 3];
         const other = arr[0];
         const address = {
-            addressStr : addressStr.trim(),
-            country : country.trim(),
-            state : state.trim(),
-            city : city.trim(),
-            other : other.trim(),
+            addressStr : addressStr && addressStr.trim(),
+            country : country && country.trim(),
+            state : state && state.trim(),
+            city : city && city.trim(),
+            other : other && other.trim(),
             zip: ""
         }
         searchAddress(addressStr)

@@ -8,6 +8,7 @@ import { loginUser } from '../../services/api';
 import msgStrings from '../../constants/msgStrings';
 import { hideHasLogin, toggleRegBar } from '../../redux/actions/drawers'
 import { setUser } from '../../redux/actions/user'
+import regex from '../../services/helpers/regex';
 
 class LoginForm extends React.Component{
     constructor(){
@@ -90,7 +91,11 @@ class LoginForm extends React.Component{
                     <Form.Item>
                         {getFieldDecorator('email', {
                             rules: [
-                                { required: true, message: 'Please input your e-mail!' }
+                                { required: true, message: 'Please input your e-mail!' },
+                                { 
+                                    pattern: regex.email, 
+                                    message: 'Please enter a valid E-mail!' 
+                                },
                             ],
                         })(
                             <Input versions={["dark"]} parentClass="c-login" label="E-mail" />

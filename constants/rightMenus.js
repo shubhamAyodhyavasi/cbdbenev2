@@ -13,9 +13,15 @@ const rightMenus = [
     },
     {
         icon: <AiOutlineUser />,
-        link: "/user",
-        action: "link",
-        onlyLogin: true
+        // link: "/user",
+        action: "dropdown",
+        onlyLogin: true,
+        dropdownMenu: [
+            {
+                label: "logout",
+                action: "logout"
+            }
+        ]
     },
     {
         icon: <AiOutlineUser />,

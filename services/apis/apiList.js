@@ -4,6 +4,7 @@ const {
 } = projectSettings
 const apiList = {
     getAllProducts                  : `${baseUrl}/products/api/all/`,
+    getAllCombos                    : `${baseUrl}/products/api/combos/all/`,
     getProductById                  : `${baseUrl}/products/api/getbyid/`,
     userRegistration                : `${baseUrl}/users/api/register/`,
     userLogin                       : `${baseUrl}/users/api/login/`,

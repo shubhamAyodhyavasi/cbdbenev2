@@ -9,6 +9,8 @@ import categoryList from '../constants/categoryList'
 import { getProducts } from '../redux/actions'
 import { connect } from 'react-redux'
 import Button from '../components/form-components/Button'
+import { getAllCombos } from '../services/api'
+
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -41,6 +43,11 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.props.getProducts()
+    getAllCombos().then(res => {
+      console.log({
+        res
+      })
+    })
   }
   changeCategory = (activeCategory) => {
     const {

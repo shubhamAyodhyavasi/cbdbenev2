@@ -6,7 +6,7 @@ import AddressForm from '../components/AddressForm'
 import Checkbox from '../components/form-components/Checkbox'
 import Button from '../components/form-components/Button'
 import Radio from '../components/form-components/Radio'
-import { Steps } from 'antd'
+import { Steps, Modal } from 'antd'
 import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
 import {addAddress} from '../redux/actions/address'
 import { connect } from 'react-redux'
@@ -24,6 +24,7 @@ const Checkout  = ({
     const [shipAddress, setShipAddress] = useState(null)
     const [shippingDetail, setShippingDetail] = useState(null)
     const [shippingSendData, setShippingSendData] = useState(null)
+    const [isModal, setIsModal] = useState(false)
     const address = [
         {
             address: "125th St, New York, NY 10027, USA",
@@ -93,7 +94,12 @@ const Checkout  = ({
         setShippingSendData(shippingSendData)
     }
     const onPaymentSubmit = (e, values) => {
-        
+    }
+    const onPaymentFail = (res)=> {
+        console.log({
+            res
+        })
+        setIsModal(true)
     }
     return (
         <CheckoutLayout>
@@ -114,6 +120,7 @@ const Checkout  = ({
                     {(currentStep === 2) && <CheckoutPayment 
                         oldValues={null} 
                         email={infoDetails.email} 
+                        onFailed={onPaymentFail}
                         shippingDetail={shippingDetail} 
                         address={mainAddress} 
                         shippingSendData={shippingSendData}
@@ -145,6 +152,21 @@ const Checkout  = ({
                     </div>
                 </TitleList> */}
             </div>
+            <Modal 
+                
+                maskClosable={true}
+                footer={null}
+                onOk={()=> {
+                    setIsModal(false)
+                    window.location.href = "/"
+                }} 
+                onCancel={()=> {
+                    setIsModal(false)
+                    window.location.href = "/"
+                }} 
+                visible={isModal}>
+                Order is Successfully Places
+            </Modal>
         </CheckoutLayout>
     )
 }
