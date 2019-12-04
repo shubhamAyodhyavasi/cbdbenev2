@@ -20,6 +20,9 @@
         top: 0;
         z-index: 99;
     }
+    &--scrollup{
+        transform: translateY(20px)
+    }
     &--pinned{
         background-color: $dark-color-1;
     }
