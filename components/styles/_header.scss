@@ -1,5 +1,5 @@
 .c-header{
-    padding: 25px 35px;
+    padding: 8px 35px;
     display: flex;
     align-items: center;
     transition: all .3s;
@@ -15,12 +15,32 @@
             text-align: right;
         }
     }
+    &--active {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top:0; 
+        visibility: visible;
+        transition: all 200ms ease-in;
+        border-bottom: 1px solid $border-color;
+      }
+    &--hidden {
+        transition: all 200ms ease-out;
+        transform: translate(0, -100%);
+      }
+      &--top {
+        border-bottom:none;
+        transition: all 200ms ease-out;
+      }
     &--fixed{
         position: fixed;
         left: 0;
         right: 0;
         top: 0;
         z-index: 99;
+        background: $light-color-2;
+        color:black;
+
     }
     &--scrollup{
         transform: translateY(20px)
@@ -32,6 +52,10 @@
         * {
             color: $light-color-2;
         }
+    }
+    &--black
+    *{
+        color:black;
     }
     &--dark {
         * {

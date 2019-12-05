@@ -7,15 +7,34 @@ import { Affix } from 'antd'
 import classNames from 'classnames'
 import mainMenus from '../constants/mainMenus'
 import rightMenus from "../constants/rightMenus";
+
+
+
+
 const Header = ({bg, theme, versions}) => {
     const versionClass = versions.map(el => (`c-header--${el}`)).join(" ")
     const [isFixed, setIsFixed] = useState(false)
+    const [show, setIsShow] = useState(true)
+    const [isAtTop, setIsAtTop] = useState(true)
    const [hideOnScroll, setHideOnScroll] = useState(true)
 
   useScrollPosition(
     ({ prevPos, currPos }) => {
         console.log({"prevPos": prevPos.y})
         console.log({"currPos":currPos.y})
+        let showNav = currPos.y > prevPos.y;
+        console.log(document.body.getBoundingClientRect().top)
+        setIsShow(showNav)
+        if(currPos.y === -124){
+            setIsAtTop(false)
+            console.log("--------------------")
+            console.log({"top--":isAtTop})
+        } else {
+            setIsAtTop(true)
+        }
+         
+        // console.log({show})
+        
       const isShow = currPos.y > prevPos.y
       if (isShow !== hideOnScroll) setHideOnScroll(isShow)
     },
@@ -25,12 +44,19 @@ const Header = ({bg, theme, versions}) => {
     300
   )
 
-    
+ 
+
     return (
         // <Affix className="c-header__affix"  onChange={e => setIsFixed(e)}>
-            <header className={classNames(" c-header", {
+            <header onScroll={(e) => {
+                console.log({e})
+              }}  className={classNames(" c-header", {
                 "c-header--light": true,
-                "c-header--fixed": false,
+                "c-header--fixed": true,
+                "c-header--active": show,
+                "c-header--top": !isAtTop,
+                "c-header--black": show,
+                "c-header--hidden": !show,
                 "c-header--pinned": isFixed || bg,
                 ["c-header--"+theme]: theme,
                 [versionClass]: versions
