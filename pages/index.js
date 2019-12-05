@@ -10,7 +10,8 @@ import { getProducts } from '../redux/actions'
 import { connect } from 'react-redux'
 import Button from '../components/form-components/Button'
 import { getAllCombos } from '../services/api'
-
+import BundleProducts from '../components/BundleProducts'
+import ScrollAnimation from "react-animate-on-scroll";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -21,7 +22,8 @@ class Home extends React.Component {
     this.state = {
       activeCategory: "Featured",
       allProducts: props.products.products || [],
-      products: props.products.featured || []
+      products: props.products.featured || [],
+      combos: []
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -47,6 +49,11 @@ class Home extends React.Component {
       console.log({
         res
       })
+      if(res.data && res.data.combos){
+        this.setState({
+          combos: res.data.combos
+        })
+      }
     })
   }
   changeCategory = (activeCategory) => {
@@ -77,7 +84,7 @@ class Home extends React.Component {
   }
   render() {
     const {
-      activeCategory, products
+      activeCategory, products, combos
     } = this.state
     // const {
     //   products
@@ -122,6 +129,7 @@ class Home extends React.Component {
             "/images/oil-group.png"
           ]}
         />
+        <BundleProducts products={combos} />
       </Layout>
     )
   }

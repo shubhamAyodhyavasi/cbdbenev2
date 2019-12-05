@@ -7,6 +7,7 @@ import apiList from "../../services/apis/apiList";
 import ProductCard from "../../components/ProductCard";
 import { getProductImage, getProductTitle, getProductShortDesc, getBasicPrice, addSlugToProduct, getVisibleProducts } from "../../services/helpers/product";
 import projectSettings from "../../constants/projectSettings";
+import fetch from 'isomorphic-unfetch'
 const Category = ({ productList, ...props }) => {
     const products = productList.map(el => {
         console.log({

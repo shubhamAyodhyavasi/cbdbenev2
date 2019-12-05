@@ -1,17 +1,17 @@
-import Layout from '../../components/Layouts/Layout'
-import ProductInfo from '../../components/ProductInfo'
-import { getProductById } from '../../services/api'
-import HImgSection from '../../components/HImgSection'
-import {getProductImage, getProductAttributes, getVisibleProducts, getProductDescription} from '../../services/helpers/product'
-import Heading from '../../components/Heading'
-import TitleList from '../../components/TItleList'
+import Layout from '../../../components/Layouts/Layout'
+import ProductInfo from '../../../components/ProductInfo'
+import { getProductById } from '../../../services/api'
+import HImgSection from '../../../components/HImgSection'
+import {getProductImage, getProductAttributes, getVisibleProducts, getProductDescription} from '../../../services/helpers/product'
+import Heading from '../../../components/Heading'
+import TitleList from '../../../components/TItleList'
 // import Tabs from '../components/Tabs'
-import ProductDetailsTab from '../../components/ProductDetailsTab'
-import ProductSlider from '../../components/ProductSlider'
+import ProductDetailsTab from '../../../components/ProductDetailsTab'
+import ProductSlider from '../../../components/ProductSlider'
 import { useRouter } from 'next/router'
 import {connect} from 'react-redux'
 import fetch from "isomorphic-unfetch";
-import projectSettings from '../../constants/projectSettings'
+import projectSettings from '../../../constants/projectSettings'
 const product = {
     title: "CBD Isolate 500 mg"
 }
