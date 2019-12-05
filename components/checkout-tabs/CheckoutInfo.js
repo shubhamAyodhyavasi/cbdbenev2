@@ -46,11 +46,11 @@ class CheckoutInfo extends React.Component {
             })
         }
     }
-    handleChange = addressStr => {
-        this.changeAddress({addressStr})
+    handleChange = (addressStr, key = "address") => {
+        this.changeAddress({addressStr}, key)
     };
    
-    handleSelect = addressStr => {
+    handleSelect = (addressStr, key = "address") => {
         const arr = addressStr.split(",");
         const size = arr.length;
         const country = arr[size - 1].trim();
@@ -80,23 +80,23 @@ class CheckoutInfo extends React.Component {
                     this.changeAddress({
                             ...address,
                             zip : zip.trim()
-                        })
+                        }, key)
                 }else{
                     this.changeAddress({
                         ...address
-                    })
+                    }, key)
                 }
             }else{
                 this.changeAddress({
                     ...address
-                })
+                }, key)
             }
         })
         .catch(err => {
             console.log({err})
             this.changeAddress({
                 ...address
-            })
+            }, key)
         })
     };
     onSubmit = e => {
@@ -130,13 +130,48 @@ class CheckoutInfo extends React.Component {
             sameShipping: e.target.checked
         })
     }
-    changeAddress = ({...address}, key = "address") => {
-        this.setState(prevState => ({
-            [key]: {
-                ...prevState[key],
-                ...address
-            }
-        }))
+    changeAddress = ({...address}, key = "address", search = true) => {
+        const {
+            city,
+            state,
+            country,
+            zip,
+        } = address
+        if(key === "address"){
+            const {
+                address
+            } = this.state
+            this.props.form.setFieldsValue({
+                city : city,
+                state : state,
+                country : country,
+                zip : zip,
+            })
+        }else if(key === "addressShip"){
+            const {
+                addressShip: address
+            } = this.state
+            this.props.form.setFieldsValue({
+                city_ship : city,
+                state_ship : state,
+                country_ship : country,
+                zip_ship : zip,
+            })
+        }
+        if(search){
+            this.setState(prevState => ({
+                [key]: {
+                    ...prevState[key],
+                    ...address
+                }
+            }))
+        }else{
+            this.setState({
+                [key]: {
+                    ...address
+                }
+            })
+        }
     }
     render() {
         const componentClass = "c-checkout-info"
@@ -146,7 +181,7 @@ class CheckoutInfo extends React.Component {
         } = this.props
         const {
             sameShipping,
-            address
+            address, addressShip
         } = this.state
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = form
         const isLogin = user._id ? true : false
@@ -192,11 +227,12 @@ class CheckoutInfo extends React.Component {
                                     <div className="col-md-6">
                                         <Form.Item>
                                             {getFieldDecorator('firstname', {
-                                                rules: [{ required: true, message: 'Please input first name!' },
-                                                { 
-                                                    pattern: regex.name, 
-                                                    message: 'Please enter a valid name!' 
-                                                },
+                                                rules: [
+                                                    { required: true, message: 'Please input first name!' },
+                                                    { 
+                                                        pattern: regex.name, 
+                                                        message: 'Please enter a valid name!' 
+                                                    },
                                             ],
                                             })(
                                                 <Input parentClass="c-address-form" label="First Name" />
@@ -225,6 +261,10 @@ class CheckoutInfo extends React.Component {
                                                     pattern: regex.phone, 
                                                     message: 'Please enter a valid number!' 
                                                 },
+                                                { 
+                                                    max: 15,
+                                                    message: 'Please enter a valid number!' 
+                                                },
                                             ],
                                             })(
                                                 <Input parentClass="c-address-form" label="Phone Number" />
@@ -233,9 +273,12 @@ class CheckoutInfo extends React.Component {
                                     </div>
                                     <div className="col-12">
                                         <PlacesAutocomplete 
-                                        value={address.addressStr}
-                                        onChange={this.handleChange}
-                                        onSelect={this.handleSelect}
+                                        value={address.addressStr}onChange={(e)=> {
+                                            this.handleChange(e, "address")
+                                        }}
+                                        onSelect={(e)=> {
+                                            this.handleSelect(e, "address")
+                                        }}
                                 
                                         >{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                             <div>
@@ -273,13 +316,12 @@ class CheckoutInfo extends React.Component {
                                         <Form.Item>
                                             {getFieldDecorator('city', {
                                                 rules: [{ required: true, message: 'Please input your city!' }],
-                                                setFieldsValue: address.city,
                                                 initialValue: address.city
                                             })(
                                                 <Input 
                                                     onChange={e=> {
                                                         const city = e.target.value
-                                                        this.changeAddress({city})
+                                                        this.changeAddress({...address, city}, "address")
                                                     }}
                                                     parentClass="c-address-form" 
                                                     label="City" />
@@ -292,13 +334,12 @@ class CheckoutInfo extends React.Component {
                                         <Form.Item>
                                             {getFieldDecorator('country', {
                                                 rules: [{ required: true, message: 'Please input your Country!' }],
-                                                setFieldsValue: address.country,
                                                 initialValue: address.country
                                             })(
                                                 <Input 
                                                     onChange={e=> {
                                                         const country = e.target.value
-                                                        this.changeAddress({country})
+                                                        this.changeAddress({...address, country}, "address")
                                                     }}
                                                     parentClass="c-address-form" 
                                                     label="Country" />
@@ -309,13 +350,12 @@ class CheckoutInfo extends React.Component {
                                         <Form.Item>
                                             {getFieldDecorator('state', {
                                                 rules: [{ required: true, message: 'Please input your state!' }],
-                                                setFieldsValue: address.state,
                                                 initialValue: address.state
                                             })(
                                                 <Input 
                                                     onChange={e=> {
-                                                        const country = e.target.value
-                                                        this.changeAddress({country})
+                                                        const state = e.target.value
+                                                        this.changeAddress({...address, state}, "address")
                                                     }} 
                                                     parentClass="c-address-form" 
                                                     label="state" />
@@ -325,14 +365,16 @@ class CheckoutInfo extends React.Component {
                                     <div className="col-md-4">
                                         <Form.Item>
                                             {getFieldDecorator('zip', {
-                                                rules: [{ required: true, message: 'Please input your ZIP code!' }],
-                                                setFieldsValue: address.zip,
+                                                rules: [
+                                                    { required: true, message: 'Please input your ZIP code!' },
+                                                    { max: 8, message: 'Please input your ZIP code!' },
+                                                ],
                                                 initialValue: address.zip
                                             })(
                                                 <Input 
                                                     onChange={e=> {
                                                         const zip = e.target.value
-                                                        this.changeAddress({zip})
+                                                        this.changeAddress({...address, zip}, "address")
                                                     }} 
                                                     parentClass="c-address-form" 
                                                     label="ZIP code" />
@@ -390,24 +432,71 @@ class CheckoutInfo extends React.Component {
                                             <Form.Item>
                                                 {getFieldDecorator('phone_ship', {
                                                     rules: [{ required: true, message: 'Please input phone number!' },
-                                                    { 
-                                                        pattern: regex.phone, 
-                                                        message: 'Please enter a valid number!' 
-                                                    },],
+                                                        { 
+                                                            pattern: regex.phone, 
+                                                            message: 'Please enter a valid number!' 
+                                                        },
+                                                        { 
+                                                            max: 15, 
+                                                            message: 'Please enter a valid number!' 
+                                                        },
+                                                    ],
                                                 })(
                                                     <Input parentClass="c-address-form" label="Phone Number" />
                                                 )}
                                             </Form.Item>
                                         </div>
                                         <div className="col-12">
-                                            <Input parentClass="c-address-form" label="Search Your Address" />
+                                            <PlacesAutocomplete 
+                                            value={addressShip.addressStr}
+                                            onChange={(e)=> {
+                                                this.handleChange(e, "addressShip")
+                                            }}
+                                            onSelect={(e)=> {
+                                                this.handleSelect(e, "addressShip")
+                                            }}
+                                    
+                                            >{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                                <div>
+                                                    <Input {...getInputProps({
+                                                            placeholder: 'Search Places ...',
+                                                            className: 'location-search-input',
+                                                        })} parentClass="c-address-form" label="Search Places ..." />
+                                                    <div className="autocomplete-dropdown-container">
+                                                        {loading && <div>Loading...</div>}
+                                                        {suggestions.map(suggestion => {
+                                                            const className = suggestion.active
+                                                                ? 'suggestion-item--active'
+                                                                : 'suggestion-item';
+                                                            // inline style for demonstration purpose
+                                                            const style = suggestion.active
+                                                                ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                                                : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                            return (
+                                                                <div
+                                                                    {...getSuggestionItemProps(suggestion, {
+                                                                        className,
+                                                                        style,
+                                                                    })}
+                                                                >
+                                                                    <span>{suggestion.description}</span>
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            </PlacesAutocomplete>
                                         </div>
                                         <div className="col-12">
                                             <Form.Item>
                                                 {getFieldDecorator('city_ship', {
                                                     rules: [{ required: true, message: 'Please input your city!' }],
                                                 })(
-                                                    <Input parentClass="c-address-form" label="City" />
+                                                    <Input onChange={e=> {
+                                                        const city = e.target.value
+                                                        this.changeAddress({...addressShip, city}, "addressShip")
+                                                    }} parentClass="c-address-form" label="City" />
                                                 )}
                                             </Form.Item>
                                         </div>
@@ -418,7 +507,10 @@ class CheckoutInfo extends React.Component {
                                                 {getFieldDecorator('country_ship', {
                                                     rules: [{ required: true, message: 'Please input your Country!' }],
                                                 })(
-                                                    <Input parentClass="c-address-form" label="Country" />
+                                                    <Input onChange={e=> {
+                                                        const country = e.target.value
+                                                        this.changeAddress({...addressShip, country}, "addressShip")
+                                                    }} parentClass="c-address-form" label="Country" />
                                                 )}
                                             </Form.Item>
                                         </div>
@@ -427,16 +519,25 @@ class CheckoutInfo extends React.Component {
                                                 {getFieldDecorator('state_ship', {
                                                     rules: [{ required: true, message: 'Please input your state!' }],
                                                 })(
-                                                    <Input parentClass="c-address-form" label="state" />
+                                                    <Input onChange={e=> {
+                                                        const state = e.target.value
+                                                        this.changeAddress({...addressShip, state}, "addressShip")
+                                                    }} parentClass="c-address-form" label="state" />
                                                 )}
                                             </Form.Item>
                                         </div>
                                         <div className="col-md-4">
                                             <Form.Item>
                                                 {getFieldDecorator('zip_ship', {
-                                                    rules: [{ required: true, message: 'Please input your ZIP code!' }],
+                                                    rules: [
+                                                        { required: true, message: 'Please input your ZIP code!' },
+                                                        { max: 8, message: 'Please input your ZIP code!' },
+                                                    ],
                                                 })(
-                                                    <Input parentClass="c-address-form" label="ZIP code" />
+                                                    <Input onChange={e=> {
+                                                        const zip = e.target.value
+                                                        this.changeAddress({...addressShip, zip}, "addressShip")
+                                                    }} parentClass="c-address-form" label="ZIP code" />
                                                 )}
                                             </Form.Item>
                                         </div>

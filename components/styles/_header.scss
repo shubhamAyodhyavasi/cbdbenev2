@@ -3,6 +3,8 @@
     display: flex;
     align-items: center;
     transition: all .3s;
+    position: relative;
+    z-index: 99;
     &__affix{
         position: relative;
         z-index: 99;

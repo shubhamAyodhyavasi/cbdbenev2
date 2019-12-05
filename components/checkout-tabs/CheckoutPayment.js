@@ -199,12 +199,13 @@ class CheckoutPayment extends React.Component {
                 console.log({
                     err
                 });
-                this.setState({
-                    modalData: someThingWrong,
-                    modalTitle: wrongModalTitle,
-                    modal: true,
-                    SpinnerToggle: false
-                });
+                this.onFailed(resJson)
+                // this.setState({
+                //     modalData: someThingWrong,
+                //     modalTitle: wrongModalTitle,
+                //     modal: true,
+                //     SpinnerToggle: false
+                // });
             });
     };
     onSubmit = e => {
@@ -282,6 +283,9 @@ class CheckoutPayment extends React.Component {
         const {
             addressStr,
             state,
+            city,
+            zip,
+            other,
             ...addressRest
         } = address
         const data = {
@@ -359,6 +363,9 @@ class CheckoutPayment extends React.Component {
         const {
             addressStr,
             state,
+            city,
+            zip,
+            other,
             ...addressRest
         } = address
         const data = {

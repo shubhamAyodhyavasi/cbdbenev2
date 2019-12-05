@@ -5,6 +5,8 @@ import projectSettings from '../constants/projectSettings';
 import Flickity from 'react-flickity-component';
 import Link from 'next/link';
 import SliderLine from './SliderLine';
+import { getProductImage } from '../services/helpers/product';
+import ProductCard from './ProductCard';
 const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onCategoryChange, products, bg, pp }) => {
     
     const sliderLine = useRef(null)
@@ -58,20 +60,17 @@ const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onC
                     reloadOnUpdate={true}
                     className="c-category-products__slider"
 				>
-                    {products.map((el, i) => (
+                    {products.map((el, i) => {
+                        console.log({
+                            el
+                        })
+                        return (
                         <Link key={i} href={`/shop/${el._id}`}>
-                            <div className="col-md-4 c-category-products__product">
-                                <img
-                                    src={projectSettings.serverUrl + el.productImage}
-                                    alt={el.title}
-                                    onLoad={() => {
-                                      flResize();
-                                    }}
-                                    className="c-category-products__img img-fluid"
-                                />
+                            <div className="col-md-6 c-category-products__product">
+                                <ProductCard product={el} versions={["show-price", "full-height"]} title={el.title} subTitle={el.subTitle} image={projectSettings.serverUrl + getProductImage(el)} price={ el.dsaleprice } />
                             </div>
                         </Link>
-                    ))}
+                    )})}
 				</Flickity>
                 <SliderLine ref={sliderLine} left={left} />
 			</div>
