@@ -233,9 +233,7 @@ class CheckoutPayment extends React.Component {
                                 confirmShipRes: res.data.data
                             }, () => {
                                 const order = this.generateOrder()
-                                console.log({
-                                    order
-                                })
+                                
                                 order.then(order => {
                                     if(isCard){
                                         this.onCardPay(order, values)
@@ -634,6 +632,12 @@ class CheckoutPayment extends React.Component {
                                         )}
                                     </Form.Item>
 
+                                    <Form.Item>
+                                        {getFieldDecorator('savecard', {
+                                            valuePropName: 'checked',
+                                            initialValue: false,
+                                        })(<Checkbox versions={["gold"]} >Save this account for next time</Checkbox>)}
+                                    </Form.Item>
                                 </>
                             </Panel>
                         </Collapse>

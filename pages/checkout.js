@@ -44,49 +44,68 @@ const Checkout  = ({
             e, values
         })
         const {
-            city,
-            country,
+            email,
+            email_ship,
+            firstname,
+            firstname_ship,
+            lastname,
+            lastname_ship,
+            phone,
+            phone_ship,
+            sameShipping,
+            saveaddress,
+            saveaddress_ship,
+            addressSelect,
+            addressSelect_ship,
+        } = values
+        const addressA = {
+            ...address,
             email,
             firstname,
             lastname,
             phone,
-            sameShipping,
-            saveaddress,
-            state,
-            zip,
-        } = values
-        if(saveaddress){
-            console.log("aa")
-            const newAddress = {
-                city,
-                country,
-                email,
-                firstname,
-                lastname,
-                phone,
-                state,
-                zip,
-                id: new Date().getTime()
+        }
+        const addressB = {
+            ...addressShip,
+            email_ship,
+            firstname_ship,
+            lastname_ship,
+            phone_ship,
+        }
+        const allAddresses  = props.address.address || []
+        const idTime        = new Date().getTime();
+        const userId        = user._id
+        const newAddressA   = {
+            ...addressA,
+            id: idTime
+        }
+        const newAddressB   = {
+            ...addressB,
+            id: idTime + 10
+        }
+        const isDuplicateA  = checkAddressDuplicate(newAddressA, allAddresses)
+        const isDuplicateB  = checkAddressDuplicate(newAddressB, allAddresses)
+        if(saveaddress && saveaddress_ship){
+            if(allAddresses.length < 1 || (!isDuplicateA && !isDuplicateB)){
+                addAddress(userId, [newAddressA, newAddressB], props.address, allAddresses)
+            }else if(!isDuplicateA){
+                addAddress(userId, newAddressA, props.address, allAddresses)
+            }else if(!isDuplicateB){
+                addAddress(userId, newAddressA, props.address, allAddresses)
             }
-            const allAddresses = props.address.address || []
-            const isDuplicate  = checkAddressDuplicate(newAddress, allAddresses)
-            console.log({
-                isDuplicate
-            })
-            if(!isDuplicate || allAddresses.length < 1){
-                const userId = user._id
-                console.log({
-                    userId
-                })
-                addAddress(user._id, newAddress, props.address, allAddresses)
+        }else if(saveaddress){
+            if(!isDuplicateA || allAddresses.length < 1){
+                addAddress(userId, newAddressA, props.address, allAddresses)
             }
-        }else{
-            
+        }else if(saveaddress_ship){
+            if(!isDuplicateB || allAddresses.length < 1){
+                addAddress(userId, newAddressB, props.address, allAddresses)
+            }
         }
         setInfoDetails({...values})
         setCurrentStep(1)
-        setMainAddress(address)
-        setShipAddress(addressShip)
+        setMainAddress(addressSelect || address)
+        setShipAddress(addressSelect_ship || addressSelect || addressShip || address)
     }
     const onShippingSubmit = (e, values, shippingSendData) => {
         setShippingDetail(values)

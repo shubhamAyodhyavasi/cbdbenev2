@@ -19,6 +19,10 @@ const apiList = {
     authorizeSubscription           : `${baseUrl}/authorize/create/subscription/`,
     authorizeSubscriptionProfile    : `${baseUrl}/authorize/create/subscription/profile/`,
     authorizeSubscriptionBank       : `${baseUrl}/authorize/create/subscription/bank/`,
+    authorizeSubscriptionBank       : `${baseUrl}/authorize/create/subscription/bank/`,
+    authorizeAddCard                : `${baseUrl}/authorize/addcard/`,
+    authorizeSaveCard               : `${baseUrl}/authorize/savecard/`,
+    authorizeDeleteCard             : `${baseUrl}/authorize/deletecard/`,
     placeOrder                      : `${baseUrl}/order/add/`,
     placeOrderNew                   : `${baseUrl}/order/process/order/`,
 }

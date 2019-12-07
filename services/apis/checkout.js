@@ -11,6 +11,8 @@ export const authorizeChargeBank            = body => axios.post(apiList.authori
 export const authorizeSubscription          = body => axios.post(apiList.authorizeSubscription, body)
 export const authorizeSubscriptionProfile   = body => axios.post(apiList.authorizeSubscriptionProfile, body)
 export const authorizeSubscriptionBank      = body => axios.post(apiList.authorizeSubscriptionBank, body)
+export const authorizeAddCard               = body => body.profileid ? axios.post(apiList.authorizeAddCard, body) : axios.post(apiList.authorizeSaveCard, body)
+export const authorizeDeleteCard            = body => axios.post(apiList.authorizeDeleteCard, body)
 
 export const placeOrder                     = body => axios.post(apiList.placeOrder, body);
 export const placeOrderNew                  = body => axios.post(apiList.placeOrderNew, body);

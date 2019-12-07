@@ -1,4 +1,3 @@
-// import { SET_ADDRESS } from "../actions/type";
 import { SET_ADDRESS } from "../actions/type";
 
 const initialState = {};

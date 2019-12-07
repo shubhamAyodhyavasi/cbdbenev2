@@ -1,6 +1,6 @@
-import { updateUserDetails } from "../../services/apis/user";
+import { updateUserDetails, getUserDetails } from "../../services/apis/user";
 
-// import { SET_ADDRESS } from "./type";
+import { SET_ADDRESS } from "./type";
 // import { getSingleUserApi, addUpdateUserDetails } from "../services/api";
 
 export const setAddress = payload => ({
@@ -8,23 +8,22 @@ export const setAddress = payload => ({
   payload
 });
 
-// export const getAddress = id => async dispatch => {
-//   getSingleUserApi(id)
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log(res);
-//       if (res.user) {
-//         if (res.user.shippingdetails) {
-//           dispatch(setAddress(res.user.shippingdetails));
-//         } else {
-//           dispatch(setAddress({}));
-//         }
-//       } else {
-//         dispatch(setAddress({}));
-//       }
-//     })
-//     .catch(err => console.log({ err }));
-// };
+export const getAddress = id => async dispatch => {
+  getUserDetails(id)
+    .then(res => {
+      console.log(res);
+      if (res.data.user) {
+        if (res.data.user.shippingdetails) {
+          dispatch(setAddress(res.data.user.shippingdetails));
+        } else {
+          dispatch(setAddress({}));
+        }
+      } else {
+        dispatch(setAddress({}));
+      }
+    })
+    .catch(console.log);
+};
 const returnAddress = res => {
   if (res.user) {
     if (res.user.shippingdetails) {
@@ -44,9 +43,7 @@ export const addAddress = (
     })
   if (address.constructor === Array) {
     const addressArr = address.filter(el => el);
-    const addresses1 = [...oldAddress, ...addressArr].map(elx => {
-      return elx
-    })
+    const addresses1 = [...oldAddress, ...addressArr].map(elx => elx)
     const hasDefault = addresses1.find(el => el.isDefault === true)
     const addresses2 = addresses1.map((el, index)=> {
       if(index === 0 && !hasDefault){
