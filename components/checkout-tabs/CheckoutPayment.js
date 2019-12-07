@@ -17,6 +17,10 @@ import {
     setShippingCharge,
     setShippingType
 } from '../../redux/actions/cart'
+import {
+    addCardAuthorize
+} from '../../redux/actions/cards'
+import InputMask from "../form-components/InputMask"
 const { Panel } = Collapse;
 class CheckoutPayment extends React.Component {
     constructor(props) {
@@ -222,7 +226,8 @@ class CheckoutPayment extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log({
-                    values
+                    values, 
+                    shippingSendData
                 })
                 confirmShipment({
                     ...shippingSendData
@@ -261,11 +266,12 @@ class CheckoutPayment extends React.Component {
             address
         } = this.props
         const {
-            cardnumber,
+            cardnumber: cardNumber,
             cvv,
             cardname,
             expiry: expDate
         } = values
+        const cardnumber = cardNumber.replace(/-/g, "")
         const expiry = "20" + expDate
             .split("/")
             .reverse()
@@ -311,6 +317,7 @@ class CheckoutPayment extends React.Component {
                 company: "",
                 firstName: "",
                 lastName: "",
+                email: "",
                 ...addressRest
             },
             shipTo: {
@@ -323,6 +330,23 @@ class CheckoutPayment extends React.Component {
                 console.log({ res });
                 if (res.data.status) {
                     const transactionId = res.data.transactionid
+                    const {
+                        savecard
+                    } = values
+                    if(savecard){
+                        const bodyData = {
+                            cardnumber,
+                            expmonth: expDate.split("/")[0],
+                            expyear: expDate.split("/")[1],
+                            cvc: cvv,
+                            userid: this.props.userId || this.props.user._id
+                        };
+                        addCardAuthorize({
+                            user: this.props.user,
+                            oldCards: this.props.cards,
+                            card: bodyData
+                        })
+                    }
                     Promise.all(this.makeSubsPromise(order, data)).then(res => {
                         console.log({ res });
                         const sendAbleOrder = {
@@ -391,6 +415,7 @@ class CheckoutPayment extends React.Component {
                 company: "",
                 firstName: "",
                 lastName: "",
+                email: "",
                 ...addressRest
             },
             shipTo: {
@@ -475,7 +500,7 @@ class CheckoutPayment extends React.Component {
     render() {
         const componentClass = "c-checkout-payment"
         const {
-            form
+            form, addCardAuthorize
         } = this.props
         const {
             email, address, shippingDetail, collapseKey, isCard
@@ -525,12 +550,21 @@ class CheckoutPayment extends React.Component {
                                 <>
                                     <Form.Item>
                                         {getFieldDecorator('cardnumber', {
-                                            rules: isCard &&  [{
-                                                required: true,
-                                                message: "Please enter your card number!"
-                                            }]
+                                            rules: isCard &&  [
+                                                {
+                                                    required: true,
+                                                    message: "Please enter your card number!"
+                                                },
+                                                {
+                                                    min: 19,
+                                                    message: "Please enter valid card number!"
+                                                },
+                                            ]
                                         })(
-                                            <Input label="Card Number" />,
+                                            <InputMask 
+                                                label="Card Number" 
+                                                mask="9999-9999-9999-9999"
+                                            />
                                         )}
                                     </Form.Item>
                                     <Form.Item>
@@ -553,7 +587,10 @@ class CheckoutPayment extends React.Component {
                                                             message: "Please enter expiration date!"
                                                         }]
                                                     })(
-                                                        <Input label="Expiration Date*(mm/yy)" />,
+                                                        <InputMask 
+                                                            label="Expiration Date*(mm/yy)" 
+                                                            mask="99/99"
+                                                        />
                                                     )}
                                                 </Form.Item>
                                             </div>
@@ -624,7 +661,7 @@ class CheckoutPayment extends React.Component {
                                             //     message: "Please enter account type!"
                                             // }]
                                         })(
-                                            <Select defaultValue="checking">
+                                            <Select>
                                                 <Option value="checking">Checking</Option>
                                                 <Option value="savings">Savings</Option>
                                                 <Option value="businessChecking">Business Checking</Option>
@@ -655,9 +692,11 @@ class CheckoutPayment extends React.Component {
 
 const mapStateToProps = (state) => ({
     user: state.user,
-    cart: state.cart
+    cart: state.cart,
+    cards: state.cards.cards,
 })
 const mapActionToProps = {
+    addCardAuthorize
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Form.create({ name: "CheckoutPayment" })(CheckoutPayment))

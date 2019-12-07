@@ -1,4 +1,5 @@
-// import { SET_CARDS, SET_ERRORS, CLEAR_ERRORS, SET_USER } from "./type";
+import { SET_CARDS, SET_ERRORS, CLEAR_ERRORS, SET_USER } from "./type";
+import { authorizeAddCard, updateUserDetails, getUserDetails } from "../../services/api";
 // import {
 //   getSingleUserApi,
 //   addUpdateUserDetails,
@@ -7,10 +8,10 @@
 // } from "../services/api";
 
 // import { getUserMetaNoCart, updateUserMeta } from "./";
-// export const setCards = payload => ({
-//   type: SET_CARDS,
-//   payload
-// });
+export const setCards = payload => ({
+  type: SET_CARDS,
+  payload
+});
 
 // export const getCards = id => async dispatch => {
 //   getSingleUserApi(id)
@@ -24,179 +25,173 @@
 //     .catch(err => console.log({ err }));
 // };
 
-// export const addCardAuthorize = data => dispatch => {
-//   const { user, card, bank, oldCards } = data;
-//   const { userMetaId, _id, userMetaObj } = user;
+export const addCardAuthorize = data => dispatch => {
+  const { user, card, bank, oldCards } = data;
+  const { userMetaId, _id, userMetaObj } = user;
 
-//   const sendCardDetails = (customData, userId) => {
-//     console.log({
-//       customData,
-//       userId
-//     });
-//     addCardDetails(customData)
-//       .then(res => res.json())
-//       .then(res => {
-//         console.log({
-//           res
-//         });
-//         const { status, card } = res;
-//         if (
-//           status &&
-//           card &&
-//           card.paymentProfile &&
-//           card.messages &&
-//           card.messages.resultCode === "Ok"
-//         ) {
-//           if (userId) {
-//             //getUserMetaNoCart(userId);
-//             updateUserMeta(userId);
-//             // console.log("requested for meta", getUserMetaNoCart, userId);
-//             // getUserMetaNoCart(userId);
-//           }
+  const sendCardDetails = (customData, userId) => {
+    console.log({
+      customData,
+      userId
+    });
+    authorizeAddCard(customData)
+      .then(response => {
+        const res = response.data
+        const { status, card } = res;
+        if (
+          status &&
+          card &&
+          card.paymentProfile &&
+          card.messages &&
+          card.messages.resultCode === "Ok"
+        ) {
+        //   if (userId) {
+        //     updateUserMeta(userId);
+        //   }
 
-//           const {
-//             customerProfileId,
-//             customerPaymentProfileId,
-//             payment
-//           } = card.paymentProfile;
+          const {
+            customerProfileId,
+            customerPaymentProfileId,
+            payment
+          } = card.paymentProfile;
 
-//           const newCard = {
-//             customerProfileId,
-//             customerPaymentProfileId,
-//             ...payment
-//           };
-//           const allCardsPre = oldCards ? [...oldCards, newCard] : [newCard]
-//           const defaultCard = allCardsPre.find(el => el.isDefault === true)
-//           const allCards = allCardsPre.map((el, index)=> {
-//             if(index === 0 && !defaultCard)
-//               return ({
-//                 ...el,
-//                 isDefault: true
-//               })
-//             return el
-//           })
-//           addUpdateUserDetails({
-//             userid: _id,
-//             carddetails: {
-//               cards: allCards
-//             }
-//           })
-//             .then(res => res.json())
-//             .then(res => {
-//               console.log({ res });
-//               const cards = returnCards(res);
-//               dispatch(setCards(cards));
-//               // getUserMetaNoCart(userId);
-//               dispatch({
-//                 type: CLEAR_ERRORS,
-//                 payload: {}
-//               });
-//               getSingleUserApi(userId)
-//                 .then(res => res.json())
-//                 .then(res => {
-//                   if (res.user && res.user._id) {
-//                     console.log("user meta found", res);
-//                     dispatch({
-//                       type: SET_USER,
-//                       payload: {
-//                         ...res.user.userid,
-//                         userMetaId: res.user._id,
-//                         userMetaObj: res.user
-//                       }
-//                     });
-//                   }
-//                 });
-//             })
-//             .catch(err => {
-//               dispatch({
-//                 type: SET_ERRORS,
-//                 payload: {
-//                   cards: ["Some thing wrong"]
-//                 }
-//               });
+          const newCard = {
+            customerProfileId,
+            customerPaymentProfileId,
+            ...payment
+          };
+          const allCardsPre = oldCards ? [...oldCards, newCard] : [newCard]
+          const defaultCard = allCardsPre.find(el => el.isDefault === true)
+          const allCards = allCardsPre.map((el, index)=> {
+            if(index === 0 && !defaultCard)
+              return ({
+                ...el,
+                isDefault: true
+              })
+            return el
+          })
+          updateUserDetails({
+            userid: _id,
+            carddetails: {
+              cards: allCards
+            }
+          })
+            .then(response => {
+              console.log({ response });
+              const res = response.data
+              const cards = returnCards(res);
+              dispatch(setCards(cards));
+              // getUserMetaNoCart(userId);
+              dispatch({
+                type: CLEAR_ERRORS,
+                payload: {}
+              });
+              getUserDetails(userId)
+                .then(response => {
+                  const res = response.data
+                  if (res.user && res.user._id) {
+                    console.log("user meta found", res);
+                    dispatch({
+                      type: SET_USER,
+                      payload: {
+                        ...res.user.userid,
+                        userMetaId: res.user._id,
+                        userMetaObj: res.user
+                      }
+                    });
+                  }
+                });
+            })
+            .catch(err => {
+              dispatch({
+                type: SET_ERRORS,
+                payload: {
+                  cards: ["Some thing wrong"]
+                }
+              });
 
-//               getSingleUserApi(userId)
-//                 .then(res => res.json())
-//                 .then(res => {
-//                   if (res.user && res.user._id) {
-//                     console.log("user meta found", res);
-//                     dispatch({
-//                       type: SET_USER,
-//                       payload: {
-//                         ...res.user.userid,
-//                         userMetaId: res.user._id,
-//                         userMetaObj: res.user
-//                       }
-//                     });
-//                   }
-//                 });
-//               console.log({ err });
-//             });
-//           console.log({
-//             customerProfileId,
-//             customerPaymentProfileId,
-//             payment,
-//             customData
-//           });
-//         } else {
-//           dispatch({
-//             type: SET_ERRORS,
-//             payload: {
-//               cards: ["Some thing wrong"]
-//             }
-//           });
-//         }
-//       });
-//   };
-//   if (userMetaObj && userMetaId) {
-//     const { customerProfile } = userMetaObj;
-//     if (customerProfile) {
-//       if (card) {
-//         const { cardnumber, cvc, expmonth, expyear } = card;
-//         const creditcard = {
-//           cardNumber: cardnumber.split("-").join(""),
-//           expirationDate: `20${expyear}-${expmonth}`,
-//           cardCode: cvc
-//         };
-//         sendCardDetails({
-//           creditcard,
-//           profileid: customerProfile
-//         });
-//       } else if (bank) {
-//         sendCardDetails({
-//           bank,
-//           profileid: customerProfile
-//         });
-//       }
-//     } else {
-//       if (card) {
-//         const { cardnumber, cvc, expmonth, expyear } = card;
-//         const creditcard = {
-//           cardNumber: cardnumber.split("-").join(""),
-//           expirationDate: `20${expyear}-${expmonth}`,
-//           cardCode: cvc
-//         };
-//         sendCardDetails(
-//           {
-//             creditcard,
-//             email: userMetaId + "@cbdbene.com",
-//             metaid: userMetaId
-//           },
-//           _id
-//         );
-//       } else if (bank) {
-//         sendCardDetails(
-//           {
-//             bank,
-//             email: userMetaId + "@cbdbene.com",
-//             metaid: userMetaId
-//           },
-//           _id
-//         );
-//       }
-//     }
-//   }
-// };
+              getUserDetails(userId)
+                .then(response => {
+                    const res = response.data
+                  if (res.user && res.user._id) {
+                    console.log("user meta found", res);
+                    dispatch({
+                      type: SET_USER,
+                      payload: {
+                        ...res.user.userid,
+                        userMetaId: res.user._id,
+                        userMetaObj: res.user
+                      }
+                    });
+                  }
+                });
+              console.log({ err });
+            });
+          console.log({
+            customerProfileId,
+            customerPaymentProfileId,
+            payment,
+            customData
+          });
+        } else {
+          dispatch({
+            type: SET_ERRORS,
+            payload: {
+              cards: ["Some thing wrong"]
+            }
+          });
+        }
+      });
+  };
+  if (userMetaObj && userMetaId) {
+    const { customerProfile } = userMetaObj;
+    if (customerProfile) {
+      if (card) {
+        const { cardnumber, cvc, expmonth, expyear } = card;
+        const creditcard = {
+          cardNumber: cardnumber.split("-").join(""),
+          expirationDate: `20${expyear}-${expmonth}`,
+          cardCode: cvc
+        };
+        sendCardDetails({
+          creditcard,
+          profileid: customerProfile
+        });
+      } else if (bank) {
+        sendCardDetails({
+          bank,
+          profileid: customerProfile
+        });
+      }
+    } else {
+      if (card) {
+        const { cardnumber, cvc, expmonth, expyear } = card;
+        const creditcard = {
+          cardNumber: cardnumber.split("-").join(""),
+          expirationDate: `20${expyear}-${expmonth}`,
+          cardCode: cvc
+        };
+        sendCardDetails(
+          {
+            creditcard,
+            email: userMetaId + "@cbdbene.com",
+            metaid: userMetaId
+          },
+          _id
+        );
+      } else if (bank) {
+        sendCardDetails(
+          {
+            bank,
+            email: userMetaId + "@cbdbene.com",
+            metaid: userMetaId
+          },
+          _id
+        );
+      }
+    }
+  }
+};
 // const returnCards = res => {
 //   if (res.user) {
 //     if (res.user.carddetails) {

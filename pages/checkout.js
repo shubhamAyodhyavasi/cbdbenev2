@@ -110,6 +110,9 @@ const Checkout  = ({
     const onShippingSubmit = (e, values, shippingSendData) => {
         setShippingDetail(values)
         setCurrentStep(2)
+        console.log({
+            shippingSendData
+        })
         setShippingSendData(shippingSendData)
     }
     const onPaymentSubmit = (e, values) => {

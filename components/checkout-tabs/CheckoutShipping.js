@@ -98,6 +98,7 @@ class CheckoutShipping extends React.Component {
               },
               () => {
                 if (shippingOptionsNew.length > 0) {
+                  this.changeShippingMethod(shippingOptionsNew[0])
                   // this.handleShippingTypeChange(shippingOptionsNew[0]);
                 }
                 else {
