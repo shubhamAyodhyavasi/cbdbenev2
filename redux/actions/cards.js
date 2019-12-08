@@ -13,22 +13,23 @@ export const setCards = payload => ({
   payload
 });
 
-// export const getCards = id => async dispatch => {
-//   getSingleUserApi(id)
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log(res);
-
-//       const cards = returnCards(res);
-//       dispatch(setCards(cards));
-//     })
-//     .catch(err => console.log({ err }));
-// };
+export const getCards = id => async dispatch => {
+  getUserDetails(id)
+    .then(resRaw => {
+      const res = resRaw.data
+      console.log(res);
+      const cards = returnCards(res);
+      dispatch(setCards(cards));
+    })
+    .catch(err => console.log({ err }));
+};
 
 export const addCardAuthorize = data => dispatch => {
   const { user, card, bank, oldCards } = data;
   const { userMetaId, _id, userMetaObj } = user;
-
+  console.log({
+    data, dispatch
+  })
   const sendCardDetails = (customData, userId) => {
     console.log({
       customData,
@@ -143,7 +144,7 @@ export const addCardAuthorize = data => dispatch => {
         }
       });
   };
-  if (userMetaObj && userMetaId) {
+  const chooseCardOrBank = (userMetaId, userMetaObj) => {
     const { customerProfile } = userMetaObj;
     if (customerProfile) {
       if (card) {
@@ -191,15 +192,28 @@ export const addCardAuthorize = data => dispatch => {
       }
     }
   }
+  if (userMetaObj && userMetaId) {
+    chooseCardOrBank(userMetaObj, userMetaId)
+  }else if(_id){
+    getUserDetails(_id).then(res => {
+      console.log({ res });
+      const {
+        user
+      } = res.data
+      const userMetaId = user._id;
+      const userMetaObj = data.user;
+      chooseCardOrBank(userMetaObj, userMetaId)
+    })
+  }
 };
-// const returnCards = res => {
-//   if (res.user) {
-//     if (res.user.carddetails) {
-//       return res.user.carddetails;
-//     }
-//   }
-//   return {};
-// };
+const returnCards = res => {
+  if (res.user) {
+    if (res.user.carddetails) {
+      return res.user.carddetails;
+    }
+  }
+  return {};
+};
 // export const addCard = (
 //   userid,
 //   card,

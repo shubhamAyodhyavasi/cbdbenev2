@@ -14,10 +14,10 @@ export const setUser = (user, cart = null) => dispatch => {
         dispatch({
             type: SET_USER,
             payload: {
-                ...res.user.userid,
-                userMetaId: res.user._id,
-                userMetaObj: res.user,
-                userObj: res.user.userid,
+                ...res.data.user.userid,
+                userMetaId: res.data.user._id,
+                userMetaObj: res.data.user,
+                userObj: res.data.user.userid,
             }
         })
           if (cart) {

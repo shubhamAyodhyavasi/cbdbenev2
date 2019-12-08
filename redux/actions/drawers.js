@@ -4,7 +4,10 @@ import {
   HAS_LOGIN
 } from "./type";
 
-export const toggleCartBar = () => dispatch => {
+export const toggleCartBar = (a) => dispatch => {
+  console.log({
+    a
+  })
   dispatch({
     type: TOGGLE_CART_BAR
   });

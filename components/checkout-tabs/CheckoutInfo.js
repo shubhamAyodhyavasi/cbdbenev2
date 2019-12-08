@@ -40,7 +40,6 @@ class CheckoutInfo extends React.Component {
 
     componentDidMount() {
 
-        console.clear()
         const {
             form, oldValues
         } = this.props
