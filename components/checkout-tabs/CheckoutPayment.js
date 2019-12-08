@@ -203,7 +203,7 @@ class CheckoutPayment extends React.Component {
                 console.log({
                     err
                 });
-                this.onFailed(resJson)
+                this.onFailed(err)
                 // this.setState({
                 //     modalData: someThingWrong,
                 //     modalTitle: wrongModalTitle,
@@ -238,14 +238,23 @@ class CheckoutPayment extends React.Component {
                                 confirmShipRes: res.data.data
                             }, () => {
                                 const order = this.generateOrder()
-                                
+                                console.log({
+                                    order
+                                })
                                 order.then(order => {
+                                    console.log({
+                                        isCard, order
+                                    })
                                     if(isCard){
                                         this.onCardPay(order, values)
                                     }else{
                                         this.onBankPay(order, values)
                                     }
                                 })
+                            })
+                        }else{
+                            console.log({
+                                res
                             })
                         }
                     })
@@ -265,6 +274,9 @@ class CheckoutPayment extends React.Component {
         const {
             address
         } = this.props
+        console.log({
+            order, values
+        })
         const {
             cardnumber: cardNumber,
             cvv,
@@ -290,6 +302,7 @@ class CheckoutPayment extends React.Component {
             city,
             zip,
             other,
+            email,
             ...addressRest
         } = address
         const data = {
@@ -314,17 +327,12 @@ class CheckoutPayment extends React.Component {
             })),
             billto: {
                 address: addressStr,
-                company: "",
-                firstName: "",
-                lastName: "",
-                email: "",
-                ...addressRest
             },
             shipTo: {
                 address: addressStr,
-                ...addressRest
             }
         };
+        alert("aa")
         authorizeCharge(data)
             .then(res => {
                 console.log({ res });
@@ -388,6 +396,7 @@ class CheckoutPayment extends React.Component {
             city,
             zip,
             other,
+            email,
             ...addressRest
         } = address
         const data = {
@@ -415,7 +424,6 @@ class CheckoutPayment extends React.Component {
                 company: "",
                 firstName: "",
                 lastName: "",
-                email: "",
                 ...addressRest
             },
             shipTo: {

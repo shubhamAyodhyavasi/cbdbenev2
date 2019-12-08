@@ -270,7 +270,7 @@ class CheckoutInfo extends React.Component {
                                 })(<Checkbox versions={["gold"]} >add new address</Checkbox>)}
                             </Form.Item>
                         </div>}
-                        {(!isLogin || getFieldValue("newAddress")) && <div>
+                        {(!isLogin || getFieldValue("newAddress") || !(addresses && addresses.length) ) && <div>
                             <div className="container-fluid p-0">
                                 <div className="row">
                                     <div className="col-md-6">
