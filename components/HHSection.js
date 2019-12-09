@@ -1,7 +1,7 @@
 import Heading from "./Heading"
 import Button from "./form-components/Button"
 import classNames from 'classnames'
-const HHSection = ({heading, subHeading, linkText, link, images, bg}) => {
+const HHSection = ({heading, subHeading, linkText, link, images, bg, children}) => {
 
     const className = classNames("c-hh-section", {
         [`c-hh-section--${bg}`]: bg
@@ -34,6 +34,9 @@ const HHSection = ({heading, subHeading, linkText, link, images, bg}) => {
                             <img src={el} className="c-hh-section__img img-fluid" alt={heading}/>
                         </div>)
                 }
+                <div className="col-12">
+                    {children}
+                </div>
             </div>
         </div>
     )

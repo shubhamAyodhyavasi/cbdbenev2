@@ -7,6 +7,8 @@ import { Affix } from 'antd'
 import classNames from 'classnames'
 import mainMenus from '../constants/mainMenus'
 import rightMenus from "../constants/rightMenus";
+import NavMobile from './navMobile';
+import mobileMenus from '../constants/mobileMenus';
 
 
 
@@ -20,15 +22,11 @@ const Header = ({bg, theme, versions}) => {
 
   useScrollPosition(
     ({ prevPos, currPos }) => {
-        console.log({"prevPos": prevPos.y})
-        console.log({"currPos":currPos.y})
         let showNav = currPos.y > prevPos.y;
         console.log(document.body.getBoundingClientRect().top)
         setIsShow(showNav)
         if(currPos.y === -124){
             setIsAtTop(false)
-            console.log("--------------------")
-            console.log({"top--":isAtTop})
         } else {
             setIsAtTop(true)
         }
@@ -49,7 +47,6 @@ const Header = ({bg, theme, versions}) => {
     return (
         // <Affix className="c-header__affix"  onChange={e => setIsFixed(e)}>
             <header onScroll={(e) => {
-                console.log({e})
               }}  className={classNames(" c-header", {
                 "c-header--light": true,
                 "c-header--fixed": true,
@@ -61,10 +58,10 @@ const Header = ({bg, theme, versions}) => {
                 ["c-header--"+theme]: theme,
                 [versionClass]: versions
             })}>
-                {console.log(hideOnScroll)}
                 {/* <nav className="c-header__nav nav nav--main">
                 left nav
                 </nav> */}
+                <NavMobile parent="c-header" items={mobileMenus} />
                 <Nav parent="c-header" items={mainMenus} />
                 <Logo />
                 <Nav parent="c-header" isRight={true} items={rightMenus} />

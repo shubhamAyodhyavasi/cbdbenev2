@@ -7,12 +7,16 @@ import Link from 'next/link';
 import SliderLine from './SliderLine';
 import { getProductImage } from '../services/helpers/product';
 import ProductCard from './ProductCard';
-const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onCategoryChange, products, bg, pp }) => {
-    
+const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onCategoryChange, products, bg, parentClass, versions }) => {
+    const componentClass = `c-category-products`
+    const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
+    const parent = `${parentClass}__${componentClass.replace("c-", "")}`
+    const className = classNames(componentClass, {
+        [versionClass]: versions,
+        [parent]: parentClass,
+        [`c-category-products--${bg}`]: bg
+    })
     const sliderLine = useRef(null)
-	const className = classNames('c-category-products', {
-		[`c-category-products--${bg}`]: bg
-    });
     let left = 0
     const flickityInit = () => {
         setTimeout(() => {
@@ -32,16 +36,16 @@ const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onC
     let flkty = undefined
 	return (
 		<div className={className}>
-			<div className="c-category-products__heading-wrapper">
-				<Heading parentClass="c-category-products" versions={[ 'default', 'upper' ]}>
+			{(heading || subHeading )&& <div className="c-category-products__heading-wrapper">
+				{heading && <Heading parentClass="c-category-products" versions={[ 'default', 'upper' ]}>
 					{heading}
-				</Heading>
+				</Heading>}
                 {
                     subHeading && <Heading subHeading={true} parentClass="c-category-products" versions={[ 'default', 'lft-br' ]}>
 					{subHeading}
 				</Heading>
                 }
-			</div>
+			</div>}
 			<div className="row c-category-products__product-list">
 				<Flickity
 					options={{
@@ -80,6 +84,7 @@ const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onC
 
 BundleProducts.defaultProps = {
 	categoryList: [],
+	versions: [],
 	products: [],
 	activeCategory: '',
 	onCategoryChange: () => {}

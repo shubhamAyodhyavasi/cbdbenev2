@@ -12,6 +12,7 @@ import Button from '../components/form-components/Button'
 import { getAllCombos } from '../services/api'
 import BundleProducts from '../components/BundleProducts'
 import ScrollAnimation from "react-animate-on-scroll";
+import Fade from 'react-reveal/Fade';
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -102,13 +103,18 @@ class Home extends React.Component {
         >
           <Button parentClass="c-home" theme={'gold'} >Shop all products</Button>
         </Banner>
-        {(products && products.length > 0) && <CategoryProducts
-          bg="light-2"
-          categoryList={categoryList}
-          activeCategory={activeCategory}
-          onCategoryChange={this.changeCategory}
-          products={products}
-          heading="Discover the products line" />}
+        {(products && products.length > 0) && 
+        <Fade bottom>
+            <CategoryProducts
+            bg="light-2"
+            categoryList={categoryList}
+            activeCategory={activeCategory}
+            onCategoryChange={this.changeCategory}
+            products={products}
+            heading="Discover the products line" />  
+          </Fade>
+          }
+        <Fade bottom>
         <LRSection
           heading="bene"
           subHeading="organically grown hemp extract"
@@ -118,18 +124,22 @@ class Home extends React.Component {
         >
           In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.
         </LRSection>
+        </Fade>
+        <Fade bottom>
         <HHSection
           heading="Bundles of awesomeness!"
           subHeading="Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off."
           linkText="READ MORE"
           Link="/"
           bg="light-2"
-          images={[
-            "/images/cbd-group.png",
-            "/images/oil-group.png"
-          ]}
-        />
-        <BundleProducts products={combos} />
+          // images={[
+          //   "/images/cbd-group.png",
+          //   "/images/oil-group.png"
+          // ]}
+        >
+          <BundleProducts versions={["no-padding"]} bg="bggrey" products={combos} />
+        </HHSection>
+        </Fade>
       </Layout>
     )
   }

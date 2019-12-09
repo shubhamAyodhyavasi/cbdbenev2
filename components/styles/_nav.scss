@@ -1,10 +1,24 @@
 
 .c-nav{
+    @include bpm-md{
+        display: none;
+    }
     &__list{
         display: flex;
         padding: 0;
         margin-bottom: auto;
         margin-top: auto;
+        @include bpm-md{
+            position: absolute;
+            top: 100%;
+            background: #fff;
+            width: 100%;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            flex-direction: column;
+            z-index: 10;            
+        }
     }
     &__link{
         text-decoration: none;
@@ -38,6 +52,28 @@
         cursor: pointer;
     }
 
+
+    //
+    &__menu-tgl{
+        display: block;
+        width: 30px;
+        height: 25px;
+        &:before,
+        &:after{
+            content: "";
+            display: block;
+            height: 2px;
+            background-color: $dark-color-1;
+            border-radius: 5px;
+        }
+        &:before{
+            width: 20px;
+        }
+        &:after{
+            margin-top: 10px;
+            width: 25px;
+        }
+    }
     //versions 
     &--right{
         .c-nav{
@@ -46,5 +82,10 @@
             }
         }
     }
+    &--mobile{
+        display: block;
+        @include bp-md{
+            display: none;
+        }
+    }
 }
-    

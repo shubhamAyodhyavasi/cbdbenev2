@@ -3,7 +3,8 @@
     
     &__list{
         display: flex;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
+        overflow: auto;
     }
     &__list-item{
         display: inline-block;
@@ -74,4 +75,11 @@
     &--light-2{
         background-color: $light-color-2;
     }
+    &--bggrey{
+        background-color: $light-color-2;
+    }
+    &--no-padding{
+        padding: 0;
+    }
+
 }
