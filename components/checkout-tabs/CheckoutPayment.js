@@ -9,7 +9,7 @@ import { showRegBar } from '../../redux/actions/drawers'
 import validator from "../../services/helpers/validator";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import projectSettings from '../../constants/projectSettings';
-import { searchAddress, getShippingRates, confirmShipment, authorizeCharge, authorizeSubscriptionBank, authorizeSubscriptionProfile, authorizeSubscription, placeOrderNew, authorizeChargeBank } from '../../services/api';
+import { searchAddress, getShippingRates, confirmShipment, authorizeCharge, authorizeSubscriptionBank, authorizeSubscriptionProfile, authorizeSubscription, placeOrderNew, authorizeChargeBank, authorizeChargeProfile } from '../../services/api';
 import { getItemsHeightWidth, filterShippingRates, generateOrderObj } from "../../services/helpers/cart"
 import { getSingleElementByMultipleObject } from "../../services/helpers/misc"
 import msgStrings from "../../constants/msgStrings"
@@ -18,7 +18,7 @@ import {
     setShippingType
 } from '../../redux/actions/cart'
 import {
-    addCardAuthorize
+    addCardAuthorize, getCards
 } from '../../redux/actions/cards'
 import InputMask from "../form-components/InputMask"
 const { Panel } = Collapse;
@@ -35,8 +35,19 @@ class CheckoutPayment extends React.Component {
         }
         this.generateOrder = this.generateOrder.bind(this)
     }
+    componentDidMount (){
+        const {
+            getCards, user
+        } = this.props
+        if(user && user._id){
+            getCards(user._id)
+        }
+    }
     tglCard = () => {
         this.setState(prevState => {
+            this.props.form.setFieldsValue({
+                paymentProfile: null
+            })
             if(prevState.collapseKey.includes("card")){
                 return  ({
                     isCard: false,
@@ -171,7 +182,7 @@ class CheckoutPayment extends React.Component {
                             SpinnerToggle: false
                         },
                         () => {
-                            this.modalDismiss();
+                            // this.modalDismiss();
                             const {
                                 history,
                                 location,
@@ -245,7 +256,9 @@ class CheckoutPayment extends React.Component {
                                     console.log({
                                         isCard, order
                                     })
-                                    if(isCard){
+                                    if(values.paymentProfile){
+                                        this.onProfilePay(order, values)
+                                    }else if(isCard){
                                         this.onCardPay(order, values)
                                     }else{
                                         this.onBankPay(order, values)
@@ -332,7 +345,6 @@ class CheckoutPayment extends React.Component {
                 address: addressStr,
             }
         };
-        alert("aa")
         authorizeCharge(data)
             .then(res => {
                 console.log({ res });
@@ -341,6 +353,9 @@ class CheckoutPayment extends React.Component {
                     const {
                         savecard
                     } = values
+                    console.log({
+                        savecard
+                    })
                     if(savecard){
                         const bodyData = {
                             cardnumber,
@@ -349,7 +364,7 @@ class CheckoutPayment extends React.Component {
                             cvc: cvv,
                             userid: this.props.userId || this.props.user._id
                         };
-                        addCardAuthorize({
+                        this.props.addCardAuthorize({
                             user: this.props.user,
                             oldCards: this.props.cards,
                             card: bodyData
@@ -454,8 +469,60 @@ class CheckoutPayment extends React.Component {
                 this.onFailed(err)
             })
     }
-    onProfilePay = () => {
-        
+    onProfilePay = (order, values) => {
+        const {
+            address
+        } = this.props
+        const {
+            account_type,
+            bank_routing_number,
+            bank_checking_number,
+            paymentProfile
+        } = values
+        const {
+            grandTotal: amount,
+            countryTax,
+            userDetails,
+            shippingCharge,
+            products
+        } = order;
+        const customAmount = amount;
+        const {
+            addressStr,
+            state,
+            city,
+            zip,
+            other,
+            email,
+            ...addressRest
+        } = address
+        const data = {
+            paymentid: paymentProfile.customerPaymentProfileId,
+            profileid: paymentProfile.customerProfileId,
+            amount: parseFloat(customAmount.toFixed(2))
+        };
+        authorizeChargeProfile(data)
+            .then(res => {
+                console.log({ res });
+                if (res.data.status) {
+                    const transactionId = res.data.transactionid
+                    Promise.all(this.makeSubsPromise(order, data)).then(res => {
+                        console.log({ res });
+                        const sendAbleOrder = {
+                            ...order,
+                            products: res,
+                            transactionId
+                        };
+                        this.finalOrderSubmit(placeOrderNew(sendAbleOrder));
+                    });
+                } else {
+                    this.onFailed(res)
+                }
+            })
+            .catch(err => {
+                console.log({ err })
+                this.onFailed(err)
+            })
     }
     async generateOrder(paymentResponse, isFirst = true) {
         let confirmShipRes = this.state.confirmShipRes;
@@ -484,7 +551,11 @@ class CheckoutPayment extends React.Component {
             tracker,
             fees
         } = confirmShipRes || {};
+        console.log({
+            confirmShipRes
+        })
         const shippingDetails = {
+            ...confirmShipRes,
             shipmentid,
             rateid: selected_rate && selected_rate.id,
             rate: selected_rate && selected_rate.rate,
@@ -493,11 +564,11 @@ class CheckoutPayment extends React.Component {
             trackerid: tracker && tracker.id,
             fees,
             service: selected_rate && selected_rate.service,
-            carrier: (selected_rate && selected_rate.carrier) || "shipment_failed"
+            carrier: (selected_rate && selected_rate.carrier) || "shipment_failed",
         };
         const order = generateOrderObj({
             referralId: null,
-            cart, user, confirmShipRes,
+            cart, user, confirmShipRes: shippingDetails,
             stateObj: {
                 paymentMethod: "Authorize",
                 address
@@ -508,12 +579,15 @@ class CheckoutPayment extends React.Component {
     render() {
         const componentClass = "c-checkout-payment"
         const {
-            form, addCardAuthorize
+            form, user, cards
         } = this.props
+        const isLogin = user._id ? true : false
+        console.log({user, cards})
         const {
             email, address, shippingDetail, collapseKey, isCard
         } = this.state
-        const { getFieldDecorator } = form
+        const { getFieldDecorator, getFieldValue } = form
+        const profileValue = getFieldValue("paymentProfile")
         return (
             <div className={componentClass}>
                 <Form onSubmit={this.onSubmit} >
@@ -551,6 +625,45 @@ class CheckoutPayment extends React.Component {
                             )}
                         </Form.Item>
                     </TitleList>
+                    {isLogin && cards && cards.length > 0 &&
+                        <TitleList parentClass={componentClass} title={<span onClick={this.tglCard} >Pay with saved cards or account </span>} >
+                            
+                            <Form.Item>
+                                {getFieldDecorator('paymentProfile', {
+                                    initialValue: cards.find(el => el.isDefault) || cards[0]
+                                })(
+                                    <Radio.Group
+                                        className="bordered"
+                                        onChange={(e) => {
+                                            const {
+                                                value
+                                            } = e.target
+                                            if (value !== null) {
+                                                // setFieldsValue({
+                                                //     newAddress: false
+                                                // })
+                                                this.setState({
+                                                    collapseKey: null
+                                                })
+                                            }
+                                        }}
+                                    >
+                                        {
+                                            cards.map((el, i) => {
+                                                if(el.creditCard){
+                                                    return <Radio key={i} value={el}>{el.creditCard.cardNumber}</Radio>
+                                                }else if(el.bank){
+                                                    return <Radio key={i} value={el}>bank</Radio>
+                                                }
+                                                return null
+                                            })
+                                        }
+                                    </Radio.Group>
+                                )}
+                            </Form.Item>
+                        </TitleList>
+                    }
+                    
                     <TitleList parentClass={componentClass} title={<span onClick={this.tglCard} >Pay with card </span>} >
                         <Collapse destroyInactivePanel={true} bordered={false} activeKey={collapseKey} >
                             <Panel header={null} key="card">
@@ -558,7 +671,7 @@ class CheckoutPayment extends React.Component {
                                 <>
                                     <Form.Item>
                                         {getFieldDecorator('cardnumber', {
-                                            rules: isCard &&  [
+                                            rules: isCard && !profileValue && [
                                                 {
                                                     required: true,
                                                     message: "Please enter your card number!"
@@ -577,7 +690,7 @@ class CheckoutPayment extends React.Component {
                                     </Form.Item>
                                     <Form.Item>
                                         {getFieldDecorator('cardname', {
-                                            rules: isCard &&  [{
+                                            rules: isCard && !profileValue && [{
                                                 required: true,
                                                 message: "Please enter cardholder name!"
                                             }]
@@ -590,7 +703,7 @@ class CheckoutPayment extends React.Component {
                                             <div className="col-8">
                                                 <Form.Item>
                                                     {getFieldDecorator('expiry', {
-                                                        rules: isCard &&  [{
+                                                        rules: isCard && !profileValue && [{
                                                             required: true,
                                                             message: "Please enter expiration date!"
                                                         }]
@@ -605,7 +718,7 @@ class CheckoutPayment extends React.Component {
                                             <div className="col-4">
                                                 <Form.Item>
                                                     {getFieldDecorator('cvv', {
-                                                        rules: isCard &&  [{
+                                                        rules: isCard && !profileValue && [{
                                                             required: true,
                                                             message: "Please enter cvv number!"
                                                         }]
@@ -633,7 +746,7 @@ class CheckoutPayment extends React.Component {
                                 <>
                                     <Form.Item>
                                         {getFieldDecorator('name_acc', {
-                                            rules: !isCard && [{
+                                            rules: !isCard && !profileValue && [{
                                                 required: true,
                                                 message: "Please enter your name!"
                                             }]
@@ -643,7 +756,7 @@ class CheckoutPayment extends React.Component {
                                     </Form.Item>
                                     <Form.Item>
                                         {getFieldDecorator('bank_routing_number', {
-                                            rules: !isCard && [{
+                                            rules: !isCard && !profileValue && [{
                                                 required: true,
                                                 message: "Please enter routing number!"
                                             }]
@@ -653,10 +766,24 @@ class CheckoutPayment extends React.Component {
                                     </Form.Item>
                                     <Form.Item>
                                         {getFieldDecorator('bank_checking_number', {
-                                            rules: !isCard && [{
-                                                required: true,
-                                                message: "Please enter checking account number!"
-                                            }]
+                                            rules: !isCard && !profileValue && [
+                                                {
+                                                    required: true,
+                                                    message: "Please enter checking account number!"
+                                                },
+                                                {
+                                                    min: 13,
+                                                    message: "checking number must have 13 digits"
+                                                },
+                                                {
+                                                    max: 13,
+                                                    message: "checking number must have 13 digits"
+                                                },
+                                                {
+                                                    pattern: /\d+/,
+                                                    message: "checking number must have only digits"
+                                                },
+                                            ]
                                         })(
                                             <Input label="Checking Account Number*" />,
                                         )}
@@ -704,7 +831,8 @@ const mapStateToProps = (state) => ({
     cards: state.cards.cards,
 })
 const mapActionToProps = {
-    addCardAuthorize
+    addCardAuthorize,
+    getCards
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Form.create({ name: "CheckoutPayment" })(CheckoutPayment))

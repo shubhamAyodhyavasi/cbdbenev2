@@ -1,4 +1,9 @@
 .c-checkout-layout{
+    min-height: 100vh;
+    display: flex;
+    > * {
+        width: 100%;
+    }
     &__main{
         padding-top: 100px;
         padding-left: 40px;
