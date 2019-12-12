@@ -45,28 +45,33 @@ const Header = ({bg, theme, versions}) => {
  
 
     return (
-        // <Affix className="c-header__affix"  onChange={e => setIsFixed(e)}>
-            <header onScroll={(e) => {
-              }}  className={classNames(" c-header", {
-                "c-header--light": true,
-                "c-header--fixed": true,
-                "c-header--active": show,
-                "c-header--top": !isAtTop,
-                "c-header--black": show,
-                "c-header--hidden": !show,
-                "c-header--pinned": isFixed || bg,
-                ["c-header--"+theme]: theme,
-                [versionClass]: versions
+        <Affix className="c-header__affix"  onChange={e => setIsFixed(e)}>
+            <div className={classNames("c-header__wrapper", {
+                "c-header__wrapper--hidden": !show,
             })}>
-                {/* <nav className="c-header__nav nav nav--main">
-                left nav
-                </nav> */}
-                <NavMobile parent="c-header" items={mobileMenus} />
-                <Nav parent="c-header" items={mainMenus} />
-                <Logo />
-                <Nav parent="c-header" isRight={true} items={rightMenus} />
-            </header>
-        //  </Affix>
+                <header onScroll={(e) => {
+                }}  className={classNames(" c-header", {
+                    "c-header--light": true,
+                    "c-header--fixed": true,
+                    // "c-header--active": show,
+                    // "c-header--top": !isAtTop,
+                    // "c-header--black": show,
+                    // "c-header--hidden": !show,
+                    "c-header--pinned": isFixed || bg,
+                    ["c-header--"+theme]: theme,
+                    [versionClass]: versions
+                })}>
+                    {/* <nav className="c-header__nav nav nav--main">
+                    left nav
+                    </nav> */}
+                    
+                        <NavMobile parent="c-header" items={mobileMenus} />
+                        <Nav parent="c-header" items={mainMenus} />
+                        <Logo />
+                        <Nav parent="c-header" isRight={true} items={rightMenus} />
+                </header>
+            </div>
+        </Affix>
     )
 }
 
