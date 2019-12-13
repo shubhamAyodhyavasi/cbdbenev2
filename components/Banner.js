@@ -15,6 +15,7 @@ const Banner = ({
     })
     return (
         <div className={className}>
+            <div className="c-banner__overlay" />
             {image2x && <LazyLoadImage effect="opacity"  className="c-banner__bg" srcSet={`${image2x} 2x, ${image || image2x} 1x`} src={image} alt={imgAlt ? imgAlt : "banner"}/>}
             {!image2x && <LazyLoadImage effect="opacity"  className="c-banner__bg" src={image} alt={imgAlt ? imgAlt : "banner"}/>}
             <div className="c-banner__content">
