@@ -8,6 +8,7 @@ const shippingStaticRate    = 5.95;
 const referralPresent       = 25;
 const defaultOrderStatus    = "Transaction completed - label generated";
 const defaultStatusInOrder  = "in process";
+const invoiceUrl            = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/public/invoices/";
 export default {
     projectName,
     baseUrl,
@@ -18,5 +19,6 @@ export default {
     shippingStaticRate,
     referralPresent,
     defaultOrderStatus,
-    defaultStatusInOrder
+    defaultStatusInOrder,
+    invoiceUrl
 }

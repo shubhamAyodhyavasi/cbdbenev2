@@ -1,0 +1,14 @@
+.c-account-inner{
+    &__heading-wrapper{
+        background-color: $light-color-2;
+        padding: 10px 40px;
+    }
+    &__main{
+        padding-left: 15px;
+        padding-right: 15px;
+        @include bp-md{
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
+}

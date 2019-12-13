@@ -25,5 +25,7 @@ const apiList = {
     authorizeDeleteCard             : `${baseUrl}/authorize/deletecard/`,
     placeOrder                      : `${baseUrl}/order/add/`,
     placeOrderNew                   : `${baseUrl}/order/process/order/`,
+    allOrderList                    : `${baseUrl}/order/getorders/`,
+    orderList                       : `${baseUrl}/order/api/getbyuser/`,
 }
 export default apiList
