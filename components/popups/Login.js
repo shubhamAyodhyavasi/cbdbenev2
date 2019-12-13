@@ -80,8 +80,14 @@ class LoginForm extends React.Component{
         const {
             isLoading, error, isAlreadyUser
         } = this.state
+        
+        let finalClass = "c-login";
+        if(this.props.consult){
+            finalClass += " c-userDetails"
+        }
+        
         return (
-            <div className="c-login">
+            <div className={finalClass}>
                 <Heading parentClass="c-login" >{
                     isAlreadyUser ? <span>Looks like you already<br/>have an account</span> : "Welcome back"
                 }</Heading>

@@ -13,7 +13,7 @@ import mobileMenus from '../constants/mobileMenus';
 
 
 
-const Header = ({bg, theme, versions}) => {
+const Header = ({bg, theme, versions, fixed}) => {
     const versionClass = versions.map(el => (`c-header--${el}`)).join(" ")
     const [isFixed, setIsFixed] = useState(false)
     const [show, setIsShow] = useState(true)
@@ -43,42 +43,63 @@ const Header = ({bg, theme, versions}) => {
   )
 
  
-
+    if(fixed){
     return (
-        <Affix className="c-header__affix"  onChange={e => setIsFixed(e)}>
+        <div>
+        
             <div className={classNames("c-header__wrapper", {
-                "c-header__wrapper--hidden": !show,
+                "c-header__wrapper--hidden": !show && !fixed,
             })}>
                 <header onScroll={(e) => {
                 }}  className={classNames(" c-header", {
                     "c-header--light": true,
-                    "c-header--fixed": true,
-                    // "c-header--active": show,
-                    // "c-header--top": !isAtTop,
-                    // "c-header--black": show,
-                    // "c-header--hidden": !show,
+                    "c-header--fixed": true && !fixed,
                     "c-header--pinned": isFixed || bg,
                     ["c-header--"+theme]: theme,
                     [versionClass]: versions
-                })}>
-                    {/* <nav className="c-header__nav nav nav--main">
-                    left nav
-                    </nav> */}
-                    
+                })}> 
                         <NavMobile parent="c-header" items={mobileMenus} />
                         <Nav parent="c-header" items={mainMenus} />
                         <Logo />
                         <Nav parent="c-header" isRight={true} items={rightMenus} />
                 </header>
             </div>
-        </Affix>
-    )
+      
+        </div>
+    )} else {
+        return (
+            <div>
+             <Affix className="c-header__affix"  >
+                <div className={classNames("c-header__wrapper", {
+                    "c-header__wrapper--hidden": !show && !fixed,
+                })}>
+                    <header onScroll={(e) => {
+                    }}  className={classNames(" c-header", {
+                        "c-header--light": true,
+                        "c-header--fixed": true && !fixed,
+                        "c-header--pinned": isFixed || bg,
+                        ["c-header--"+theme]: theme,
+                        [versionClass]: versions
+                    })}> 
+                            <NavMobile parent="c-header" items={mobileMenus} />
+                            <Nav parent="c-header" items={mainMenus} />
+                            <Logo />
+                            <Nav parent="c-header" isRight={true} items={rightMenus} />
+                    </header>
+                </div>
+            </Affix>
+            </div>
+        )
+    }
 }
 
 Header.defaultProps = {
     bg: false,
     versions: []
 }
+
+
+const headMeta = {}
 
 
 export default Header

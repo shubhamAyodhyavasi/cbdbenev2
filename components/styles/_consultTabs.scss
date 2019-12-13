@@ -1,0 +1,44 @@
+.ant-tabs-nav > div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
+}
+
+.ant-tabs-nav{
+    width:100%;
+}
+
+.ant-tabs-tab-active{
+    position: relative;
+}
+
+.ant-tabs-ink-bar{
+    background-color: transparent;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active ,.ant-tabs-nav .ant-tabs-tab:hover{
+    color:black;
+}
+
+.ant-tabs{
+background:#faf7f5;
+}
+
+.ant-tabs-nav{
+    padding-top:50px;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active:after{
+    background-color: black;
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    content: '';
+    pointer-events: none;
+    color: black;
+    height: 3px;
+}
+
