@@ -203,7 +203,7 @@ class CheckoutInfo extends React.Component {
 
             <div className={componentClass}>
                 <Form onSubmit={this.onSubmit} >
-                    <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
+                    {/* <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script> */}
 
                     <TitleList versions={["sm-border"]} parentClass={componentClass} title="Contact Information" >
                         <Form.Item>

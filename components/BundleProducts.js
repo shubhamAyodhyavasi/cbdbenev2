@@ -65,9 +65,6 @@ const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onC
                     className="c-category-products__slider"
 				>
                     {products.map((el, i) => {
-                        console.log({
-                            el
-                        })
                         return (
                         <Link key={i} href={`/shop/${el._id}`}>
                             <div className="col-md-6 c-category-products__product">

@@ -12,12 +12,13 @@ import { useRouter } from 'next/router'
 import {connect} from 'react-redux'
 import fetch from "isomorphic-unfetch";
 import projectSettings from '../../constants/projectSettings'
+import apiList from '../../services/apis/apiList'
 const product = {
     title: "CBD Isolate 500 mg"
 }
 
 
-const Product = ({product, ...props}) => {
+const Product = ({product, allProducts, ...props}) => {
     
     const router = useRouter()
     const { pid } = router.query
@@ -48,12 +49,13 @@ const Product = ({product, ...props}) => {
         } = state
         console.log({
             props: props,
+            product: product,
             pid,
             router
         })
         
         const productAttr = getProductAttributes(product)
-        const image = getProductImage(product, "sectionB") || "/images/cbd-oil.png"
+        const image = getProductImage(product, "sectionB") //|| "/images/cbd-oil.png"
         const productImage = getProductImage(product) ? projectSettings.serverUrl + getProductImage(product) : "/images/cbd-oil.png"
         return (
             <Layout headerTheme="dark">
@@ -84,7 +86,7 @@ const Product = ({product, ...props}) => {
                             <Heading subHeading={true} versions={["default", "lft-br"]} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</Heading>
                         </div>
                         <div className="col-12">
-                            <ProductSlider parentClass="c-product-single" products={productList} />
+                            <ProductSlider parentClass="c-product-single" products={allProducts} />
                         </div>
                     </div>
                 </div>
@@ -96,12 +98,18 @@ Product.getInitialProps = async ({query}) => {
     const {
         baseUrl
     } = projectSettings
-    const res  = await fetch(baseUrl+"/products/api/getbyid/"+query.pid)
-    const productObj = await res.json()
-    const product = getVisibleProducts([productObj.product_details])
+    const res           = await fetch(baseUrl+"/products/api/getbyid/"+query.pid)
+    const productObj    = await res.json()
+    const product       = getVisibleProducts([productObj.product_details])
+    
+    const allRes        = await fetch(apiList.getAllProducts)
+    const allProductObj = await allRes.json()
+    const allProducts   = getVisibleProducts(allProductObj.products).filter(el => el._id !== query.pid)
     return {
         product: product.length && product[0],
-        productObj
+        productObj,
+        allProducts,
+        allProductObj
     }
 }
 export default connect(state => state)(Product)

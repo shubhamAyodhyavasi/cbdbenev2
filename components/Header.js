@@ -23,7 +23,7 @@ const Header = ({bg, theme, versions, fixed}) => {
   useScrollPosition(
     ({ prevPos, currPos }) => {
         let showNav = currPos.y > prevPos.y;
-        console.log(document.body.getBoundingClientRect().top)
+        // console.log(document.body.getBoundingClientRect().top)
         setIsShow(showNav)
         if(currPos.y === -124){
             setIsAtTop(false)

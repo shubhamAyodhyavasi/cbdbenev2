@@ -32,8 +32,8 @@ const ProductInfo = ({image, product, productAttr, addToCart, cart, showCartBar}
                 <div className="col-md-6">
                     <div className="c-product-info__title-wrap">
                         <div className="c-product-info__title-col">
-                            <Heading versions={["default", "light"]} parentClass="c-product-info">{product && product.productid && product.productid.producttitle}</Heading>
-                            <Heading subHeading="true" parentClass="c-product-info">{product && product.productid && product.productid.sdescription}</Heading>
+                            <Heading versions={["default", "light"]} parentClass="c-product-info">{product && (product.title || (product.productid && product.productid.producttitle))}</Heading>
+                            <Heading subHeading="true" parentClass="c-product-info">{product && (product.sdescription || (product.productid && product.productid.sdescription))}</Heading>
                         </div>
                         <div className="c-product-info__rating-wrapper">
                             <div className="c-product-info__rate">
@@ -47,7 +47,7 @@ const ProductInfo = ({image, product, productAttr, addToCart, cart, showCartBar}
                         </div>
                     </div>
                     <div className="c-product-info__description">
-                        <Heading subHeading="true" versions={["default", "lft-br"]} parentClass="c-product-info">{product && product.productid && product.productid.description}</Heading>
+                        <Heading subHeading="true" versions={["default", "lft-br"]} parentClass="c-product-info">{product &&(product.description || (product.productid && product.productid.description))}</Heading>
                     </div>
                     <div className="c-product-info__list">
                         {productAttr.map((el, i)=> (

@@ -131,7 +131,11 @@ export const getVisibleProducts = (products = []) => {
 
     return true;
   });
+  console.log({
+    productsList
+  })
   return productsList.map(el => {
+    if (el.combo) return el
     if (el.variation) {
       const verifiedAttr = filteredAttr(el.variation, el.attributes);
       return {
