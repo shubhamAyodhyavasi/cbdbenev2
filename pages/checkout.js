@@ -126,6 +126,9 @@ const Checkout  = ({
     return (
         <CheckoutLayout>
             <div className="c-checkout">
+
+                
+            {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script> */}
                 <Heading parentClass="c-checkout" versions={["default", "upper"]}>Checkout</Heading>
                 <div className="c-checkout__nav-wrapper">
                     <Steps 

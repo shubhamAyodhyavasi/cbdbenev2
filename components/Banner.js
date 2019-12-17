@@ -24,7 +24,9 @@ const Banner = ({
                 {children}
                 {bottomLogo && <Logo parentClass={componentClass} />}
             </div>
-            {extraButton}
+            <div className="c-banner__extra-btn-wrapper">
+                {extraButton}
+            </div>
         </div>
     )
 }

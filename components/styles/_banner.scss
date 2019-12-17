@@ -47,6 +47,17 @@
     &__logo{
         display: inline-block;
     }
+    &__extra-btn-wrapper{
+        max-width: 100%;
+        width: 200px;
+        margin: auto;
+        @include bp-md{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 50px;
+        }
+    }
     //versions 
     &--hf-content{
         .c-banner{
@@ -60,6 +71,13 @@
     }
     &--align-left{
         text-align: left;
+    }
+    &--align-bottom{
+        .c-banner{
+            &__heading{
+                margin-top: auto;
+            }
+        }
     }
     &--heading-l-br{
         .c-banner{
@@ -86,6 +104,13 @@
         .c-banner{
             &__overlay{
                 display: none;
+            }
+        }
+    }
+    &--full{
+        .c-banner{
+            &__content{
+                width: 100%;
             }
         }
     }

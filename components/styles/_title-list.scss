@@ -41,6 +41,19 @@
             &__title-wrap{
                 width: 250px;
             }
+            @include bp-lg{
+                &__title-wrap{
+                    width: 350px;
+                }
+                &__content, &__title{
+                    font-size: 16px;
+                }
+            }
         }
+    }
+    &--btm-border{
+        border-bottom: 1px solid $base-color;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 }

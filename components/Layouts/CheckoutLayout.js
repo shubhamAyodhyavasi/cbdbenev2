@@ -21,7 +21,6 @@ const CheckoutLayout = ({title, children,isRegOpen,
       <link rel='icon' href='/favicon.ico' />
     </Head>
     <div className="c-checkout-layout__row row">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
         <div className="col-md-8 c-checkout-layout__main">
             <div className="c-checkout-layout__logo-wrapper">
                 <Logo full={true} parentClass="c-checkout-layout" />

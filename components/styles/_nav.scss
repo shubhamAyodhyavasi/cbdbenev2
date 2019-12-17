@@ -37,8 +37,8 @@
         padding-right: 2px;
         display: flex;
         @include bp-lg{
-            padding-left: 30px;
-            padding-right: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
             &:first-child{
                 padding-left: 2px;
             }

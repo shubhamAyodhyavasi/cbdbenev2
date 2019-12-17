@@ -16,6 +16,7 @@ const Footer = () => (
                         return (<div key={i} className={`c-footer__col c-footer__col--${i + 1}`}>
                         <Heading h="5" versions={["footer", "upper"]} parentClass ="c-footer">{el.heading}</Heading>
                         <ul className="c-footer__menu-list">
+
                             {el.menus && el.menus.map((elx, k) => {
                                return  <li key={k} className="c-footer__list-item">
                                <Link href={elx.slug}>
@@ -24,6 +25,8 @@ const Footer = () => (
                                </li>
                             })}
                         </ul>
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
+
                     </div>)
                     })
                 }

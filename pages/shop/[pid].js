@@ -58,7 +58,7 @@ const Product = ({product, allProducts, ...props}) => {
         const image = getProductImage(product, "sectionB") //|| "/images/cbd-oil.png"
         const productImage = getProductImage(product) ? projectSettings.serverUrl + getProductImage(product) : "/images/cbd-oil.png"
         return (
-            <Layout headerTheme="dark">
+            <Layout headerTheme="dark" fixed={true}>
                 <ProductInfo product={product} productAttr={productAttr.filter((el,i)=> i < 2 )} image={productImage}>
                 </ProductInfo>
                 <HImgSection version={["full"]} image={image} >
@@ -83,7 +83,7 @@ const Product = ({product, allProducts, ...props}) => {
                             <Heading versions={["default", "upper"]} >Acompany with</Heading>
                         </div>
                         <div className="col-md-6">
-                            <Heading subHeading={true} versions={["default", "lft-br"]} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</Heading>
+                            <Heading subHeading={true} versions={["default", "lft-br"]} >Bene means wellness in Italian And that's what we're all about.</Heading>
                         </div>
                         <div className="col-12">
                             <ProductSlider parentClass="c-product-single" products={allProducts} />
