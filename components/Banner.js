@@ -4,7 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const Banner = ({
         image, heading, content, imgAlt, children, image2x, bottomLogo,
-        versions, parentClass
+        versions, parentClass, extraButton,
     }) => {
     const componentClass = "c-banner"
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
@@ -24,6 +24,7 @@ const Banner = ({
                 {children}
                 {bottomLogo && <Logo parentClass={componentClass} />}
             </div>
+            {extraButton}
         </div>
     )
 }

@@ -53,7 +53,7 @@
             &__content{
                 width: 100%;
                 @include bp-md{
-                    width: 50%;
+                    width: 60%;
                 }
             }
         }
@@ -79,6 +79,24 @@
             }
             &__logo{
                 margin-top: auto;
+            }
+        }
+    }
+    &--no-overlay{
+        .c-banner{
+            &__overlay{
+                display: none;
+            }
+        }
+    }
+    &--black-heading{
+        .c-banner{
+            &__heading {
+                color: #000;
+                border-left: 1px solid #000;
+            }
+            &__text{
+                color: #000;
             }
         }
     }
