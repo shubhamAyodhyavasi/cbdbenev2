@@ -7,6 +7,7 @@ import categoryList from '../constants/categoryList'
 import Heading from '../components/Heading'
 import ContactFrom from '../components/forms/ContactForm'
 import Button from '../components/form-components/Button'
+import TitleList from '../components/TitleList'
 
 class Contact extends React.Component {
     constructor(props) {
@@ -89,21 +90,30 @@ class Contact extends React.Component {
             >
             </Banner>
             <div className="c-contact__container">
-                <div className="row"></div>
-                <Heading>
-                HOW DOES CBD <br /> CONSULT WORK?
-                </Heading>
-                <p>Please select a topic below related to your inquiry.</p>
-                <ContactFrom />
+                <div className="row">
+                  <div className="col-md-8">
+                    <Heading>
+                    HOW DOES CBD <br /> CONSULT WORK?
+                    </Heading>
+                    {/* <p>Please select a topic below related to your inquiry.</p> */}
+                    <TitleList serial="1." versions={["wide-title"]} title="Select a doctor and request an appointment">
+                      Select a doctor licensed to practice in your state. Schedule your appointment and pay for your visit.
+                    </TitleList>
+                    <TitleList serial="2." versions={["wide-title"]} title="Prepare for the appointment">
+                      Enter your medical history privately and securely.
+                    </TitleList>
+                    <TitleList serial="3." versions={["wide-title"]} title="Consult online or by phone">
+                      Visit your doctor online or on the phone to discuss your individual needs and how they can be met.
+                    </TitleList>
+                    <div className="text-md-right">
+
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+
+                  </div>
+                </div>
             </div>
-            {(products && products.length > 0) && <CategoryProducts
-              bg="light-2"
-              categoryList={categoryList}
-              activeCategory={activeCategory}
-              onCategoryChange={this.changeCategory}
-              products={products}
-              subHeading="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
-              heading="Our top products" />}
             </Layout>
         )
     }

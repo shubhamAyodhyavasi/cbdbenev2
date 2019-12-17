@@ -1,7 +1,7 @@
 import Heading from './Heading'
 import classNames from 'classnames'
 
-const TitleList = ({title, content, children, parentClass, versions}) => {
+const TitleList = ({title, content, children, parentClass, versions, serial}) => {
     const componentClass = 'c-title-list'
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
     const parent = `${parentClass}__${componentClass.replace("c-", "")}`
@@ -11,6 +11,9 @@ const TitleList = ({title, content, children, parentClass, versions}) => {
     })
     return (
         <div className={className}>
+            {serial && <div className="c-title-list__key">
+                {serial}
+            </div>}
             <div className="c-title-list__title-wrap">
                 <p className="c-title-list__title">{title}</p>
             </div>

@@ -18,6 +18,13 @@
         margin-bottom: auto;
         font-weight: 500;
     }
+    &__key{
+        font-size: 40px;
+        line-height: 1;
+        padding-right: 15px;
+        width: 50px;
+        font-family: $sub-font;
+    }
     &--sm-border{
         align-items: flex-start;
         .c-title-list{
@@ -26,6 +33,13 @@
             }
             &__detail-wrap{
                 border-left: none;
+            }
+        }
+    }
+    &--wide-title{
+        .c-title-list{
+            &__title-wrap{
+                width: 250px;
             }
         }
     }
