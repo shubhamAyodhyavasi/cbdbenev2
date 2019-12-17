@@ -3,12 +3,12 @@ import Heading from './Heading'
 const LRSection = ({heading, subHeading, content, children, link, linkText, image, alt}) => (
     <div className="c-lr-section">
         <div className="c-lr-section__head-wrapper">
-            <div className="row c-lr-section__row">
+            <div className="row c-lr-section__row align-items-center">
                 <div className="flex-grow-0 c-lr-section__heading-wrapper">
                     
                     <Heading parentClass="c-lr-section" >{heading}</Heading>
                 </div>
-                <div className="col-md-4 c-lr-section__sub-heading-wrapper">
+                <div className="col-md-6 c-lr-section__sub-heading-wrapper">
                     <h4 className="c-lr-section__sub-heading">
                         {subHeading}
                     </h4>

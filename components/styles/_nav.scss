@@ -36,16 +36,26 @@
         padding-left: 2px;
         padding-right: 2px;
         display: flex;
+        @include bp-lg{
+            padding-left: 30px;
+            padding-right: 30px;
+            &:first-child{
+                padding-left: 2px;
+            }
+            &:last-child{
+                padding-right: 2px;
+            }
+        }
+        svg{
+            width: auto;
+            height: 1em;
+        }
     }
     &__sub-menu{
         display: flex;
         align-items: center;
         padding-left: 30px;
         list-style: none;
-    }
-    &__list-item{
-        padding-left: 2px;
-        padding-right: 2px;
     }
     &__sub-menu-tgl{
         padding-left: 5px;

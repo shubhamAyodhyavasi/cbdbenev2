@@ -1,6 +1,10 @@
 .c-category-products{
     padding: 40px;
-    
+    padding-bottom: 0; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     &__list{
         display: flex;
         // flex-wrap: wrap;
@@ -13,6 +17,8 @@
         margin-bottom: 5px;
         position: relative;
         cursor: pointer;
+        font-family: $sub-font;
+        font-size: 16px;
         @media(min-width: 992px){
             margin-right: 40px;
         }
@@ -56,6 +62,7 @@
     &__slider{
         width: 100%;
         overflow: hidden;
+        padding-bottom: 50px;
         &:focus{
             outline: none;
         }
@@ -66,10 +73,15 @@
     &__heading-wrapper{
         display: flex;
         flex-direction: column;
+        flex: 1;
         @include bp-lg{
-            align-items: flex-start;
+            align-items: flex-end;
             flex-direction: row;
         }
+    }
+    &__product-list{
+        display: flex;
+        flex: 1;
     }
     //versions
     &--light-2{
