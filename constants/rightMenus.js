@@ -1,3 +1,5 @@
+
+import ReactSVG from 'react-svg'
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiShoppingCart } from 'react-icons/fi'
 const rightMenus = [
@@ -12,7 +14,7 @@ const rightMenus = [
         action: "link"
     },
     {
-        icon: <AiOutlineUser />,
+        icon: <ReactSVG src="/images/user-icon.svg" />,
         // link: "/user",
         action: "dropdown",
         onlyLogin: true,
@@ -24,12 +26,12 @@ const rightMenus = [
         ]
     },
     {
-        icon: <AiOutlineUser />,
+        icon: <ReactSVG src="/images/user-icon.svg" />,
         action: "reg",
         onlyLogin: false
     },
     {
-        icon: <FiShoppingCart />,
+        icon: <ReactSVG src="/images/cart-icon-1.svg" />,
         action: "cart"
     },
 ]

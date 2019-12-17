@@ -98,13 +98,13 @@ class Home extends React.Component {
       <Layout title="Home" >
         <Banner
           image="/images/bundle.jpg"
-          heading={<span>bene fits <br />your life</span>}
+          heading={<span><span style={{fontSize: "1.3em"}}>bene</span> fits <br />your life</span>}
           content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
         >
-          <Button parentClass="c-home" theme={'gold'} >Shop all products</Button>
+          <Button parentClass="c-home" theme={'outline-gold'} >Shop all products</Button>
         </Banner>
         {(products && products.length > 0) && 
-        <Fade bottom>
+        <Fade>
             <CategoryProducts
             bg="light-2"
             categoryList={categoryList}
@@ -114,7 +114,7 @@ class Home extends React.Component {
             heading="Discover the products line" />  
           </Fade>
           }
-        <Fade bottom>
+        <Fade>
         <LRSection
           heading="bene"
           subHeading="organically grown hemp extract"
@@ -125,7 +125,7 @@ class Home extends React.Component {
           In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.
         </LRSection>
         </Fade>
-        <Fade bottom>
+        <Fade>
         <HHSection
           heading="Bundles of awesomeness!"
           subHeading="Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off."

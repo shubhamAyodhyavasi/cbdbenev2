@@ -1,10 +1,15 @@
 .c-lr-section{
     padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     &__heading{
         font-size: 50px;
         letter-spacing: 1px;
+        line-height: 1;
         @media (min-width: 1200px){
-            font-size: 90px;
+            font-size: 140px;
         }
     }
     &__sub-heading{
@@ -13,7 +18,7 @@
         letter-spacing: 0.5px;
         font-family: $sub-font;
         @media (min-width: 1200px){
-            font-size: 40px;
+            font-size: 60px;
         }
     }
     &__content-wrap{
@@ -21,5 +26,8 @@
     }
     &__btn-wrapper{
         text-align: right;
+        @include bp-md{
+            padding-left: 40px;
+        }
     }
 }
