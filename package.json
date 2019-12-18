@@ -17,6 +17,7 @@
     "box-dimension-calculator": "^1.0.0",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.2.6",
+    "cleave.js": "^1.5.3",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",

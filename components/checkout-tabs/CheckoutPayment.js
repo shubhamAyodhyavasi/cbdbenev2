@@ -17,10 +17,22 @@ import {
     setShippingCharge,
     setShippingType
 } from '../../redux/actions/cart'
+import Cleave from 'cleave.js/react';
+
+
 import {
     addCardAuthorize, getCards
 } from '../../redux/actions/cards'
 import InputMask from "../form-components/InputMask"
+import reactComponentDebounce from 'react-component-debounce';
+const DebounceCreditCard = reactComponentDebounce({
+    valuePropName: 'value',
+    triggerMs: 1000,
+  })(Cleave);
+const DebounceInput = reactComponentDebounce({
+    valuePropName: 'value',
+    triggerMs: 1000,
+  })(Input);
 const { Panel } = Collapse;
 class CheckoutPayment extends React.Component {
     constructor(props) {
@@ -140,6 +152,41 @@ class CheckoutPayment extends React.Component {
                 expiry
             };
     };
+
+    formatCreditCardNumber = (value) => {
+        if (!value) {
+          return value
+        }
+      
+        const issuer = Payment.fns.cardType(value)
+        const clearValue = clearNumber(value)
+        let nextValue
+      
+        switch (issuer) {
+          case 'amex':
+            nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+              4,
+              10
+            )} ${clearValue.slice(10, 15)}`
+            break
+          case 'dinersclub':
+            nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+              4,
+              10
+            )} ${clearValue.slice(10, 14)}`
+            break
+          default:
+            nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+              4,
+              8
+            )} ${clearValue.slice(8, 12)} ${clearValue.slice(12, 19)}`
+            break
+        }
+      
+        return nextValue.trim()
+      }
+
+
     makeSubsPromise = (order, details) => {
         return order.products.map(el => {
             if (el.isSubscribed) {
@@ -606,7 +653,7 @@ class CheckoutPayment extends React.Component {
                                 ],
                                 initialValue: email
                             })(
-                                <Input label="E-mail" />,
+                                <DebounceInput label="E-mail" />,
                             )}
                         </Form.Item>
                     </TitleList>
@@ -621,7 +668,7 @@ class CheckoutPayment extends React.Component {
                                 ],
                                 initialValue: address.addressStr
                             })(
-                                <Input label="address" />,
+                                <DebounceInput label="address" />,
                             )}
                         </Form.Item>
                     </TitleList>
@@ -682,10 +729,18 @@ class CheckoutPayment extends React.Component {
                                                 },
                                             ]
                                         })(
-                                            <InputMask 
-                                                label="Card Number" 
-                                                mask="9999-9999-9999-9999"
-                                            />
+                                            // <InputMask 
+                                            //     label="Card Number" 
+                                            //     mask="9999-9999-9999-9999"
+                                            // />
+                                            
+  <DebounceCreditCard
+    className='c-input c-input__input'
+    placeholder="XXXX XXXX XXXX XXXX"
+    options={{creditCard: true}}
+    onChange={(key,value) => { console.log({key}) }}
+  />
+
                                         )}
                                     </Form.Item>
                                     <Form.Item>
@@ -695,7 +750,7 @@ class CheckoutPayment extends React.Component {
                                                 message: "Please enter cardholder name!"
                                             }]
                                         })(
-                                            <Input label="Cardholder Name" />,
+                                            <DebounceInput label="Cardholder Name" />,
                                         )}
                                     </Form.Item>
                                     <div className="container-fluid p-0">
@@ -708,10 +763,12 @@ class CheckoutPayment extends React.Component {
                                                             message: "Please enter expiration date!"
                                                         }]
                                                     })(
-                                                        <InputMask 
-                                                            label="Expiration Date*(mm/yy)" 
-                                                            mask="99/99"
-                                                        />
+                                                        <Cleave
+    className='c-input c-input__input'
+    options={{date: true, datePattern: ['m', 'y']}}
+    placeholder="Expiry Date" 
+    onChange={event => { console.log(event.target.rawValue, event.target.value) }}
+  />
                                                     )}
                                                 </Form.Item>
                                             </div>
@@ -723,7 +780,7 @@ class CheckoutPayment extends React.Component {
                                                             message: "Please enter cvv number!"
                                                         }]
                                                     })(
-                                                        <Input label="CVV Code" />,
+                                                        <DebounceInput label="CVV Code" />,
                                                     )}
                                                 </Form.Item>
                                             </div>
@@ -751,7 +808,7 @@ class CheckoutPayment extends React.Component {
                                                 message: "Please enter your name!"
                                             }]
                                         })(
-                                            <Input label="Name on Account" />,
+                                            <DebounceInput label="Name on Account" />,
                                         )}
                                     </Form.Item>
                                     <Form.Item>
@@ -761,7 +818,7 @@ class CheckoutPayment extends React.Component {
                                                 message: "Please enter routing number!"
                                             }]
                                         })(
-                                            <Input label="Bank Routing Number*" />,
+                                            <DebounceInput label="Bank Routing Number*" />,
                                         )}
                                     </Form.Item>
                                     <Form.Item>
@@ -785,7 +842,7 @@ class CheckoutPayment extends React.Component {
                                                 },
                                             ]
                                         })(
-                                            <Input label="Checking Account Number*" />,
+                                            <DebounceInput label="Checking Account Number*" />,
                                         )}
                                     </Form.Item>
                                     <Form.Item>

@@ -13,6 +13,13 @@ import { searchAddress, getShippingRates } from '../../services/api';
 import { getItemsHeightWidth, filterShippingRates } from "../../services/helpers/cart"
 import { getSingleElementByMultipleObject } from "../../services/helpers/misc"
 import msgStrings from "../../constants/msgStrings"
+import reactComponentDebounce from 'react-component-debounce';
+
+const DebounceInput = reactComponentDebounce({
+    valuePropName: 'value',
+    triggerMs: 1000,
+  })(Input);
+
 import { 
   setShippingCharge,
   setShippingType } from '../../redux/actions/cart'
@@ -213,7 +220,7 @@ class CheckoutShipping extends React.Component {
                 ],
                 initialValue: email
               })(
-                <Input label="E-mail" />,
+                <DebounceInput label="E-mail" />,
               )}
             </Form.Item>
           </TitleList>
@@ -228,7 +235,7 @@ class CheckoutShipping extends React.Component {
                 ],
                 initialValue: address.addressStr
               })(
-                <Input label="address" />,
+                <DebounceInput label="address" />,
               )}
             </Form.Item>
           </TitleList>

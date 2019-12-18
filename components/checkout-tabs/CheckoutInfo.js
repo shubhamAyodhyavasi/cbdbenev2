@@ -12,6 +12,12 @@ import projectSettings from '../../constants/projectSettings';
 import { searchAddress } from '../../services/api';
 import regex from '../../services/helpers/regex';
 import { getCountryCode } from '../../services/helpers/misc';
+import reactComponentDebounce from 'react-component-debounce';
+
+const DebounceInput = reactComponentDebounce({
+    valuePropName: 'value',
+    triggerMs: 1000,
+  })(Input);
 
 class CheckoutInfo extends React.Component {
     constructor() {
@@ -211,7 +217,7 @@ class CheckoutInfo extends React.Component {
                                 rules: [
                                     {
                                         required: true,
-                                        message: 'Please input your E-mail!'
+                                        message: 'Please input your E-mail'
                                     },
                                     {
                                         pattern: regex.email,
@@ -220,7 +226,7 @@ class CheckoutInfo extends React.Component {
                                 ],
                                 initialValue: user.email
                             })(
-                                <Input label="E-mail" />,
+                                <DebounceInput label="E-mail" />,
                             )}
                         </Form.Item>
                         {!isLogin && <div className={componentClass + "__login-wrapper"}>
@@ -284,7 +290,7 @@ class CheckoutInfo extends React.Component {
                                                     { max: 12, message: 'Please enter a valid name!' },
                                                 ],
                                             })(
-                                                <Input parentClass="c-address-form" label="First Name" />
+                                                <DebounceInput parentClass="c-address-form" label="First Name" />
                                             )}
                                         </Form.Item>
                                     </div>
@@ -299,7 +305,7 @@ class CheckoutInfo extends React.Component {
                                                 { max: 12, message: 'Please enter a valid name!' },
                                                 ],
                                             })(
-                                                <Input parentClass="c-address-form" label="Last Name" />
+                                                <DebounceInput parentClass="c-address-form" label="Last Name" />
                                             )}
                                         </Form.Item>
                                     </div>
@@ -317,7 +323,7 @@ class CheckoutInfo extends React.Component {
                                                 },
                                                 ],
                                             })(
-                                                <Input parentClass="c-address-form" label="Phone Number" />
+                                                <DebounceInput type="number"  value="" parentClass="c-address-form" label="Phone Number" />
                                             )}
                                         </Form.Item>
                                     </div>
@@ -368,9 +374,9 @@ class CheckoutInfo extends React.Component {
                                                 rules: [{ required: true, message: 'Please input your city!' }],
                                                 initialValue: address.city
                                             })(
-                                                <Input
-                                                    onChange={e => {
-                                                        const city = e.target.value
+                                                <DebounceInput
+                                                    onChange={(key,value) => {
+                                                        const city = key
                                                         this.changeAddress({ ...address, city }, "address")
                                                     }}
                                                     parentClass="c-address-form"
@@ -386,9 +392,9 @@ class CheckoutInfo extends React.Component {
                                                 rules: [{ required: true, message: 'Please input your Country!' }],
                                                 initialValue: address.country
                                             })(
-                                                <Input
-                                                    onChange={e => {
-                                                        const country = e.target.value
+                                                <DebounceInput
+                                                    onChange={(key,value) => {
+                                                        const country = key
                                                         this.changeAddress({ ...address, country }, "address")
                                                     }}
                                                     parentClass="c-address-form"
@@ -402,9 +408,9 @@ class CheckoutInfo extends React.Component {
                                                 rules: [{ required: true, message: 'Please input your state!' }],
                                                 initialValue: address.state
                                             })(
-                                                <Input
-                                                    onChange={e => {
-                                                        const state = e.target.value
+                                                <DebounceInput
+                                                    onChange={(key,value) => {
+                                                        const state = key
                                                         this.changeAddress({ ...address, state }, "address")
                                                     }}
                                                     parentClass="c-address-form"
@@ -417,14 +423,18 @@ class CheckoutInfo extends React.Component {
                                             {getFieldDecorator('zip', {
                                                 rules: [
                                                     { required: true, message: 'Please input your ZIP code!' },
+                                                    {pattern: /^\d{5}$|^\d{5}-\d{4}$/, message:"Please enter a valid zipcode!"},
                                                     { max: 8, message: 'Please input your ZIP code!' },
                                                 ],
                                                 initialValue: address.zip
                                             })(
-                                                <Input
-                                                    onChange={e => {
-                                                        const zip = e.target.value
+                                                <DebounceInput
+                                                    onChange={(key, value) => {
+                                                       
+                                                            const zip = key
                                                         this.changeAddress({ ...address, zip }, "address")
+                                                        
+                                                        
                                                     }}
                                                     parentClass="c-address-form"
                                                     label="ZIP code" />
@@ -510,7 +520,7 @@ class CheckoutInfo extends React.Component {
                                                     { max: 12, message: 'Please enter a valid name!' },
                                                 ],
                                                 })(
-                                                    <Input parentClass="c-address-form" label="First Name" />
+                                                    <DebounceInput parentClass="c-address-form" label="First Name" />
                                                 )}
                                             </Form.Item>
                                         </div>
@@ -525,7 +535,7 @@ class CheckoutInfo extends React.Component {
                                                     { max: 12, message: 'Please enter a valid name!' },
                                                 ],
                                                 })(
-                                                    <Input parentClass="c-address-form" label="Last Name" />
+                                                    <DebounceInput parentClass="c-address-form" label="Last Name" />
                                                 )}
                                             </Form.Item>
                                         </div>
@@ -543,7 +553,7 @@ class CheckoutInfo extends React.Component {
                                                     },
                                                     ],
                                                 })(
-                                                    <Input parentClass="c-address-form" label="Phone Number" />
+                                                    <DebounceInput type="number" parentClass="c-address-form" label="Phone Number" />
                                                 )}
                                             </Form.Item>
                                         </div>
@@ -596,8 +606,8 @@ class CheckoutInfo extends React.Component {
                                                         { required: true, message: 'Please input your city!' },
                                                     ],
                                                 })(
-                                                    <Input onChange={e => {
-                                                        const city = e.target.value
+                                                    <DebounceInput onChange={(key,value) => {
+                                                        const city = key
                                                         this.changeAddress({ ...addressShip, city }, "addressShip")
                                                     }} parentClass="c-address-form" label="City" />
                                                 )}
@@ -610,8 +620,8 @@ class CheckoutInfo extends React.Component {
                                                 {getFieldDecorator('country_ship', {
                                                     rules: [{ required: true, message: 'Please input your Country!' }],
                                                 })(
-                                                    <Input onChange={e => {
-                                                        const country = e.target.value
+                                                    <DebounceInput onChange={(key,value) => {
+                                                        const country = key
                                                         this.changeAddress({ ...addressShip, country }, "addressShip")
                                                     }} parentClass="c-address-form" label="Country" />
                                                 )}
@@ -622,8 +632,8 @@ class CheckoutInfo extends React.Component {
                                                 {getFieldDecorator('state_ship', {
                                                     rules: [{ required: true, message: 'Please input your state!' }],
                                                 })(
-                                                    <Input onChange={e => {
-                                                        const state = e.target.value
+                                                    <DebounceInput onChange={(key,value) => {
+                                                        const state = key
                                                         this.changeAddress({ ...addressShip, state }, "addressShip")
                                                     }} parentClass="c-address-form" label="state" />
                                                 )}
@@ -637,8 +647,8 @@ class CheckoutInfo extends React.Component {
                                                         { max: 8, message: 'Please input your ZIP code!' },
                                                     ],
                                                 })(
-                                                    <Input onChange={e => {
-                                                        const zip = e.target.value
+                                                    <DebounceInput onChange={(key,value) => {
+                                                        const zip = key
                                                         this.changeAddress({ ...addressShip, zip }, "addressShip")
                                                     }} parentClass="c-address-form" label="ZIP code" />
                                                 )}
