@@ -8,6 +8,12 @@ import { registerUser } from '../../services/api';
 import { showHasLogin, toggleRegBar } from '../../redux/actions/drawers'
 import { setUser } from '../../redux/actions/user'
 import regex from '../../services/helpers/regex';
+import reactComponentDebounce from 'react-component-debounce';
+
+const DebounceInput = reactComponentDebounce({
+    valuePropName: 'value',
+    triggerMs: 1000,
+  })(Input);
 
 class RegistrationForm extends React.Component{
     constructor(){
@@ -95,25 +101,29 @@ class RegistrationForm extends React.Component{
                     <Form.Item>
                         {getFieldDecorator('email', {
                             rules: [
+                                {max:40, message:"You can't use more than 40 characters."},
                                 { required: true, message: 'Please input your e-mail!' },
+                                
                                 { 
                                     pattern: regex.email, 
-                                    message: 'Please enter a valid E-mail!' 
+                                    message: 'Please enter a valid E-mail.' 
                                 },
                             ],
                         })(
-                            <Input versions={["dark"]} parentClass="c-registration" label="E-mail" />
+                            <DebounceInput versions={["dark"]} parentClass="c-registration" label="E-mail" />
                         )}
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('password', {
                             rules: [
-                                { required: true, message: 'Please input your password!' }
+                                { required: true, message: 'Please input your password!' },
+                                {max:20, message:"You can't use more than 20 characters."}
                             ],
                         })(
-                            <Input type="password" parentClass="c-registration" versions={["dark"]} label="Password" />
+                            <DebounceInput type="password" parentClass="c-registration" versions={["dark"]} label="Password" />
                         )}
                     </Form.Item>
+                    
                     <div>
                         <Form.Item>
                         {getFieldDecorator('agree', {

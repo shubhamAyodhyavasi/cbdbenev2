@@ -93,5 +93,8 @@
     &--no-padding{
         padding: 0;
     }
+    &--h-auto{
+        min-height: auto;
+    }
 
 }

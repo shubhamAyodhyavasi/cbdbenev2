@@ -137,7 +137,7 @@ class Home extends React.Component {
           //   "/images/oil-group.png"
           // ]}
         >
-          <BundleProducts versions={["no-padding"]} bg="bggrey" products={combos} />
+          <BundleProducts versions={["no-padding", "h-auto"]} bg="bggrey" products={combos} />
         </HHSection>
         </Fade>
       </Layout>
