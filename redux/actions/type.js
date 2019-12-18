@@ -80,3 +80,6 @@ export const SET_POS_UP = "SET_POS_UP";
 // errors
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const SET_ERRORS = "SET_ERRORS";
+
+// loading
+export const LOADING = "LOADING";

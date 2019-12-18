@@ -281,6 +281,7 @@ class CheckoutInfo extends React.Component {
                                                         pattern: regex.name,
                                                         message: 'Please enter a valid name!'
                                                     },
+                                                    { max: 12, message: 'Please enter a valid name!' },
                                                 ],
                                             })(
                                                 <Input parentClass="c-address-form" label="First Name" />
@@ -295,6 +296,7 @@ class CheckoutInfo extends React.Component {
                                                     pattern: regex.name,
                                                     message: 'Please enter a valid name!'
                                                 },
+                                                { max: 12, message: 'Please enter a valid name!' },
                                                 ],
                                             })(
                                                 <Input parentClass="c-address-form" label="Last Name" />
@@ -504,7 +506,9 @@ class CheckoutInfo extends React.Component {
                                                     {
                                                         pattern: regex.name,
                                                         message: 'Please enter a valid name!'
-                                                    },],
+                                                    },
+                                                    { max: 12, message: 'Please enter a valid name!' },
+                                                ],
                                                 })(
                                                     <Input parentClass="c-address-form" label="First Name" />
                                                 )}
@@ -517,7 +521,9 @@ class CheckoutInfo extends React.Component {
                                                     {
                                                         pattern: regex.name,
                                                         message: 'Please enter a valid name!'
-                                                    },],
+                                                    },
+                                                    { max: 12, message: 'Please enter a valid name!' },
+                                                ],
                                                 })(
                                                     <Input parentClass="c-address-form" label="Last Name" />
                                                 )}
@@ -586,7 +592,9 @@ class CheckoutInfo extends React.Component {
                                         <div className="col-12">
                                             <Form.Item>
                                                 {getFieldDecorator('city_ship', {
-                                                    rules: [{ required: true, message: 'Please input your city!' }],
+                                                    rules: [
+                                                        { required: true, message: 'Please input your city!' },
+                                                    ],
                                                 })(
                                                     <Input onChange={e => {
                                                         const city = e.target.value

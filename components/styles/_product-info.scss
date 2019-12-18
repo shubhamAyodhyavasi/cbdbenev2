@@ -64,9 +64,17 @@
         font-size: 20px;
         padding-left: 50px;
         padding-right: 50px;
-        @media (min-width: 1200px){
-            padding-left: 80px;
-            padding-right: 80px;
+        // @media (min-width: 1200px){
+        //     padding-left: 80px;
+        //     padding-right: 80px;
+        // }
+        &.c-btn--wishlist{
+            padding: 0;
+            min-width: 50px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }

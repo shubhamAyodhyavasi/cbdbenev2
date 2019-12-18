@@ -15,3 +15,4 @@ export * from "./drawers";
 export * from "./subMenus";
 export * from "./errors";
 export * from "./extras";
+export * from "./loading";

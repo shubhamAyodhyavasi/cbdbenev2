@@ -1,5 +1,5 @@
 import Heading from "./Heading";
-import { Rate } from 'antd'
+import { Rate, Icon } from 'antd'
 import TitleList from "./TItleList";
 import Checkbox from "./form-components/Checkbox";
 import Button from "./form-components/Button";
@@ -60,6 +60,12 @@ const ProductInfo = ({image, product, productAttr, addToCart, cart, showCartBar}
                     <div className="c-product-info__atc-wrapper">
                         <div className="c-product-info__btn-wrapper">
                             <Button onClick={addToCartFn} parentClass="c-product-info" theme="outline" >Add to cart</Button>
+                        </div>
+                        <div className="c-product-info__btn-wrapper">
+                            <Button onClick={()=> {}} versions={["wishlist"]} parentClass="c-product-info" theme="outline" >
+                                <Icon type="heart" theme="filled" />
+                                {/* <Icon type="heart" /> */}
+                            </Button>
                         </div>
                         <div className="c-product-info__price-wrapper">
                             <p className="c-product-info__price">$ {numberFormat(price)}</p>

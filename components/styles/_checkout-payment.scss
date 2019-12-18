@@ -14,3 +14,14 @@
         background-color: transparent !important;
     }
 }
+//
+.suggestion-item, .suggestion-item--active{
+    background: transparent !important;
+    padding: 3px 5px !important;
+}
+.suggestion-item--active{
+    background: #fdfdfd !important
+}
+.autocomplete-dropdown-container{
+    // box-shadow: 10px 0px 0px rgba(black, .2);
+}

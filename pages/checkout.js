@@ -13,9 +13,10 @@ import { connect } from 'react-redux'
 import checkAddressDuplicate from '../services/helpers/address'
 import CheckoutShipping from '../components/checkout-tabs/CheckoutShipping'
 import CheckoutPayment from '../components/checkout-tabs/CheckoutPayment'
+import Loader from '../components/Loader'
 
 const Checkout  = ({
-    addAddress, user, ...props
+    addAddress, user, isLoading, ...props
 }) => {
     const [activeAddress, setActiveAddress] = useState(1)
     const [currentStep, setCurrentStep] = useState(0)
@@ -123,10 +124,13 @@ const Checkout  = ({
         })
         setIsModal(true)
     }
+    console.log({
+        isLoading
+    })
     return (
         <CheckoutLayout>
             <div className="c-checkout">
-
+            {isLoading && <Loader />}
                 
             {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script> */}
                 <Heading parentClass="c-checkout" versions={["default", "upper"]}>Checkout</Heading>
@@ -199,6 +203,7 @@ const Checkout  = ({
 const mapStateToProps = state => ({
     address: state.address,
     user: state.user,
+    isLoading: state.loading.isLoading,
 })
 const mapActionToProps = {
     addAddress
