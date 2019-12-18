@@ -83,7 +83,7 @@ const Product = ({product, allProducts, ...props}) => {
                             <Heading versions={["default", "upper"]} >Acompany with</Heading>
                         </div>
                         <div className="col-md-6">
-                            <Heading subHeading={true} versions={["default", "lft-br"]} >Bene means wellness in Italian And that's what we're all about.</Heading>
+                            <Heading subHeading={true} versions={["default", "lft-br"]} >bene means wellness in Italian And that's what we're all about.</Heading>
                         </div>
                         <div className="col-12">
                             <ProductSlider parentClass="c-product-single" products={allProducts} />

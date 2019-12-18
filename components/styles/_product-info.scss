@@ -1,3 +1,6 @@
+.c-layout{
+    background-color: #faf7f5;
+}
 .c-product-info{
     padding: 220px 40px 100px;
     // margin-top: -$header-height;
@@ -5,6 +8,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
     &__image-col{
         display: flex;
         flex-direction: column;

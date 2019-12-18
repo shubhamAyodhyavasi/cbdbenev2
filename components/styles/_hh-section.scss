@@ -9,12 +9,13 @@
     }
     &__heading{
         @include bp-xxl{
-            font-size: 80px;
+            font-size: 50px;
+            margin-bottom: 30px;
         }
     }
     &__sub-heading{
         @include bp-xl{
-            font-size: 24px;
+            font-size: 20px;
             line-height: 1.4;
         }
     }

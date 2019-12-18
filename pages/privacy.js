@@ -10,16 +10,16 @@ const privacy = () => {
             <MainForm/>
             <div className="c-privacy__content">
                 <Heading>
-                    Welcome to CBD Bene
+                    Welcome to CBD bené
                 </Heading>
                 <div className="container">
-                    Bene LLC, a Delaware limited liability company d/b/a CBDBene collectively referred to in this privacy policy as “CBDBene,” the “Company” or sometimes “we” or “us” or “our”), operates the site located at the URL www.CBDBene.com (together with any other site or applications branded as Bene (collectively, the “Site”). Bene respects your privacy rights and is committed to protecting the information we collect from you online.
+                    bené LLC, a Delaware limited liability company d/b/a CBDbené collectively referred to in this privacy policy as “CBDbene,” the “Company” or sometimes “we” or “us” or “our”), operates the site located at the URL www.CBDbene.com (together with any other site or applications branded as bené (collectively, the “Site”). bené respects your privacy rights and is committed to protecting the information we collect from you online.
                 </div>
                 <Heading>
                     Introduction of Policy
                 </Heading>
                 <div className="container">
-                    This online privacy policy (“Privacy Policy”) explains CBDBene’s privacy practices for the CBDBene.com site (together with its pages and features, “Site”) and mobile software application (together with its pages and features, “App”). This Privacy Policy explains how we collect, use, disclose and manage information that you provide to us on the Site or App, as well as how we care for your privacy and protect such information. This Privacy Policy applies to you and any person helping you visit, access, register with or use  the Site or creates an Account, or otherwise provides any personal, company, financial or other information to us.
+                    This online privacy policy (“Privacy Policy”) explains CBDbené’s privacy practices for the CBDbene.com site (together with its pages and features, “Site”) and mobile software application (together with its pages and features, “App”). This Privacy Policy explains how we collect, use, disclose and manage information that you provide to us on the Site or App, as well as how we care for your privacy and protect such information. This Privacy Policy applies to you and any person helping you visit, access, register with or use  the Site or creates an Account, or otherwise provides any personal, company, financial or other information to us.
 
     When you access or use the site or App, or otherwise provide any information to us, you agree to this privacy policy. If you do not agree with our policies and practices, your choice is not to use our services. By accessing or using our services, you agree to this privacy policy, or to any changes we may subsequently make to this privacy policy. When you create, register or log into an account through the Site or the App, you are automatically accepting and agreeing to the most-recent version of this Privacy Policy, as well as the Site’s and the App’s Terms and Conditions.
 
@@ -71,9 +71,9 @@ const privacy = () => {
                     <li>Process your payments;</li>
                     <li>Provide information and offers including information about third-party businesses, products and services by letter, email, text, telephone or other forms of communication;</li>
                     <li>Improve the Site, the App content, features and/or services;</li>
-                    <li>Improve the products, services, marketing and promotional efforts of CBDBene;</li>
-                    <li>Create new products, services, marketing and promotions for CBDBene;</li>
-                    <li>Market the businesses, products and/or services of CBDBene;</li>
+                    <li>Improve the products, services, marketing and promotional efforts of CBDbené;</li>
+                    <li>Create new products, services, marketing and promotions for CBDbené;</li>
+                    <li>Market the businesses, products and/or services of CBDbené;</li>
                     <li>Help personalize user experiences with the Site, the App and/or their respective products and/or services;</li>
                     <li>Analyze traffic to and through the Site and/or the App;</li>
                     <li>Analyze user behavior and activity on or through the Site and/or the App;</li>
@@ -87,7 +87,7 @@ const privacy = () => {
                 <Heading versions={["large"]}>
                     Use of Web Technologies
                 </Heading>
-                <p>Bene might use various tracking, data aggregation and/or data analysis technologies, including, for example, the following:</p>
+                <p>bené might use various tracking, data aggregation and/or data analysis technologies, including, for example, the following:</p>
 
                 <Heading>
                     Cookies
@@ -121,7 +121,7 @@ const privacy = () => {
                     Analytic tools
                 </Heading>
                 <div className="container">
-                    Analytic tools are sometimes offered by third parties, and which track, measure and/or generate information about a website’s or program’s traffic, sales, audience and similar information, and which may be used for various reasons, such as, for example, statistical research, marketing research, and content ratings research, and conversion tracking. Examples of the analytic tools and services which Bene might use include Google Analytics. Bene may also use other third-party analytic tools and services. We use this information to analyze trends, to administer the Site, to track the movements of users around the Site and to gather demographic information about our user base as a whole.
+                    Analytic tools are sometimes offered by third parties, and which track, measure and/or generate information about a website’s or program’s traffic, sales, audience and similar information, and which may be used for various reasons, such as, for example, statistical research, marketing research, and content ratings research, and conversion tracking. Examples of the analytic tools and services which bené might use include Google Analytics. bené may also use other third-party analytic tools and services. We use this information to analyze trends, to administer the Site, to track the movements of users around the Site and to gather demographic information about our user base as a whole.
 
     Please be advised that if you choose to block, reject, disable, delete or change the management settings for any or all of the aforementioned technologies and/or other tracking, data aggregation and data analysis technologies, then certain areas of the Site and/or the App might not function properly.
                 </div>
@@ -131,7 +131,7 @@ const privacy = () => {
                 <div className="container">
                     We implement security measures to help protect the personal information we collect by using industry recognized security safeguards such as site monitoring, secured networks and servers, firewalls and encryption. When we ask for sensitive information, we protect it through the use of encryption during transmission, by using secure socket layer (SSL) technology. Regardless of the foregoing, please observe that “perfect” or “100%” security does not exist on the Internet. Therefore, your access and use of the Site and/or the App, and your opening of any communications sent through or as a function of the Site and/or the App, are done at your own risk. You are responsible for protecting against unauthorized access to your password and to your computer/mobile device. We ask you not to share your password with anyone.
 
-    To help maintain the security of your personal information, Bene asks that you please notify it immediately of any unauthorized visit, access or use of the Site and/or the App, or the loss or unauthorized use of your user access information for the Site and/or the App (e.g., username or password).
+    To help maintain the security of your personal information, bené asks that you please notify it immediately of any unauthorized visit, access or use of the Site and/or the App, or the loss or unauthorized use of your user access information for the Site and/or the App (e.g., username or password).
                 </div>
                 <Heading>
                     Communications
@@ -187,15 +187,15 @@ const privacy = () => {
 
                 </Heading>
                 <div className="container">
-                    If your personally identifiable information changes, or if you no longer choose to use our services or the Site, you can contact customer service by e-mail to assist you with changes to your Account. To the extent your Account closes or becomes inactive, we will continue to protect your information as described in this Privacy Policy. You may request at any time that Bene provide you with an opportunity to review and change your personal information collected through the Site or the App or to no longer use your personal information to provide you with any products or services.
+                    If your personally identifiable information changes, or if you no longer choose to use our services or the Site, you can contact customer service by e-mail to assist you with changes to your Account. To the extent your Account closes or becomes inactive, we will continue to protect your information as described in this Privacy Policy. You may request at any time that bené provide you with an opportunity to review and change your personal information collected through the Site or the App or to no longer use your personal information to provide you with any products or services.
 
-    Please submit any such request (“Request Concerning Personal Information”) By email: Privacy@cbdbene.com, with a subject line of “Your Personal Information.” For each Request Concerning Personal Information, please state “Your Personal Information” in the email or letter subject line, and clearly state the the nature of your request and your name, street address, city, state, zip code and email address. CBDBene is not responsible for any Request Concerning Personal Information that is incomplete, incorrectly labeled, or incorrectly sent.
+    Please submit any such request (“Request Concerning Personal Information”) By email: Privacy@cbdbene.com, with a subject line of “Your Personal Information.” For each Request Concerning Personal Information, please state “Your Personal Information” in the email or letter subject line, and clearly state the the nature of your request and your name, street address, city, state, zip code and email address. CBDbené is not responsible for any Request Concerning Personal Information that is incomplete, incorrectly labeled, or incorrectly sent.
 
     You are solely responsible for the accuracy and content of your personal information, and for keeping your personal information current and correct.
 
-    Further, Bene does not respond to “do not track” (DNT) signals.
+    Further, bené does not respond to “do not track” (DNT) signals.
 
-    Finally, as explained further above, Bene does not authorize third parties to collect your personal information when you use the Site or the App, except as expressly stated in this Privacy Policy. To the fullest extent permitted by law, Bene is not responsible for, and you hereby release Bene from any and all liability which may arise from, such third parties’ unauthorized collection of your personal information
+    Finally, as explained further above, bené does not authorize third parties to collect your personal information when you use the Site or the App, except as expressly stated in this Privacy Policy. To the fullest extent permitted by law, bené is not responsible for, and you hereby release bené from any and all liability which may arise from, such third parties’ unauthorized collection of your personal information
                 </div>
                 <Heading>
                     Severability
@@ -210,7 +210,7 @@ const privacy = () => {
 
                 </Heading>
                 <div className="container">
-                    Bene is based in the United States, with our servers and offices headquartered in the United States. Please be aware that information you provide to us or that we obtain as a result of your use of the Site, an Account, or any services provided by us may be processed and transferred to, and be subject to the laws of, the United States. The privacy and data protection laws in the United States may not be equivalent to similar laws in your country of residence. By using the Site or an Account, or by providing us with your information, you consent to the collection, transfer, storage and processing of information to and within the Untied States. If our cookies or other software detects IP addresses located in a country outside the United States, we reserve the right to deny access to any and all of our services.
+                    bené is based in the United States, with our servers and offices headquartered in the United States. Please be aware that information you provide to us or that we obtain as a result of your use of the Site, an Account, or any services provided by us may be processed and transferred to, and be subject to the laws of, the United States. The privacy and data protection laws in the United States may not be equivalent to similar laws in your country of residence. By using the Site or an Account, or by providing us with your information, you consent to the collection, transfer, storage and processing of information to and within the Untied States. If our cookies or other software detects IP addresses located in a country outside the United States, we reserve the right to deny access to any and all of our services.
 
 
                 </div>

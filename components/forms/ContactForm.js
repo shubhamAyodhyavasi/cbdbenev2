@@ -57,7 +57,7 @@ class Contact extends React.Component {
                                         <AntRadio className="c-contact-form__radio" value="Wholesale Enquiry">
                                             <b>Wholesale Enquiry</b>
                                             <br />
-                                            Questions about distributing Bené CBD.
+                                            Questions about distributing bené CBD.
                                         </AntRadio>
                                         <AntRadio className="c-contact-form__radio" value="Press and Marketing Enquiry">
                                             <b>Press and Marketing Enquiry</b>

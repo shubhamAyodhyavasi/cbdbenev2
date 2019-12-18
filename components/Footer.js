@@ -32,7 +32,7 @@ const Footer = () => (
                 }
                 <div className={`c-footer__col c-footer__col--${footerMenu.length + 1}`}>
                     <Heading h="5" versions={["footer", "upper"]} parentClass ="c-footer">Sign up to our mailing list</Heading>
-                    <p className="c-footer__text">I would like to receive communications about Bene products and services.</p>
+                    <p className="c-footer__text">I would like to receive communications about bené products and services.</p>
                     <SubscribeForm />
                 </div>
             </div>

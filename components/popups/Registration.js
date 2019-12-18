@@ -87,7 +87,7 @@ class RegistrationForm extends React.Component{
         return (
             <div className="c-registration">
                 <Heading parentClass="c-registration" >{
-                    isAlreadyUser ? <span>Looks like you already<br/>have an account</span> : "Welcome to bene"
+                    isAlreadyUser ? <span>Looks like you already<br/>have an account</span> : "Welcome to bené"
                 }</Heading>
                 {!isAlreadyUser && <p className="c-registration__info">Fill in your details to create an account</p>}
     

@@ -12,8 +12,8 @@ const Logo = ({versions, parentClass, full}) => {
     return (
         <Link href="/" >
             <a className={className}>
-                {!full && <img src="/images/logo-new.png" className="c-logo__img" alt="bene"/>}
-                {full && <img src="/images/logo.png" className="c-logo__img" alt="bene"/>}
+                {!full && <img src="/images/logo-new.png" className="c-logo__img" alt="bené"/>}
+                {full && <img src="/images/logo.png" className="c-logo__img" alt="bené"/>}
             </a>
         </Link>
     )

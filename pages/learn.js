@@ -205,7 +205,7 @@ class Learn extends React.Component {
             id: "2"
           },
           {
-            title: "CBD Benefits",
+            title: "CBD benefits",
             id: "3"
           },
           {
@@ -543,7 +543,7 @@ class Learn extends React.Component {
       "1_4": (
         <div>
           <p>
-            There is CBD from hemp and there is CBD from marijuana. Bené’s CBD
+            There is CBD from hemp and there is CBD from marijuana. bené’s CBD
             is strictly from hemp.
           </p>
           <p>
@@ -1395,7 +1395,7 @@ How should I take CBD softgel capsules?
             isOpen={innerCollapse === "3_1_3"}
           >
             All prices are quoted in USD. If you are unable to see pricing
-            information, you are located in a country that Bene does not ship.
+            information, you are located in a country that bené does not ship.
           </LearnCollapsePlus>
           <LearnCollapsePlus
             title="Do you offer discounts if we buy in bulk?"
@@ -1404,7 +1404,7 @@ How should I take CBD softgel capsules?
             }}
             isOpen={innerCollapse === "3_1_4"}
           >
-            Email us at sales@cbdBene.com with a list of the products you wish
+            Email us at sales@cbdbene.com with a list of the products you wish
             to buy or use the Contact Us page
           </LearnCollapsePlus>
           <LearnCollapsePlus
@@ -1414,7 +1414,7 @@ How should I take CBD softgel capsules?
             }}
             isOpen={innerCollapse === "3_1_5"}
           >
-            Email us at customerservice@cbdBene.com or use the Contact Us page
+            Email us at customerservice@cbdbene.com or use the Contact Us page
           </LearnCollapsePlus>
           <LearnCollapsePlus
             title="Can I get an invoice for my order?"
@@ -1492,7 +1492,7 @@ How should I take CBD softgel capsules?
           >
             Once you have placed an order you will receive a confirmation email.
             To ensure that your confirmation email doesn’t end up in your
-            Junk/Spam folder please add sales@cbdBene.com to your contacts. If
+            Junk/Spam folder please add sales@cbdbene.com to your contacts. If
             you have not received your order confirmation email please contact
             us.
           </LearnCollapsePlus>
@@ -1680,7 +1680,7 @@ How should I take CBD softgel capsules?
             }}
             isOpen={innerCollapse === "3_6_1"}
           >
-            You can be assured that shopping with Bene is safe! We use
+            You can be assured that shopping with bené is safe! We use
             industry-standard encryption to protect your bank account or credit
             / debit card details entered in the site. Information passed between
             your computer and our website cannot be read in the event of someone
@@ -1739,7 +1739,7 @@ How should I take CBD softgel capsules?
             isOpen={innerCollapse === "3_7_1"}
           >
             If your package is missing a product or if you have any other
-            questions, please contact us at customerservice@cbdBene.com. To
+            questions, please contact us at customerservice@cbdbene.com. To
             expedite your request, please include your order number in the
             email.{" "}
           </LearnCollapsePlus>
@@ -1759,17 +1759,17 @@ How should I take CBD softgel capsules?
       "3_8": (
         <div>
           <p>
-            Creating a Bene account is free and makes the checkout process
+            Creating a bené account is free and makes the checkout process
             faster.
           </p>
           <LearnCollapsePlus
-            title="Do I need to create an account at cbdBene.com?"
+            title="Do I need to create an account at cbdbene.com?"
             onClick={() => {
               this.changeInnerCollapse("3_8_1");
             }}
             isOpen={innerCollapse === "3_8_1"}
           >
-            You don’t need an account to buy from Bene, however creating one
+            You don’t need an account to buy from bene, however creating one
             provides many benefits:
             <ul>
               <li>Checkout faster</li>
@@ -1946,7 +1946,7 @@ How should I take CBD softgel capsules?
             isOpen={innerCollapse === "3_11_1"}
           >
             If there is an issue with any product, please let our Customer
-            Experience team know by sending an email to customerservice@Bene.com
+            Experience team know by sending an email to customerservice@bene.com
             as soon as possible. We will resolve any problems as quickly as we
             can. Please include as many details as possible.
           </LearnCollapsePlus>
@@ -1998,8 +1998,8 @@ How should I take CBD softgel capsules?
             the refund to post to your statement. Some financial institutions
             may require additional time for processing and posting the
             transaction, so the credit may not show up only in the next billing
-            cycle. Note: Bené will only accept returns and refunds from
-            purchases made on cbdbene.com. Bené will not accept returns from a
+            cycle. Note: bené will only accept returns and refunds from
+            purchases made on cbdbene.com. bene will not accept returns from a
             purchase made in a retail store.
           </LearnCollapsePlus>
         </div>
@@ -2469,7 +2469,7 @@ How should I take CBD softgel capsules?
         <div>
           <p>How do I schedule an appointment?</p>
           <p>
-            After you’ve selected a doctor on Bené’s platform, you can request
+            After you’ve selected a doctor on bené’s platform, you can request
             an appointment by following the steps below:{" "}
           </p>
           <ol>
@@ -2523,7 +2523,7 @@ How should I take CBD softgel capsules?
             the status of your request. More than half of all appointment
             requests are accepted within a few hours of being received. The vast
             majority of doctors reply within 12 hours. If a doctor confirms your
-            request, your payment is processed and collected by Bené in full. If
+            request, your payment is processed and collected by bené in full. If
             a doctor declines your request or the request expires, we don't
             process your payment.
           </LearnCollapsePlus>
@@ -2531,7 +2531,7 @@ How should I take CBD softgel capsules?
       ),
       "5_3": (
         <div>
-          <p>What methods of payment does Bené accept?</p>
+          <p>What methods of payment does bené accept?</p>
           <ol>
             <li>
               Most major credit cards and pre-paid credit cards (Visa,
@@ -2582,7 +2582,7 @@ How should I take CBD softgel capsules?
               <li>Tap Visits to get your appointment details</li>
             </ol>
             <p>
-              Note: Make sure you’re logged into the same Bené account you used
+              Note: Make sure you’re logged into the same bené account you used
               to book the appointment.{" "}
             </p>
           </LearnCollapsePlus>
@@ -2598,7 +2598,7 @@ How should I take CBD softgel capsules?
             <Link href={`/account`}>
               My Account{" "}
             </Link>{" "}
-            section of CBDBene.com. Select Cancel Visit{" "}
+            section of CBDbene.com. Select Cancel Visit{" "}
           </LearnCollapsePlus>
           <LearnCollapsePlus
             title="What happens if a doctor cancels my appointment?

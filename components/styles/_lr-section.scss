@@ -9,7 +9,7 @@
         letter-spacing: 1px;
         line-height: 1;
         @media (min-width: 1200px){
-            font-size: 140px;
+            font-size: 120px;
         }
     }
     &__sub-heading{
@@ -18,7 +18,7 @@
         letter-spacing: 0.5px;
         font-family: $sub-font;
         @media (min-width: 1200px){
-            font-size: 60px;
+            font-size: 40px;
         }
     }
     &__content-wrap{

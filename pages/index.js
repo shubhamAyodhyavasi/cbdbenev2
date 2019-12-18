@@ -98,7 +98,7 @@ class Home extends React.Component {
       <Layout title="Home" >
         <Banner
           image="/images/bundle.jpg"
-          heading={<span><span style={{fontSize: "1.3em"}}>bene</span> fits <br />your life</span>}
+          heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
           content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
         >
           <Button parentClass="c-home" theme={'outline-gold'} >Shop all products</Button>
@@ -140,6 +140,28 @@ class Home extends React.Component {
           <BundleProducts versions={["no-padding"]} bg="bggrey" products={combos} />
         </HHSection>
         </Fade>
+        <section class="wellness">
+          <div class="wellness__heading">
+            <h3 class="wellness__heading--text">bené means <b>wellness</b> in Italian<br/>
+            And that's what we're all about</h3>
+          </div>
+          <div class="wellness-wrapper">
+            <div class="wellness-wrapper__img">
+              <img class="wellness-wrapper__img--img" src="/images/consult-image.jpg" />
+            </div>          
+            <div class="wellness-wrapper__desp">
+              <p class="wellness-wrapper__desp--text">Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.</p>
+              <div class="wellness-wrapper__btn">
+                <a class="c-btn c-btn--btm-br m-40 gold " href="#">READ MORE</a>
+              </div>
+              <div class="willness-img">
+                <img class="img-fluid" src="/images/cbd-wellness.png"></img>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
       </Layout>
     )
   }
