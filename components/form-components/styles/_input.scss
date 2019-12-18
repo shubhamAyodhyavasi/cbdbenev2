@@ -22,3 +22,7 @@
         }
     }
 }
+// override ant design
+.has-error .ant-input:focus{
+    box-shadow: none;
+}
