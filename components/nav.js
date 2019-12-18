@@ -110,7 +110,7 @@ const Nav = ({
           }
         </li>)}
       </ul>
-      <Drawer onClose={hideCartBar} title="Cart" visible={isCartOpen} >
+      <Drawer onClose={hideCartBar} versions={["cart"]} title="Cart" visible={isCartOpen} >
         <CartDrawer />
       </Drawer>
       <Drawer onClose={toggleRegBar} title={

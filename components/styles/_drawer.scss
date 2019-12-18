@@ -9,6 +9,21 @@
         padding-left: 40px;
         padding-right: 40px;
     }
+
+    &--cart{
+        .ant-drawer{
+            &-content, &-wrapper-body, &-body{
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+            }
+        }
+        .c-cart-drawer{
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+    }
 }
 .c-drawer-title{
     &__logo{

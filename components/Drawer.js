@@ -1,6 +1,7 @@
 import { Drawer as AntDrawer, Icon } from 'antd'
 import Heading from './Heading'
 import Logo from './Logo'
+import classNames from 'classnames'
 
 class Drawer extends React.Component {
     constructor({ props }) {
@@ -19,11 +20,19 @@ class Drawer extends React.Component {
             width
         } = this.state
         const {
-            onClose, visible, title, children
+            onClose, visible, title, children, versions, parentClass
         } = this.props
+        
+        const componentClass = `c-drawer`
+        const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
+        const parent = `${parentClass}__${componentClass.replace("c-", "")}`
+        const className = classNames(componentClass, {
+            [versionClass]: versions,
+            [parent]: parentClass,
+        })
         return (
             <AntDrawer
-                className="c-drawer"
+                className={className}
                 placement="right"
                 closable={false}
                 onClose={onClose}
@@ -53,5 +62,7 @@ const DrawerTitle = ({ onClose, title }) => (
         </div>
     </div>
 )
-
+Drawer.defaultProps = {
+    versions: []
+}
 export default Drawer
