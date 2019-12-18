@@ -21,9 +21,11 @@
     &__go-back-wrapper{
         color: $brand-color-1;
         cursor: pointer;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     &__back{
-        font-size: 20px;
+        font-size: 25px;
         color: $brand-color-1;
     }
 }
