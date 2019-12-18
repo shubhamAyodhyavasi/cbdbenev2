@@ -9,6 +9,12 @@ import msgStrings from '../../constants/msgStrings';
 import { hideHasLogin, toggleRegBar } from '../../redux/actions/drawers'
 import { setUser } from '../../redux/actions/user'
 import regex from '../../services/helpers/regex';
+import reactComponentDebounce from 'react-component-debounce';
+
+const DebounceInput = reactComponentDebounce({
+    valuePropName: 'value',
+    triggerMs: 1000,
+  })(Input);
 
 class LoginForm extends React.Component{
     constructor(){
@@ -98,22 +104,24 @@ class LoginForm extends React.Component{
                         {getFieldDecorator('email', {
                             rules: [
                                 { required: true, message: 'Please input your e-mail!' },
+                                {max:40, message:"You can't use more than 40 characters."},
                                 { 
                                     pattern: regex.email, 
                                     message: 'Please enter a valid E-mail!' 
                                 },
                             ],
                         })(
-                            <Input versions={["dark"]} parentClass="c-login" label="E-mail" />
+                            <DebounceInput versions={["dark"]} parentClass="c-login" label="E-mail" />
                         )}
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('password', {
                             rules: [
-                                { required: true, message: 'Please input your password!' }
+                                { required: true, message: 'Please input your password!' },
+                                {max:20, message:"You can't use more than 20 characters."}
                             ],
                         })(
-                            <Input type="password" parentClass="c-login" versions={["dark"]} label="Password" />
+                            <DebounceInput type="password" parentClass="c-login" versions={["dark"]} label="Password" />
                         )}
                     </Form.Item>
                     <div className="c-login__forget">

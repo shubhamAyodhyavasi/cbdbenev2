@@ -26,3 +26,7 @@
 .has-error .ant-input:focus{
     box-shadow: none;
 }
+
+.has-error .ant-input:not([disabled]) {
+    border-color: #f5222d;
+}
