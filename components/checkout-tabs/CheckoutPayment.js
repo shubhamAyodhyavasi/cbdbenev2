@@ -14,7 +14,7 @@ import { searchAddress, getShippingRates, confirmShipment, authorizeCharge, auth
 import { getItemsHeightWidth, filterShippingRates, generateOrderObj } from "../../services/helpers/cart"
 import { getSingleElementByMultipleObject } from "../../services/helpers/misc"
 import msgStrings from "../../constants/msgStrings"
-import Loader from "../loader"
+import Loader from "../Loader"
 import {
     setShippingCharge,
     setShippingType
