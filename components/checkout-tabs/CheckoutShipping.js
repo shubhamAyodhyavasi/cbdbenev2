@@ -14,7 +14,8 @@ import { getItemsHeightWidth, filterShippingRates } from "../../services/helpers
 import { getSingleElementByMultipleObject } from "../../services/helpers/misc"
 import msgStrings from "../../constants/msgStrings"
 import reactComponentDebounce from 'react-component-debounce';
-
+import FetchLoader from '../FetchLoader';
+import FadeIn from 'react-fade-in';
 const DebounceInput = reactComponentDebounce({
     valuePropName: 'value',
     triggerMs: 1000,
@@ -34,6 +35,7 @@ class CheckoutShipping extends React.Component {
       shippingErrMsg: null,
       shippingRates: [],
       shippingSendData: null,
+      dataFetched: false
     }
   }
   componentDidMount() {
@@ -53,6 +55,7 @@ class CheckoutShipping extends React.Component {
         console.log({ res })
 
         if (res.data.status) {
+          this.setState({dataFetched:true})
           const rates = res.data.data.rates
           const errMessages = res.data.data.messages
           const breakData = getSingleElementByMultipleObject(
@@ -204,6 +207,7 @@ class CheckoutShipping extends React.Component {
     const { getFieldDecorator } = form
     return (
       <div className={componentClass}>
+        
         <Form onSubmit={this.onSubmit} >
           <TitleList versions={["sm-border"]} parentClass={componentClass} title="Contact" >
             <Form.Item>
@@ -240,7 +244,7 @@ class CheckoutShipping extends React.Component {
             </Form.Item>
           </TitleList>
           <TitleList versions={["sm-border"]} parentClass={componentClass} title="Shipping Method" >
-            <Form.Item>
+            {this.state.dataFetched? <FadeIn  ><Form.Item>
               {shippingRates.length > 0 && getFieldDecorator('shippingMethod', {
                 initialValue: shippingRates[0]
               })(
@@ -258,7 +262,7 @@ class CheckoutShipping extends React.Component {
                   }
                 </Radio.Group>
               )}
-            </Form.Item>
+            </Form.Item></FadeIn> : <FetchLoader/>}
           </TitleList>
           <TitleList versions={["sm-border"]} parentClass={componentClass}  >
             <Button parentClass="c-checkout" type="submit" theme="outline" versions={["block"]} >Continue to Shipping</Button>
