@@ -41,6 +41,12 @@
             }
         }
     }
+    &--btm-br-gold{
+        color: $brand-color-1;
+        &:hover{
+            color: $brand-color-1;
+        }
+    }
     &--outline{
         min-width: 150px;
         border: 1px solid $base-color;

@@ -98,6 +98,7 @@ class Home extends React.Component {
       <Layout title="Home" >
         <Banner
           image="/images/bundle.jpg"
+          mobileImage="/images/home-banner-mobile.png"
           heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
           content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
         >
@@ -147,12 +148,14 @@ class Home extends React.Component {
           </div>
           <div class="wellness-wrapper">
             <div class="wellness-wrapper__img">
-              <img class="wellness-wrapper__img--img" src="/images/consult-image.jpg" />
+              <img class="wellness-wrapper__img--img img-fluid" src="/images/consult-image.jpg" />
             </div>          
             <div class="wellness-wrapper__desp">
               <p class="wellness-wrapper__desp--text">Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.</p>
               <div class="wellness-wrapper__btn">
-                <a class="c-btn c-btn--btm-br m-40 gold " href="#">READ MORE</a>
+                <div className="mt-4 mb-4">
+                  <Button parentClass="c-home" versions={["btm-br-gold"]} theme={['btm-br']} >READ MORE</Button>
+                </div>
               </div>
               <div class="willness-img">
                 <img class="img-fluid" src="/images/cbd-wellness.png"></img>

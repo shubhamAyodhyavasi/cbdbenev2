@@ -3,17 +3,31 @@
     min-height: -webkit-fill-available;
     min-height: 100vh;
     display: flex;
-    align-items: center;
     position: relative;
     color: $brand-color-1;
     text-align: right;
     // margin-top: -$header-height;
+    @include bp-md{
+        align-items: center;
+    }
     &__bg{
         @include full-abs;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: -2;
+        z-index: 1;
+        &--desktop{
+            display: none;
+            @include bp-md{
+                display: block;
+            }
+        }
+        &--mobile{
+            display: block;
+            @include bp-md{
+                display: none;
+            }
+        }
     }
     &__overlay{
         position: absolute;
@@ -30,11 +44,23 @@
         padding-top:140px;
         width: 500px;
         max-width: 100%;
+        position: relative;
+        z-index: 3;
+        @include bpm-md{
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            .c-home{
+                &__btn{
+                    margin-top: auto;
+                }
+            }
+        }
     }
     &__heading{
         color: $brand-color-1;
         font-size: 38px;
-        @media (min-width: 992px) {
+        @include bp-md{
             font-size: 64px;
         }
     }

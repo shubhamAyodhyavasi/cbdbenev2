@@ -341,6 +341,8 @@ class CheckoutInfo extends React.Component {
                                                 <Input {...getInputProps({
                                                     placeholder: 'Search Places ...',
                                                     className: 'location-search-input',
+                                                    
+                                                
                                                 })} parentClass="c-address-form" label="Search Places ..." />
                                                 <div className="autocomplete-dropdown-container">
                                                     {loading && <div>Loading...</div>}
@@ -348,6 +350,7 @@ class CheckoutInfo extends React.Component {
                                                         const className = suggestion.active
                                                             ? 'suggestion-item--active'
                                                             : 'suggestion-item';
+
                                                         // inline style for demonstration purpose
                                                         const style = suggestion.active
                                                             ? { backgroundColor: '#fafafa', cursor: 'pointer' }
@@ -377,6 +380,12 @@ class CheckoutInfo extends React.Component {
                                                 <DebounceInput
                                                     onChange={(key,value) => {
                                                         const city = key
+                                                        let container = document.getElementsByClassName("c-input c-input--default c-address-form__input");
+                                                        //  let input = container.getElementsByTagName('input')
+                                                        // container[3].value=""
+                                                         console.log({"ddd":container[3].firstChild.value })
+                                                         container[3].firstChild.value = ""
+                                                        
                                                         this.changeAddress({ ...address, city }, "address")
                                                     }}
                                                     parentClass="c-address-form"

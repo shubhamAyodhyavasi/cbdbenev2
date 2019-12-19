@@ -4,11 +4,12 @@
 .c-product-info{
     padding: 220px 40px 100px;
     // margin-top: -$header-height;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    @include bp-md{
+        min-height: 100vh;
+    }
     &__image-col{
         display: flex;
         flex-direction: column;

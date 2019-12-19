@@ -15,7 +15,7 @@ import Login from './popups/Login';
 import { Menu, Dropdown, Icon, Collapse } from 'antd';
 const NavMobile = ({
   parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
-  toggleRegBar, isRegOpen, hasLogin, user, unsetUser
+  toggleRegBar, isRegOpen, hasLogin, user, unsetUser, onlyCart
 }) => {
   const [isOpen, setOpen] = useState(false)
   // const [isCartOpen, setIsCartOpen] = useState(false)
@@ -33,6 +33,20 @@ const NavMobile = ({
     if (action === "logout") {
       unsetUser()
     }
+  }
+  if(onlyCart){
+    return <div className={classNames("c-nav__icon-menu-wrapper c-nav__icon-menu-wrapper--mobile", {
+      [`${parent}__nav`]: parent,
+    })}>{
+        items.map(el => (
+        <span onClick={(e) => {
+          onClick(e, el.action)
+        }} className="c-nav__icon c-nav__icon--mobile">
+          {el.label}
+          {el.icon}
+        </span>
+      ))}
+    </div>
   }
   return (
     <nav className={classNames("c-nav c-nav--mobile", {

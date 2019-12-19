@@ -2,10 +2,12 @@
     &__container{
         padding: 40px;
         background-color: $light-color-2;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @include bp-md{
+            min-height: 100vh;
+        }
         @include bp-lg{
             padding: 100px 70px;
         }

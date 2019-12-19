@@ -4,7 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const Banner = ({
         image, heading, content, imgAlt, children, image2x, bottomLogo,
-        versions, parentClass, extraButton,
+        versions, parentClass, extraButton, mobileImage
     }) => {
     const componentClass = "c-banner"
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
@@ -16,17 +16,22 @@ const Banner = ({
     return (
         <div className={className}>
             <div className="c-banner__overlay" />
-            {image2x && <LazyLoadImage effect="opacity"  className="c-banner__bg" srcSet={`${image2x} 2x, ${image || image2x} 1x`} src={image} alt={imgAlt ? imgAlt : "banner"}/>}
-            {!image2x && <LazyLoadImage effect="opacity"  className="c-banner__bg" src={image} alt={imgAlt ? imgAlt : "banner"}/>}
+            {image2x && <LazyLoadImage effect="opacity" className={classNames("c-banner__bg", {
+                "c-banner__bg--desktop": mobileImage
+            })} srcSet={`${image2x} 2x, ${image || image2x} 1x`} src={image} alt={imgAlt ? imgAlt : "banner"}/>}
+            {!image2x && <LazyLoadImage effect="opacity" className={classNames("c-banner__bg", {
+                "c-banner__bg--desktop": mobileImage
+            })} src={image} alt={imgAlt ? imgAlt : "banner"}/>}
+            {mobileImage && <LazyLoadImage effect="opacity" className="c-banner__bg c-banner__bg--mobile" src={mobileImage} alt={imgAlt ? imgAlt : "banner"}/>}
             <div className="c-banner__content">
                 {heading && <h2 className="c-banner__heading">{heading}</h2>}
                 {content && <p className="c-banner__text">{content}</p>}
                 {children}
                 {bottomLogo && <Logo parentClass={componentClass} />}
             </div>
-            <div className="c-banner__extra-btn-wrapper">
+            {extraButton && <div className="c-banner__extra-btn-wrapper">
                 {extraButton}
-            </div>
+            </div>}
         </div>
     )
 }

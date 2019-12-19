@@ -1,6 +1,8 @@
 .c-checkout-layout{
-    min-height: 100vh;
     display: flex;
+    @include bp-md{
+        min-height: 100vh;
+    }
     > * {
         width: 100%;
     }
