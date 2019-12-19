@@ -127,12 +127,28 @@ const Checkout  = ({
     console.log({
         isLoading
     })
+
+    let checkoutClass = "";
+    let loaderClass = "c-hidden";
+    if(isLoading){
+      
+          checkoutClass = "c-hidden"
+          loaderClass = ""
+       }
+    
+   console.log({loaderClass})
+
     return (
-        <CheckoutLayout>
+        <div className="loaderClass">
+        
+        <Loader hideThis={loaderClass}/>
+       <div className={checkoutClass}>
+
+         <CheckoutLayout>
             <div className="c-checkout">
-            {isLoading && <Loader />}
+            
                 
-            {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script> */}
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
                 <Heading parentClass="c-checkout" versions={["default", "upper"]}>Checkout</Heading>
                 <div className="c-checkout__nav-wrapper">
                     <Steps 
@@ -178,8 +194,8 @@ const Checkout  = ({
                 {/* <TitleList parentClass="c-checkout" versions={["sm-border"]} >
                     <div className="col-12">
                         <Button parentClass="c-checkout" theme="outline" versions={["block"]} >Continue to Shipping</Button>
-                    </div>
-                </TitleList> */}
+                        </div>
+                    </TitleList> */}
             </div>
             <Modal 
                 
@@ -197,6 +213,9 @@ const Checkout  = ({
                 Order is Successfully Places
             </Modal>
         </CheckoutLayout>
+        
+        </div>
+</div>
     )
 }
 
