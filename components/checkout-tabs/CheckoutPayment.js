@@ -225,6 +225,7 @@ class CheckoutPayment extends React.Component {
                 const resJson = res.data
                 if (resJson.status) {
                     this.props.setLoading(false)
+                    window.location.href = "/";
                     this.setState(
                         {
                             modalData: "orderPlacedSuccessfully",

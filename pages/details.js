@@ -3,7 +3,7 @@ import UserDetails from '../components/consult-tabs/UserDetails';
 import PersonalDetails from '../components/consult-tabs/PersonalDetails';
 import Success from '../components/consult-tabs/Success';
 import Layout from '../components/Layouts/Layout';
-import Login from '../components/popups/Login';
+
 import Scheduling from "../components/consult-tabs/Scheduling";
 import IntakeDetails from "../components/consult-tabs/intakeDetails"
 import { Tabs } from 'antd';
@@ -56,7 +56,7 @@ class MainForm extends Component {
 				<Tabs className="c-consultTabs" activeKey={step.toString()} defaultActiveKey={step} onChange={callback}>
 					<TabPane tab="Login" key="1">
 						<div className="c-privacy__page-title" >
-            <Login consult={true}/>
+            
 						<UserDetails nextStep={this.nextStep} handleChange={this.handleChange} values={values} />
             
             </div>

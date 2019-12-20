@@ -75,6 +75,7 @@ const Checkout  = ({
         }
         const allAddresses  = props.address.address || []
         const idTime        = new Date().getTime();
+        console.log({user})
         const userId        = user._id
         const newAddressA   = {
             ...addressA,
