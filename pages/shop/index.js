@@ -9,6 +9,7 @@ import ProductCard from "../../components/ProductCard";
 import { getProductImage, getProductTitle, getProductShortDesc, getBasicPrice, addSlugToProduct, getVisibleProducts } from "../../services/helpers/product";
 import projectSettings from "../../constants/projectSettings";
 import SearchBox from "../../components/form-components/SearchBox";
+import fetch from "isomorphic-unfetch";
 const Shop = ({ productList, ...props }) => {
     
     const [searchValue, setSearchValue] = useState("")
