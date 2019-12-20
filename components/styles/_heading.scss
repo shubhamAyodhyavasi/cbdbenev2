@@ -19,6 +19,9 @@
             font-size: 48px;
         }
     }
+    &--transform{
+        text-transform:uppercase;
+    }
 }
 .c-sub-heading{
     font-family: $sub-font;
