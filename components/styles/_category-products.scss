@@ -1,10 +1,12 @@
 .c-category-products{
     padding: 40px;
     padding-bottom: 0; 
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @include bp-md{
+        min-height: 100vh;
+    }
     &__list{
         display: flex;
         // flex-wrap: wrap;
@@ -41,9 +43,11 @@
     }
     &__heading{
         margin-bottom: 40px;
-        flex: 1 0 100%;
         @include bp-lg{
             flex: 1 0 50%
+        }
+        @include bp-md{
+            flex: 1 0 100%;
         }
     }
     &__sub-heading{

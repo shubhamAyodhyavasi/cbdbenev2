@@ -6,6 +6,7 @@ import regex from "../../services/helpers/regex"
 import Input from '../form-components/Input'
 import Checkbox from '../form-components/Checkbox';
 import { showRegBar } from '../../redux/actions/drawers'
+import { setLoading } from '../../redux/actions/loading'
 import validator from "../../services/helpers/validator";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import projectSettings from '../../constants/projectSettings';
@@ -13,6 +14,7 @@ import { searchAddress, getShippingRates, confirmShipment, authorizeCharge, auth
 import { getItemsHeightWidth, filterShippingRates, generateOrderObj } from "../../services/helpers/cart"
 import { getSingleElementByMultipleObject } from "../../services/helpers/misc"
 import msgStrings from "../../constants/msgStrings"
+import Loader from "../Loader"
 import {
     setShippingCharge,
     setShippingType
@@ -43,6 +45,7 @@ class CheckoutPayment extends React.Component {
             shippingDetail: props.shippingDetail,
             isCard: true,
             collapseKey: ["card"],
+            
 
         }
         this.generateOrder = this.generateOrder.bind(this)
@@ -215,18 +218,21 @@ class CheckoutPayment extends React.Component {
         });
     };
     finalOrderSubmit = orderApi => {
+        // this.setState({loading: false})
+        // console.log({"loading": this.state.loading})
         orderApi
             .then(res => {
                 const resJson = res.data
                 if (resJson.status) {
-                    alert("success")
+                    this.props.setLoading(false)
                     this.setState(
                         {
                             modalData: "orderPlacedSuccessfully",
                             modalTitle: "orderPlacedModalTitle",
                             modal: true,
                             clearCart: true,
-                            SpinnerToggle: false
+                            SpinnerToggle: false,
+                            // loading: false
                         },
                         () => {
                             // this.modalDismiss();
@@ -248,6 +254,7 @@ class CheckoutPayment extends React.Component {
                     );
                 } else {
                     console.log(resJson);
+                    alert("Server Error")
                     this.onFailed(resJson)
                     //   this.setState({
                     //     modalData: someThingWrong,
@@ -256,6 +263,7 @@ class CheckoutPayment extends React.Component {
                     //     SpinnerToggle: false
                     //   });
                 }
+                console.log({"loading": this.state.loading})
             })
             .catch(err => {
                 console.log({
@@ -271,6 +279,7 @@ class CheckoutPayment extends React.Component {
             });
     };
     onSubmit = e => {
+       
         e.preventDefault()
         const {
             onSubmit, shippingSendData, address
@@ -283,6 +292,10 @@ class CheckoutPayment extends React.Component {
         })
         this.props.form.validateFields((err, values) => {
             if (!err) {
+                
+                // this.state = {loading: true}
+                this.props.setLoading(true)
+                console.log({"Sssssssssss": this.state.loading})
                 console.log({
                     values, 
                     shippingSendData
@@ -303,6 +316,9 @@ class CheckoutPayment extends React.Component {
                                     console.log({
                                         isCard, order
                                     })
+                                    // this.setState({loading: false})
+                                    // this.props.setLoading(false)
+                                    console.log({"Sssssssssss-inside": this.state.loading})
                                     if(values.paymentProfile){
                                         this.onProfilePay(order, values)
                                     }else if(isCard){
@@ -343,7 +359,7 @@ class CheckoutPayment extends React.Component {
             cardname,
             expiry: expDate
         } = values
-        const cardnumber = cardNumber.replace(/-/g, "")
+        const cardnumber = cardNumber.replace(/ /g, "")
         const expiry = "20" + expDate
             .split("/")
             .reverse()
@@ -631,11 +647,12 @@ class CheckoutPayment extends React.Component {
         const isLogin = user._id ? true : false
         console.log({user, cards})
         const {
-            email, address, shippingDetail, collapseKey, isCard
+            email, address, shippingDetail, collapseKey, isCard,
         } = this.state
         const { getFieldDecorator, getFieldValue } = form
         const profileValue = getFieldValue("paymentProfile")
         return (
+           
             <div className={componentClass}>
                 <Form onSubmit={this.onSubmit} >
                     <TitleList versions={["sm-border"]} parentClass={componentClass} title="Contact" >
@@ -886,10 +903,12 @@ const mapStateToProps = (state) => ({
     user: state.user,
     cart: state.cart,
     cards: state.cards.cards,
+
 })
 const mapActionToProps = {
     addCardAuthorize,
-    getCards
+    getCards,
+    setLoading
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Form.create({ name: "CheckoutPayment" })(CheckoutPayment))

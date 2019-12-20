@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+// import logo from '../public/images/load.gif'
 class Loader extends Component {
     render() {
         return (
             <div className='c-loader'>
-                <div className="c-loader__inner">
-
+                <div style={{backgroundImage: "url('/images/load.gif')", height:"100vh"}} className={this.props.hideThis}>
+                
+                {/* <img src={logo} alt="loading..." /> */}
                 </div>
-                <style jsx>{`
+                {/* <style jsx>{`
                     .c-loader{
                         display: flex;
                         position: fixed;
@@ -27,7 +28,7 @@ class Loader extends Component {
                         height: 50px;
                         border-radius: 50%;
                     }
-                `}</style>
+                `}</style> */}
             </div>
         )
     }

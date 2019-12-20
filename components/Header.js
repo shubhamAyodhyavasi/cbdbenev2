@@ -9,6 +9,7 @@ import mainMenus from '../constants/mainMenus'
 import rightMenus from "../constants/rightMenus";
 import NavMobile from './navMobile';
 import mobileMenus from '../constants/mobileMenus';
+import mobileMenusRight from '../constants/mobileMenusRight';
 
 
 
@@ -64,6 +65,7 @@ const Header = ({bg, theme, versions, fixed}) => {
                         <Nav parent="c-header" items={mainMenus} />
                         <Logo />
                         <Nav parent="c-header" isRight={true} items={rightMenus} />
+                        <NavMobile parent="c-header" items={mobileMenusRight} />    
                 </header>
             </div>
       
@@ -85,8 +87,9 @@ const Header = ({bg, theme, versions, fixed}) => {
                     })}> 
                             <NavMobile parent="c-header" items={mobileMenus} />
                             <Nav parent="c-header" items={mainMenus} />
-                            <Logo />
+                            <Logo parent="c-header" />
                             <Nav parent="c-header" isRight={true} items={rightMenus} />
+                            <NavMobile parent="c-header" onlyCart={true} items={mobileMenusRight} />
                     </header>
                 </div>
             </Affix>
