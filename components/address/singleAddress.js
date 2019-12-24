@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Router from 'next/router'
 import { Card, CardBody, Button } from "reactstrap";
 import { ic_done } from "react-icons-kit/md/";
 
@@ -35,7 +36,7 @@ class SingleAddress extends Component {
       address: { id }
     } = this.props;
 
-    history.push(`/${countryCode}/edit-address/${id}`);
+    Router.push(`/account/edit-address/${id}`);
   };
   render() {
     const { address } = this.props;

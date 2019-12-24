@@ -1,30 +1,18 @@
 import React, { Component } from "react";
+import Router, { withRouter } from 'next/router'
 import { connect } from "react-redux";
-import Router from 'next/router'
-import Loader from '../../components/Loader'
-import { countryCodeList } from "../../services/extra/allCountryCode";
+import Loader from '../../../components/Loader'
+import MyAccountSidebar from "../../../components/MyAccountSidebar";
+// import { countryCodeList } from "../allCountryCode";
 // import "react-phone-input-2/dist/style.css";
-import { AddressForm } from "../../components/address/form";
-import Layout from '../../components/Layouts/Layout'
-import classNames from "classnames";
-
-import { addAddress } from "../../redux/actions/address";
-import { fieldValidation } from "../../services/extra/validations";
+import { AddressForm } from "../../../components/address/form";
+import regexReplace from "../../../services/helpers/regexReplace";
+import { editAddress, getAddress } from "../../../redux/actions/address";
+import { fieldValidation } from "../../../services/extra/validations";
 import { Card } from "reactstrap";
-import { Modal } from "../../components/modal";
-import regexReplace from "../../services/helpers/regexReplace";
-
-import MyAccountSidebar from "../../components/MyAccountSidebar";
-import msgStrings from "../../constants/msgStrings";
-import projectSettings from "../../constants/projectSettings";
-// import {
-//   // Input,
-//   Select
-// } from "../form";
-import BasicFunction from "../../services/extra/basicFunction";
-const basicFunction = new BasicFunction();
-const {
-
+import classNames from "classnames";
+import { Modal } from "../../../components/modal";
+import {
   firstNameMissingErrMsg,
   lastNameMissingErrMsg,
   emailMissingErrMsg,
@@ -33,24 +21,22 @@ const {
   phoneNotValidErrMsg,
   zipValidErrMsg,
   zipMissingErrMsg,
-  // orderAdded,
-  // orderAddedModalTitle,
+  // addressAddedMsg,
   addressAdded,
   addressAddedModalTitle
   // someThingWrongTryAgain
-} = msgStrings
-const {
-  enableCountry
-} = projectSettings
-class AddAddressForm extends Component {
+} from "../../../constants/constantMessage";
+import Layout from '../../../components/Layouts/Layout'
+// import {
+//   // Input,
+//   Select
+// } from "../form";
+// import BasicFunction from "../../services/extra/basicFunction";
+// const basicFunction = new BasicFunction();
+class EditAddress extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedCountry: "",
-      selectedCountry_errMsg: "",
-      selectedRegion: null,
-      selectedCity: "",
-      selectedCity_errMsg: "",
       selectedShippingCountry: "",
       selectedShippingCountry_errMsg: "",
       selectedShippingCity: "",
@@ -72,27 +58,28 @@ class AddAddressForm extends Component {
       shipping_address_name_01: "",
       shipping_address_name_01_err: null,
       shipping_address_name_01_errMsg: "",
-      shipping_address_name_02: "",
-      shipping_address_name_02_err: null,
-      shipping_address_name_02_errMsg: "",
       shipping_address_town: "",
       shipping_address_town_err: null,
       shipping_address_town_errMsg: "",
       shipping_address_type: "",
       shipping_address_typeErr: null,
       shipping__address_typeErrMsg: "",
+      shipping_zip_code: "",
+      id: "",
+      shipping_zip_codeErr: null,
+      shipping_zip_codeErrMsg: "",
       modal: false,
       modalData: "",
       addressData: {
         country: false,
         state: false,
         city: false,
-        address: false,
-        zip: false
+        address: false
       },
       isSubmitted: false,
       isModal: false,
-      countryUSAError: null
+      isFound: false,
+      isFetchedCount: 0
     };
     this.validateAddressFields = this.validateAddressFields.bind(this);
     this.onAddressChange = this.onAddressChange.bind(this);
@@ -103,17 +90,93 @@ class AddAddressForm extends Component {
   componentDidMount() {
     const { user, history, location } = this.props;
     // if (!user._id) {
-    //   // history.push("/" + location.countryCode + "/login");
+    //   history.push("/" + location.countryCode + "/login");
     // }
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-    const countryDialCode = basicFunction.getDialCode(
-      countryCodeList,
-      location.countryCode
-    );
-    this.setState({
-      shipping_phone_name: countryDialCode
-    });
+    // const countryDialCode = basicFunction.getDialCode(
+    //   countryCodeList,
+    //   location.countryCode
+    // );
+    this.fillAddress();
+    // this.setState({
+    //   shipping_phone_name: countryDialCode
+    // });
   }
+  componentDidUpdate(prevProps){
+    if(prevProps.user !== this.props.user && this.props.user._id){
+        this.fillAddress();
+    }
+  }
+  fillAddress = () => {
+    if (this.props.address.address) {
+      const id = this.props.router.query.id;
+      const currentAddress = this.props.address.address.find(
+        el => el.id.toString() === id
+      );
+      if (currentAddress) {
+        this.setState(
+          {
+            isFound: true,
+            selectedShippingCity: currentAddress.state || "",
+            shipping_first_name: currentAddress.firstname || "",
+            shipping_last_name: currentAddress.lastname || "",
+            shipping_email_name: currentAddress.email || "",
+            shipping_phone_name: currentAddress.phone || "",
+            shipping_address_name_01: currentAddress.address || "",
+            selectedShippingCountry: currentAddress.country || "",
+            shipping_address_town: currentAddress.city || "",
+            shipping_address_type: currentAddress.addressType || "",
+            shipping_zip_code: currentAddress.zip || "",
+            id: currentAddress.id,
+            addressData: {
+              country: currentAddress.country.value || currentAddress.country,
+              state: currentAddress.state.value || currentAddress.state,
+              city: currentAddress.city,
+              address: currentAddress.address
+            }
+          },
+          () => {
+            const {
+              shipping_address_name_01,
+              selectedShippingCountry,
+              selectedShippingCity,
+              shipping_address_town
+            } = this.state;
+            if (
+              shipping_address_name_01 &&
+              shipping_address_name_01.length > 0
+            ) {
+              this.setState({
+                shipping_address_name_01Err: false
+              });
+            }
+            if (selectedShippingCountry && selectedShippingCountry.length > 0) {
+              this.setState({
+                selectedShippingCountryErr: false
+              });
+            }
+            if (selectedShippingCity && selectedShippingCity.length > 0) {
+              this.setState({
+                selectedShippingCityErr: false
+              });
+            }
+            if (shipping_address_town && shipping_address_town.length > 0) {
+              this.setState({
+                shipping_address_townErr: false
+              });
+            }
+          }
+        );
+      }
+      console.log({
+        id,
+        currentAddress,
+        props: this.props
+      });
+    } else {
+      this.props.getAddress(this.props.user._id);
+    }
+  };
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.address);
     if (this.state.isSubmitted) {
@@ -123,10 +186,20 @@ class AddAddressForm extends Component {
             isModal: true
           },
           () => {
-            this.dismissModal();
-            // this.modalTimeout = setTimeout(() => {
-            //   this.dismissModal();
-            // }, 3000);
+            this.modalTimeout = setTimeout(() => {
+              this.dismissModal();
+            }, 3000);
+          }
+        );
+      }
+    } else {
+      if (this.state.isFetchedCount < 10 && !this.state.isFound) {
+        this.setState(
+          prevState => ({
+            isFetchedCount: prevState.isFetchedCount + 1
+          }),
+          () => {
+            this.fillAddress();
           }
         );
       }
@@ -143,6 +216,7 @@ class AddAddressForm extends Component {
         isModal: false
       },
       () => {
+        // history.push(`/${location.countryCode}/my-address`);
         Router.push(`/account/address`);
       }
     );
@@ -171,22 +245,18 @@ class AddAddressForm extends Component {
       }
     );
   }
-  validateAddressFields(field, type, isReturn) {
+  validateAddressFields(field, type) {
     const { isError, errorMsg } = fieldValidation(this.state[field], type);
-    console.log({
-      field,
-      type,
-      isError,
-      state: this.state[field]
-    });
     this.setState({
       [`${field}Err`]: isError,
       [`${field}ErrMsg`]: errorMsg
     });
-    if (isReturn) return isError;
   }
   submitRegistration(e) {
     e.preventDefault();
+    console.log({
+      sate: this.state
+    });
     const shippingFields = [
       {
         name: "shipping_first_name",
@@ -214,7 +284,7 @@ class AddAddressForm extends Component {
       },
       {
         name: "shipping_zip_code",
-        type: "required"
+        type: "required, zipcode"
       },
       {
         name: "selectedShippingCountry",
@@ -227,65 +297,71 @@ class AddAddressForm extends Component {
     ];
     // const { sameShipping } = this.state;
 
-    const validate = shippingFields.map(el => {
-      return this.validateAddressFields(el.name, el.type, true);
-      // return null;
+    let validate = [];
+    validate = [...validate, ...shippingFields];
+    validate &&
+      validate.map(el => {
+        this.validateAddressFields(el.name, el.type);
+        return null;
+      });
+
+    const checkAll = validate.map(el => {
+      return this.state[el.name + "Err"];
     });
-    console.log({
-      validate
-    })
-    // const checkAll = validate.map(el => {
-    //   console.log({
-    //     el
-    //   })
-    //   return this.state[el.name + "Err"];
-    // });
-    const flag = validate.some(a => {
+    const flag = checkAll.some(a => {
       return a !== false;
     });
-    console.log({
-      flag
-    });
-    if (!flag) {
-      const { user } = this.props;
-      const {
-        shipping_first_name: firstname,
-        shipping_last_name: lastname,
-        shipping_email_name: email,
-        shipping_zip_code: zip,
-        shipping_phone_name: phone,
-        shipping_address_name_01: address,
-        selectedShippingCountry: country,
-        selectedShippingCity: state,
-        shipping_address_town: city,
-        shipping_address_type: addressType
-      } = this.state;
-      const id = new Date().getTime();
-      const newAddress = {
-        isDefault: false,
-        firstname,
-        lastname,
-        email,
-        zip,
-        phone,
-        address,
-        country,
-        state,
-        city,
-        addressType,
-        id
-      };
-      const oldAddresses = this.props.address.address || [];
-      this.setState({
-        isSubmitted: true
+    setTimeout(() => {
+      const checkAll = validate.map(el => {
+        return this.state[el.name + "Err"];
       });
-      this.props.addAddress(
-        user._id,
-        newAddress,
-        this.props.address,
-        oldAddresses
-      );
-    }
+      const flag = checkAll.some(a => {
+        return a !== false;
+      });
+      if (!flag) {
+        const { user } = this.props;
+        const {
+          shipping_first_name: firstname,
+          shipping_last_name: lastname,
+          shipping_email_name: email,
+          shipping_zip_code: zip,
+          shipping_phone_name: phone,
+          shipping_address_name_01: address,
+          selectedShippingCountry: country,
+          selectedShippingCity: state,
+          shipping_address_town: city,
+          shipping_address_type: addressType,
+          id
+        } = this.state;
+        const currentAddress = this.props.address.address.find(
+          el => el.id.toString() === id.toString()
+        );
+        const newAddress = {
+          isDefault: currentAddress ? currentAddress.isDefault : false,
+          firstname,
+          lastname,
+          email,
+          zip,
+          phone,
+          address,
+          country,
+          state,
+          city,
+          addressType,
+          id
+        };
+        const oldAddresses = this.props.address.address || [];
+        this.setState({
+          isSubmitted: true
+        });
+        this.props.editAddress(
+          user._id,
+          newAddress,
+          this.props.address,
+          oldAddresses
+        );
+      }
+    }, 100);
     return flag;
   }
   onAddressChange(e) {
@@ -304,67 +380,40 @@ class AddAddressForm extends Component {
     );
   }
   shippingaddressautoFill(e) {
-    const { other, country, state, city, zip } = e;
-    console.log({
-      e
-    })
-    this.setState(prevState => {
-      return {
-        shipping_address_name_01: other ? other : (prevState.shipping_address_name_01 || ""),
-        selectedShippingCountry: country ? country : (prevState.selectedShippingCountry || ""),
-        selectedShippingCity: state ? state : (prevState.selectedShippingCity || ""),
-        shipping_address_town: city ? city : (prevState.shipping_address_town || ""),
-        shipping_zip_code: zip ? zip : (prevState.shipping_zip_code || "")
+    const { other, country, state, city } = e;
+    this.setState(
+      {
+        shipping_address_name_01: other,
+        selectedShippingCountry: country,
+        selectedShippingCity: state,
+        shipping_address_town: city
+      },
+      () => {
+        if (other && other.length > 0) {
+          this.setState({
+            shipping_address_name_01Err: false
+          });
+        }
+        if (country && country.length > 0) {
+          this.setState({
+            selectedShippingCountryErr: false
+          });
+        }
+        if (state && state.length > 0) {
+          this.setState({
+            selectedShippingCityErr: false
+          });
+        }
+        if (city && city.length > 0) {
+          this.setState({
+            shipping_address_townErr: false
+          });
+        }
       }
-    });
-    if (other && other.length > 0) {
-      this.setState({
-        shipping_address_name_01Err: false
-      });
-    }
-    if (country && country.length > 0) {
-      if (enableCountry.includes(country.trim()) || true) {
-        this.setState({
-          // selectedCountryErr: false,
-          countryUSAError: false
-        });
-      } else {
-        this.setState({
-          // selectedCountryErr: false,
-          countryUSAError: true
-        });
-      }
-      this.setState({
-        selectedShippingCountryErr: false
-      });
-    }
-    if (state && state.length > 0) {
-      this.setState({
-        selectedShippingCityErr: false
-      });
-    }
-    if (city && city.length > 0) {
-      this.setState({
-        shipping_address_townErr: false
-      });
-    }
-
-    if (zip && zip.length > 0) {
-      this.setState({
-        shipping_zip_codeErr: false
-      });
-    } else {
-      this.setState({
-        shipping_zip_codeErr: true
-      });
-    }
+    );
   }
   render() {
     const {
-      // modal,
-      // modalData,
-      // selectedCountry,
-      // selectedShippingCountry,
       shipping_first_name,
       shipping_first_nameErr,
       shipping_first_nameErrMsg,
@@ -388,13 +437,11 @@ class AddAddressForm extends Component {
       // shipping_address_type,
       // shipping_address_typeErr,
       // shipping__address_typeErrMsg,
-      isModal,
-      countryUSAError
+      isModal
     } = this.state;
-
     const { className } = this.props;
     return (
-      <Layout>
+        <Layout>
       <div
         className={classNames("", {
           [className]: className
@@ -462,8 +509,7 @@ class AddAddressForm extends Component {
                         shipping_address_name_01Err,
                         shipping_address_townErr,
                         selectedShippingCountryErr,
-                        selectedShippingCityErr,
-                        countryUSAError
+                        selectedShippingCityErr
                       ]}
                     />
                     {/* <h4>Additional Address Details</h4>
@@ -481,12 +527,12 @@ class AddAddressForm extends Component {
                       dataValidate={[]}
                       selectOptionValue={[
                         {
-                          key: "Home (7am to 9pm delivery)",
-                          value: "Home (7am to 9pm delivery)"
+                          key: "Home (7 am to 9 pm delivery)",
+                          value: "Home (7 am to 9 pm delivery)"
                         },
                         {
-                          key: "Office/Commercial (10 AM - 5 PM delivery)",
-                          value: "Office/Commercial (10 AM - 5 PM delivery)"
+                          key: "Office/Commercial (10 am - 5 pm delivery)",
+                          value: "Office/Commercial (10 am - 5 pm delivery)"
                         }
                       ]}
                       selectPlaceHolder="Select an Address Type"
@@ -508,8 +554,8 @@ class AddAddressForm extends Component {
           </div>
         </div>
         <Modal
-          heading={addressAddedModalTitle}
           isOpen={isModal}
+          heading={addressAddedModalTitle}
           toggle={this.toggle}
         >
           <div className="col-12 text-center">
@@ -517,7 +563,7 @@ class AddAddressForm extends Component {
           </div>
         </Modal>
       </div>
-      </Layout>
+    </Layout>
     );
   }
 }
@@ -529,5 +575,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { addAddress }
-)(AddAddressForm);
+  { editAddress, getAddress }
+)(withRouter(EditAddress));

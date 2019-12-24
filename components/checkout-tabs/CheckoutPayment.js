@@ -579,10 +579,6 @@ class CheckoutPayment extends React.Component {
             profileid: paymentProfile.customerProfileId,
             amount: parseFloat(customAmount.toFixed(2))
         };
-        console.clear()
-        console.log({
-            address
-        })
         authorizeChargeProfile(data)
             .then(res => {
                 console.log({ res });
@@ -900,9 +896,10 @@ class CheckoutPayment extends React.Component {
                                             // }]
                                         })(
                                             <Select>
-                                                <Option value="checking">Checking</Option>
+                                                {projectSettings.accountTypeOpt.map((el, key) => <Option key={key} value={el.value}>{el.label}</Option> )}
+                                                {/* <Option value="checking">Checking</Option>
                                                 <Option value="savings">Savings</Option>
-                                                <Option value="businessChecking">Business Checking</Option>
+                                                <Option value="businessChecking">Business Checking</Option> */}
                                             </Select>
                                         )}
                                     </Form.Item>

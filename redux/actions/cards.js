@@ -1,5 +1,10 @@
 import { SET_CARDS, SET_ERRORS, CLEAR_ERRORS, SET_USER } from "./type";
-import { authorizeAddCard, updateUserDetails, getUserDetails } from "../../services/api";
+import { 
+  authorizeAddCard, 
+  updateUserDetails, 
+  getUserDetails,
+  authorizeDeleteCard
+} from "../../services/api";
 // import {
 //   getSingleUserApi,
 //   addUpdateUserDetails,
@@ -146,6 +151,8 @@ export const addCardAuthorize = data => dispatch => {
   };
   const chooseCardOrBank = (userMetaId, userMetaObj) => {
     const { customerProfile } = userMetaObj;
+    console.clear()
+    console.log({userMetaObj})
     if (customerProfile) {
       if (card) {
         const { cardnumber, cvc, expmonth, expyear } = card;
@@ -172,11 +179,12 @@ export const addCardAuthorize = data => dispatch => {
           expirationDate: `20${expyear}-${expmonth}`,
           cardCode: cvc
         };
+        const userMetaIdId = userMetaId._id ? userMetaId._id : ( typeof userMetaId === "string" && userMetaId ) 
         sendCardDetails(
           {
             creditcard,
-            email: userMetaId + "@cbdbene.com",
-            metaid: userMetaId
+            email: userMetaIdId + "@cbdbene.com",
+            metaid: userMetaIdId
           },
           _id
         );
@@ -184,8 +192,8 @@ export const addCardAuthorize = data => dispatch => {
         sendCardDetails(
           {
             bank,
-            email: userMetaId + "@cbdbene.com",
-            metaid: userMetaId
+            email: userMetaIdId + "@cbdbene.com",
+            metaid: userMetaIdId
           },
           _id
         );
@@ -193,7 +201,7 @@ export const addCardAuthorize = data => dispatch => {
     }
   }
   if (userMetaObj && userMetaId) {
-    chooseCardOrBank(userMetaObj, userMetaId)
+    chooseCardOrBank(userMetaId, userMetaObj, )
   }else if(_id){
     getUserDetails(_id).then(res => {
       console.log({ res });
@@ -202,7 +210,7 @@ export const addCardAuthorize = data => dispatch => {
       } = res.data
       const userMetaId = user._id;
       const userMetaObj = data.user;
-      chooseCardOrBank(userMetaObj, userMetaId)
+      chooseCardOrBank(userMetaId, userMetaObj, )
     })
   }
 };
@@ -214,161 +222,161 @@ const returnCards = res => {
   }
   return {};
 };
-// export const addCard = (
-//   userid,
-//   card,
-//   oldDetail = {},
-//   oldCards = []
-// ) => dispatch => {
-//   console.log({
-//     userid,
-//     card
-//   });
-//   const found = oldCards.find(el => el.id === card.id);
-//   console.log({
-//     found
-//   });
-//   if (found) {
-//     dispatch(editCard(userid, card, oldDetail, oldCards));
-//   } else {
+export const addCard = (
+  userid,
+  card,
+  oldDetail = {},
+  oldCards = []
+) => dispatch => {
+  console.log({
+    userid,
+    card
+  });
+  const found = oldCards.find(el => el.id === card.id);
+  console.log({
+    found
+  });
+  if (found) {
+    dispatch(editCard(userid, card, oldDetail, oldCards));
+  } else {
     
-//     const allCardsPre = oldCards ? [...oldCards, card] : [card]
-//     const defaultCard = allCardsPre.find(el => el.isDefault === true)
-//     const allCards = allCardsPre.map((el, index)=> {
-//       if(index === 0 && !defaultCard)
-//         return ({
-//           ...el,
-//           isDefault: true
-//         })
-//       return el
-//     })
-//     addUpdateUserDetails({
-//       userid,
-//       carddetails: {
-//         ...oldDetail,
-//         cards: allCards
-//       }
-//     })
-//       .then(res => res.json())
-//       .then(res => {
-//         console.log({ res });
-//         const cards = returnCards(res);
-//         dispatch(setCards(cards));
-//       })
-//       .catch(err => {
-//         console.log({ err });
-//       });
-//   }
-// };
-// export const editCard = (
-//   userid,
-//   card,
-//   oldDetail = {},
-//   oldCards = []
-// ) => dispatch => {
-//   const newCard = oldCards.map(el => {
-//     if (el.id === card.id) return card;
+    const allCardsPre = oldCards ? [...oldCards, card] : [card]
+    const defaultCard = allCardsPre.find(el => el.isDefault === true)
+    const allCards = allCardsPre.map((el, index)=> {
+      if(index === 0 && !defaultCard)
+        return ({
+          ...el,
+          isDefault: true
+        })
+      return el
+    })
+    updateUserDetails({
+      userid,
+      carddetails: {
+        ...oldDetail,
+        cards: allCards
+      }
+    })
+      .then(rep => {
+        const res = rep.data
+        console.log({ res });
+        const cards = returnCards(res);
+        dispatch(setCards(cards));
+      })
+      .catch(err => {
+        console.log({ err });
+      });
+  }
+};
+export const editCard = (
+  userid,
+  card,
+  oldDetail = {},
+  oldCards = []
+) => dispatch => {
+  const newCard = oldCards.map(el => {
+    if (el.id === card.id) return card;
 
-//     return el;
-//   });
-//   addUpdateUserDetails({
-//     userid,
-//     carddetails: {
-//       ...oldDetail,
-//       cards: newCard
-//     }
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log({ res });
-//       const cards = returnCards(res);
-//       dispatch(setCards(cards));
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//     });
-// };
-// export const deleteCard = (
-//   userid,
-//   card,
-//   oldDetail = {},
-//   oldCards = []
-// ) => dispatch => {
-//   const newCard = oldCards.filter(
-//     el => el.customerPaymentProfileId !== card.customerPaymentProfileId
-//   );
+    return el;
+  });
+  addUpdateUserDetails({
+    userid,
+    carddetails: {
+      ...oldDetail,
+      cards: newCard
+    }
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log({ res });
+      const cards = returnCards(res);
+      dispatch(setCards(cards));
+    })
+    .catch(err => {
+      console.log({ err });
+    });
+};
+export const deleteCard = (
+  userid,
+  card,
+  oldDetail = {},
+  oldCards = []
+) => dispatch => {
+  const newCard = oldCards.filter(
+    el => el.customerPaymentProfileId !== card.customerPaymentProfileId
+  );
 
-//   deleteCardDetails({
-//     paymentid: card.customerPaymentProfileId,
-//     profileid: card.customerProfileId
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log({
-//         res
-//       });
-//       if (
-//         res &&
-//         res.data &&
-//         res.data.messages &&
-//         res.data.messages.resultCode === "Ok"
-//       ) {
+  authorizeDeleteCard({
+    paymentid: card.customerPaymentProfileId,
+    profileid: card.customerProfileId
+  })
+    .then(rep => {
+      const res = rep.data
+      console.log({
+        res
+      });
+      if (
+        res &&
+        res.data &&
+        res.data.messages &&
+        res.data.messages.resultCode === "Ok"
+      ) {
         
-//         const defaultCard = newCard.find(el => el.isDefault === true)
-//         const allCards = newCard.map((el, index)=> {
-//           if(index === 0 && !defaultCard)
-//             return ({
-//               ...el,
-//               isDefault: true
-//             })
-//           return el
-//         })
-//         addUpdateUserDetails({
-//           userid,
-//           carddetails: {
-//             ...oldDetail,
-//             cards: allCards
-//           }
-//         })
-//           .then(res => res.json())
-//           .then(res => {
-//             console.log({ res });
-//             const cards = returnCards(res);
-//             dispatch(setCards(cards));
-//           })
-//           .catch(err => {
-//             console.log({ err });
-//           });
-//       }
-//     });
-// };
-// export const setDefaultCard = (
-//   userid,
-//   id,
-//   oldDetail = {},
-//   oldCards = []
-// ) => dispatch => {
-//   const newCard = oldCards.map(el => {
-//     return {
-//       ...el,
-//       isDefault: el.customerPaymentProfileId === id
-//     };
-//   });
+        const defaultCard = newCard.find(el => el.isDefault === true)
+        const allCards = newCard.map((el, index)=> {
+          if(index === 0 && !defaultCard)
+            return ({
+              ...el,
+              isDefault: true
+            })
+          return el
+        })
+        updateUserDetails({
+          userid,
+          carddetails: {
+            ...oldDetail,
+            cards: allCards
+          }
+        })
+          .then(rep => {
+            const res = rep.data
+            console.log({ res });
+            const cards = returnCards(res);
+            dispatch(setCards(cards));
+          })
+          .catch(err => {
+            console.log({ err });
+          });
+      }
+    });
+};
+export const setDefaultCard = (
+  userid,
+  id,
+  oldDetail = {},
+  oldCards = []
+) => dispatch => {
+  const newCard = oldCards.map(el => {
+    return {
+      ...el,
+      isDefault: el.customerPaymentProfileId === id
+    };
+  });
 
-//   addUpdateUserDetails({
-//     userid,
-//     carddetails: {
-//       ...oldDetail,
-//       cards: newCard
-//     }
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log({ res });
-//       const cards = returnCards(res);
-//       dispatch(setCards(cards));
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//     });
-// };
+  updateUserDetails({
+    userid,
+    carddetails: {
+      ...oldDetail,
+      cards: newCard
+    }
+  })
+    .then(rep => {
+      const res = rep.data
+      console.log({ res });
+      const cards = returnCards(res);
+      dispatch(setCards(cards));
+    })
+    .catch(err => {
+      console.log({ err });
+    });
+};
