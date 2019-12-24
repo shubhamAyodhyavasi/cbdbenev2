@@ -40,6 +40,12 @@ class ListAddress extends Component {
     }
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
+  componentDidUpdate(prevProps){
+    if(prevProps.user !== this.props.user && this.props.user._id){
+      this.getuserDetails(this.props.user._id);
+      this.props.getAddress(this.props.user._id);
+    }
+  }
   updateChckBoxafteruserUpdate() {
     const { user } = this.props;
     this.getuserDetails(user._id);
@@ -98,7 +104,7 @@ class ListAddress extends Component {
                           <div className="h-100 d-flex flex-column justify-content-center">
                             <Link
                               href={
-                                "/add-address"
+                                "/account/add-address"
                               }
                             >
                               <center>

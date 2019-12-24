@@ -38,9 +38,6 @@ export const addAddress = (
   oldDetail = {},
   oldAddress = []
 ) => dispatch => {
-    console.log({
-        userid, address
-    })
   if (address.constructor === Array) {
     const addressArr = address.filter(el => el);
     const addresses1 = [...oldAddress, ...addressArr].map(elx => elx)
@@ -123,10 +120,9 @@ export const deleteAddress = (
       address: newAddress
     }
   })
-    .then(res => res.json())
     .then(res => {
       console.log({ res });
-      const address = returnAddress(res);
+      const address = returnAddress(res.data);
       dispatch(setAddress(address));
     })
     .catch(err => {
@@ -153,41 +149,39 @@ export const setDefaultAddress = (
       address: newAddress
     }
   })
-    .then(res => res.json())
     .then(res => {
       console.log({ res });
-      const address = returnAddress(res);
+      const address = returnAddress(res.data);
       dispatch(setAddress(address));
     })
     .catch(err => {
       console.log({ err });
     });
 };
-// export const editAddress = (
-//   userid,
-//   address,
-//   oldDetail = {},
-//   oldAddress = []
-// ) => dispatch => {
-//   const newAddress = oldAddress.map(el => {
-//     if (el.id === address.id) return address;
+export const editAddress = (
+  userid,
+  address,
+  oldDetail = {},
+  oldAddress = []
+) => dispatch => {
+  const newAddress = oldAddress.map(el => {
+    if (el.id === address.id) return address;
 
-//     return el;
-//   });
-//   updateUserDetails({
-//     userid,
-//     shippingdetails: {
-//       ...oldDetail,
-//       address: newAddress
-//     }
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log({ res });
-//       const address = returnAddress(res);
-//       dispatch(setAddress(address));
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//     });
-// };
+    return el;
+  });
+  updateUserDetails({
+    userid,
+    shippingdetails: {
+      ...oldDetail,
+      address: newAddress
+    }
+  })
+    .then(res => {
+      console.log({ res });
+      const address = returnAddress(res.data);
+      dispatch(setAddress(address));
+    })
+    .catch(err => {
+      console.log({ err });
+    });
+};

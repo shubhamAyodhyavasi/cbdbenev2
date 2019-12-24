@@ -12,6 +12,20 @@ const invoiceUrl            = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cb
 const subsPercent           = 10
 
 const enableCountry         = ["US", "USA", "United States"];
+const accountTypeOpt        = [
+    {
+      label: "Checking",
+      value: "checking"
+    },
+    {
+      label: "Savings",
+      value: "savings"
+    },
+    {
+      label: "Business Checking",
+      value: "businessChecking"
+    }
+];
 export default {
     projectName,
     baseUrl,
@@ -25,5 +39,6 @@ export default {
     defaultStatusInOrder,
     invoiceUrl,
     enableCountry,
-    subsPercent
+    subsPercent,
+    accountTypeOpt
 }
