@@ -5,20 +5,27 @@ import { getUserDetails } from "../../services/apis/user";
 export const setUser = (user, cart = null) => dispatch => {
   // console.log({ user });
   if (user._id) {
+    console.log({
+      user
+    })
     getUserDetails(user._id)
       .then(res => {
         console.log({ res });
 
-        if (res.data.status && res.user) {
+        if (res.data.status && res.data.user) {
         //   dispatch(getUserMeta(res.data.user._id, cart));
+        const payload =  {
+          ...res.data.user.userid,
+          userMetaId: res.data.user._id,
+          userMetaObj: res.data.user,
+          userObj: res.data.user.userid,
+        }
+        console.log({
+          payload
+        })
         dispatch({
             type: SET_USER,
-            payload: {
-                ...res.data.user.userid,
-                userMetaId: res.data.user._id,
-                userMetaObj: res.data.user,
-                userObj: res.data.user.userid,
-            }
+            payload
         })
           if (cart) {
             setCartApi({
@@ -37,11 +44,12 @@ export const setUser = (user, cart = null) => dispatch => {
           }
         }
       });
+  }else{
+    dispatch({
+      type: SET_USER,
+      payload: user
+    });
   }
-  dispatch({
-    type: SET_USER,
-    payload: user
-  });
 };
 // export const updateUserMeta = userId => {
 //   // console.log("get user id ", { userId });

@@ -10,6 +10,7 @@ const apiList = {
     userLogin                       : `${baseUrl}/users/api/login/`,
     updateUserDetails               : `${baseUrl}/users/api/profile/`,
     getUserDetails                  : `${baseUrl}/users/api/profile/`,
+    updateUserPassword              : `${baseUrl}/users/api/profile/password/`,
     contact                         : `${baseUrl}/contact-us/`,
     getShippingRates                : `${baseUrl}/ship/shipment/`,
     confirmShipment                 : `${baseUrl}/ship/confirm/`,

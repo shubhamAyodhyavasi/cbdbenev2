@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
 import { Flip } from 'react-reveal';
@@ -10,6 +10,7 @@ import CartDrawer from './CartDrawer'
 import { toggleCartBar, hideCartBar, toggleRegBar } from '../redux/actions/drawers'
 import { unsetUser } from '../redux/actions/user'
 // import { c } from '../redux/actions/cart'
+// import $ from 'jquery';
 import Registration from './popups/Registration';
 import Login from './popups/Login';
 import { Menu, Dropdown } from 'antd';
@@ -17,6 +18,7 @@ const Nav = ({
   parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
   toggleRegBar, isRegOpen, hasLogin, user, unsetUser
 }) => {
+  const inputEl = useRef(null);
   const [isOpen, setOpen] = useState(false)
   // const [isCartOpen, setIsCartOpen] = useState(false)
   const onClick = (e, action) => {
@@ -34,8 +36,17 @@ const Nav = ({
       unsetUser()
     }
   }
+  // useEffect(()=> {
+  //   $(inputEl.current).hover(()=> {
+  //     $(this).css("background", "red")
+  //   })
+  // })
   return (
-    <nav className={classNames("c-nav", {
+    <nav 
+    // onMouseOver={(element) => {  
+    //   setOpen(true);
+    // }} onMouseOut={() => {setOpen(false)}} 
+className={classNames("c-nav", {
       [`${parent}__nav`]: parent,
       [`c-nav--right`]: isRight,
     })}>
@@ -46,7 +57,18 @@ const Nav = ({
           } else {
             return el.onlyLogin !== true
           }
-        }).map((el, ind) => <li key={ind} className={classNames("c-nav__list-item", {
+        }).map((el, ind) => <li 
+          onMouseEnter={(e)=> {
+            if(el.subMenus && !isOpen){
+              setOpen(true)
+            }
+          }}
+          onMouseLeave={()=> {
+            if(isOpen){
+              setOpen(false)
+            }
+          }}
+        ref={inputEl} key={ind} className={classNames("c-nav__list-item", {
           "c-nav__list-item--has-sub-menu": el.subMenus
         })}>
           {
@@ -89,7 +111,7 @@ const Nav = ({
                   </span>)
           }
           {
-            el.subMenus && <span onClick={() => setOpen(!isOpen)} className={classNames("c-nav__sub-menu-tgl", {
+            el.subMenus && <span  className={classNames("c-nav__sub-menu-tgl", {
               "c-nav__sub-menu-tgl--opened": isOpen
             })}>{isOpen ? <FiMinus /> : <FiPlus />}</span>
           }

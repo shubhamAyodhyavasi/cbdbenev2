@@ -100,69 +100,69 @@ export const addAddress = (
       });
   }
 };
-// export const deleteAddress = (
-//   userid,
-//   id,
-//   oldDetail = {},
-//   oldAddress = []
-// ) => dispatch => {
-//   const newAddress1 = oldAddress.filter(el => el.id !== id);
-//   const defaultAddress = newAddress1.find(el => el.isDefault === true)
-//   const newAddress = newAddress1.map((el, index) => {
-//     if(index === 0 && !defaultAddress){
-//       return ({
-//         ...el, isDefault: true
-//       })
-//     }
-//     return el
-//   })
-//   updateUserDetails({
-//     userid,
-//     shippingdetails: {
-//       ...oldDetail,
-//       address: newAddress
-//     }
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log({ res });
-//       const address = returnAddress(res);
-//       dispatch(setAddress(address));
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//     });
-// };
-// export const setDefaultAddress = (
-//   userid,
-//   id,
-//   oldDetail = {},
-//   oldAddress = []
-// ) => dispatch => {
-//   const newAddress = oldAddress.map(el => {
-//     return {
-//       ...el,
-//       isDefault: el.id === id
-//     };
-//   });
+export const deleteAddress = (
+  userid,
+  id,
+  oldDetail = {},
+  oldAddress = []
+) => dispatch => {
+  const newAddress1 = oldAddress.filter(el => el.id !== id);
+  const defaultAddress = newAddress1.find(el => el.isDefault === true)
+  const newAddress = newAddress1.map((el, index) => {
+    if(index === 0 && !defaultAddress){
+      return ({
+        ...el, isDefault: true
+      })
+    }
+    return el
+  })
+  updateUserDetails({
+    userid,
+    shippingdetails: {
+      ...oldDetail,
+      address: newAddress
+    }
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log({ res });
+      const address = returnAddress(res);
+      dispatch(setAddress(address));
+    })
+    .catch(err => {
+      console.log({ err });
+    });
+};
+export const setDefaultAddress = (
+  userid,
+  id,
+  oldDetail = {},
+  oldAddress = []
+) => dispatch => {
+  const newAddress = oldAddress.map(el => {
+    return {
+      ...el,
+      isDefault: el.id === id
+    };
+  });
 
-//   updateUserDetails({
-//     userid,
-//     shippingdetails: {
-//       ...oldDetail,
-//       address: newAddress
-//     }
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log({ res });
-//       const address = returnAddress(res);
-//       dispatch(setAddress(address));
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//     });
-// };
+  updateUserDetails({
+    userid,
+    shippingdetails: {
+      ...oldDetail,
+      address: newAddress
+    }
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log({ res });
+      const address = returnAddress(res);
+      dispatch(setAddress(address));
+    })
+    .catch(err => {
+      console.log({ err });
+    });
+};
 // export const editAddress = (
 //   userid,
 //   address,

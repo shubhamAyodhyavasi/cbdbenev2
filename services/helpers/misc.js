@@ -6,7 +6,8 @@ export const numberFormat = (nbr) => {
       return "0.00";
     } else {
       if (nbr) {
-        var nr = nbr.toFixed(2);
+
+        var nr = parseFloat(nbr).toFixed(2);
         nr = nr.toString();
         var pattern = /(-?\d+)(\d{3})/;
         while (pattern.test(nr)) nr = nr.replace(pattern, "$1,$2");

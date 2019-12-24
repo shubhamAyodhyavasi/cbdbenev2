@@ -22,7 +22,7 @@ import {
 } from "../../services/helpers/cart";
 
 export const addToCart = (item, cart = null, userMetaId = null) => dispatch => {
-  // console.log("0");
+  console.log({item});
   dispatch({
     type: ADD_ITEM,
     payload: item

@@ -5,7 +5,7 @@ import apiList from "./apiList";
 const {
     baseUrl
 } = projectSettings
-export const getProductById = id => axios.get("/products/api/getbyid/", id)
+export const getProductById = id => axios.get(apiList.getProductById + id)
 
 export const getAllProducts = () => axios.get(baseUrl+"/products/api/all/")
 export const getAllCombos   = () => axios.get(apiList.getAllCombos)

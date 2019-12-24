@@ -9,6 +9,9 @@ const referralPresent       = 25;
 const defaultOrderStatus    = "Transaction completed - label generated";
 const defaultStatusInOrder  = "in process";
 const invoiceUrl            = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/public/invoices/";
+const subsPercent           = 10
+
+const enableCountry         = ["US", "USA", "United States"];
 export default {
     projectName,
     baseUrl,
@@ -20,5 +23,7 @@ export default {
     referralPresent,
     defaultOrderStatus,
     defaultStatusInOrder,
-    invoiceUrl
+    invoiceUrl,
+    enableCountry,
+    subsPercent
 }

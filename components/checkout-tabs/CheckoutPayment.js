@@ -1,5 +1,6 @@
 import TitleList from "../TitleList"
 import Button from "../form-components/Button"
+import moment from "moment"
 import { Form, Radio, Collapse, Select  } from "antd"
 import { connect } from 'react-redux'
 import regex from "../../services/helpers/regex"
@@ -63,7 +64,7 @@ class CheckoutPayment extends React.Component {
             this.props.form.setFieldsValue({
                 paymentProfile: null
             })
-            if(prevState.collapseKey.includes("card")){
+            if(prevState.collapseKey && prevState.collapseKey.includes("card")){
                 return  ({
                     isCard: false,
                     collapseKey: ["bank"]
@@ -112,6 +113,7 @@ class CheckoutPayment extends React.Component {
         });
 
     generateSubsData = (el, details) => {
+        console.log({el,details})
         const customAmount = parseFloat(el.subTotal); // + (Math.random() * 100)
         const {
             billto,
@@ -193,7 +195,9 @@ class CheckoutPayment extends React.Component {
     makeSubsPromise = (order, details) => {
         return order.products.map(el => {
             if (el.isSubscribed) {
+                console.log({"subs_authorize":el})
                 const subsData = this.generateSubsData(el, details);
+                console.log({subsData})
                 if (subsData.routingNumber) {
                     return this.combinePromiseProduct(
                         authorizeSubscriptionBank(subsData),
@@ -225,7 +229,7 @@ class CheckoutPayment extends React.Component {
                 const resJson = res.data
                 if (resJson.status) {
                     this.props.setLoading(false)
-                    window.location.href = "/";
+                    // window.location.href = "/";
                     this.setState(
                         {
                             modalData: "orderPlacedSuccessfully",
@@ -434,7 +438,14 @@ class CheckoutPayment extends React.Component {
                             card: bodyData
                         })
                     }
-                    Promise.all(this.makeSubsPromise(order, data)).then(res => {
+                    Promise.all(this.makeSubsPromise(order, {
+                        ...data,
+                        billto: {
+                            ...data.billto,
+                            firstName: address.firstname,
+                            lastName: address.lastname,
+                        }
+                    })).then(res => {
                         console.log({ res });
                         const sendAbleOrder = {
                             ...order,
@@ -499,11 +510,7 @@ class CheckoutPayment extends React.Component {
                 unitPrice: el.unitPrice
             })),
             billto: {
-                address: addressStr,
-                company: "",
-                firstName: "",
-                lastName: "",
-                ...addressRest
+                address: addressStr
             },
             shipTo: {
                 address: addressStr,
@@ -515,7 +522,14 @@ class CheckoutPayment extends React.Component {
                 console.log({ res });
                 if (res.data.status) {
                     const transactionId = res.data.transactionid
-                    Promise.all(this.makeSubsPromise(order, data)).then(res => {
+                    Promise.all(this.makeSubsPromise(order, {
+                        ...data,
+                        billto: {
+                            ...data.billto,
+                            firstName: address.firstname,
+                            lastName: address.lastname,
+                        }
+                    })).then(res => {
                         console.log({ res });
                         const sendAbleOrder = {
                             ...order,
@@ -565,12 +579,26 @@ class CheckoutPayment extends React.Component {
             profileid: paymentProfile.customerProfileId,
             amount: parseFloat(customAmount.toFixed(2))
         };
+        console.clear()
+        console.log({
+            address
+        })
         authorizeChargeProfile(data)
             .then(res => {
                 console.log({ res });
                 if (res.data.status) {
                     const transactionId = res.data.transactionid
-                    Promise.all(this.makeSubsPromise(order, data)).then(res => {
+                    Promise.all(this.makeSubsPromise(order, {
+                        ...data,
+                        billto: {
+                            address: addressStr,
+                            firstName: address.firstname,
+                            lastName: address.lastname
+                        },
+                        shipto: {
+                            address: addressStr
+                        },
+                    })).then(res => {
                         console.log({ res });
                         const sendAbleOrder = {
                             ...order,
