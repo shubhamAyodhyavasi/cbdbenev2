@@ -349,9 +349,9 @@ class MyAccount extends Component {
 
     var serNo = 0;
     return (
-      <Layout>
+      <Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
       <div
-        className={classNames("", {
+        className={classNames("my-order", {
           [className]: className
         })}
       >
@@ -360,17 +360,26 @@ class MyAccount extends Component {
         </Helmet> */}
         {/* {this.state.SpinnerToggle && <Loader />} */}
         <div className="container-fluid">
+          <div className="my-order__heading">
+            <h3>My order</h3>
+          </div>
+        </div>
+          <div className="my-order__wrapper">
+          <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 ">
               <MyAccountSidebar activeLink="MY ACCOUNT" />
             </div>
             <div className="col-lg-9 ">
-              <h3>My Order</h3>
-              <Card className="panel-section">
-                <Alert color="dark">RECENT PURCHASES</Alert>
+              <Card className="panel-section my-order__panel"> 
+                
                 <CardBody>
+                  <div className="my-order__detail">
+                  <div className="my-order__alert">
+                    <Alert color="dark" className="my-order__alert--msg">Recent Purchases</Alert>
+                  </div>
                   <CardTitle>
-                    <div className="">
+                    <div className="panel-section__descp">
                       {this.state.orderList &&
                       this.state.orderList.length > 0 ? (
                         <Table className="new-res-table" hover>
@@ -530,18 +539,20 @@ class MyAccount extends Component {
                           </tbody>
                         </Table>
                       ) : (
-                        <h3>You currently don't have any purchases.</h3>
+                        <h3 className="my-order__msg-title">You currently don't have any purchases.</h3>
                       )}
                     </div>
                   </CardTitle>
+                  </div>
+                  
                   <hr />
-                  <CardSubtitle>
+                  <CardSubtitle className="my-order__subtitle">
                     From here you can:
                     {myOrderPageFooterDetails &&
                     myOrderPageFooterDetails.length > 0 ? (
-                      <ul className="myAccount-recent-parchase-ul row">
+                      <ul className="myAccount-recent-parchase-ul my-order__list-wrap ">
                         {myOrderPageFooterDetails.map((det, i) => (
-                          <li key={i}>{det.details}</li>
+                          <li className="my-order__listing" key={i}>{det.details}</li>
                         ))}
                       </ul>
                     ) : (
@@ -553,13 +564,14 @@ class MyAccount extends Component {
                     href={"/shop"}
                   >
                     <a 
-                    className="btn or-btn btn-outline-shopping btn-icon"
-                    style={{ marginTop: "15px", width: "300px" }} >START SHOPPING</a>
+                    className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
+                     >START SHOPPING</a>
                   </Link>
                 </CardBody>
               </Card>
             </div>
           </div>
+          </div>          
         </div>
         <div>
           <Modal
