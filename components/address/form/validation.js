@@ -1,5 +1,5 @@
 import { isAlpha, isEmail, isEmpty, isNumeric } from "validator";
-import { isValidPhoneNumber } from "react-phone-number-input";
+// import { isValidPhoneNumber } from "react-phone-number-input";
 import {
   emailNotValidErrMsg,
   phoneNotValidErrMsg,

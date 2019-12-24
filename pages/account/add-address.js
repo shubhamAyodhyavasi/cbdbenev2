@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loader from '../../components/Loader'
 import { countryCodeList } from "../../services/extra/allCountryCode";
-import "react-phone-input-2/dist/style.css";
+// import "react-phone-input-2/dist/style.css";
 import { AddressForm } from "../../components/address/form";
-
+import Layout from '../../components/Layouts/Layout'
 import classNames from "classnames";
 
 import { addAddress } from "../../redux/actions/address";
@@ -101,9 +101,9 @@ class AddAddressForm extends Component {
   }
   componentDidMount() {
     const { user, history, location } = this.props;
-    if (!user._id) {
-      history.push("/" + location.countryCode + "/login");
-    }
+    // if (!user._id) {
+    //   // history.push("/" + location.countryCode + "/login");
+    // }
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     const countryDialCode = basicFunction.getDialCode(
       countryCodeList,
@@ -142,7 +142,7 @@ class AddAddressForm extends Component {
         isModal: false
       },
       () => {
-        history.push(`/${location.countryCode}/my-address`);
+        // history.push(`/${location.countryCode}/my-address`);
       }
     );
   };
@@ -156,7 +156,7 @@ class AddAddressForm extends Component {
         isModal: !prevState.isModal
       }),
       () => {
-        history.push(`/${location.countryCode}/my-address`);
+        // history.push(`/${location.countryCode}/my-address`);
       }
     );
   };
@@ -393,6 +393,7 @@ class AddAddressForm extends Component {
 
     const { className } = this.props;
     return (
+      <Layout>
       <div
         className={classNames("", {
           [className]: className
@@ -515,6 +516,7 @@ class AddAddressForm extends Component {
           </div>
         </Modal>
       </div>
+      </Layout>
     );
   }
 }

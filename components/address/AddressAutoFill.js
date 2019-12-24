@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PlacesAutocomplete from "react-places-autocomplete";
 import { ic_search } from "react-icons-kit/md/";
 import Icon from "react-icons-kit";
-import regexReplace from "../../services/helpers/regexReplace";
+import regExReplace from "../../services/helpers/regexReplace";
 export default class AddressAutoFill extends Component {
   constructor(props) {
     super(props);

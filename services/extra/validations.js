@@ -47,14 +47,14 @@ export const fieldValidation = (field = " ", type = " ") => {
       };
     }
   }
-  if (typeArr.includes("phone")) {
-    if (!isValidPhoneNumber(field)) {
-      return {
-        isError: true,
-        errorMsg: phoneNotValidErrMsg
-      };
-    }
-  }
+  // if (typeArr.includes("phone")) {
+  //   if (!isValidPhoneNumber(field)) {
+  //     return {
+  //       isError: true,
+  //       errorMsg: phoneNotValidErrMsg
+  //     };
+  //   }
+  // }
   if (typeArr.includes("zipcode")) {
     // if(isPostalCode(this.state[field])){
     if (!isNumeric(field)) {
