@@ -15,7 +15,10 @@
     }
     &__details-wrapper{
         background-color: $light-color-2;
-        padding: 100px 40px;
+        padding:30px 40px;
+        @include bp-md{
+            padding: 100px 40px;            
+        }
     }
     &__related-section{
         padding: 100px 40px;

@@ -24,13 +24,31 @@ const ProductInfo = ({image, product, productAttr, addToCart, cart, showCartBar}
         <div className="c-product-info container">
             <div className="row c-product-info__row">
                 <div className="col-md-6 c-product-info__image-col">
+                    <div class="c-product-info__mobile-sec">
+                    <div className="c-product-info__title-wrap">
+                        <div className="c-product-info__title-col">
+                            <Heading versions={["default"]} parentClass="c-product-info">{product && (product.title || (product.productid && product.productid.producttitle))}</Heading>
+                            <Heading subHeading="true" parentClass="c-product-info">{product && (product.sdescription || (product.productid && product.productid.sdescription))}</Heading>
+                        </div>
+                        <div className="c-product-info__rating-wrapper">
+                            <div className="c-product-info__rate">
+                                <Rate 
+                                    style={{ color: '#000' }}
+                                    className="c-product-info__stars c-product-info__stars--sm " 
+                                    disabled value={3.5} 
+                                    allowHalf={true} />
+                                <p className="c-product-info__review">12 reviews(9.7)</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     <div className="c-product-info__img-wrapper">
                         <img src={image} alt="product" className="img-fluid c-product-info__img"/>
                         {/* <p className="c-product-info__size">1 oz/30 ml</p> */}
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <div className="c-product-info__title-wrap">
+                    <div className="c-product-info__title-wrap lg-hide">
                         <div className="c-product-info__title-col">
                             <Heading versions={["default"]} parentClass="c-product-info">{product && (product.title || (product.productid && product.productid.producttitle))}</Heading>
                             <Heading subHeading="true" parentClass="c-product-info">{product && (product.sdescription || (product.productid && product.productid.sdescription))}</Heading>

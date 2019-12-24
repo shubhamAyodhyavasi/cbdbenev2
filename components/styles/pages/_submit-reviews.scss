@@ -61,7 +61,11 @@
 }
 .b-border-none{
     border-bottom:none;
+    span.ant-radio{
+        margin-top: 0px;
+    }
 }
+
 .radio__wrapper{
     display: flex;
     align-items: center;
