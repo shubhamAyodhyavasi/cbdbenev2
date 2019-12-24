@@ -32,7 +32,7 @@ class MyAccountSidebar extends Component {
         >
           <Nav vertical>
             <hr />
-            <p>YOUR ORDER</p>
+            {/* <p>YOUR ORDER</p> */}
             <NavItem
               className={classNames("my-accountLink", {
                 active: activeLink === "MY ACCOUNT"
@@ -71,7 +71,7 @@ class MyAccountSidebar extends Component {
             </NavItem>
 
             <hr />
-            <p>YOUR ACCOUNT</p>
+            {/* <p>YOUR ACCOUNT</p> */}
             <NavItem
               className={classNames("my-accountLink", {
                 active: activeLink === "changePassword"

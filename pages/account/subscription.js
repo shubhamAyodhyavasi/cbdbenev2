@@ -325,9 +325,9 @@ class MySubscription extends Component {
       return "-";
     };
     return (
-    <Layout>
+    <Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
       <div
-        className={classNames("", {
+        className={classNames("my-order", {
           [className]: className
         })}
       >
@@ -336,6 +336,12 @@ class MySubscription extends Component {
         </Helmet> */}
         {this.state.SpinnerToggle && <Loader />}
         <div className="container-fluid">
+          <div className="my-order__heading">
+            <h3>My order</h3>
+          </div>
+        </div>
+        <div className="my-order__wrapper">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 ">
               <MyAccountSidebar activeLink="MY SUBSCRIPTION" />
@@ -343,10 +349,14 @@ class MySubscription extends Component {
             <div className="col-lg-9 ">
               {/* <h1>Your Subscription</h1> */}
               <br />
-              <Card className="panel-section">
-                <Alert color="dark">YOUR SUBSCRIPTION</Alert>
+              <Card className="panel-section my-order__panel">
+
                 <CardBody>
-                  <CardTitle>
+                <div className="my-order__detail">
+                <div className="my-order__alert">
+                    <Alert color="dark" className="my-order__alert--msg">YOUR SUBSCRIPTION</Alert>
+                  </div>
+                  <CardTitle >
                     <div className="table-responsive">
                       {this.state.subscriptionList.length > 0 ? (
                         <Table className="new-res-table" hover>
@@ -394,26 +404,28 @@ class MySubscription extends Component {
                           </tbody>
                         </Table>
                       ) : (
-                        <h3>
+                        <h3 className="my-order__msg-title">
                           You currently have not added any items to your
                           subscription list.
                         </h3>
                       )}
                     </div>
                   </CardTitle>
+                  </div>
                   <hr />
                   <Link
-                    to={"/shop"}
-                    className="btn or-btn btn-outline-shopping btn-icon"
-                    style={{ marginTop: "15px", width: "300px" }}
+                    href={"/shop"}
                   >
-                    START SHOPPING
+                    <a 
+                    className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
+                     >START SHOPPING</a>
                   </Link>
                 </CardBody>
               </Card>
             </div>
           </div>
         </div>
+      </div>
       </div>
       </Layout>
     );
