@@ -13,6 +13,7 @@ import { getAllCombos } from '../services/api'
 import BundleProducts from '../components/BundleProducts'
 import ScrollAnimation from "react-animate-on-scroll";
 import Fade from 'react-reveal/Fade';
+import ProductRating from '../components/ProductRating'
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -95,7 +96,7 @@ class Home extends React.Component {
       products
     })
     return (
-      <Layout title="Home" fixed={true} >      
+      <Layout title="bené" fixed={true} >      
         <div className="reviews">
             <div className="reviews__heading">
                 <div className="reviews__wrap">
@@ -118,9 +119,10 @@ class Home extends React.Component {
                 <a class="write__btn c-btn c-btn--outline " href="#">Write a reviews</a>
             </div>
         </section>
+        <ProductRating />
 
         <section class="rating">
-            <div class="rating__wrapper">
+            <div class="container rating__wrapper">
                 <div class="rating__star">
                     <h5 class="rating__star--name">Name</h5>
                 </div>

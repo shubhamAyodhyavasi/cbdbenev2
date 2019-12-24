@@ -7,6 +7,9 @@
         height: 450px;
         width: 100%;
         position: relative;
+        @include bpm-md{            
+            height: auto;
+        }
     }
     &__img{
         width: 100%;
@@ -19,6 +22,11 @@
         margin: auto;
         object-fit: contain;
         object-position: bottom;
+        @include bpm-md{
+            position: static;
+            object-position: center;
+            height: 100%;
+        }        
     }
     &__info{
         margin-bottom: 10px;
@@ -38,6 +46,9 @@
     &__info,&__btn-wrapper{
         opacity: 0;
         transition: all .3s;
+        @include bpm-md{
+            opacity: 1;
+        }
     }
     &__btn-wrapper{
         margin-top: auto;

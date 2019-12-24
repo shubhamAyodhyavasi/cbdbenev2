@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from "../form-components/Input"
 import Radio from "../form-components/Radio"
-import { Button } from 'antd';
+import  { Button } from 'antd';
 
 export default class PersonalDetails extends Component{
 
@@ -22,23 +22,19 @@ export default class PersonalDetails extends Component{
             // onSubmit={onSubmit} 
             className="c-personalDetails" >
             <div className="container-fluid">
-                <div className="row">
-                
-                    <div className="col-md-6">
+                <div className="row justify-content-center">                
+                    <div className="col-md-5">
                         <Input parentClass="c-address-form" label="Weight" value={values.weight} onChange={this.props.handleChange('weight')} />
-                    </div>
-                    <div className="col-md-6">
+                    
                         <Input parentClass="c-address-form" label="Age" value={values.age} onChange={this.props.handleChange('age')} />
-                    </div>
-                    <div className="col-md-6">
+                   
                         <Input parentClass="c-address-form" label="Notes for Doctor" value={values.notes} onChange={this.props.handleChange('notes')} />
+                        <div class="c-personalDetails__btn-wrap">
+                            <Button className="tab__btn" onClick={this.back} versions={["outline", "block"]}>Back</Button>
+                            <Button className="tab__btn" onClick={this.saveAndContinue}>Next</Button>
+                        </div>                      
+                        
                     </div>
-                    <div className="col-md-6">
-                                                                     
-                                </div>
-                    <Button onClick={this.saveAndContinue}>Next </Button>
-                    <Button onClick={this.back}>Back </Button>
-
                 </div>
             </div>
         </form>

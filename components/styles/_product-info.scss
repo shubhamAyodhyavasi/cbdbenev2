@@ -2,14 +2,36 @@
     background-color: #faf7f5;
 }
 .c-product-info{
-    padding: 220px 40px 100px;
+    padding: 50px 20px 50px;
     // margin-top: -$header-height;
     display: flex;
     flex-direction: column;
     justify-content: center;
     @include bp-md{
         min-height: 100vh;
+        padding: 220px 40px 100px;        
     }
+    &__price-wrapper {
+        @include bpm-lg{
+            order: 1;
+            width: 50%;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+    }
+
+    &_qty-wrapper{
+        @include bpm-lg{
+            order: 2;
+            margin-bottom: 20px;
+        }
+    }
+    &__btn-wrapper {
+        @include bpm-lg{
+            order: 3;
+        } 
+    }
+
     &__image-col{
         display: flex;
         flex-direction: column;
@@ -23,7 +45,10 @@
         width: 190px;
     }
     &__title-col{
-        width: calc(100% - 190px);
+        width: calc(100% - 25px);
+        @include bp-sm{            
+            width: calc(100% - 190px);
+        }
     }
     &__review{
         font-family: $main-font;
@@ -31,6 +56,9 @@
         // font-weight: 300;
         line-height: 1.19;
         letter-spacing: 1.38px;
+        @include bpm-lg{
+            font-size:12px;  
+        }
     }
     &__size{
         font-size: 24px;
@@ -56,6 +84,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
     &__price{
         font-size: 32px;
@@ -63,7 +92,10 @@
         margin-bottom: 0;
     }
     &__heading{
-        font-size: 40px;
+        font-size: 20px;
+        @include bp-sm{
+            font-size:40px;  
+        }
     }
     &__btn{
         font-size: 20px;
@@ -82,4 +114,22 @@
             justify-content: center;
         }
     }
+    &__stars{
+        &--sm{
+            @include bpm-lg{
+                font-size:12px;  
+            }
+        }
+    }
+    &__mobile-sec{
+        @include bp-xs{
+            display:none;
+        }
+    }
 }
+.lg-hide {
+    @include bpm-xs{
+        display: none;
+    }
+}
+
