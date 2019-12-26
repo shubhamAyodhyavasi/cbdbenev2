@@ -412,7 +412,6 @@ class MySubscription extends Component {
                     </div>
                   </CardTitle>
                   </div>
-                  <hr />
                   <Link
                     href={"/shop"}
                   >

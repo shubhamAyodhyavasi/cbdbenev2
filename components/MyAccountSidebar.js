@@ -25,7 +25,7 @@ class MyAccountSidebar extends Component {
   render() {
     const { location, activeLink } = this.props;
     return (
-      <div className="">
+      <div className="my-account-sidebar">
         <ListToggler 
         // max={992}
         max={1}
@@ -39,7 +39,7 @@ class MyAccountSidebar extends Component {
               })}
             >
               <Link href={"/account"}>
-                <a><Icon icon={shoppingCart} className="sidebar-icon" />
+                <a className="my-accountLink__link"><Icon icon={shoppingCart} className="sidebar-icon" />
                 MY ORDER
                     </a>
               </Link>
@@ -50,7 +50,7 @@ class MyAccountSidebar extends Component {
               })}
             >
               <Link href={"/account/subscription"}>
-                  <a>
+                  <a className="my-accountLink__link">
                 <Icon size={20} icon={ic_playlist_add_check} className="sidebar-icon" />
                 MY SUBSCRIPTION
                 </a>
@@ -63,7 +63,7 @@ class MyAccountSidebar extends Component {
               })}
             >
               <Link href={"/account/favourites"}>
-                  <a>
+                  <a className="my-accountLink__link">
                 <Icon icon={heart} className="sidebar-icon" />
                 FAVOURITES
                 </a>
@@ -78,7 +78,7 @@ class MyAccountSidebar extends Component {
               })}
             >
               <Link href={"/account/change-password"}>
-                  <a>
+                  <a className="my-accountLink__link">
                 <Icon icon={user} className="sidebar-icon" />
                 CHANGE PASSWORD
                 </a>
@@ -100,7 +100,7 @@ class MyAccountSidebar extends Component {
               })}
             >
               <Link href={"/account/address"}>
-                  <a>
+                  <a className="my-accountLink__link">
                 <Icon icon={mapMarker} className="sidebar-icon" />
                 MY ADDRESS
                 </a>
@@ -112,7 +112,7 @@ class MyAccountSidebar extends Component {
               })}
             >
               <Link href={"/account/cards"}>
-                  <a>
+                  <a className="my-accountLink__link">
                 <Icon icon={money} className="sidebar-icon" />
                 PAYMENT METHOD
                 </a>

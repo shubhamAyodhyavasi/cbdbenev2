@@ -367,23 +367,23 @@ class MyAccount extends Component {
           <div className="my-order__wrapper">
           <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 ">
+            <div className="col-lg-2 ">
               <MyAccountSidebar activeLink="MY ACCOUNT" />
             </div>
-            <div className="col-lg-9 ">
+            <div className="col-lg-10 ">
               <Card className="panel-section my-order__panel"> 
                 
-                <CardBody>
+                <CardBody className="my-order__card-body">
                   <div className="my-order__detail">
                   <div className="my-order__alert">
                     <Alert color="dark" className="my-order__alert--msg">Recent Purchases</Alert>
                   </div>
                   <CardTitle>
-                    <div className="panel-section__descp">
+                    <div className="panel-section__descp" >
                       {this.state.orderList &&
                       this.state.orderList.length > 0 ? (
-                        <Table className="new-res-table" hover>
-                          <thead>
+                        <Table className="new-res-table my-order__table" >
+                          <thead className="my-order__thead">
                             <tr>
                               <th>S.No.</th>
                               <th>Product Name</th>
@@ -397,11 +397,11 @@ class MyAccount extends Component {
                             {this.state.orderList.map(
                               (order, i) => (
                                 // order.userid === this.state.loginUserId ? (
-                                <tr key={i}>
-                                  <th className="sr-number" scope="row">
+                                <tr key={i} className="my-order__t-row">
+                                  <th className="sr-number my-order__t-head my-order__table--sno" scope="row">
                                     {(serNo = serNo + 1)}
                                   </th>
-                                  <td data-label="Name">
+                                  <td data-label="Name" className="my-order__t-col my-order__table--name">
                                     {order.products.map((pro, i) => {
                                       const link = `/shop/${
                                             pro._id
@@ -409,7 +409,7 @@ class MyAccount extends Component {
                                       return (
                                         <p>
                                           <Link key={i} href={link}>
-                                            <a>{pro.title}</a>
+                                            <a className="my-order__t-link">{pro.title}</a>
                                           </Link>
                                         </p>
                                       );
@@ -417,20 +417,20 @@ class MyAccount extends Component {
                                   </td>
                                   <td
                                     data-label="Price"
-                                    className="inline-data"
+                                    className="inline-data my-order__t-col my-order__table--price"
                                   >
                                     {basicFunction.currancyAddWithNumber(
                                       order.grandTotal
                                     )}
                                   </td>
-                                  <td data-label="Date" className="inline-data">
+                                  <td data-label="Date" className="inline-data my-order__t-col my-order__table--date">
                                     {basicFunction.dateTimeInMonthName(
                                       order.createdOn
                                     )}{" "}
                                   </td>
                                   <td
                                     data-label="Status"
-                                    className="inline-data text-capitalize"
+                                    className="inline-data text-capitalize my-order__t-col my-order__table--status"
                                   >
                                     {order.deleted !== "true"
                                       ? // <Badge className="btn9">
@@ -441,14 +441,11 @@ class MyAccount extends Component {
                                     // </Badge>
                                     }
                                   </td>
-                                  <td data-label="Action">
+                                  <td data-label="Action" className="my-order__t-col my-order__table--action">
                                     <ButtonGroup>
                                       <Button
-                                        style={{
-                                          paddingTop: "12px",
-                                          paddingBottom: "12px"
-                                        }}
-                                        className="btn9 pl-3 pr-3"
+                                        
+                                        className="btn9 my-order__t-btn"
                                         onClick={() => this.toggle(order)}
                                       >
                                         {/* <Icon icon={eye} /> */}
@@ -471,23 +468,17 @@ class MyAccount extends Component {
                                         ""
                                       )} */}
                                       <Button
-                                        style={{
-                                          paddingTop: "12px",
-                                          paddingBottom: "12px"
-                                        }}
-                                        className="btn9 pl-3 pr-3"
+                                        
+                                        className="btn9 my-order__t-btn"
                                         onClick={() => this.reorder(order)}
                                       >
                                         Reorder
                                       </Button>
                                       <span style={{ minWidth: "2px" }} />
                                       <Button
-                                        style={{
-                                          paddingTop: "12px",
-                                          paddingBottom: "12px"
-                                        }}
+                                        
                                         target="_blank"
-                                        className="btn9 pl-3 pr-3"
+                                        className="btn9 my-order__t-btn"
                                         // to={}
                                         onClick={()=>{
                                           window.open(`${invoiceUrl}${order._id}.pdf`)
@@ -497,7 +488,7 @@ class MyAccount extends Component {
                                         Invoice
                                       </Button>
                                     </ButtonGroup>
-                                    <div className="w-100 pt-3">
+                                    <div className="pt-3 my-order__t-note">
                                       {order.products &&
                                         order.products.filter(
                                           el => !el.reviewed
@@ -545,7 +536,7 @@ class MyAccount extends Component {
                   </CardTitle>
                   </div>
                   
-                  <hr />
+                  <hr className="my-order__dark-hr" />
                   <CardSubtitle className="my-order__subtitle">
                     From here you can:
                     {myOrderPageFooterDetails &&
