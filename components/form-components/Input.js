@@ -5,7 +5,7 @@ class Input extends React.Component {
     render(){
         const {
             value, onChange, parentClass, inputId, label, type,
-            versions
+            versions, name
         } = this.props
         const componentClass = "c-input"
         const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
@@ -19,6 +19,7 @@ class Input extends React.Component {
                 <AntInput 
                     onChange={onChange} 
                     // id={inputId} 
+                    name={name}
                     type={type} 
                     value={value}
                     placeholder={label}

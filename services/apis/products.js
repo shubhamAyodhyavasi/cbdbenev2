@@ -1,11 +1,17 @@
-import projectSettings from "../../constants/projectSettings";
 import axios from 'axios'
 import apiList from "./apiList";
 
-const {
-    baseUrl
-} = projectSettings
-export const getProductById = id => axios.get(apiList.getProductById + id)
+export const getProductById = id    => axios.get(apiList.getProductById + id)
 
-export const getAllProducts = () => axios.get(baseUrl+"/products/api/all/")
-export const getAllCombos   = () => axios.get(apiList.getAllCombos)
+export const getAllProducts = ()    => axios.get(apiList.getAllProducts)
+export const getAllCombos   = ()    => axios.get(apiList.getAllCombos)
+
+export const addToWishList = (userid, productid, productmeta, productSlug)  => axios.post(apiList.addToWishList, {
+    userid,
+    productid,
+    productmeta,
+    productSlug
+})
+export const deleteWishList  = body   => axios.post(apiList.deleteWishList, body)
+
+export const getWishList     = userid => axios.post(apiList.getWishList, {userid})

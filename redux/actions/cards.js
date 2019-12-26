@@ -151,8 +151,6 @@ export const addCardAuthorize = data => dispatch => {
   };
   const chooseCardOrBank = (userMetaId, userMetaObj) => {
     const { customerProfile } = userMetaObj;
-    console.clear()
-    console.log({userMetaObj})
     if (customerProfile) {
       if (card) {
         const { cardnumber, cvc, expmonth, expyear } = card;
@@ -189,6 +187,7 @@ export const addCardAuthorize = data => dispatch => {
           _id
         );
       } else if (bank) {
+        const userMetaIdId = userMetaId._id ? userMetaId._id : ( typeof userMetaId === "string" && userMetaId ) 
         sendCardDetails(
           {
             bank,

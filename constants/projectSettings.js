@@ -10,6 +10,7 @@ const defaultOrderStatus    = "Transaction completed - label generated";
 const defaultStatusInOrder  = "in process";
 const invoiceUrl            = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/public/invoices/";
 const subsPercent           = 10
+const filePath              = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/"
 
 const enableCountry         = ["US", "USA", "United States"];
 const accountTypeOpt        = [
@@ -40,5 +41,6 @@ export default {
     invoiceUrl,
     enableCountry,
     subsPercent,
-    accountTypeOpt
+    accountTypeOpt,
+    filePath
 }

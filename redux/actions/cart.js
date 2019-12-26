@@ -40,12 +40,12 @@ export const addToCart = (item, cart = null, userMetaId = null) => dispatch => {
     } else if (newCart.hasNulled) {
       dispatch(setCartNullItem(false));
     }
-    if (userMetaId) {
-      setCartApi({
-        usermetaid: userMetaId,
-        cart: newCart
-      });
-    }
+    // if (userMetaId) {
+    //   setCartApi({
+    //     usermetaid: userMetaId,
+    //     cart: newCart
+    //   });
+    // }
   } else {
     if (item.isNull) {
       dispatch(setCartNullItem());
@@ -78,10 +78,10 @@ export const removeFromCart = (
   });
   if (cart && userMetaId) {
     const newCart = removeItem(cart, id);
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: newCart
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: newCart
+    // });
   }
 };
 
@@ -96,10 +96,10 @@ export const modifyItem = (
   });
   if (cart && userMetaId) {
     const newCart = modifyProduct(oldItem.oldItem, oldItem.newItem, cart);
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: newCart
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: newCart
+    // });
   }
 };
 export const clearCart = (userMetaId = null) => dispatch => {
@@ -108,10 +108,10 @@ export const clearCart = (userMetaId = null) => dispatch => {
     type: CLEAR_CART
   });
   if (userMetaId) {
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: initialCart
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: initialCart
+    // });
   }
 };
 export const clearCartA = ()=> {
@@ -130,13 +130,13 @@ export const setShippingCharge = (
     payload: charge
   });
   if (cart && userMetaId) {
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: {
-        ...cart,
-        shippingCharge: charge
-      }
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: {
+    //     ...cart,
+    //     shippingCharge: charge
+    //   }
+    // });
   }
 };
 
@@ -150,13 +150,13 @@ export const setShippingType = (
     payload: type
   });
   if (cart && userMetaId) {
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: {
-        ...cart,
-        shippingType: type
-      }
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: {
+    //     ...cart,
+    //     shippingType: type
+    //   }
+    // });
   }
 };
 
@@ -166,14 +166,14 @@ export const setTax = (tax, cart = null, userMetaId = null) => dispatch => {
     payload: tax
   });
   if (cart && userMetaId) {
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: {
-        ...cart,
-        taxPercent: tax.taxPercent,
-        taxCountry: tax.taxCountry
-      }
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: {
+    //     ...cart,
+    //     taxPercent: tax.taxPercent,
+    //     taxCountry: tax.taxCountry
+    //   }
+    // });
   }
 };
 
@@ -187,14 +187,14 @@ export const setCoupon = (
     payload: coupon
   });
   if (cart && userMetaId) {
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: {
-        ...cart,
-        taxCouponCode: coupon.taxCouponCode,
-        taxCouponDiscount: coupon.taxCouponDiscount
-      }
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: {
+    //     ...cart,
+    //     taxCouponCode: coupon.taxCouponCode,
+    //     taxCouponDiscount: coupon.taxCouponDiscount
+    //   }
+    // });
   }
 };
 
@@ -204,13 +204,13 @@ export const setFav = (fav, cart = null, userMetaId = null) => dispatch => {
     payload: fav
   });
   if (cart && userMetaId) {
-    setCartApi({
-      usermetaid: userMetaId,
-      cart: {
-        ...cart,
-        setFav: fav.setFav
-      }
-    });
+    // setCartApi({
+    //   usermetaid: userMetaId,
+    //   cart: {
+    //     ...cart,
+    //     setFav: fav.setFav
+    //   }
+    // });
   }
 };
 

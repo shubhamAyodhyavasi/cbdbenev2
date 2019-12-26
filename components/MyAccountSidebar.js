@@ -38,7 +38,7 @@ class MyAccountSidebar extends Component {
                 active: activeLink === "MY ACCOUNT"
               })}
             >
-              <Link href={"/" + location.countryCode + "/my-account"}>
+              <Link href={"/account"}>
                 <a><Icon icon={shoppingCart} className="sidebar-icon" />
                 MY ORDER
                     </a>
@@ -49,7 +49,7 @@ class MyAccountSidebar extends Component {
                 active: activeLink === "MY SUBSCRIPTION"
               })}
             >
-              <Link href={"/" + location.countryCode + "/my-subscription"}>
+              <Link href={"/account/subscription"}>
                   <a>
                 <Icon size={20} icon={ic_playlist_add_check} className="sidebar-icon" />
                 MY SUBSCRIPTION
@@ -62,7 +62,7 @@ class MyAccountSidebar extends Component {
                 active: activeLink === "FAVOURITES"
               })}
             >
-              <Link href={"/" + location.countryCode + "/my-favourites"}>
+              <Link href={"/account/favourites"}>
                   <a>
                 <Icon icon={heart} className="sidebar-icon" />
                 FAVOURITES
@@ -77,7 +77,7 @@ class MyAccountSidebar extends Component {
                 active: activeLink === "changePassword"
               })}
             >
-              <Link href={"/" + location.countryCode + "/change-password"}>
+              <Link href={"/account/change-password"}>
                   <a>
                 <Icon icon={user} className="sidebar-icon" />
                 CHANGE PASSWORD
@@ -99,7 +99,7 @@ class MyAccountSidebar extends Component {
                 active: activeLink === "PAYMENT METHOD"
               })}
             >
-              <Link href={"/" + location.countryCode + "/my-address"}>
+              <Link href={"/account/address"}>
                   <a>
                 <Icon icon={mapMarker} className="sidebar-icon" />
                 MY ADDRESS
@@ -111,7 +111,7 @@ class MyAccountSidebar extends Component {
                 active: activeLink === "CARD METHOD"
               })}
             >
-              <Link href={"/" + location.countryCode + "/my-card"}>
+              <Link href={"/account/cards"}>
                   <a>
                 <Icon icon={money} className="sidebar-icon" />
                 PAYMENT METHOD

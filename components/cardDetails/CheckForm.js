@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 // import { Lodar } from "../";
 // import classNames from "classnames";
 import { setAPUser } from "../../redux/actions";
-// import { Input, fieldValidation } from "../form";
+import { fieldValidation } from "../forms/validation";
+
 import  Input  from "../form-components/input.js";
 
 import { Modal, ModalHeader } from "reactstrap";
