@@ -59,9 +59,10 @@ const Product = ({product, allProducts, ...props}) => {
         const productImage = getProductImage(product) ? projectSettings.serverUrl + getProductImage(product) : "/images/cbd-oil.png"
         return (
             <Layout headerTheme="dark" fixed={true}>
-                <ProductInfo product={product} productAttr={productAttr.filter((el,i)=> i < 2 )} image={productImage}>
+                <ProductInfo 
+                product={product} productAttr={productAttr.filter((el,i)=> i < 2 )} image={productImage}>
                 </ProductInfo>
-                <HImgSection version={["full"]} image={image} >
+                <HImgSection version={["full"]} image={projectSettings.filePath + image} >
                     <div>
                         <Heading >{getProductDescription(product)}</Heading>
                     </div>
