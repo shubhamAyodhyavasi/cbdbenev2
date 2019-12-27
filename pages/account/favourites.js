@@ -364,9 +364,9 @@ class Favourites extends Component {
     // const {wishList} = this.props;
 
     return (
-        <Layout>
+        <Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
       <div
-        className={classNames("", {
+        className={classNames("my-order", {
           [className]: className
         })}
       >
@@ -376,15 +376,25 @@ class Favourites extends Component {
         {this.state.SpinnerToggle && <Loader />}
 
         <div className="container-fluid">
+          <div className="my-order__heading">
+          <h3>Favourites</h3>
+          </div>
+        </div>
+
+        <div className="my-order__wrapper">
+          <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 ">
+            <div className="col-lg-2 ">
               <MyAccountSidebar activeLink="FAVOURITES" />
             </div>
-            <div className="col-lg-9 ">
-              <h3>Favourites</h3>
-              <Card className="panel-section">
-                <Alert color="dark">YOUR FAVOURITES</Alert>
-                <CardBody>
+            <div className="col-lg-10">              
+            <Card className="panel-section my-order__panel">
+              <CardBody className="my-order__card-body">
+                <div className="my-order__detail">
+                  <div className="my-order__alert">
+                    <Alert color="dark" className="my-order__alert--msg">YOUR FAVOURITES</Alert>
+                  </div>
+                
                   <CardTitle>
                     <Alert
                       color="info"
@@ -395,8 +405,8 @@ class Favourites extends Component {
                     </Alert>
                     <div className="table-responsive middletable">
                       {wishList && wishList.length > 0 ? (
-                        <Table className="new-res-table" hover>
-                          <thead>
+                        <Table className="new-res-table my-order__table">
+                          <thead className="my-order__thead">
                             <tr>
                               <th>Product Image</th>
                               <th>Product Name</th>
@@ -422,8 +432,8 @@ class Favourites extends Component {
                                   productSlug
                                 });
                                 return (
-                                  <tr key={index}>
-                                    <td>
+                                  <tr key={index} className="my-order__t-row my-order__t-row--v-bottom">
+                                    <td className="my-order__t-col my-order__table--img">
                                       {" "}
                                       {itm.productDetails.comboid && (
                                         <img
@@ -433,18 +443,18 @@ class Favourites extends Component {
                                         />
                                       )}
                                     </td>
-                                    <td> {title} </td>
-                                    <td>
+                                    <td className="my-order__t-col my-order__table--name"> {title} </td>
+                                    <td className="my-order__t-col my-order__table--action">
                                       {_id ? (
                                         <div>
                                             <Link href={`/shop/`} >
-                                                <a className="btn9 mobile-remove-btn-padding">
+                                                <a className="btn9 mobile-remove-btn-padding my-order__t-btn">
                                                 View
                                                 </a>
                                             </Link>
                                           <ButtonGroup>
                                             <Button
-                                              className="btn6 mobile-remove-btn-padding"
+                                              className="btn6 mobile-remove-btn-padding my-order__t-btn"
                                               onClick={() =>
                                                 this.deleteWishList(
                                                   itm.wishListId,
@@ -456,7 +466,7 @@ class Favourites extends Component {
                                               <Icon icon={trash} />
                                             </Button>
                                             <Button
-                                              className="btn2 mobile-remove-btn-padding"
+                                              className="btn2 mobile-remove-btn-padding my-order__t-btn"
                                               onClick={() =>{
             
                                                 this.addToCart(
@@ -481,8 +491,8 @@ class Favourites extends Component {
                               } else if (false) {
                               }
                               return itm.combo ? (
-                                <tr key={index}>
-                                  <td>
+                                <tr key={index}  className="my-order__t-row my-order__t-row--v-bottom">
+                                <td className="my-order__t-col my-order__table--img">
                                     {" "}
                                     {itm.productDetails.comboid && (
                                       <img
@@ -496,11 +506,11 @@ class Favourites extends Component {
                                       />
                                     )}
                                   </td>
-                                  <td>
+                                  <td className="my-order__t-col my-order__table--name">
                                     {itm.productDetails.comboid &&
                                       itm.productDetails.comboid.title}
                                   </td>
-                                  <td>
+                                  <td className="my-order__t-col my-order__table--action">
                                     {itm.productDetails.comboid &&
                                     itm.productDetails.comboid._id ? (
                                       <div>
@@ -511,12 +521,12 @@ class Favourites extends Component {
                                               itm.productDetails.comboid._id
                                             }
                                           >
-                                            <a className="btn9 mobile-remove-btn-padding">
+                                            <a className="btn9 mobile-remove-btn-padding my-order__t-btn">
                                             View
                                             </a>
                                           </Link>
                                           <Button
-                                            className="btn6 mobile-remove-btn-padding"
+                                            className="btn6 mobile-remove-btn-padding my-order__t-btn"
                                             onClick={() =>
                                               this.deleteWishList(
                                                 itm.wishListId,
@@ -528,7 +538,7 @@ class Favourites extends Component {
                                             <Icon icon={trash} />
                                           </Button>
                                           <Button
-                                            className="btn2 mobile-remove-btn-padding"
+                                            className="btn2 mobile-remove-btn-padding my-order__t-btn"
                                             onClick={() =>
                                               this.addToCart(
                                                 itm.productDetails.comboid._id,
@@ -548,8 +558,8 @@ class Favourites extends Component {
                                   </td>
                                 </tr>
                               ) : (
-                                <tr key={index}>
-                                  <td>
+                                <tr key={index}  className="my-order__t-row my-order__t-row--v-bottom">
+                                <td className="my-order__t-col my-order__table--img">
                                     {itm.productDetails.productid &&
                                       itm.productDetails.productid
                                         .featurefilepath && (
@@ -564,11 +574,11 @@ class Favourites extends Component {
                                         />
                                       )}
                                   </td>
-                                  <td>
+                                  <td className="my-order__t-col my-order__table--name">
                                     {itm.productid &&
                                       itm.productDetails.productid.producttitle}
                                   </td>
-                                  <td>
+                                  <td className="my-order__t-col my-order__table--action">
                                     {itm.productmeta &&
                                     itm.productDetails.productmeta._id ? (
                                       <div>
@@ -581,11 +591,11 @@ class Favourites extends Component {
                                             }
                                           >
                                             <a
-                                            className="btn9 btn mobile-remove-btn-padding"
+                                            className="btn9 btn mobile-remove-btn-padding my-order__t-btn"
                                             >View</a>
                                           </Link>
                                           <Button
-                                            className="btn6 mobile-remove-btn-padding"
+                                            className="btn6 mobile-remove-btn-padding my-order__t-btn"
                                             onClick={() =>
                                               this.deleteWishList(itm._id, itm)
                                             }
@@ -594,7 +604,7 @@ class Favourites extends Component {
                                             <Icon icon={trash} />
                                           </Button>
                                           <Button
-                                            className="btn2 mobile-remove-btn-padding"
+                                            className="btn2 mobile-remove-btn-padding my-order__t-btn"
                                             onClick={() =>
                                               this.addToCart(
                                                 itm.productDetails.productmeta
@@ -622,19 +632,20 @@ class Favourites extends Component {
                       )}
                     </div>
                   </CardTitle>
-                  <hr />
+                </div>
 
                   <Link
                     href={"/" + location.countryCode + "/shop"}
                   >
                     <a
-                    className="btn or-btn btn-outline-shopping btn-icon"
-                    style={{ marginTop: "15px", width: "300px" }}>START SHOPPING</a>
+                    className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
+                    >START SHOPPING</a>
                   </Link>
-                </CardBody>
-              </Card>
+              </CardBody>
+            </Card>
             </div>
           </div>
+        </div>
         </div>
         <Modal
           isOpen={showModal}
@@ -646,7 +657,7 @@ class Favourites extends Component {
           </p> */}
           <p className="text-center title-80 p-3">{modalData.msg}</p>
         </Modal>
-      </div>
+        </div>
       </Layout>
     );
   }

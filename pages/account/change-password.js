@@ -87,18 +87,23 @@ class ChangePassword extends Component {
     // return <div></div>
     const { userDetailsRes, isLoading } = this.state;
     return (
-        <Layout>
+        <Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
       <div
-        className={classNames("", {
+        className={classNames("my-order", {
           [className]: className
         })}
       >
         <div className="container-fluid">
+          <div className="my-order__heading">
+            <h3>Change Password</h3>
+          </div>
+        </div>
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 ">
+            <div className="col-lg-2 ">
               <MyAccountSidebar activeLink="changePassword" />
             </div>
-            <div className="col-lg-9 ">
+            <div className="col-lg-10 ">
               {isLoading && (
                 <div className="p-5 text-center">
                   <Spinner color="dark" />

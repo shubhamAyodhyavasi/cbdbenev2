@@ -31,7 +31,6 @@ class MyAccountSidebar extends Component {
         max={1}
         >
           <Nav vertical>
-            <hr />
             {/* <p>YOUR ORDER</p> */}
             <NavItem
               className={classNames("my-accountLink", {
