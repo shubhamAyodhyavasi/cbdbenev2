@@ -19,6 +19,16 @@ export const getProductImage = (product = {}, image = "main") => {
   }
   return null
 };
+export const getProductImageArray = (product = {}) => {
+  let image = []
+  if (product.productid) {
+    if (product.productid.featurefilepath)
+    image = [...image, product.productid.featurefilepath];
+  }
+  if (product.featureimage) image = [...image, product.featureimage];
+  if (product.galleryimgdetails) image = [...image, ...product.galleryimgdetails];
+  return image
+};
 export const getProductAttributes = (product = {}, allProducts = []) => {
   if (product.combo) {
     return product.products.map(el => {

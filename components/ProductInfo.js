@@ -10,9 +10,11 @@ import { numberFormat } from "../services/helpers/misc";
 import { addToCart } from '../redux/actions/cart'
 import { showCartBar } from '../redux/actions/drawers'
 import {connect} from 'react-redux'
+import {getProductImageArray, } from '../services/helpers/product'
 import projectSettings from '../constants/projectSettings'
 import BasicFunction from "../services/extra/basicFunction";
 import {addToWishList, deleteWishList} from "../services/api";
+import ImageZoom from "./ImageZoom"
 const basicFunction = new BasicFunction();
 class ProductInfo extends React.Component {
     constructor(props){
@@ -131,6 +133,7 @@ class ProductInfo extends React.Component {
             showCartBar()
         }
         const { Option } = Select;
+        const gallery = getProductImageArray(product)
         return (
             <div className="c-product-info container">
                 <div className="row c-product-info__row">
@@ -154,7 +157,8 @@ class ProductInfo extends React.Component {
                         </div>
                         </div>
                         <div className="c-product-info__img-wrapper">
-                            <img src={image} alt="product" className="img-fluid c-product-info__img"/>
+                            {gallery && gallery.length > 0 && <ImageZoom images={gallery} />}
+                            {gallery && gallery.length <= 0 && <img src={image} alt="product" className="img-fluid c-product-info__img"/>}
                             {/* <p className="c-product-info__size">1 oz/30 ml</p> */}
                         </div>
                     </div>

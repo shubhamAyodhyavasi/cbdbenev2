@@ -11,6 +11,9 @@
         min-height: 100vh;
         padding: 220px 40px 100px;        
     }
+    &__img-wrapper{
+        width: 100%;
+    }
     &__price-wrapper {
         @include bpm-lg{
             order: 1;
@@ -125,6 +128,13 @@
         @include bp-xs{
             display:none;
         }
+    }
+}
+
+.product-view{
+    .carousel__image{
+        background-color: $light-color-2;
+        background-size: contain !important;
     }
 }
 .lg-hide {
