@@ -535,8 +535,6 @@ class MyAccount extends Component {
                     </div>
                   </CardTitle>
                   </div>
-                  
-                  <hr className="my-order__dark-hr" />
                   <CardSubtitle className="my-order__subtitle">
                     From here you can:
                     {myOrderPageFooterDetails &&

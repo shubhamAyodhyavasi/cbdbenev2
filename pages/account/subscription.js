@@ -11,6 +11,7 @@ import {
   getOrders,
   getUserDetails
 } from "../../services/api";
+import { Button, ButtonGroup } from "reactstrap";
 import MyAccountSidebar from "../../components/MyAccountSidebar";
 
 import Loader from '../../components/Loader'
@@ -318,7 +319,8 @@ class MySubscription extends Component {
           <Link
             href={"/shop/" + subs._id }
           >
-            {subs.title}
+            <a className="my-order__t-link">{subs.title}</a>
+            
           </Link>
         );
 
@@ -343,10 +345,10 @@ class MySubscription extends Component {
         <div className="my-order__wrapper">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 ">
+            <div className="col-lg-2 ">
               <MyAccountSidebar activeLink="MY SUBSCRIPTION" />
             </div>
-            <div className="col-lg-9 ">
+            <div className="col-lg-10 ">
               {/* <h1>Your Subscription</h1> */}
               <br />
               <Card className="panel-section my-order__panel">
@@ -359,8 +361,8 @@ class MySubscription extends Component {
                   <CardTitle >
                     <div className="table-responsive">
                       {this.state.subscriptionList.length > 0 ? (
-                        <Table className="new-res-table" hover>
-                          <thead>
+                        <Table className="new-res-table my-order__table">
+                          <thead className="my-order__thead">
                             <tr>
                               <th>S. No.</th>
                               <th>Subscribed On</th>
@@ -370,18 +372,35 @@ class MySubscription extends Component {
                           </thead>
                           <tbody>
                             {this.state.subscriptionList.map((subs, index) => (
-                              <tr key={index}>
-                                <th scope="row">{index + 1}</th>
+                              <tr key={index} className="my-order__t-row">
+                                <th className="sr-number my-order__t-head my-order__table--sno" scope="row">{index + 1}</th>
+                                <td data-label="Product"
+                                className="my-order__t-col my-order__table--name ">
+                                  {productLink(subs)}
+                                </td>
                                 <td
-                                  className="inline-data"
+                                    data-label="Price"
+                                    className="inline-data my-order__t-col my-order__table--price"
+                                  >
+                                    $12.34  
+                                  </td>
+                                <td
+                                  className="inline-data my-order__t-col my-order__table--date"
                                   data-label="Subscribed On"
                                 >
                                   {basicFunction.dateTimeInMonthName(
                                     subs.createdOn
                                   )}
                                 </td>
+
                                 <td
-                                  className="inline-data"
+                                  className="inline-data my-order__t-col my-order__table--date"
+                                  data-label="Subscribed On"
+                                >
+                                  May 28 2019 
+                                </td>
+                                <td
+                                  className="inline-data my-order__t-col my-order__table--status"
                                   data-label="Duration"
                                 >
                                   {subs.subscriptionMeta &&
@@ -393,12 +412,31 @@ class MySubscription extends Component {
                                           subs.subscriptionMeta.duration
                                         } Month`)}
                                 </td>
+                                <td data-label="Action" className="my-order__t-col my-order__table--action">
+                                    <ButtonGroup>
+                                      <Button
+                                        
+                                        className="btn9 my-order__t-btn"
+                                        onClick={() => this.toggle(order)}
+                                      >
+                                        {/* <Icon icon={eye} /> */}
+                                        View
+                                      </Button>
+                                      <span style={{ minWidth: "2px" }} />
+                                      <Button
+                                        
+                                        className="btn9 my-order__t-btn"
+                                        onClick={() => this.reorder(order)}
+                                      >
+                                        Reorder
+                                      </Button>
+                                      <span style={{ minWidth: "2px" }} />                                      
+                                    </ButtonGroup>                                    
+                                  </td>                                
                                 {/* <td>
                                 <a className="btn or-btn btn-light-grey">View</a>
                               </td> */}
-                                <td data-label="Product">
-                                  {productLink(subs)}
-                                </td>
+                                
                               </tr>
                             ))}
                           </tbody>
@@ -444,3 +482,8 @@ const mapStateToProps = state => ({
   location: state.location
 });
 export default connect(mapStateToProps)(MySubscription);
+
+// subscription page
+// 2nd date static
+// prize in table
+// action button
