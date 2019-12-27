@@ -43,6 +43,12 @@
     .ant-steps-item{
         flex: none !important;
     }
+    .ant-steps-item-title{
+        cursor: pointer;
+
+    }
+
+
 }
 
 input[type=number]::-webkit-inner-spin-button, 

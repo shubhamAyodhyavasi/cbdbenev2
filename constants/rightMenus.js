@@ -20,6 +20,10 @@ const rightMenus = [
         onlyLogin: true,
         dropdownMenu: [
             {
+                label: "My Account",
+                link: "/account",
+            },
+            {
                 label: "logout",
                 action: "logout"
             }

@@ -9,7 +9,8 @@ import {
   SET_COUPON_CODE_DISCOUNT_VALUE,
   SET_FAV_COUNTITY,
   SET_CART,
-  SET_CART_NULL_ITEM
+  SET_CART_NULL_ITEM,
+  SET_CART_EDITABLE
 } from "../actions/type";
 import {
   modifyProduct,
@@ -76,6 +77,11 @@ export default (state = initialCart, action) => {
       };
     case SET_CART:
       return payload;
+    case SET_CART_EDITABLE:
+      return {
+        ...state,
+        isEditable: payload
+      };
     default:
       return state;
   }

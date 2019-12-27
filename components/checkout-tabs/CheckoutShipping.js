@@ -45,15 +45,19 @@ class CheckoutShipping extends React.Component {
     })
     this.getRates()
   }
+  componentDidUpdate(prevProps){
+    if(prevProps.cart.items !== this.props.cart.items){
+      this.getRates()
+    }
+  }
   getRates = () => {
     const data = this.getShippingData()
     const {
       cart
     } = this.props
+    this.setState({dataFetched:false})
     getShippingRates(data)
       .then(res => {
-        console.log({ res })
-
         if (res.data.status) {
           this.setState({dataFetched:true})
           const rates = res.data.data.rates
@@ -239,7 +243,7 @@ class CheckoutShipping extends React.Component {
                 ],
                 initialValue: address.addressStr
               })(
-                <DebounceInput label="address" />,
+                <DebounceInput label="address" disabled/>
               )}
             </Form.Item>
           </TitleList>

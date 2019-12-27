@@ -86,8 +86,20 @@ className={classNames("c-nav", {
                   <Dropdown overlay={<Menu>
                     {
                     el.dropdownMenu.map((elx, ii) => {
-
+                      if(elx.link){
+                        return (<Menu.Item key={ii} >
+                          <Link href={elx.link}>
+                            <span onClick={(e) => {
+                                onClick(e, elx.action)
+                              }} className="c-nav__link">
+                                {elx.label}
+                                {elx.icon}
+                              </span>
+                          </Link>
+                        </Menu.Item>)
+                      }
                       return (<Menu.Item key={ii} >
+                        
                         <span onClick={(e) => {
                             onClick(e, elx.action)
                           }} className="c-nav__link">

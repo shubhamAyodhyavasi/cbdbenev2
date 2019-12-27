@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect } from 'react'
 import CheckoutLayout from '../components/Layouts/CheckoutLayout'
 import Heading from '../components/Heading'
 import TitleList from '../components/TitleList'
@@ -8,7 +8,7 @@ import Button from '../components/form-components/Button'
 import Radio from '../components/form-components/Radio'
 import { Steps, Modal } from 'antd'
 import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
-import {addAddress} from '../redux/actions/address'
+import {addAddress, setEditable} from '../redux/actions'
 import { connect } from 'react-redux'
 import checkAddressDuplicate from '../services/helpers/address'
 import CheckoutShipping from '../components/checkout-tabs/CheckoutShipping'
@@ -26,6 +26,19 @@ const Checkout  = ({
     const [shippingDetail, setShippingDetail] = useState(null)
     const [shippingSendData, setShippingSendData] = useState(null)
     const [isModal, setIsModal] = useState(false)
+    
+    useEffect(()=> {
+        if(currentStep === 2){
+            if(props.isEditable){
+                props.setEditable(false)
+            }
+        }else{
+            if(!props.isEditable){
+                props.setEditable(true)
+            }
+        }
+    })
+    
     const address = [
         {
             address: "125th St, New York, NY 10027, USA",
@@ -155,9 +168,15 @@ const Checkout  = ({
                     <Steps 
                         current={currentStep}
                     >
-                        <Steps.Step title="Information" />
-                        <Steps.Step title="Shipping" />
-                        <Steps.Step title="Payment" />
+                        <Steps.Step onClick={()=> {
+                            currentStep > 0 && setCurrentStep(0)
+                        }} title="Information" />
+                        <Steps.Step onClick={()=> {
+                            currentStep > 1 && setCurrentStep(1)
+                        }} title="Shipping" />
+                        <Steps.Step onClick={()=> {
+                            currentStep > 2 && setCurrentStep(2)
+                        }} title="Payment" />
                     </Steps>
                 </div>
                 <div className="c-checkout__main-wrapper">
@@ -224,9 +243,10 @@ const mapStateToProps = state => ({
     address: state.address,
     user: state.user,
     isLoading: state.loading.isLoading,
+    isEditable: state.cart.isEditable,
 })
 const mapActionToProps = {
-    addAddress
+    addAddress, setEditable
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Checkout)

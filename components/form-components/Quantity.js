@@ -16,7 +16,7 @@ class Quantity extends React.Component {
         }
     }
     render(){
-        const {min, max, value, onChange, parentClass} = this.props
+        const {min, max, value, onChange, parentClass, isDisabled} = this.props
         const {inputValue} = this.state
         const parent = `${parentClass}__quantity`
         // const [inputValue, setInputValue] = useState(value || 1)
@@ -30,9 +30,11 @@ class Quantity extends React.Component {
         }
         return (
             <div className={classNames("c-quantity", {
-                [parent]: parentClass
+                [parent]: parentClass,
+                "c-quantity--disabled": isDisabled
             })}>
                 <div onClick={()=> {
+                    if(!isDisabled)
                     onInputChange(inputValue - 1)
                 }} className="c-quantity__btn c-quantity__btn--minus">-</div>
                 {/* <input className="c-quantity__input" type="number" onChange={onInputChange} min={min} max={max} value={inputValue} /> */}
@@ -40,6 +42,7 @@ class Quantity extends React.Component {
                     {inputValue}
                 </span>
                 <div onClick={()=> {
+                    if(!isDisabled)
                     onInputChange(inputValue + 1)
                 }} className="c-quantity__btn c-quantity__btn--plus">+</div>
             </div>
@@ -73,6 +76,7 @@ class Quantity extends React.Component {
 //     )
 // }
 Quantity.defaultProps = {
-    inputId: `${Math.random() * new Date().getTime()}`
+    inputId: `${Math.random() * new Date().getTime()}`,
+    isDisabled: false
 }
 export default Quantity

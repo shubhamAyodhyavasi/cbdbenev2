@@ -27,11 +27,15 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
         cart.taxCouponDiscount
     )
     const hasItems = cart.items.length > 0 ? true : false
+    console.log({
+        cart
+    })
     return (
         <div className="c-cart-drawer" >
+            <p style={{color: "#fff"}}>
+            </p>
             {
                 hasItems && <>
-
                     {
                         cart.items.map((el, i) => <CartItem key={i}
                             title={getProductTitle(el)}
@@ -39,7 +43,8 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
                             price={`$${numberFormat(parseFloat(el.saleprice) * el.qty)}`}
                             quantity={el.qty}
                             onRemove={() => removeFromCart(el)}
-                            onQtyChange={(e) => qtyChange(e, el)}
+                            isDisabled={!cart.isEditable}
+                            onQtyChange={(e) => {if(cart.isEditable) qtyChange(e, el)}}
                         />)
                     }
                     <div className="mt-auto"></div>
