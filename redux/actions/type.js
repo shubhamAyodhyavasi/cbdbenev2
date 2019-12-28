@@ -8,6 +8,7 @@ export const SET_TAX_VALUE = "SET_TAX_VALUE";
 export const SET_COUPON_CODE_DISCOUNT_VALUE = "SET_COUPON_CODE_DISCOUNT_VALUE";
 export const SET_CART = "SET_CART";
 export const SET_CART_NULL_ITEM = "SET_CART_NULL_ITEM";
+export const SET_CART_EDITABLE  = "SET_CART_EDITABLE";
 
 //drawers
 export const TOGGLE_CART_BAR = "TOGGLE_CART_BAR";

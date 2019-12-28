@@ -12,19 +12,25 @@ import projectSettings from '../../constants/projectSettings';
 import { searchAddress, getShippingRates } from '../../services/api';
 import { getItemsHeightWidth, filterShippingRates } from "../../services/helpers/cart"
 import { getSingleElementByMultipleObject } from "../../services/helpers/misc"
+import { getCountryCode } from "../../services/extra/getCountryName"
 import msgStrings from "../../constants/msgStrings"
 import reactComponentDebounce from 'react-component-debounce';
 import FetchLoader from '../FetchLoader';
 import FadeIn from 'react-fade-in';
+import { 
+  setShippingCharge,
+  setShippingType, 
+  setTax 
+} from '../../redux/actions/cart'
+
 const DebounceInput = reactComponentDebounce({
     valuePropName: 'value',
     triggerMs: 1000,
   })(Input);
 
-import { 
-  setShippingCharge,
-  setShippingType } from '../../redux/actions/cart'
-
+const {
+  countryTax, enableCountry
+} = projectSettings
 
 class CheckoutShipping extends React.Component {
   constructor(props) {
@@ -35,7 +41,8 @@ class CheckoutShipping extends React.Component {
       shippingErrMsg: null,
       shippingRates: [],
       shippingSendData: null,
-      dataFetched: false
+      dataFetched: false,
+      tax: 0
     }
   }
   componentDidMount() {
@@ -44,16 +51,51 @@ class CheckoutShipping extends React.Component {
       cart: this.props.cart
     })
     this.getRates()
+    this.getTax()
+  }
+  componentDidUpdate(prevProps){
+    if(prevProps.cart.items !== this.props.cart.items){
+      this.getRates()
+    }
+  }
+  getTax = () => {
+    const {
+      address : {
+        country
+      }
+    } = this.state
+
+    if(!enableCountry.includes(country)){
+      this.props.setTax({
+        taxPersent: countryTax,
+        taxCountry: country
+      })
+    }else{
+      this.props.setTax({
+        taxPersent: 0,
+        taxCountry: country
+      })
+    }
+    // const countryCode = getCountryCode(country)
+    // console.clear()
+    // console.log({
+    //   country,
+    //   countryCode
+    // })
+  }
+  calculateTax = () => {
+    const {
+      tax
+    } = this.state
   }
   getRates = () => {
     const data = this.getShippingData()
     const {
       cart
     } = this.props
+    this.setState({dataFetched:false})
     getShippingRates(data)
       .then(res => {
-        console.log({ res })
-
         if (res.data.status) {
           this.setState({dataFetched:true})
           const rates = res.data.data.rates
@@ -239,7 +281,7 @@ class CheckoutShipping extends React.Component {
                 ],
                 initialValue: address.addressStr
               })(
-                <DebounceInput label="address" />,
+                <DebounceInput label="address" disabled/>
               )}
             </Form.Item>
           </TitleList>
@@ -286,6 +328,7 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = {
   // showRegBar
   setShippingCharge,
-  setShippingType
+  setShippingType,
+  setTax
 }
 export default connect(mapStateToProps, mapActionToProps)(Form.create({ name: "checkoutShipping" })(CheckoutShipping))

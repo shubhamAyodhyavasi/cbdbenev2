@@ -9,7 +9,8 @@ import {
   SET_COUPON_CODE_DISCOUNT_VALUE,
   SET_FAV_COUNTITY,
   SET_CART,
-  SET_CART_NULL_ITEM
+  SET_CART_NULL_ITEM,
+  SET_CART_EDITABLE
 } from "./type";
 
 // import { setCartApi, getSingleUserApi } from "../services/api";
@@ -218,3 +219,8 @@ export const setCartNullItem = (isNull = true) => ({
   type: SET_CART_NULL_ITEM,
   payload: isNull
 });
+
+export const setEditable = (isEditable = true) => ({
+  type: SET_CART_EDITABLE,
+  payload: isEditable
+})

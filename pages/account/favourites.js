@@ -158,7 +158,6 @@ class Favourites extends Component {
                 SpinnerToggle: false
               },
               () => {
-                console.clear()
                   console.log({
                       props: this.props,
                       setWishList

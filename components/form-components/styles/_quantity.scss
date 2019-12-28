@@ -26,4 +26,11 @@
         justify-content: center;
         cursor: pointer;
     }
+    &--disabled{
+        .c-quantity{
+            &__btn{
+                cursor: not-allowed;
+            }
+        }
+    }
 }

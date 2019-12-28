@@ -11,5 +11,6 @@ export const initialCart = {
   taxCouponCode: "",
   taxCouponDiscount: 0,
   setFav: 0,
-  hasNulled: false
+  hasNulled: false,
+  isEditable: true
 }
