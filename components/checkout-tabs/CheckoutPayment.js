@@ -695,7 +695,7 @@ class CheckoutPayment extends React.Component {
                                 ],
                                 initialValue: email
                             })(
-                                <DebounceInput label="E-mail" />,
+                                <DebounceInput disabled={true} label="E-mail" />,
                             )}
                         </Form.Item>
                     </TitleList>
@@ -710,7 +710,7 @@ class CheckoutPayment extends React.Component {
                                 ],
                                 initialValue: address.addressStr
                             })(
-                                <DebounceInput label="address" />,
+                                <DebounceInput disabled={true} label="address" />,
                             )}
                         </Form.Item>
                     </TitleList>
