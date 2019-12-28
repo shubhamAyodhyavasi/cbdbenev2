@@ -27,6 +27,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
         cart.taxCouponDiscount
     )
     const hasItems = cart.items.length > 0 ? true : false
+    const taxPrice = cart.taxPercent ? (cart.taxPercent * cart.subTotal).toFixed(2) : 0
     console.log({
         cart
     })
@@ -62,15 +63,18 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
                                 title={"Shipping"}
                                 price={`$${cart.shippingCharge}`}
                                 total={true}
-                                versions={["small", "no-border"]}
+                                versions={
+                                    cart.taxPercent ? ["small", "no-border"] : ["small"] 
+                                }
                             />
-                            <CartItem
+                            {cart.taxPercent && cart.taxPercent > 0 && <CartItem
                                 small={true}
                                 title={"Taxes"}
-                                price={`${(cart.taxPercent) ? cart.taxPercent : 0}`}
+                                // price={`${(cart.taxPercent) ? cart.taxPercent : 0}`}
+                                price={`$${taxPrice}`}
                                 total={true}
                                 versions={["small"]}
-                            />
+                            />}
                             <CartItem
                                 title={"Total"}
                                 price={grandTotal}
@@ -100,7 +104,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
                 <Heading parentClass="c-cart-item" versions={["gold", "btm-br"]} >Your bag is empty</Heading>
                 <div className="c-cart-drawer__btn-wrapper mt-auto">
                     <Link href="/shop">
-                        <a className="c-btn c-btn--block c-btn--outline-gold" >Conrinue shopping</a>
+                        <a className="c-btn c-btn--block c-btn--outline-gold" >Continue shopping</a>
                     </Link>
                 </div>
             </>

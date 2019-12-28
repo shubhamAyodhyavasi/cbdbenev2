@@ -64,20 +64,18 @@ class CheckoutShipping extends React.Component {
         country
       }
     } = this.state
-
     if(!enableCountry.includes(country)){
       this.props.setTax({
-        taxPersent: countryTax,
+        taxPercent: countryTax,
         taxCountry: country
       })
     }else{
       this.props.setTax({
-        taxPersent: 0,
+        taxPercent: 0,
         taxCountry: country
       })
     }
     // const countryCode = getCountryCode(country)
-    // console.clear()
     // console.log({
     //   country,
     //   countryCode
@@ -266,7 +264,7 @@ class CheckoutShipping extends React.Component {
                 ],
                 initialValue: email
               })(
-                <DebounceInput label="E-mail" />,
+                <DebounceInput disabled={true} label="E-mail" />,
               )}
             </Form.Item>
           </TitleList>

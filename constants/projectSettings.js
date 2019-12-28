@@ -11,7 +11,7 @@ const defaultStatusInOrder  = "in process";
 const invoiceUrl            = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/public/invoices/";
 const subsPercent           = 10
 const filePath              = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/"
-const countryTax            = 15
+const countryTax            = 15/100
 
 const enableCountry         = ["US", "USA", "United States"];
 const accountTypeOpt        = [

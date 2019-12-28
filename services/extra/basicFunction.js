@@ -581,7 +581,7 @@ export default class BasicFunction {
       totalWeight,
       totalVolume,
       taxValue,
-      taxPersent,
+      taxPercent,
       taxCouponDiscount,
       taxCouponCode
     } = cart;
@@ -597,10 +597,10 @@ export default class BasicFunction {
       totalWeight,
       shippingMethod: service,
       products: orderProducts,
-      countryTax: taxPersent * 100,
+      countryTax: taxPercent * 100,
       taxAmount:
         taxValue ||
-        parseFloat(cart.subTotal || 0) * parseFloat(taxPersent || 0) ||
+        parseFloat(cart.subTotal || 0) * parseFloat(taxPercent || 0) ||
         0,
       shippingCharge,
       userDetails: this.getUserDetails(stateObj).user,
@@ -615,7 +615,7 @@ export default class BasicFunction {
       couponDisc: taxCouponCode ? taxCouponDiscount : null,
       grandTotal: this.getGrandTotal(
         subTotal,
-        taxPersent,
+        taxPercent,
         shippingCharge,
         taxCouponDiscount
       ),
@@ -690,7 +690,7 @@ export default class BasicFunction {
       totalWeight,
       totalVolume,
       taxValue,
-      taxPersent,
+      taxPercent,
       taxCouponDiscount,
       taxCouponCode
     } = cart;
@@ -775,7 +775,7 @@ export default class BasicFunction {
     let billingAddress = `${billing_first_name} ${billing_last_name}, ${billing_address_name_01} ${billing_address_name_02} ${billing_address_town} `;
 
     const TaxgrandTotalWithTax =
-      subTotal + taxPersent * subTotal + shippingCharge;
+      subTotal + taxPercent * subTotal + shippingCharge;
     const discount = (taxCouponDiscount * subTotal) / 100;
     if (user._id) {
       const userid = user._id;
@@ -796,7 +796,7 @@ export default class BasicFunction {
     order.status = "in process";
     order.paymentstatus = "Done";
     order.transactionid = transactionId;
-    order.country_tax = taxPersent * 100;
+    order.country_tax = taxPercent * 100;
     order.totalweight = totalWeight;
     order.totalvolume = totalVolume;
     order.taxamount = taxValue;

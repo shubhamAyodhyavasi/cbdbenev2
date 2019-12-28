@@ -4,6 +4,7 @@ import PlacesAutocomplete from "react-places-autocomplete";
 import { ic_search } from "react-icons-kit/md/";
 import Icon from "react-icons-kit";
 import regExReplace from "../../services/helpers/regexReplace";
+import projectSettings from "../../constants/projectSettings"
 export default class AddressAutoFill extends Component {
   constructor(props) {
     super(props);
@@ -74,7 +75,7 @@ export default class AddressAutoFill extends Component {
     });
     const searchStr = `https://maps.googleapis.com/maps/api/geocode/json?address=${address
       .split(" ")
-      .join("+")}&key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk`;
+      .join("+")}&key=${projectSettings.googleApiKey}`;
 
     fetch(searchStr, {
       headers: {

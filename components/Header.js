@@ -5,6 +5,7 @@ import Nav from "./nav";
 import { useScrollPosition } from "../services/helpers/scroll"
 import { Affix } from 'antd'
 import classNames from 'classnames'
+import projectSettings from "../constants/projectSettings"
 import mainMenus from '../constants/mainMenus'
 import rightMenus from "../constants/rightMenus";
 import NavMobile from './navMobile';
@@ -52,7 +53,7 @@ const Header = ({bg, theme, versions, fixed}) => {
                 "c-header__wrapper--hidden": !show && !fixed,
             })}>
                 
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
+                <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
                 <header onScroll={(e) => {
                 }}  className={classNames(" c-header", {
                     "c-header--light": true,

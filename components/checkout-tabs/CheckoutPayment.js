@@ -59,6 +59,13 @@ class CheckoutPayment extends React.Component {
             getCards(user._id)
         }
     }
+    componentDidUpdate(prevProps){
+        if(prevProps.cards !== this.props.cards && this.state.collapseKey){
+            this.setState({
+                collapseKey: null
+            })
+        }
+    }
     tglCard = () => {
         this.setState(prevState => {
             this.props.form.setFieldsValue({
@@ -695,7 +702,7 @@ class CheckoutPayment extends React.Component {
                                 ],
                                 initialValue: email
                             })(
-                                <DebounceInput label="E-mail" />,
+                                <DebounceInput disabled={true} label="E-mail" />,
                             )}
                         </Form.Item>
                     </TitleList>
@@ -710,7 +717,7 @@ class CheckoutPayment extends React.Component {
                                 ],
                                 initialValue: address.addressStr
                             })(
-                                <DebounceInput label="address" />,
+                                <DebounceInput disabled={true} label="address" />,
                             )}
                         </Form.Item>
                     </TitleList>
@@ -756,7 +763,6 @@ class CheckoutPayment extends React.Component {
                     <TitleList parentClass={componentClass} title={<span onClick={this.tglCard} >Pay with card </span>} >
                         <Collapse destroyInactivePanel={true} bordered={false} activeKey={collapseKey} >
                             <Panel header={null} key="card">
-
                                 <>
                                     <Form.Item>
                                         {getFieldDecorator('cardnumber', {
@@ -775,14 +781,12 @@ class CheckoutPayment extends React.Component {
                                             //     label="Card Number" 
                                             //     mask="9999-9999-9999-9999"
                                             // />
-                                            
-  <DebounceCreditCard
-    className='c-input c-input__input'
-    placeholder="XXXX XXXX XXXX XXXX"
-    options={{creditCard: true}}
-    onChange={(key,value) => { console.log({key}) }}
-  />
-
+                                            <DebounceCreditCard
+                                                className='c-input c-input__input'
+                                                placeholder="XXXX XXXX XXXX XXXX"
+                                                options={{creditCard: true}}
+                                                onChange={(key,value) => { console.log({key}) }}
+                                            />
                                         )}
                                     </Form.Item>
                                     <Form.Item>
@@ -806,11 +810,11 @@ class CheckoutPayment extends React.Component {
                                                         }]
                                                     })(
                                                         <Cleave
-    className='c-input c-input__input'
-    options={{date: true, datePattern: ['m', 'y']}}
-    placeholder="Expiry Date" 
-    onChange={event => { console.log(event.target.rawValue, event.target.value) }}
-  />
+                                                            className='c-input c-input__input'
+                                                            options={{date: true, datePattern: ['m', 'y']}}
+                                                            placeholder="Expiry Date" 
+                                                            onChange={event => { console.log(event.target.rawValue, event.target.value) }}
+                                                        />
                                                     )}
                                                 </Form.Item>
                                             </div>
