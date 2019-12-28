@@ -64,13 +64,6 @@ class CheckoutShipping extends React.Component {
         country
       }
     } = this.state
-    console.clear()
-    console.log({
-      flag: enableCountry.includes(country),
-      country,
-      enableCountry,
-      countryTax
-    })
     if(!enableCountry.includes(country)){
       this.props.setTax({
         taxPercent: countryTax,
@@ -83,7 +76,6 @@ class CheckoutShipping extends React.Component {
       })
     }
     // const countryCode = getCountryCode(country)
-    // console.clear()
     // console.log({
     //   country,
     //   countryCode

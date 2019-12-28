@@ -23,7 +23,7 @@ const Category = ({ productList, ...props }) => {
         }
     })
     return (
-        <Layout headerTheme="dark">
+        <Layout headerTheme="dark" fixed={true}>
             <div className="c-category-page">
                 <HImgSection version={["full", "content-bottom"]} image={"/images/oil-page.jpg"} >
                     <div>
@@ -59,9 +59,19 @@ Category.getInitialProps = async ({ query }) => {
     const res = await fetch(apiList.getAllProducts)
     const productList = await res.json()
     const visibleProducts = getVisibleProducts(productList.products)
+    const categoryProduct = visibleProducts.filter(el => {
+        if(el.categoryid ){
+            if(el.categoryid.constructor === Array){
+                return el.categoryid.some(elx => elx.categorytitle && elx.categorytitle.toLowerCase() === query.cid.toLowerCase())
+            } else if(el.categoryid.categorytitle){
+                return el.categoryid.categorytitle.toLowerCase() === query.cid.toLowerCase()
+            }
+        }
+        return false
+    })
     return {
         category: query.cid,
-        productList: visibleProducts.map(el => addSlugToProduct(el))
+        productList: categoryProduct.map(el => addSlugToProduct(el))
     }
 }
 export default connect(null)(Category)
