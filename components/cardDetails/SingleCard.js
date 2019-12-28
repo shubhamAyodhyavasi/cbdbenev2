@@ -67,18 +67,21 @@ class SingleCard extends Component {
       const { cardType, expirationDate, cardNumber } = card.creditCard;
       return (
         <div className="col-md-12 col-sm-12 col-xs-12">
-          <Card className="panel-section">
+          <Card className="panel-section border-0">
             <CardBody>
-              <div className="row align-items-md-center just">
+              <div className="row align-items-md-center my-order__my-card">
                 <div className="col-md-6 col-sm-6 col-12">
-                  <h6>{cardType ? cardType : "No Name"}</h6>
-                  <p className="mb-md-0">
+                  <div className="my-order__card-detail">
+                    <h6>{cardType ? cardType : "No Name"}</h6>
+                    <p className="ml-5">
+                  
                     {cardNumber} | {expirationDate}
                     {/* {this.convertCardNumber(card.cardnumber)} */}
                   </p>
+                  </div>
                 </div>
                 <div className="col-md-6 col-sm-6 col-12 d-md-flex justify-content-md-end">
-                  <ul className="address-ul">
+                  <ul className="my-order__address-ul">
                     {/* <li>
                     <Button
                       color="link"

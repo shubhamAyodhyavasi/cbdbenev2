@@ -443,22 +443,31 @@ class EditAddress extends Component {
     return (
         <Layout>
       <div
-        className={classNames("", {
+        className={classNames("my-order", {
           [className]: className
         })}
       >
         {this.state.SpinnerToggle && <Loader />}
         <div className="container-fluid">
+          <div className="my-order__heading">
+            <h3>My Account</h3>
+          </div>
+        </div>
+        <div className="my-order__wrapper">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 ">
+            <div className="col-lg-2 ">
               <MyAccountSidebar activeLink="PAYMENT METHOD" />
             </div>
-            <div className="col-lg-9 ">
-              <Card className="panel-section">
-                <div className="billing-address-text  p-4  ">
+            <div className="col-lg-10 ">
                   <form onSubmit={this.submitRegistration}>
-                    <AddressForm
-                      title="Your Address"
+              <Card className="panel-section my-order__panel">
+              <div className="my-order__detail">
+                <div className="my-order__alert">
+                <h3 className="my-order__alert--msg">Your Address</h3>
+                </div>
+                <div className="billing-address-text p-4 card-title  ">
+                    <AddressForm                     
                       name={shipping_first_name}
                       nameId="shipping_first_name"
                       nameErr={shipping_first_nameErr}
@@ -544,12 +553,14 @@ class EditAddress extends Component {
                       }
                       label="Select an Address Type:"
                     /> */}
-                    <button className="btn-main p-3 w-100 btn10" type="submit">
+                </div>
+                
+              </div>
+                <button className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping mt-5" type="submit">
                       Submit
                     </button>
-                  </form>
-                </div>
               </Card>
+                  </form>
             </div>
           </div>
         </div>
@@ -562,6 +573,7 @@ class EditAddress extends Component {
             <h3>{addressAdded}</h3>
           </div>
         </Modal>
+      </div>
       </div>
     </Layout>
     );

@@ -1,0 +1,13 @@
+.c-loader {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+.loader__bg {
+    background-size: cover;
+}

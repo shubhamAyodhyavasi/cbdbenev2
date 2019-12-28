@@ -53,7 +53,7 @@ class AddressForm extends Component {
         <h2 className="product-title">{title}</h2>
          <div className="row">
           <Input
-            label="First Name*"
+            placeholder="First Name*"
             value={name}
             name={nameId}
             isError={nameErr}
@@ -61,7 +61,7 @@ class AddressForm extends Component {
             dataValidate={["name", "required"]}
             dataPattern="name"
             onChange={this.onChange}
-            classToBe="my-account__input"
+            classToBe="my-account__input ant-input c-input__input mb-4"
             col="sm-6"
             />
           <Input
@@ -73,19 +73,20 @@ class AddressForm extends Component {
             dataValidate={["name", "required"]}
             dataPattern="name"
             onChange={this.onChange}
-            classToBe="my-account__input"
+            classToBe="my-account__input ant-input c-input__input mb-4"
             col="sm-6"
           />
          </div>
         <Input
-          label="Email Address*"
+          placeholder="Email Address*"
           value={email}
           name={emailId}
           isError={emailErr}
+          col="12 pl-0 pr-0"
           errorMsg={emailErrMsg}
           dataValidate={["email", "required"]}
           onChange={this.onChange}
-          classToBe="my-account__input"
+          classToBe="my-account__input ant-input c-input__input mb-4"
         />
         <PhoneInput
           value={phone}
@@ -96,14 +97,16 @@ class AddressForm extends Component {
           data-validate={["phone", "required"]}
           pattern-type="phone"
           onChange={this.onPhoneChange}
-          classToBe="my-account__input"
+          classToBe="my-account__input ant-input c-input__input mb-4"
         />
         <AddressAutoFill
           autofillformresponse={onAddressChange}
           autofilladddatatoparent={addressData}
           address_err={addressErr}
           zipErr={zipErr}
+          colSizeState="4"
           colSize="12"
+          classToBe="my-account__input ant-input c-input__input mb-4"
         />
         {/* <Input
           label="Zip Code*"

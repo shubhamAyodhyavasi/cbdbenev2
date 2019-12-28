@@ -637,7 +637,7 @@ class Favourites extends Component {
                     href={"/" + location.countryCode + "/shop"}
                   >
                     <a
-                    className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
+                    className="mt-5 btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
                     >START SHOPPING</a>
                   </Link>
               </CardBody>

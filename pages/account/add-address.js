@@ -414,11 +414,14 @@ class AddAddressForm extends Component {
               <MyAccountSidebar activeLink="PAYMENT METHOD" />
             </div>
             <div className="col-lg-10">
-              <Card className="panel-section my-order__panel">
-                <div className="billing-address-text  p-4  ">
                   <form onSubmit={this.submitRegistration}>
-                    <AddressForm
-                    
+              <Card className="panel-section my-order__panel">
+              <div className="my-order__detail">
+                <div className="my-order__alert">
+                <h3 className="my-order__alert--msg">Your Address</h3>
+                </div>
+                <div className="billing-address-text p-4 card-title  ">
+                    <AddressForm                    
                       name={shipping_first_name}
                       nameId="shipping_first_name"
                       nameErr={shipping_first_nameErr}
@@ -505,12 +508,13 @@ class AddAddressForm extends Component {
                       }
                       label="Select an Address Type:"
                     /> */}
-                    <button className="btn-main p-3 w-100 btn10" type="submit">
+                    </div>
+                    </div>
+                <button className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping mt-5" type="submit">
                       Submit
                     </button>
-                  </form>
-                </div>
               </Card>
+                  </form>
             </div>
           </div>
         </div>
