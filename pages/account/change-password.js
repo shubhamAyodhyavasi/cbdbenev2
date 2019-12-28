@@ -98,6 +98,7 @@ class ChangePassword extends Component {
             <h3>Change Password</h3>
           </div>
         </div>
+        <div className="my-order__wrapper">
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-2 ">
@@ -111,10 +112,9 @@ class ChangePassword extends Component {
               )}
               {!isLoading && (
                 <div>
-                  <h3>Change Password</h3>
-                  <Card className="panel-section">
+                  <Card className="panel-section my-order__panel ">
                     {/* <Alert color="dark">YOUR PERSONAL DETAILS</Alert> */}
-                    <CardBody>
+                    <CardBody className="a-cp__card-body">
                       <Collapse isOpen={true}>
                         <ProfileUpdatePassword
                           userDetailsRes={userDetailsRes}
@@ -127,6 +127,7 @@ class ChangePassword extends Component {
               )}
             </div>
           </div>
+        </div>
         </div>
       </div>
       </Layout>

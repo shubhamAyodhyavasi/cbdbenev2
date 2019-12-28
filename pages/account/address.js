@@ -12,12 +12,14 @@ import Layout from '../../components/Layouts/Layout'
 
 import {
   Card,
-  CardBody
+  CardBody,
+  CardSubtitle,
   // CardTitle
 } from "reactstrap";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ic_library_add } from "react-icons-kit/md/ic_library_add";
-import Icon from "react-icons-kit";
+import Icon from 'react-icons-kit'
+import {plus} from 'react-icons-kit/ikons/plus'
 class ListAddress extends Component {
   constructor(props) {
     super(props);
@@ -78,45 +80,34 @@ class ListAddress extends Component {
     } = this.props;
     console.log({ address });
     return (
-        <Layout>
+        <Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
       <div
-        className={classNames("", {
+        className={classNames("my-order", {
           [className]: className
         })}
       >
         {this.state.SpinnerToggle && <Loader />}
         <div className="container-fluid">
+          <div className="my-order__heading">
+            <h3>My Account</h3>
+          </div>
+        </div>
+        <div className="my-order__wrapper">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 ">
+            <div className="col-lg-2 ">
               <MyAccountSidebar activeLink="PAYMENT METHOD" />
             </div>
-            <div className="col-lg-9 ">
-              <h3 className="">Your Addresses</h3>
-              <Card className="panel-section">
-                <CardBody>
-                  <TransitionGroup className="row">
-                    <CSSTransition
-                      timeout={300}
-                      className="transition-item3 col-md-4 col-sm-6 col-xs-12 mb-3"
-                    >
-                      <Card className="panel-section h-100">
-                        <CardBody>
-                          <div className="h-100 d-flex flex-column justify-content-center">
-                            <Link
-                              href={
-                                "/account/add-address"
-                              }
-                            >
-                              <center>
-                                <Icon size={64} icon={ic_library_add} />
-                              </center>
-                            </Link>
-                            <h4 className="text-center">Add Address</h4>
-                          </div>
-                        </CardBody>
-                      </Card>
-                    </CSSTransition>
-                    {address &&
+            <div className="col-lg-10 ">
+              <Card className="panel-section my-order__panel">
+
+              <CardBody className="my-order__card-body">
+                <div className="my-order__detail">
+                  <div className="my-order__alert pr-5">
+                    <h3 className="my-order__alert--msg">Your Addresses</h3>
+                  </div>
+                  <TransitionGroup className="row card-title">
+                  {address &&
                       address.map((el, key) => (
                         <CSSTransition
                           key={key}
@@ -129,12 +120,38 @@ class ListAddress extends Component {
                           />
                         </CSSTransition>
                       ))}
+                                       
                   </TransitionGroup>
+                  </div>
+                  <CardSubtitle className="my-order__subtitle">
+                  <CSSTransition
+                      timeout={300}
+                      className="my-order__transition-item3 col-md-12 mb-3"
+                    >
+                      <Card className="panel-section my-order__panel h-100">
+                        <CardBody className="my-order__card-body">
+                          <div className="h-100 d-flex my-order__add-item ">
+                            <h4 className="my-order__add-sm">Add Address</h4>
+                            <Link
+                              href={
+                                "/account/add-address"
+                              }
+                            >
+                              <center>
+                                <Icon size={14} icon={plus} />
+                              </center>
+                            </Link>
+                          </div>
+                        </CardBody>
+                      </Card>
+                    </CSSTransition>                    
+                  </CardSubtitle>
                 </CardBody>
               </Card>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </Layout>
     );

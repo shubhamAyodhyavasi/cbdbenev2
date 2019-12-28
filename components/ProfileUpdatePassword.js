@@ -413,7 +413,7 @@ export default class ProfileUpdatePassword extends Component {
     const { noTitle } = this.props;
     return (
       <div className="row">
-        <div className="col-lg-12 p-3 p-md-5  col-md-12 ">
+        <div className="col-lg-12 col-md-12 ">
           {!noTitle && <h4 className="">Update Password</h4>}
           {this.props.userDetailsRes.userid &&
           this.props.userDetailsRes.userid.password ? (
@@ -422,14 +422,15 @@ export default class ProfileUpdatePassword extends Component {
                 <div className="row frm-details">
                   <div className=" col-md-12">
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input", "a-cp__has-input" , {
                         "has-error":
                           passwordOld_err &&
                           !focusName.includes("passwordOld_err")
                       })}
                     >
-                      <label>Old Password:</label>
+                      <label className="a-cp">Old Password:</label>
                       <input
+                        className="a-cp__input"
                         id="passwordOld"
                         name="passwordOld"
                         value={passwordOld}
@@ -438,10 +439,11 @@ export default class ProfileUpdatePassword extends Component {
                         onFocus={this.setFocus}
                         onBlur={this.unSetFocus}
                         data-validate={["password", "required"]}
+                        placeholder="Enter old password"
                       />
                       {passwordOld_err &&
                         !focusName.includes("passwordOld_err") && (
-                          <p className="error">
+                          <p className="error a-cp__error">
                             {passwordOld_errMsg &&
                             passwordOld_errMsg === "can't be empty"
                               ? oldPasswordRequired
@@ -452,16 +454,17 @@ export default class ProfileUpdatePassword extends Component {
                   </div>
                 </div>
                 <div className="row frm-details">
-                  <div className=" col-md-6">
+                  <div className=" col-md-12">
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input", "a-cp__has-input" , {
                         "has-error":
                           passwordNew_err &&
                           !focusName.includes("passwordNew_err")
                       })}
                     >
-                      <label>New Password:</label>
+                      <label className="a-cp">New Password:</label>
                       <input
+                        className="a-cp__input"
                         id="passwordNew"
                         name="passwordNew"
                         value={passwordNew}
@@ -470,10 +473,11 @@ export default class ProfileUpdatePassword extends Component {
                         onFocus={this.setFocus}
                         onBlur={this.unSetFocus}
                         data-validate={["password", "required"]}
+                        placeholder="Enter new password"
                       />
                       {passwordNew_err &&
                         !focusName.includes("passwordNew_err") && (
-                          <p className="error">
+                          <p className="error a-cp__error">
                             {passwordNew_errMsg &&
                             passwordNew_errMsg === "can't be empty"
                               ? "New Password is required"
@@ -482,16 +486,17 @@ export default class ProfileUpdatePassword extends Component {
                         )}
                     </div>
                   </div>
-                  <div className=" col-md-6">
+                  <div className=" col-md-12">
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input", "a-cp__has-input" , {
                         "has-error":
                           passwordNewConfirm_err &&
                           !focusName.includes("passwordNewConfirm_err")
                       })}
                     >
-                      <label>Confirm Password:</label>
+                      <label className="a-cp">Confirm Password:</label>
                       <input
+                        className="a-cp__input"
                         id="passwordNewConfirm"
                         name="passwordNewConfirm"
                         value={passwordNewConfirm}
@@ -501,10 +506,11 @@ export default class ProfileUpdatePassword extends Component {
                         onBlur={this.unSetFocus}
                         data-validate={["repassword", "required"]}
                         data-match={passwordNew}
+                        placeholder="Enter confirm password"
                       />
                       {passwordNewConfirm_err &&
                         !focusName.includes("passwordNewConfirm_err") && (
-                          <p className="error">
+                          <p className="error a-cp__error">
                             {passwordNewConfirm_errMsg &&
                             passwordNewConfirm_errMsg === "can't be empty"
                               ? "Confirm Password is required"
@@ -516,7 +522,7 @@ export default class ProfileUpdatePassword extends Component {
                 </div>
 
                 <div className="">
-                  <button type="submit" className="btn btn-main col-md-3 btn7">
+                  <button type="submit" className="mt-5 btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping">
                     Update
                   </button>
                 </div>
@@ -528,21 +534,23 @@ export default class ProfileUpdatePassword extends Component {
                 <div className="row frm-details">
                   <div className=" col-md-6">
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input", "a-cp__has-input" , {
                         "has-error": passwordNew_err
                       })}
                     >
-                      <label>New Password:</label>
+                      <label className="a-cp">New Password:</label>
                       <input
+                        className="a-cp__input"
                         id="passwordNew"
                         name="passwordNew"
                         value={passwordNew}
                         onChange={this.handelTextChange}
                         type="password"
                         data-validate={["password", "required"]}
+                        placeholder="Enter new password"
                       />
                       {passwordNew_err && (
-                        <p className="error">
+                        <p className="error a-cp__error">
                           {passwordNew_errMsg &&
                           passwordNew_errMsg === "can't be empty"
                             ? "New Password is required"
@@ -553,12 +561,13 @@ export default class ProfileUpdatePassword extends Component {
                   </div>
                   <div className=" col-md-6">
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input", "a-cp__has-input" , "a-cp__has-input" , {
                         "has-error": passwordNewConfirm_err
                       })}
                     >
-                      <label>Confirm Password:</label>
+                      <label className="a-cp">Confirm Password:</label>
                       <input
+                        className="a-cp__input"
                         id="passwordNewConfirm"
                         name="passwordNewConfirm"
                         value={passwordNewConfirm}
@@ -566,9 +575,10 @@ export default class ProfileUpdatePassword extends Component {
                         type="password"
                         data-validate={["repassword", "required"]}
                         data-match={passwordNew}
+                        placeholder="Enter confirm password"
                       />
                       {passwordNewConfirm_err && (
-                        <p className="error">
+                        <p className="error a-cp__error">
                           {passwordNewConfirm_errMsg &&
                           passwordNewConfirm_errMsg === "can't be empty"
                             ? "Confirm Password is required"
@@ -580,7 +590,7 @@ export default class ProfileUpdatePassword extends Component {
                 </div>
 
                 <div className="">
-                  <button type="submit" className="btn btn-main col-md-3">
+                  <button type="submit" className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping">
                     Update
                   </button>
                 </div>

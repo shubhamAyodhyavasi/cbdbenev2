@@ -51,26 +51,32 @@ class AddressForm extends Component {
     return (
       <div>
         <h2 className="product-title">{title}</h2>
-        <Input
-          label="First Name*"
-          value={name}
-          name={nameId}
-          isError={nameErr}
-          errorMsg={nameErrMsg}
-          dataValidate={["name", "required"]}
-          dataPattern="name"
-          onChange={this.onChange}
-        />
-        <Input
-          label="Last Name*"
-          value={lastName}
-          name={lastNameId}
-          isError={lastNameErr}
-          errorMsg={lastNameErrMsg}
-          dataValidate={["name", "required"]}
-          dataPattern="name"
-          onChange={this.onChange}
-        />
+         <div className="row">
+          <Input
+            label="First Name*"
+            value={name}
+            name={nameId}
+            isError={nameErr}
+            errorMsg={nameErrMsg}
+            dataValidate={["name", "required"]}
+            dataPattern="name"
+            onChange={this.onChange}
+            classToBe="my-account__input"
+            col="sm-6"
+            />
+          <Input
+            placeholder="Last Name*"
+            value={lastName}
+            name={lastNameId}
+            isError={lastNameErr}
+            errorMsg={lastNameErrMsg}
+            dataValidate={["name", "required"]}
+            dataPattern="name"
+            onChange={this.onChange}
+            classToBe="my-account__input"
+            col="sm-6"
+          />
+         </div>
         <Input
           label="Email Address*"
           value={email}
@@ -79,6 +85,7 @@ class AddressForm extends Component {
           errorMsg={emailErrMsg}
           dataValidate={["email", "required"]}
           onChange={this.onChange}
+          classToBe="my-account__input"
         />
         <PhoneInput
           value={phone}
@@ -89,6 +96,7 @@ class AddressForm extends Component {
           data-validate={["phone", "required"]}
           pattern-type="phone"
           onChange={this.onPhoneChange}
+          classToBe="my-account__input"
         />
         <AddressAutoFill
           autofillformresponse={onAddressChange}

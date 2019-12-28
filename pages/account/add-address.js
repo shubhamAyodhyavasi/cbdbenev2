@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+  import React, { Component } from "react";
 import { connect } from "react-redux";
 import Router from 'next/router'
 import Loader from '../../components/Loader'
@@ -394,24 +394,31 @@ class AddAddressForm extends Component {
 
     const { className } = this.props;
     return (
-      <Layout>
+      <Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
       <div
-        className={classNames("", {
+        className={classNames("my-order", {
           [className]: className
         })}
       >
         {this.state.SpinnerToggle && <Loader />}
+
+        <div className="container-fluid">
+          <div className="my-order__heading">
+            <h3>My Account</h3>
+          </div>
+        </div>
+        <div className="my-order__wrapper">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 ">
+            <div className="col-lg-2 ">
               <MyAccountSidebar activeLink="PAYMENT METHOD" />
             </div>
-            <div className="col-lg-9 ">
-              <Card className="panel-section">
+            <div className="col-lg-10">
+              <Card className="panel-section my-order__panel">
                 <div className="billing-address-text  p-4  ">
                   <form onSubmit={this.submitRegistration}>
                     <AddressForm
-                      title="Your Address"
+                    
                       name={shipping_first_name}
                       nameId="shipping_first_name"
                       nameErr={shipping_first_nameErr}
@@ -516,6 +523,7 @@ class AddAddressForm extends Component {
             <h3>{addressAdded}</h3>
           </div>
         </Modal>
+      </div>
       </div>
       </Layout>
     );

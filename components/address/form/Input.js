@@ -36,14 +36,16 @@ class Input extends Component {
       dataValidate,
       type,
       label,
+      classToBe,
       maxLength,
       dataMatch,
-      placeholder
+      placeholder,
+      col
     } = this.props;
     const { isFocus } = this.state;
     return (
       <div
-        className={classNames("col-12 pl-0 pr-0 has-input", {
+        className={classNames(`col-${col} pl-0 pr-0 has-input`, {
           "has-error": isError && !isFocus
         })}
       >
@@ -61,10 +63,14 @@ class Input extends Component {
           onFocus={this.onFocus}
           data-match={dataMatch}
           onBlur={this.onBlur}
+          className={this.props.classToBe}
         />
         {isError && !isFocus && <p className="error">{errorMsg}</p>}
       </div>
     );
   }
+}
+Input.defaultProps = {
+  col: 12
 }
 export default Input;

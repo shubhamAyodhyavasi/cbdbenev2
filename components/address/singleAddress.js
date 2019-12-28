@@ -38,41 +38,47 @@ class SingleAddress extends Component {
 
     Router.push(`/account/edit-address/${id}`);
   };
+  isSameAddress = address => {
+    const {
+      country,
+      state,
+      city,
+      other,
+      zip,
+      addressStr
+  } = address
+  const addressLine =  `${city}, ${state}, ${country}, ${zip}`.trim()
+  return (addressLine.toLowerCase() === addressStr.toLowerCase().trim())
+  
+  }
   render() {
     const { address } = this.props;
     // console.log({addressSingle : address })
     if (!address) return <div />;
     return (
-      <div className="col-md-4 col-sm-6 col-xs-12">
-        <Card className="panel-section">
-          <CardBody>
+      <div className="col-md-12">
+        <Card className="panel-section my-order__panel">
+          <CardBody className="my-order__singleadd">            
             <div className="w-100">
-              <h6 className="text-capitalize">
-                {address.firstname + " "}
-                {address.lastname}
-              </h6>
-            </div>
-            <div className="w-100">
-              <p className="l-h">{address.address}</p>
-              <p className="l-h">
+            <p className="l-h">
+            {address.firstname + " "}
+                {address.lastname  + " "}
+              { !this.isSameAddress(address) &&  address.addressStr}  
                 {address.city && <span>{address.city}, </span>}
                 {address.state && <span>{address.state}, </span>}
                 {address.country && <span>{address.country}, </span>}
                 {address.zip && <span>{address.zip}. </span>}
+                {address.phone && <span>{address.phone}. </span>}
               </p>
             </div>
-            <div className="w-100">
-              <p className="l-h">Phone Number {address.phone}</p>
-            </div>
             {/* <a href="/">+ Add delivery instructions</a> */}
-            <hr />
             <div className="w-100">
-              <ul className="address-ul">
+              <ul className="my-order__address-ul">
                 <li>
                   <Button
                     onClick={this.editAddress}
                     color="link"
-                    className="simple-link"
+                    className="my-order__simple-link"
                   >
                     Edit
                   </Button>
@@ -81,14 +87,14 @@ class SingleAddress extends Component {
                   <Button
                     onClick={this.deleteAddress}
                     color="link"
-                    className="simple-link"
+                    className="my-order__simple-link"
                   >
                     Delete
                   </Button>
                 </li>
                 <li>
                   {address.isDefault && (
-                    <Button color="link" className="simple-link" disabled>
+                    <Button color="link" className="my-order__simple-link" disabled>
                       <Icon
                         size="20"
                         style={{ color: "green" }}
@@ -100,7 +106,7 @@ class SingleAddress extends Component {
                     <Button
                       onClick={this.setDefaultAddress}
                       color="link"
-                      className="simple-link"
+                      className="my-order__simple-link"
                     >
                       Set as Default
                     </Button>

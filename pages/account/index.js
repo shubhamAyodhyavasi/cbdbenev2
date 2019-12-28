@@ -364,7 +364,7 @@ class MyAccount extends Component {
             <h3>My order</h3>
           </div>
         </div>
-          <div className="my-order__wrapper">
+        <div className="my-order__wrapper">
           <div className="container-fluid">
           <div className="row">
             <div className="col-lg-2 ">
