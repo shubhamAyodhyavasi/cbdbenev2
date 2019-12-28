@@ -10,6 +10,7 @@ import { Steps, Modal } from 'antd'
 import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
 import {addAddress, setEditable} from '../redux/actions'
 import { connect } from 'react-redux'
+import projectSettings from "../constants/projectSettings"
 import checkAddressDuplicate from '../services/helpers/address'
 import CheckoutShipping from '../components/checkout-tabs/CheckoutShipping'
 import CheckoutPayment from '../components/checkout-tabs/CheckoutPayment'
@@ -162,7 +163,7 @@ const Checkout  = ({
             <div className="c-checkout">
             
                 
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
+            <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
                 <Heading parentClass="c-checkout" versions={["default", "upper"]}>Checkout</Heading>
                 <div className="c-checkout__nav-wrapper">
                     <Steps 

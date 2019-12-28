@@ -2,6 +2,7 @@ import Heading from './Heading'
 import Link from 'next/link'
 import footerMenu from '../constants/footerMenu'
 import SubscribeForm from './SubscribeForm'
+import projectSettings from "../constants/projectSettings"
 import Logo from './Logo'
 const Footer = () => (
     <div className="c-footer">
@@ -25,7 +26,7 @@ const Footer = () => (
                                </li>
                             })}
                         </ul>
-                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk&libraries=places" async defer></script>
+                        <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
 
                     </div>)
                     })
