@@ -67,7 +67,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
                             <CartItem
                                 small={true}
                                 title={"Taxes"}
-                                price={`${(cart.taxCountry) ? cart.taxCountry : 0}`}
+                                price={`${(cart.taxPercent) ? cart.taxPercent : 0}`}
                                 total={true}
                                 versions={["small"]}
                             />

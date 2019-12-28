@@ -16,3 +16,5 @@ export const authorizeDeleteCard            = body => axios.post(apiList.authori
 
 export const placeOrder                     = body => axios.post(apiList.placeOrder, body);
 export const placeOrderNew                  = body => axios.post(apiList.placeOrderNew, body);
+
+export const getTaxValue                    = countryCode => axios.get(apiList.getTaxValue+countryCode);

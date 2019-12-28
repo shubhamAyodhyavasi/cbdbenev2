@@ -22,6 +22,8 @@ const apiList = {
     getShippingRates                : `${baseUrl}/ship/shipment/`,
     confirmShipment                 : `${baseUrl}/ship/confirm/`,
 
+    getTaxValue                     : `${baseUrl}/getinfo/gettax/`,
+
     authorizeCharge                 : `${baseUrl}/authorize/charge/`,
     authorizeChargeProfile          : `${baseUrl}/authorize/chargeprofile/`,
     authorizeChargeBank             : `${baseUrl}/authorize/charge/bank/`,
