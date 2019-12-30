@@ -52,9 +52,6 @@ const Category = ({ productList, ...props }) => {
     )
 }
 Category.getInitialProps = async ({ query }) => {
-    // const res  = await fetch("http://localhost:4000/products/api/bycategory/"+query.cid)
-    // const productObj = await res.json()
-    // const product = getVisibleProducts([productObj.product_details])
     if(query.cid.toLowerCase() === "bundles"){
         const res = await fetch(apiList.getAllCombos)
         const productList = await res.json()
