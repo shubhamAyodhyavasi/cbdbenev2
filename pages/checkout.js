@@ -156,7 +156,7 @@ const Checkout  = ({
     return (
         <div className="loaderClass">
         
-        <Loader hideThis={loaderClass}/>
+        {isLoading && <Loader />}
        <div className={checkoutClass}>
 
          <CheckoutLayout>
