@@ -93,7 +93,7 @@ const Product = ({product, allProducts, ...props}) => {
             </Layout>
         )
 }
-Product.getInitialProps = async ({query}) => {
+Product.getInitialProps = async ({query, res: resMain}) => {
     
     const {
         baseUrl
@@ -108,12 +108,20 @@ Product.getInitialProps = async ({query}) => {
     const allRes        = await fetch(apiList.getAllProducts)
     const allProductObj = await allRes.json()
     const allProducts   = getVisibleProducts(allProductObj.products).filter(el => el._id !== query.pid)
+    if(product.length && product[0] || productObj.status){
+        return {
+            product: product.length && product[0],
+            productObj,
+            allProducts,
+            allProductObj,
+            reviews: reviews.reviews
+        }
+    }
+    resMain.statusCode = 404
     return {
-        product: product.length && product[0],
-        productObj,
-        allProducts,
-        allProductObj,
-        reviews: reviews.reviews
+        err: {
+            statusCode : 404
+        }
     }
 }
 export default connect(state => ({
