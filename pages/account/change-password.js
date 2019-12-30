@@ -108,7 +108,7 @@ class ChangePassword extends Component {
               {isLoading && (
                 <div className="p-5 text-center">
                   <Spinner color="dark" />
-                </div>
+                  </div>
               )}
               {!isLoading && (
                 <div>

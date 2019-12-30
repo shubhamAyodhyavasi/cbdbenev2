@@ -165,7 +165,7 @@ export default class AddressAutoFill extends Component {
   }
   render() {
     const { fill, city, state, country, other, zip } = this.state;
-    const { address_err, zipErr } = this.props;
+    const { address_err, zipErr, colSizeState } = this.props;
     if (this.props.autofilladddatatoparent.country) {
       if (!fill) {
         this.setAllValue();
@@ -174,8 +174,8 @@ export default class AddressAutoFill extends Component {
     const colSize = this.props.colSize || 6;
     return (
       <div>
-        <div className="row frm-details">
-          <div className={"col-md-" + colSize}>
+        <div className="row frm-details m-0">
+          <div className={"col-md-" + colSize + " pl-0 pr-0 has-input"}>
             <div
               className={classNames("has-input", {
                 "has-error": false
@@ -193,7 +193,7 @@ export default class AddressAutoFill extends Component {
                   loading
                 }) => (
                   <div>
-                    <label>Search Your Address </label>
+                    {/* <label>Search Your Address </label> */}
                     <div
                       className={classNames(
                         "has-icon-submit has-input search-input inputwrapper",
@@ -208,7 +208,7 @@ export default class AddressAutoFill extends Component {
                     >
                       <div style={{ color: "#d0d2ca" }}>
                         <Icon
-                          className="submit-icon input-search-icon mt-10 ci"
+                          className=" my-order__search-icon"
                           size={25}
                           icon={ic_search}
                         />
@@ -216,7 +216,7 @@ export default class AddressAutoFill extends Component {
                       <input
                         {...getInputProps({
                           placeholder: "Search Places ...",
-                          className: "location-search-input"
+                          className: "location-search-input ant-input c-input__input mb-4 my-order__search-icon-input" 
                         })}
                       />
                       {address_err[0] &&
@@ -264,29 +264,53 @@ export default class AddressAutoFill extends Component {
               </PlacesAutocomplete>
             </div>
           </div>
+          <div className="my-order__address row">
           <div className={"col-md-" + colSize}>
             <div
-              className={classNames(" has-input", {
+              className={classNames(" has-input mb-4", {
                 "has-error": address_err[0]
               })}
             >
-              <label>Address</label>
+              {/* <label>Address</label> */}
               <input
                 value={other}
                 type="text"
                 id="other"
                 onChange={this.onTextChange}
+                className="my-account__input ant-input c-input__input"
+                placeholder="Address"
               />
               {address_err[0] && <p className="error">Address is required</p>}
             </div>
           </div>
-          <div className={"col-md-" + colSize}>
+          <div className={"col-md-" +  colSize}>
             <div
-              className={classNames(" has-input", {
+              className={classNames(" has-input mb-4", {
+                "has-error": address_err[1]
+              })}
+            >
+              {/* <label>City</label> */}
+              <input
+                value={city}
+                type="text"
+                id="city"
+                onChange={this.onTextChange}
+                data-validate={["fullName"]}
+                data-pattern="fullName"
+                maxLength="30"
+                placeholder="City"
+                className="my-account__input ant-input c-input__input"
+              />
+              {address_err[1] && <p className="error">City is required</p>}
+            </div>
+          </div>
+          <div className={"col-md-" + colSizeState || colSize}>
+            <div
+              className={classNames(" has-input mb-4", {
                 "has-error": address_err[2] || address_err[4]
               })}
             >
-              <label>Country</label>
+              {/* <label>Country</label> */}
               <input
                 value={country}
                 type="text"
@@ -295,6 +319,8 @@ export default class AddressAutoFill extends Component {
                 data-validate={["fullName"]}
                 data-pattern="fullName"
                 maxLength="30"
+                placeholder="Country"
+                className="my-account__input ant-input c-input__input"
               />
               {address_err[2] &&
                 !(address_err.length === 5 && address_err[4]) && (
@@ -306,13 +332,13 @@ export default class AddressAutoFill extends Component {
             </div>
           </div>
 
-          <div className={"col-md-" + colSize}>
+          <div className={"col-md-" + colSizeState || colSize}>
             <div
-              className={classNames(" has-input", {
+              className={classNames(" has-input mb-4", {
                 "has-error": address_err[3]
               })}
             >
-              <label>State</label>
+              {/* <label>State</label> */}
               <input
                 type="text"
                 value={state}
@@ -321,36 +347,19 @@ export default class AddressAutoFill extends Component {
                 data-validate={["fullName"]}
                 data-pattern="fullName"
                 maxLength="30"
+                placeholder="State"
+                className="my-account__input ant-input c-input__input"
               />
               {address_err[3] && <p className="error">State is required</p>}
             </div>
-          </div>
-          <div className={"col-md-" + colSize}>
+          </div>         
+          <div className={"col-md-" + colSizeState || colSize}>
             <div
-              className={classNames(" has-input", {
-                "has-error": address_err[1]
-              })}
-            >
-              <label>City</label>
-              <input
-                value={city}
-                type="text"
-                id="city"
-                onChange={this.onTextChange}
-                data-validate={["fullName"]}
-                data-pattern="fullName"
-                maxLength="30"
-              />
-              {address_err[1] && <p className="error">City is required</p>}
-            </div>
-          </div>
-          <div className={"col-md-" + colSize}>
-            <div
-              className={classNames(" has-input", {
+              className={classNames(" has-input mb-4", {
                 "has-error": zipErr
               })}
             >
-              <label>Zip Code</label>
+              {/* <label>Zip Code</label> */}
               <input
                 value={zip}
                 type="text"
@@ -359,10 +368,14 @@ export default class AddressAutoFill extends Component {
                 data-validate={["zipcode", "required"]}
                 data-pattern=""
                 maxLength="12"
+                placeholder="ZIP"
+                className="my-account__input ant-input c-input__input"
               />
               {zipErr && <p className="error">Zip Code is required</p>}
             </div>
           </div>
+        
+        </div>
         </div>
       </div>
     );

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 // import logo from '../public/images/load.gif'
 class Loader extends Component {
     render() {
         return (
             <div className='c-loader'>
-                <div style={{backgroundImage: "url('/images/load.gif')", height:"100vh"}} className={this.props.hideThis}>
+                <div style={{backgroundImage: "url('/images/load.gif')", height:"100vh"}} 
+                className={classNames("loader__bg",{
+                    [this.props.hideThis] : this.props.hideThis
+                })}>
                 
                 {/* <img src={logo} alt="loading..." /> */}
                 </div>

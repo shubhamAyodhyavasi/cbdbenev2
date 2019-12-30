@@ -23,13 +23,14 @@
 
     &__alert {
         width: 15%;
-        padding-right: 20px;
+        padding-right: 25px;
         border-radius: 0;
         max-width: 100%;
 
         @include bpm-sm {
             width: 100%;
             padding-bottom: 10px;
+            padding-right:0;
         }
 
         &--msg {
@@ -276,6 +277,18 @@
     }
     &__transition-item3 {
         border: none;
+    }
+    &__card-detail {
+        display: flex;
+    }
+    &__search-icon {
+        position: absolute;
+        top: 4px;
+        left:10px;
+    }
+    
+    &__search-icon-input {
+        padding-left: 40px;
     }
     .row{
         .col-12{

@@ -360,14 +360,13 @@ class CardForm extends Component {
                 src={imagePack.stripe}
                 alt="stripe"
               /> */}
-              <hr />
               <form onSubmit={this.submitRegistration}>
                 <div
                   className={classNames("has-input", {
                     "has-error": cardnameErr
                   })}
                 >
-                  <label>Card Full Name:</label>
+                  {/* <label>:</label> */}
                   <input
                     id={"cardName" + cardId}
                     name="cardName"
@@ -376,6 +375,8 @@ class CardForm extends Component {
                     type="text"
                     maxLength="30"
                     data-validate={["required"]}
+                    placeholder="Card Full Name"
+                    className="my-account__input ant-input c-input__input mb-4"
                   />
                   {cardnameErr ? <p className="error">{cardNameErrMsg}</p> : ""}
                 </div>
@@ -384,7 +385,7 @@ class CardForm extends Component {
                     "has-error": cardNumberErr
                   })}
                 >
-                  <label>Card Number*</label>
+                  {/* <label>Card Number*</label> */}
                   <InputMask
                     {...restProps}
                     id={"cardNumber" + cardId}
@@ -395,8 +396,10 @@ class CardForm extends Component {
                     mask="9999-9999-9999-9999"
                     className="form-control"
                     maskChar=""
-                    placeholder="0000-0000-0000-0000"
+                    // placeholder="0000-0000-0000-0000"
                     autoComplete="off"
+                    placeholder="Card Number*"
+                    className="my-account__input ant-input c-input__input mb-4"
                   />
                   {cardNumberErr ? (
                     <p className="error">{cardNumberErrMsg}</p>
@@ -412,7 +415,7 @@ class CardForm extends Component {
                         "has-error": expDateErr
                       })}
                     >
-                      <label>Expiration Date*</label>
+                      {/* <label>Expiration Date*</label> */}
                       <InputMask
                         {...restProps}
                         mask="99/99"
@@ -423,8 +426,10 @@ class CardForm extends Component {
                         type="text"
                         maskChar=""
                         onChange={this.handelTextChange}
-                        placeholder="mm/yy"
+                        // placeholder="mm/yy"
                         autoComplete="off"
+                        placeholder="Expiration Date*"
+                        className="my-account__input ant-input c-input__input mb-4"
                       />
                       {expDateErr ? (
                         <p className="error">{expDateErrMsg}</p>
@@ -439,7 +444,7 @@ class CardForm extends Component {
                         "has-error": cvNumberErr
                       })}
                     >
-                      <label>CVV Code*</label>
+                      {/* <label>CVV Code*</label> */}
                       <InputMask
                         {...restProps}
                         mask="999"
@@ -452,6 +457,8 @@ class CardForm extends Component {
                         className="form-control"
                         placeholder="123"
                         autoComplete="off"
+                        placeholder="CVV Code*"
+                        className="my-account__input ant-input c-input__input mb-4"
                       />
                       {cvNumberErr ? (
                         <p className="error">{cvNumberErrMsg}</p>
@@ -481,7 +488,7 @@ class CardForm extends Component {
                 </div>
                 <div className="row align-items-center">
                   <div className="col-md-3">
-                    <button type="submit" className="btn btn-main btn7">
+                    <button type="submit" className="btn btn-main btn7 c-btn c-btn--outline my-order__shopping mt-5">
                       {update ? "Update" : "Save card"}
                     </button>
                   </div>

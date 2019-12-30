@@ -54,13 +54,19 @@ const selectStyleSmall = {
     ...styles,
     minHeight: "40px",
     height: "40px",
-    border: `1px solid ${colors.lightGrey}`,
+    border: `1px solid transparent`,
     borderRadius: "0",
     backgroundColor: "transparent",
-    paddingLeft: "0.8889rem ",
+    paddingLeft: "0.4889rem",
     boxShadow: isFocused ? 0 : 0,
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    margin: "auto",
     "&:hover": {
-      border: `1px solid ${colors.lightGrey}`
+      border: `1px solid transparent`
     }
   }),
   singleValue: styles => ({
@@ -305,7 +311,7 @@ class CheckForm extends Component {
               </div>
               <form onSubmit={this.onSubmit}>
                 <div className="row frm-details">
-                  <div className="col-md-6">
+                  <div className="col-md-12 mb-4">
                     <Input
                       label="Name on Account*"
                       name="accName"
@@ -322,10 +328,10 @@ class CheckForm extends Component {
                       }
                     />
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12 mb-4">
                     <div className="col-12 pl-0 pr-0">
                       <div className="has-input">
-                        <label>Account Type*</label>
+                        {/* <label>Account Type*</label> */}
                       </div>
                       <SelectMulti
                         id="accountType"
@@ -335,10 +341,11 @@ class CheckForm extends Component {
                         placeholder="Account Type"
                         onChange={this.changeAccountType}
                         options={accountTypeOpt}
+                        className="my-account__input ant-input c-input__input "
                       />
                     </div>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-12 mb-4">
                     <Input
                       label="Bank Routing Number*"
                       name="routingType"
@@ -357,7 +364,7 @@ class CheckForm extends Component {
                       }
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-12 mb-4">
                     <Input
                       label="Checking Account Number*"
                       name="accountNumber"
@@ -376,7 +383,7 @@ class CheckForm extends Component {
                       }
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-12 mb-4">
                     <Input
                       label="Re-enter Checking Account Number*"
                       name="accountNumberConfirm"

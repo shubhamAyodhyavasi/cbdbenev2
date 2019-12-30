@@ -45,7 +45,7 @@ class Input extends Component {
     const { isFocus } = this.state;
     return (
       <div
-        className={classNames(`col-${col} pl-0 pr-0 has-input`, {
+        className={classNames(`col-${col}  has-input`, {
           "has-error": isError && !isFocus
         })}
       >
@@ -63,7 +63,7 @@ class Input extends Component {
           onFocus={this.onFocus}
           data-match={dataMatch}
           onBlur={this.onBlur}
-          className={this.props.classToBe}
+          className={classToBe}
         />
         {isError && !isFocus && <p className="error">{errorMsg}</p>}
       </div>

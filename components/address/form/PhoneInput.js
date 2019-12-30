@@ -46,11 +46,14 @@ class PhoneInput extends Component {
             autocomplete: "tel"
           }}
           name="phone"
-          containerClass="react-tel-input react-phone"
+          containerClass="react-tel-input react-phone "
           onChange={this.onChange}
           value={value}
           data-validate={dataValidate}
           pattern-type="phone"
+          // className={this.props.classToBe}
+          inputClass={this.props.classToBe}
+
         />
         {isError && !isFocus && <p className="error">{errorMsg}</p>}
       </div>
