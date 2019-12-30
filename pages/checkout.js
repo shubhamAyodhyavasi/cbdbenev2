@@ -160,11 +160,9 @@ const Checkout  = ({
        <div className={checkoutClass}>
 
          <CheckoutLayout>
-            <div className="c-checkout">
-            
-                
+            <div className="c-checkout">  
             <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
-                <Heading parentClass="c-checkout" versions={["default", "upper"]}>Checkout</Heading>
+                <Heading parentClass="d-none d-md-block c-checkout " versions={["default", "upper"]}>Checkout</Heading>
                 <div className="c-checkout__nav-wrapper">
                     <Steps 
                         current={currentStep}

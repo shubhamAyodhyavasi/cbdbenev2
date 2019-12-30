@@ -1,0 +1,18 @@
+.o-success {
+    margin-top: 100px;
+    &__main--center {
+        text-align: center;
+    }
+    &__main {
+        padding: 50px;
+        padding-bottom: 30px;
+    }
+    &__btn-wrap{
+        width:360px;
+        max-width:100%;
+        margin:auto;
+    }
+    &__descp{
+        
+    }
+}

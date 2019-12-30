@@ -87,3 +87,11 @@
         }
     }
 }
+.ant-radio-wrapper {
+    @include bpm-md{
+        white-space: normal;
+        .ant-form-item-children {
+            width: 100%;
+        }
+    }
+}

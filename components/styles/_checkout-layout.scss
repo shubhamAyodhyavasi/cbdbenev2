@@ -5,6 +5,9 @@
     }
     > * {
         width: 100%;
+        @include bpm-md{
+            width:auto;
+        }
     }
     &__main{
         padding-top: 100px;
@@ -14,6 +17,10 @@
         @media(min-width: 1400px){
             padding-left: 80px;
             padding-right: 100px;
+        }
+        @include bpm-md{
+            padding-left: 30px;
+            padding-right: 30px;
         }
     }
     &__logo{
@@ -29,6 +36,17 @@
         @media(min-width: 1400px){
             padding: 80px;
         }
+    }
+    &__heading{
+        &.c-heading{
+            &--small{
+                font-size:15px;
+            }
+        }        
+    }
+    &__cart-icon svg {
+        width: 30px;
+        height: 15px;
     }
 
     // override and design
@@ -46,6 +64,14 @@
     .ant-steps-item-title{
         cursor: pointer;
 
+    }
+    
+    @include bpm-md{
+        .ant-steps-horizontal.ant-steps-label-horizontal{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
     }
 
 
