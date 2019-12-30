@@ -96,12 +96,18 @@ class ProductInfo extends React.Component {
       }
     }
   };
+  
+  getAvg = reviews => {
+    const newArr = reviews.map(el => el.overall);
+    const sum = newArr.reduce((a, b) => a + b, 0);
+    return sum / reviews.length;
+  };
     render(){
         const {
             qty, isSubscribed, subsDuration
         } = this.state
         const {
-            image, product, productAttr, addToCart, cart, showCartBar
+            image, product, productAttr, addToCart, cart, showCartBar, allProducts
         } = this.props
         const basePrice = getBasicPrice(product)
         const price = parseFloat(basePrice.sale_price || 0) * qty
@@ -113,7 +119,8 @@ class ProductInfo extends React.Component {
         const {
             _id: productId,
             combo,
-            productid
+            productid,
+            title
         } = product
         const productName = combo === true ? title : productid.producttitle;
 
@@ -134,6 +141,8 @@ class ProductInfo extends React.Component {
         }
         const { Option } = Select;
         const gallery = getProductImageArray(product)
+        const avgReviews = this.getAvg(this.props.reviews)
+        const reviewsLength = this.props.reviews.length
         return (
             <div className="c-product-info container">
                 <div className="row c-product-info__row">
@@ -149,9 +158,9 @@ class ProductInfo extends React.Component {
                                     <Rate 
                                         style={{ color: '#000' }}
                                         className="c-product-info__stars c-product-info__stars--sm " 
-                                        disabled value={3.5} 
+                                        disabled value={avgReviews} 
                                         allowHalf={true} />
-                                    <p className="c-product-info__review">12 reviews(9.7)</p>
+                                    <p className="c-product-info__review">{reviewsLength} reviews({avgReviews})</p>
                                 </div>
                             </div>
                         </div>
@@ -173,9 +182,9 @@ class ProductInfo extends React.Component {
                                     <Rate 
                                         style={{ color: '#000' }}
                                         className="c-product-info__stars" 
-                                        disabled value={3.5} 
+                                        disabled value={avgReviews} 
                                         allowHalf={true} />
-                                    <p className="c-product-info__review">12 reviews(9.7)</p>
+                                    <p className="c-product-info__review">{reviewsLength} reviews({avgReviews})</p>
                                 </div>
                             </div>
                         </div>

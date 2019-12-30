@@ -55,23 +55,33 @@ Category.getInitialProps = async ({ query }) => {
     // const res  = await fetch("http://localhost:4000/products/api/bycategory/"+query.cid)
     // const productObj = await res.json()
     // const product = getVisibleProducts([productObj.product_details])
-    
-    const res = await fetch(apiList.getAllProducts)
-    const productList = await res.json()
-    const visibleProducts = getVisibleProducts(productList.products)
-    const categoryProduct = visibleProducts.filter(el => {
-        if(el.categoryid ){
-            if(el.categoryid.constructor === Array){
-                return el.categoryid.some(elx => elx.categorytitle && elx.categorytitle.toLowerCase() === query.cid.toLowerCase())
-            } else if(el.categoryid.categorytitle){
-                return el.categoryid.categorytitle.toLowerCase() === query.cid.toLowerCase()
-            }
+    if(query.cid.toLowerCase() === "bundles"){
+        const res = await fetch(apiList.getAllCombos)
+        const productList = await res.json()
+        const visibleProducts = getVisibleProducts(productList.combos)
+            
+        return {
+            category: query.cid,
+            productList: visibleProducts.map(el => addSlugToProduct(el))
         }
-        return false
-    })
-    return {
-        category: query.cid,
-        productList: categoryProduct.map(el => addSlugToProduct(el))
+    }else{
+        const res = await fetch(apiList.getAllProducts)
+        const productList = await res.json()
+        const visibleProducts = getVisibleProducts(productList.products)
+        const categoryProduct = visibleProducts.filter(el => {
+            if(el.categoryid ){
+                if(el.categoryid.constructor === Array){
+                    return el.categoryid.some(elx => elx.categorytitle && elx.categorytitle.toLowerCase() === query.cid.toLowerCase())
+                } else if(el.categoryid.categorytitle){
+                    return el.categoryid.categorytitle.toLowerCase() === query.cid.toLowerCase()
+                }
+            }
+            return false
+        })
+        return {
+            category: query.cid,
+            productList: categoryProduct.map(el => addSlugToProduct(el))
+        }
     }
 }
 export default connect(null)(Category)

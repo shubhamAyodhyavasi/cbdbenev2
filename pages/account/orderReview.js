@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import FadeTransition from "../../services/extra/FadeTransition";
 // import { postReview } from "../../actions";
 // import { imagePack } from "../Constants";
-// import { chooseProducts, reviewSuccessMsg } from "../../constantMessage";
-// import { CustomLink } from "..";
+import { chooseProducts, reviewSuccessMsg } from "../../constants/constantMessage";
+import Link from 'next/link'
+import Router from 'next/router'
 
 
 const postReview = (review, countryCode) => dispatch => {
@@ -76,6 +77,27 @@ class OrderReview extends Component {
       isCombo: false
     };
   }
+  componentDidMount(){
+    
+    const { order } = this.props;
+    const list =
+      order &&
+      order.products
+        .filter(el => !el.reviewed);
+    if(list.length){
+      Router.push("/")
+    }
+  }
+  componentDidUpdate(prevProps, prevState){
+    if(this.state.selectedProduct){
+      Router.push("/")
+    }
+    // if(prevState.selectedProduct !== this.state.selectedProduct){
+    //   if(this.state.selectedProduct){
+    //     Router.push("/")
+    //   }
+    // }
+  }
   openReview = (pId, isCombo = false) => {
     this.setState(
       {
@@ -132,9 +154,9 @@ class OrderReview extends Component {
     console.log({});
     const logo = (
       <div className="logo-container pb-4">
-        <CustomLink to={`/${this.props.location.countryCode}/`}>
-          <img className="centered-logo" src={imagePack.logo} alt="Bené" />
-        </CustomLink>
+        <Link href={`/`}>
+          <img className="centered-logo" src={"/images/logo-new.png"} alt="Bené" />
+        </Link>
       </div>
     );
     const reviewSuccess = (
@@ -161,23 +183,23 @@ class OrderReview extends Component {
           </span>
         ));
 
-    if (list && list === 1)
-      return (
-        <FadeTransition
-          in={isVisible}
-          className="flex-column align-items-center overflow-auto d-flex h-100 justify-content-center"
-        >
-          {logo}
-          {isPosted && reviewSuccess}
-          {!isPosted && (
-            <AddReviews
-              onSubmit={this.onSubmit}
-              productId={order.products[0].productMeta}
-              orderId={order._id}
-            />
-          )}
-        </FadeTransition>
-      );
+    // if (list && list === 1)
+    //   return (
+    //     <FadeTransition
+    //       in={isVisible}
+    //       className="flex-column align-items-center overflow-auto d-flex h-100 justify-content-center"
+    //     >
+    //       {logo}
+    //       {isPosted && reviewSuccess}
+    //       {!isPosted && (
+    //         <AddReviews
+    //           onSubmit={this.onSubmit}
+    //           productId={order.products[0].productMeta}
+    //           orderId={order._id}
+    //         />
+    //       )}
+    //     </FadeTransition>
+    //   );
 
     return (
       <FadeTransition
@@ -208,14 +230,14 @@ class OrderReview extends Component {
             go back
           </span>
         )}
-        {selectedProduct && !isPosted && (
+        {/* {selectedProduct && !isPosted && (
           <AddReviews
             onSubmit={this.onSubmit}
             productId={selectedProduct}
             isCombo={this.state.isCombo}
             orderId={order._id}
           />
-        )}
+        )} */}
       </FadeTransition>
     );
   }

@@ -395,136 +395,153 @@ class MyAccount extends Component {
                           </thead>
                           <tbody>
                             {this.state.orderList.map(
-                              (order, i) => (
-                                // order.userid === this.state.loginUserId ? (
-                                <tr key={i} className="my-order__t-row">
-                                  <th className="sr-number my-order__t-head my-order__table--sno" scope="row">
-                                    {(serNo = serNo + 1)}
-                                  </th>
-                                  <td data-label="Name" className="my-order__t-col my-order__table--name">
-                                    {order.products.map((pro, i) => {
-                                      const link = `/shop/${
-                                            pro._id
-                                          }`;
-                                      return (
-                                        <p>
-                                          <Link key={i} href={link}>
-                                            <a className="my-order__t-link">{pro.title}</a>
-                                          </Link>
-                                        </p>
-                                      );
-                                    })}
-                                  </td>
-                                  <td
-                                    data-label="Price"
-                                    className="inline-data my-order__t-col my-order__table--price"
-                                  >
-                                    {basicFunction.currancyAddWithNumber(
-                                      order.grandTotal
-                                    )}
-                                  </td>
-                                  <td data-label="Date" className="inline-data my-order__t-col my-order__table--date">
-                                    {basicFunction.dateTimeInMonthName(
-                                      order.createdOn
-                                    )}{" "}
-                                  </td>
-                                  <td
-                                    data-label="Status"
-                                    className="inline-data text-capitalize my-order__t-col my-order__table--status"
-                                  >
-                                    {order.deleted !== "true"
-                                      ? // <Badge className="btn9">
-                                        order.status
-                                      : // </Badge>
-                                        // <Badge className="btn6">
-                                        order.deleted
-                                    // </Badge>
-                                    }
-                                  </td>
-                                  <td data-label="Action" className="my-order__t-col my-order__table--action">
-                                    <ButtonGroup>
-                                      <Button
-                                        
-                                        className="btn9 my-order__t-btn"
-                                        onClick={() => this.toggle(order)}
-                                      >
-                                        {/* <Icon icon={eye} /> */}
-                                        View
-                                      </Button>
-                                      <span style={{ minWidth: "2px" }} />
-                                      {/* {order.deleted !== "true" ? (
+                              (order, i) => {
+                                const unReviewed = order.products &&
+                                order.products.filter(
+                                  el => !el.reviewed
+                                ).length
+                                console.log({
+                                  unReviewed
+                                })
+                                return (
+                                  // order.userid === this.state.loginUserId ? (
+                                  <tr key={i} className="my-order__t-row">
+                                    <th className="sr-number my-order__t-head my-order__table--sno" scope="row">
+                                      {(serNo = serNo + 1)}
+                                    </th>
+                                    <td data-label="Name" className="my-order__t-col my-order__table--name">
+                                      {order.products.map((pro, i) => {
+                                        const link = `/shop/${
+                                              pro._id
+                                            }`;
+                                        return (
+                                          <p>
+                                            <Link key={i} href={link}>
+                                              <a className="my-order__t-link">{pro.title}</a>
+                                            </Link>
+                                          </p>
+                                        );
+                                      })}
+                                    </td>
+                                    <td
+                                      data-label="Price"
+                                      className="inline-data my-order__t-col my-order__table--price"
+                                    >
+                                      {basicFunction.currancyAddWithNumber(
+                                        order.grandTotal
+                                      )}
+                                    </td>
+                                    <td data-label="Date" className="inline-data my-order__t-col my-order__table--date">
+                                      {basicFunction.dateTimeInMonthName(
+                                        order.createdOn
+                                      )}{" "}
+                                    </td>
+                                    <td
+                                      data-label="Status"
+                                      className="inline-data text-capitalize my-order__t-col my-order__table--status"
+                                    >
+                                      {order.deleted !== "true"
+                                        ? // <Badge className="btn9">
+                                          order.status
+                                        : // </Badge>
+                                          // <Badge className="btn6">
+                                          order.deleted
+                                      // </Badge>
+                                      }
+                                    </td>
+                                    <td data-label="Action" className="my-order__t-col my-order__table--action">
+                                      <ButtonGroup>
                                         <Button
-                                          className="btn6 pl-3 pr-3"
-                                          onClick={() =>
-                                            this.deleteOrder(order._id)
-                                          }
+                                          
+                                          className="btn9 my-order__t-btn"
+                                          onClick={() => this.toggle(order)}
                                         >
-                                          {" "}
-                                          <Icon
-                                            icon={ic_remove_shopping_cart}
-                                          />
+                                          {/* <Icon icon={eye} /> */}
+                                          View
                                         </Button>
-                                      ) : (
-                                        ""
-                                      )} */}
-                                      <Button
-                                        
-                                        className="btn9 my-order__t-btn"
-                                        onClick={() => this.reorder(order)}
-                                      >
-                                        Reorder
-                                      </Button>
-                                      <span style={{ minWidth: "2px" }} />
-                                      <Button
-                                        
-                                        target="_blank"
-                                        className="btn9 my-order__t-btn"
-                                        // to={}
-                                        onClick={()=>{
-                                          window.open(`${invoiceUrl}${order._id}.pdf`)
-                                        }}
-                                      >
-                                        {/* <Icon icon={eye} /> */}
-                                        Invoice
-                                      </Button>
-                                    </ButtonGroup>
-                                    <div className="pt-3 my-order__t-note">
-                                      {order.products &&
-                                        order.products.filter(
-                                          el => !el.reviewed
-                                        ).length > 0 && (
-                                          <span
-                                            onClick={() => {
-                                              this.openReviewCollapse(
-                                                order._id
+                                        <span style={{ minWidth: "2px" }} />
+                                        {/* {order.deleted !== "true" ? (
+                                          <Button
+                                            className="btn6 pl-3 pr-3"
+                                            onClick={() =>
+                                              this.deleteOrder(order._id)
+                                            }
+                                          >
+                                            {" "}
+                                            <Icon
+                                              icon={ic_remove_shopping_cart}
+                                            />
+                                          </Button>
+                                        ) : (
+                                          ""
+                                        )} */}
+                                        <Button
+                                          
+                                          className="btn9 my-order__t-btn"
+                                          onClick={() => this.reorder(order)}
+                                        >
+                                          Reorder
+                                        </Button>
+                                        <span style={{ minWidth: "2px" }} />
+                                        <Button
+                                          
+                                          target="_blank"
+                                          className="btn9 my-order__t-btn"
+                                          // to={}
+                                          onClick={()=>{
+                                            window.open(`${invoiceUrl}${order._id}.pdf`)
+                                          }}
+                                        >
+                                          {/* <Icon icon={eye} /> */}
+                                          Invoice
+                                        </Button>
+                                      </ButtonGroup>
+                                      <div className="pt-3 my-order__t-note">
+                                        {unReviewed && (
+                                          unReviewed === 1 ? 
+                                          (
+                                            <Link href="/" >
+                                            <span
+                                              className="cursor-pointer hover-text-line"
+                                            >
+                                              Write a product review
+                                            </span>
+                                            </Link>
+                                            )
+                                          :
+                                            <span
+                                              onClick={() => {
+                                                this.openReviewCollapse(
+                                                  order._id
+                                                );
+                                              }}
+                                              className="cursor-pointer hover-text-line"
+                                            >
+                                              Write a product review
+                                            </span>
+                                          )}
+  
+                                        <FullModal
+                                          toggle={this.dismissReviewModal}
+                                          isOpen={openReviewPid === order._id}
+                                        >
+                                          <OrderReview
+                                            onSuccess={() => {
+                                              this.dismissTimeout = setTimeout(
+                                                () => {
+                                                  this.dismissReviewModal();
+                                                },
+                                                1500
                                               );
                                             }}
-                                            className="cursor-pointer hover-text-line"
-                                          >
-                                            Write a product review
-                                          </span>
-                                        )}
-
-                                      <FullModal
-                                        toggle={this.dismissReviewModal}
-                                        isOpen={openReviewPid === order._id}
-                                      >
-                                        <OrderReview
-                                          onSuccess={() => {
-                                            this.dismissTimeout = setTimeout(
-                                              () => {
-                                                this.dismissReviewModal();
-                                              },
-                                              1500
-                                            );
-                                          }}
-                                          order={order}
-                                        />
-                                      </FullModal>
-                                    </div>
-                                  </td>
-                                </tr>
-                              )
+                                            order={order}
+                                          />
+                                        </FullModal>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                )
+                              }
                               // ) : null
                             )}
                           </tbody>

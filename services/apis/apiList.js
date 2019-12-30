@@ -7,6 +7,8 @@ const apiList = {
     getAllCombos                    : `${baseUrl}/products/api/combos/all/`,
     getProductById                  : `${baseUrl}/products/api/getbyid/`,
 
+    getReviews                      : `${baseUrl}/review/getall/`,
+
     addToWishList                   : `${baseUrl}/wishlist/api/add/`,
     getWishList                     : `${baseUrl}/wishlist/api/byuser/`,
     deleteWishList                  : `${baseUrl}/wishlist/api/delete/`,

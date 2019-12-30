@@ -33,6 +33,12 @@ const mainMenus = [
                 action: "link",
                 as: "/category/oils",
             },
+            {
+                label: "Bundles",
+                link: "/category/?cid=bundles",
+                action: "link",
+                as: "/category/bundles",
+            },
         ]
     }
 ]

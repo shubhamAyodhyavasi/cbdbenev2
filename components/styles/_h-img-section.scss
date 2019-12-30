@@ -22,7 +22,7 @@
         width: calc(100% + 30px);
     }
     &--full{
-        // min-width: 100vh;
+        min-height: 100vh;
         background:#fff;
     }
     &--content-bottom{

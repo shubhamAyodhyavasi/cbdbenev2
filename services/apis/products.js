@@ -15,3 +15,4 @@ export const addToWishList = (userid, productid, productmeta, productSlug)  => a
 export const deleteWishList  = body   => axios.post(apiList.deleteWishList, body)
 
 export const getWishList     = userid => axios.post(apiList.getWishList, {userid})
+export const getReviews      = id     => axios.get(apiList.getReviews+id)

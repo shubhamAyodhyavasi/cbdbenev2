@@ -53,14 +53,13 @@ const Product = ({product, allProducts, ...props}) => {
             pid,
             router
         })
-        
-        const productAttr = getProductAttributes(product)
+        const productAttr = getProductAttributes(product, allProducts)
         const image = getProductImage(product, "sectionB") //|| "/images/cbd-oil.png"
         const productImage = getProductImage(product) ? projectSettings.serverUrl + getProductImage(product) : "/images/cbd-oil.png"
         return (
             <Layout headerTheme="dark" fixed={true}>
                 <ProductInfo 
-                product={product} productAttr={productAttr.filter((el,i)=> i < 2 )} image={productImage}>
+                product={product} reviews={props.reviews} productAttr={productAttr.filter((el,i)=> i < 3 )} image={productImage}>
                 </ProductInfo>
                 <HImgSection version={["full"]} image={projectSettings.filePath + image} >
                     <div>
@@ -69,7 +68,7 @@ const Product = ({product, allProducts, ...props}) => {
                     <div className="c-product-single__list">
                         {
                             productAttr.map((el, i) => {
-                                if(i < 2) return null
+                                if(i < 3) return null
                                 return <TitleList parentClass="c-product-single" key={i} title={el.title} >{el.description}</TitleList>
                             })
                         }
@@ -103,6 +102,9 @@ Product.getInitialProps = async ({query}) => {
     const productObj    = await res.json()
     const product       = getVisibleProducts([productObj.product_details])
     
+    const reviewRes     = await fetch(apiList.getReviews+query.pid)
+    const reviews       = await reviewRes.json()
+
     const allRes        = await fetch(apiList.getAllProducts)
     const allProductObj = await allRes.json()
     const allProducts   = getVisibleProducts(allProductObj.products).filter(el => el._id !== query.pid)
@@ -110,7 +112,11 @@ Product.getInitialProps = async ({query}) => {
         product: product.length && product[0],
         productObj,
         allProducts,
-        allProductObj
+        allProductObj,
+        reviews: reviews.reviews
     }
 }
-export default connect(state => state)(Product)
+export default connect(state => ({
+    cart: state.cart,
+    user: state.user
+}))(Product)
