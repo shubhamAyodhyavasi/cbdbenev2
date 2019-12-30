@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { setAPUser } from "../../redux/actions";
 import { fieldValidation } from "../forms/validation";
 
-import  Input  from "../form-components/input.js";
+import  Input  from "../form-components/Input.js";
 
 import { Modal, ModalHeader } from "reactstrap";
 import { ic_error_outline, ic_done, ic_clear } from "react-icons-kit/md/";
