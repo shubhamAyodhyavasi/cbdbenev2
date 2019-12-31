@@ -1,4 +1,4 @@
-.o-success {
+.track-order {
     padding-top: 100px;
     &__main--center {
         text-align: center;
@@ -9,6 +9,11 @@
     }
     &__btn-wrap{
         width:360px;
+        max-width:100%;
+        margin:auto;
+    }
+    &__id{
+        width:560px;
         max-width:100%;
         margin:auto;
     }

@@ -1,9 +1,10 @@
 .c-contact{
     &__container{
-        padding: 40px;
+        padding: 20px;
         background-color: $light-color-2;
         @include bp-lg{
             padding-top: 100px;
+            padding: 40px;
         }
     }
 }

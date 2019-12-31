@@ -1,5 +1,5 @@
 const projectName           = "bene";
-const baseUrl               = "http://192.168.1.200:4000";
+const baseUrl               = "http://localhost:4000";
 const serverUrl             = "https://admin.cbdbene.com/";
 const googleApiKey          = "AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk"
 const shippingFreeAfter     = 75;

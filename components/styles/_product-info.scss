@@ -30,6 +30,7 @@
         }
     }
     &__btn-wrapper {
+        display: flex;
         @include bpm-lg{
             order: 3;
         } 
@@ -97,7 +98,7 @@
     &__heading{
         font-size: 20px;
         @include bp-sm{
-            font-size:40px;  
+            font-size:30px;  
         }
     }
     &__btn{
@@ -140,6 +141,26 @@
 .lg-hide {
     @include bpm-xs{
         display: none;
+    }
+}
+.carousel{    
+    &__dot{
+        background: transparent;
+            border: 1px solid #000;
+            width: 1px;
+            height: 1px;
+            border-radius: 50%;
+            padding: 3px;
+            margin: 5px;
+        &--selected{
+            background: #000;
+            border: 1px solid #000;
+            width: 1px;
+            height: 1px;
+            border-radius: 50%;
+            padding: 3px;
+            margin: 0px;
+        }
     }
 }
 

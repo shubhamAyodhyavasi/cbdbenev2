@@ -2752,8 +2752,8 @@ How should I take CBD softgel capsules?
             />
             <div className="w-100">
                 <div ref="wrapper" className="row align-items-start">
-                <div ref="leftScrolls" className="pt-4 pb-5 col-lg-3">
-                    <div className="pt-4">
+                <div ref="leftScrolls" className="pb-5 col-lg-3 ">
+                    <div className="pr-3 border-right-gold">
                     {learnData.map((el, key) => {
                         return (
                         <LearnCollapse
@@ -2782,7 +2782,7 @@ How should I take CBD softgel capsules?
                     })}
                     </div>
                 </div>
-                <div ref="rightScrolls" className="pt-4 col-lg-9">
+                <div ref="rightScrolls" className="col-lg-9">
                     <FadeTransition in={isVisible}>
                     <div className="pl-lg-5 pt-2 learn-view">
                         <div className="pb-3 learn-view-inner">
@@ -2814,7 +2814,7 @@ const LearnMenuHeading = props => {
         style={{
           fontWeight: active ? 500 : 400
         }}
-        className="cursor-pointer mb-1 p-2 pb-1"
+        className="cursor-pointer mb-1 p-2 pb-1 learn__collapse"
       >
         {title}
       </p>
