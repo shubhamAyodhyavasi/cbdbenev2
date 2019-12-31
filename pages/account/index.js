@@ -498,27 +498,13 @@ class MyAccount extends Component {
                                       </ButtonGroup>
                                       <div className="pt-3 my-order__t-note">
                                         {unReviewed && (
-                                          unReviewed === 1 ? 
-                                          (
-                                            <Link href="/" >
+                                            <Link href={`/submit-reviews/${order._id}`} >
                                             <span
                                               className="cursor-pointer hover-text-line"
                                             >
                                               Write a product review
                                             </span>
                                             </Link>
-                                            )
-                                          :
-                                            <span
-                                              onClick={() => {
-                                                this.openReviewCollapse(
-                                                  order._id
-                                                );
-                                              }}
-                                              className="cursor-pointer hover-text-line"
-                                            >
-                                              Write a product review
-                                            </span>
                                           )}
   
                                         <FullModal

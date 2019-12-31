@@ -98,9 +98,12 @@ class ProductInfo extends React.Component {
   };
   
   getAvg = reviews => {
-    const newArr = reviews.map(el => el.overall);
-    const sum = newArr.reduce((a, b) => a + b, 0);
-    return sum / reviews.length;
+    if(reviews){
+        const newArr = reviews.map(el => el.overall);
+        const sum = newArr.reduce((a, b) => a + b, 0);
+        return sum / reviews.length;
+    }
+    return 0
   };
     render(){
         const {
@@ -142,7 +145,10 @@ class ProductInfo extends React.Component {
         const { Option } = Select;
         const gallery = getProductImageArray(product)
         const avgReviews = this.getAvg(this.props.reviews)
-        const reviewsLength = this.props.reviews.length
+        console.log({
+            product
+        })
+        const reviewsLength = this.props.reviews && this.props.reviews.length
         return (
             <div className="c-product-info container">
                 <div className="row c-product-info__row">

@@ -20,10 +20,6 @@ class Home extends React.Component {
     }
   }
   render() {
-    console.clear()
-    console.log({
-      props: this.props
-    })
     const {
       reviews
     } = this.props

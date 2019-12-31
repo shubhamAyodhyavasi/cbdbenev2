@@ -8,6 +8,7 @@ const apiList = {
     getProductById                  : `${baseUrl}/products/api/getbyid/`,
 
     getReviews                      : `${baseUrl}/review/getall/`,
+    addReviews                      : `${baseUrl}/review/add/`,
 
     addToWishList                   : `${baseUrl}/wishlist/api/add/`,
     getWishList                     : `${baseUrl}/wishlist/api/byuser/`,
