@@ -15,6 +15,7 @@ import { FullModal } from "../../components/modal";
 // import Dropdown from '../../components/form-components/Dropdown';
 import {getProductTitle, getProductImage, getProductAttributes, getVisibleProducts, getProductDescription} from '../../services/helpers/product'
 
+
 // import {Button} from 'antd';
 class SubmitReviews extends React.Component {
     constructor(){
@@ -52,6 +53,7 @@ class SubmitReviews extends React.Component {
                 const {
                     orderId
                 } = this.props
+                let orderid = orderId
               const orderList = resJson.orders.sort(function(a, b) {
                 return new Date(b.createdOn) - new Date(a.createdOn);
               }).map(el => ({
@@ -135,7 +137,7 @@ class SubmitReviews extends React.Component {
                         </div>
                     </div>
                 </section>         
-                <WrappedNormalLoginForm selectedProduct={selectedProduct} />
+                <WrappedNormalLoginForm selectedProduct={selectedProduct} order={order}/>
                 <FullModal 
                     isOpen={!selectedProduct}
                 >
@@ -165,7 +167,9 @@ class NormalLoginForm extends React.Component {
         }
     }
     handleSubmit = e => {
+     
         e.preventDefault();
+       
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
@@ -175,6 +179,7 @@ class NormalLoginForm extends React.Component {
                     const {
                         selectedProduct
                     } = this.props
+                    console.log({selectedProduct})
                     const {
                         overall
                     } = values
@@ -196,7 +201,9 @@ class NormalLoginForm extends React.Component {
                                 comboid: selectedProduct.productId
                             }) : ({
                                 ...data,
-                                productmetaid: selectedProduct.productId
+                                productmetaid: selectedProduct.productMeta,
+                                productId: selectedProduct.productId,
+                                orderid: this.props.order._id
                             })
                             addReviews(review).then(res => {
                                 console.log({

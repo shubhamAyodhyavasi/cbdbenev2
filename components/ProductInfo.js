@@ -144,7 +144,8 @@ class ProductInfo extends React.Component {
         }
         const { Option } = Select;
         const gallery = getProductImageArray(product)
-        const avgReviews = this.getAvg(this.props.reviews)
+        const avgReviews = this.getAvg(this.props.reviews).toFixed(1)
+        console.log({"reviews": this.props.reviews})
         console.log({
             product
         })
