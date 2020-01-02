@@ -221,9 +221,10 @@ class ProductInfo extends React.Component {
                         }
                         <div className="c-product-info__atc-wrapper">
                             <div className="c-product-info__btn-wrapper">
+                            <div className="c-product-info__btn-wrap">
                                 <Button onClick={addToCartFn} parentClass="c-product-info" theme="outline" >Add to cart</Button>
                             </div>
-                            <div className="c-product-info__btn-wrapper">
+                            <div className="c-product-info__btn-wrap">
                                 <Button 
                                 onClick={() => {
                                     this.hartState(
@@ -235,10 +236,11 @@ class ProductInfo extends React.Component {
                                     },
                                     // productSlug
                                     );
-                                }} versions={["wishlist"]} parentClass="c-product-info" theme="outline" >
+                                }} versions={["wishlist"]} parentClass="border-left-0 c-product-info" theme="outline" >
                                     <Icon type="heart" theme="filled" />
                                     {/* <Icon type="heart" /> */}
                                 </Button>
+                            </div>
                             </div>
                             <div className="c-product-info__price-wrapper">
                                 {

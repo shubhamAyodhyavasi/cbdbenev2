@@ -94,7 +94,7 @@ class Contact extends React.Component {
               activeCategory={activeCategory}
               onCategoryChange={this.changeCategory}
               products={products}
-              subHeading="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+              subHeading="bene means wellness in Italian And that's what we're all about."
               heading="Our top products" />}
             </Layout>
         )

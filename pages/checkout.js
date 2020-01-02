@@ -217,7 +217,6 @@ const Checkout  = ({
                     </TitleList> */}
             </div>
             <Modal 
-                
                 maskClosable={true}
                 footer={null}
                 onOk={()=> {

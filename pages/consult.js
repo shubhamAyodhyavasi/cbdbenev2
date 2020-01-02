@@ -88,7 +88,7 @@ class Contact extends React.Component {
               content={<span>Get in touch with our doctors who have experience with CBD</span>}
             >
             </Banner>
-            <div className="c-consult-page__container">
+            <div className="c-consult-page__container overflow-hidden ">
                 <div className="row">
                   <div className="col-md-8 col-lg-7 d-flex flex-column ">
                     <div className="mt-auto" >
@@ -108,14 +108,14 @@ class Contact extends React.Component {
                         Visit your doctor online or on the phone to discuss your individual needs and how they can be met.
                       </TitleList>
                     </div>
-                    <div className="text-md-right ">
+                    <div className="text-md-right mt-4 mb-4">
                       <Button versions={["outline"]}>
                         Get Started
                       </Button>
                     </div>
                   </div>
                   <div className="col-md-4 offset-lg-1">
-                    <img className="d-block mr-0 ml-auto" src="/images/consult-image.jpg" />
+                    <img className="d-block mr-0 ml-auto c-consult-page__img-set" src="/images/consult-image.jpg" />
                   </div>
                 </div>
             </div>

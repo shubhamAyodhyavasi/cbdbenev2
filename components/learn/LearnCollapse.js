@@ -12,28 +12,29 @@ const LearnCollapse = props => {
     <div
       style={{
         marginBottom: "10px",
-        border: "1px solid #ccc"
+        border: "1px solid transparent"        
       }}
       className=""
     >
       <div
         style={{
           borderBottom: "1px solid transparent",
-          background: "#edebe3",
-          paddingLeft: "15px",
-          paddingRight: "15px"
+          background: "transparent",
+          // paddingLeft: "15px",
+          // paddingRight: "15px"
         }}
-        className="pt-2 pb-2 cursor-pointer"
+        className="pb-2 cursor-pointer"
         onClick={onClick}
       >
         <h4 className="mb-0" style={{ fontWeight: 400, marginBlock: 0 }}>
           <span className="d-flex align-items-center justify-content-between">
-            <div style={{ fontSize: "19px" }}>{title}</div>
-            {isOpen ? (
+            <div style={{ fontSize: "19px", fontWeight: "600" }}>{title}</div>
+            {isOpen? "-":"+"}
+            {/* {isOpen ? (
               <Icon size={24} icon={ic_keyboard_arrow_up} />
             ) : (
               <Icon size={24} icon={ic_keyboard_arrow_down} />
-            )}
+            )} */}
           </span>
         </h4>
       </div>

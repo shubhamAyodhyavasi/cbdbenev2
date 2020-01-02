@@ -14,8 +14,11 @@
     }
     &__detail-wrap{
         padding-left: 20px;
-        width: calc(100% - 130px);
+        width: 100% ;
         border-left: 1px solid $brand-color-1;
+        @include bp-md{
+            width: calc(100% - 130px);
+        }
     }
     &__content{
         margin-bottom: auto;

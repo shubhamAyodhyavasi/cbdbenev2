@@ -79,19 +79,24 @@
             &__price{
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                margin: auto;
+                justify-content: center;                
                 pointer-events: none;
                 transition: all .3s;
+                margin-bottom:20px;
+                @include bp-md{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                }
             }
             &__btn{
-                opacity: 0;
                 transition: all .3s;
+                @include bp-md{
+                    opacity: 0;
+                }
             }
         }
         &:hover{
