@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Layout from "../../components/Layouts/Layout";
+import Layout from "../../components/Layouts/Layout"
 import HImgSection from "../../components/HImgSection";
 import Heading from "../../components/Heading";
 import Logo from "../../components/Logo";
@@ -23,7 +23,8 @@ const Category = ({ productList, ...props }) => {
         }
     })
     return (
-        <Layout headerTheme="dark" fixed={true}>
+        // <Layout headerVersions={["bg-light"]} headerTheme="dark">
+            <Layout className="c-consult-page" title="Contact"> 
             <div className="c-category-page">
                 <HImgSection version={["full", "content-bottom"]} image={"/images/oil-page.jpg"} >
                     <div>

@@ -3,10 +3,25 @@
     padding-left: 15px;
     padding-right: 15px;
     &__content-wrapper{
-        padding: 40px;
+        padding: 95px 40px;
+        @include bpm-md{
+            position: absolute;
+            z-index: 9;
+        }
     }
     &__img-wrapper{
         position: relative;
+        padding: 0;
+        &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(-78deg, #040404cc, #bb955b);
+        opacity: .7;
+        }
     }
     &__img{
         position: absolute;
