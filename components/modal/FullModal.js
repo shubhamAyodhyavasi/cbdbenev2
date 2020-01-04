@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ic_clear } from "react-icons-kit/md/";
-import Icon from "react-icons-kit";
+
 import { Modal as ReactModal } from "reactstrap";
 
 export default class FullModal extends Component {
@@ -21,12 +21,10 @@ export default class FullModal extends Component {
         <ReactModal
           isOpen={isOpen}
           toggle={this.toggle}
-          className={"full-screen-modal"}
+          className={"full-screen-modal modal__full-width"}
         >
           <div className="Modal-body full-screen-modal-body">
-            <div className="modal-dismiss" onClick={this.toggle}>
-              <Icon icon={ic_clear} />
-            </div>
+            
             <div className="modal-inner">
               <div className="modal-content">{children}</div>
             </div>

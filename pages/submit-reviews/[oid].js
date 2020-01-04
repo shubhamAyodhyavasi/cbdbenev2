@@ -1,6 +1,8 @@
 import Layout from "../../components/Layouts/Layout"
 import Heading from "../../components/Heading"
 import { Rate } from 'antd';
+import ReactIcon from "react-icons-kit";
+import { ic_clear } from "react-icons-kit/md/";
 import { connect } from 'react-redux'
 import Error from 'next/error'
 import {Form, Radio as AntRadio, Icon  } from 'antd'
@@ -134,6 +136,9 @@ class SubmitReviews extends React.Component {
                                     LET'S GET STARTED! <br />WHAT DID YOU THINK ABOUT THIS PROJECT?
                                 </Heading>
                             </div>
+
+
+
                         </div>
                     </div>
                 </section>         
@@ -141,17 +146,32 @@ class SubmitReviews extends React.Component {
                 <FullModal 
                     isOpen={!selectedProduct}
                 >
-                    <div className="c-submit-r__product-selector">
+                    <div className="c-submit-r__product-selector">                    
+                    <div className="modal__logo-wrapper">
+                        <a className="c-logo  modal-footer__logo" href="/">
+                            <img src="/images/logo-new.png" className="modal__logo-img" alt="bené" />
+                        </a>
+                        <div className="modal__heading">
+                            <h2 className="modal__heading-text">Choose a product :-</h2>
+                        </div>
+                    </div>
+                    <div className="modal-dismiss" onClick={this.toggle}>
+                        <ReactIcon icon={ic_clear} size={"32"} />
+                    </div>
+                        <div className="c-susbmit-r__wrapper">
+                           
                         {
                             order && 
-                            order.products.map((el, i)=> <div key={i}>
-                                <span className="c-btn " onClick={()=> this.setState({
-                                    selectedProduct: el
-                                })} >
-                                    {getProductTitle(el)}
-                                </span>
+                            order.products.map((el, i)=>                                                          
+                                <div className="c-susbmit-r__p-selector-wrap" key={i}>                                
+                                    <span className="c-btn c-btn--outline modal__button" onClick={()=> this.setState({
+                                        selectedProduct: el
+                                    })} >
+                                        {getProductTitle(el)}
+                                    </span>
                             </div>)
                         }
+                        </div> 
                     </div>
                 </FullModal>
             </Layout>

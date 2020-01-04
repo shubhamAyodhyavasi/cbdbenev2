@@ -30,7 +30,7 @@ export default class Modal extends Component {
           <div className="Modal-body center-modal">
             {!noCross && !heading && (
               <div className="modal-dismiss" onClick={this.toggle}>
-                <Icon icon={ic_clear} />
+                <Icon icon={ic_clear} size={64} />
               </div>
             )}
             <div className="modal-inner">
