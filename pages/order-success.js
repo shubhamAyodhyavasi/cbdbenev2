@@ -1,7 +1,10 @@
 import Layout from "../components/Layouts/Layout"
 import Heading from "../components/Heading"
 import Link from 'next/link'
-const orderSuccess = () =>{
+const orderSuccess = (props) =>{
+    console.log({
+        props
+    })
 return(
     <Layout headerVersion={["bg--light"]} headerTheme="dark">
         <div className="o-success">
@@ -19,5 +22,14 @@ return(
         </div>
     </Layout>
 )
+}
+orderSuccess.getInitialProps = async ({query}) => {
+    if(query.order){
+        return {
+            order: query.order
+        }
+    }else{
+        return null
+    }
 }
 export default orderSuccess

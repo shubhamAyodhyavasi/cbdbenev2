@@ -97,10 +97,6 @@ class SubmitReviews extends React.Component {
         const {
             isLoading, isError, order, selectedProduct
         } = this.state
-        console.clear()
-        console.log({
-            selectedProduct
-        })
         if(isError)
             return <Error statusCode="404" />
 

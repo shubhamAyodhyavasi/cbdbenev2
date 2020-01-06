@@ -2,7 +2,10 @@ import classNames from 'classnames'
 import Tabs from "./Tabs"
 import TitleList from './TItleList'
 import Heading from './Heading'
-const ProductDetailsTab = ({product, versions, parentClass}) => {
+import { Rate } from 'antd';
+import Router from 'next/router'
+import projectSettings from '../constants/projectSettings'
+const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
     const componentClass = `c-product-details-tab`
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
     const parent = `${parentClass}__${componentClass.replace("c-", "")}`
@@ -14,6 +17,13 @@ const ProductDetailsTab = ({product, versions, parentClass}) => {
         totalcbdmg, cbdperunitmg, servings, servingsize,
         direction
     } = product
+    const getAvg = reviews => {
+        const newArr = reviews.map(el => el.overall);
+        const sum = newArr.reduce((a, b) => a + b, 0);
+        return (sum / reviews.length).toFixed(1);
+    };
+    const avgReview     = getAvg(reviews)
+    const totalReview   = reviews.length
     const tabs = [
         {
             title: "Details",
@@ -47,20 +57,60 @@ const ProductDetailsTab = ({product, versions, parentClass}) => {
         },
         {
             title: "REviews",
-            content: ""
+            content: <TabContainer>
+            <div className="col-12 c-product-details-tab__contain-col text-center">
+                {/* <Heading parentClass={componentClass} h="4" subHeading={true} >Suggested Use</Heading>
+                <p className={`${componentClass}__text`} >{direction}</p> */}
+                <div className="row">
+                    <div className="col-lg-8 col-md-9">
+                        {reviews.map((el, key)=> <TitleList key={key} title={el.title} >
+                            {el.content}
+                        </TitleList>)}
+                    </div>
+                    <div className="col-lg-4 col-md-3">
+                        <Rate 
+                            style={{ color: '#000' }}
+                            className="c-product-details-tab__stars" 
+                            disabled value={avgReview} 
+                            allowHalf={true} />
+                        <p className="c-product-details-tab__review-para">({totalReview} reviews)</p>
+                        <h1 className="c-product-details-tab__review-heading">{avgReview}</h1>
+                    </div>
+                </div>
+            </div>
+        </TabContainer>
         },
         {
             title: "FAQ's",
-            content: ""
+            content: <TabContainer>
+            <div className="col-12 c-product-details-tab__contain-col text-center">
+                <div className="row">
+                    <div className="col-lg-8 col-md-9">
+                        {product.faqcontent.map((el, key)=> <TitleList key={key} title={el.title} >
+                            {el.description}
+                        </TitleList>)}
+                    </div>
+                </div>
+            </div>
+        </TabContainer>
         },
+    ]
+    const allTabs = product.labsheet ? [
+        ...tabs,
         {
             title: "Quality sheet",
             content: ""
         },
-    ]
+    ] : tabs
     return (
         <div className={className}>
-            <Tabs tabs={tabs} parentClass={componentClass} />
+            <Tabs tabs={allTabs} onChange={(e)=> {
+                if(e === "4"){
+                    console.log({product})
+                    // alert("")
+                    Router.push(`${projectSettings.filePath}${product.labsheet}`)
+                }
+            }} parentClass={componentClass} />
         </div>
     )
 }

@@ -75,7 +75,7 @@ const Product = ({product, allProducts, ...props}) => {
                     </div>
                 </HImgSection>
                 <div className="c-product-single__details-wrapper">
-                    <ProductDetailsTab product={product} parentClass="c-product-single" />
+                    <ProductDetailsTab product={product} reviews={props.reviews} parentClass="c-product-single" />
                 </div>
                 <div className="c-product-single__related-section">
                     <div className="row">

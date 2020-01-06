@@ -1,5 +1,6 @@
 import {useState, useEffect } from 'react'
 import CheckoutLayout from '../components/Layouts/CheckoutLayout'
+import Layout from '../components/Layouts/Layout'
 import Heading from '../components/Heading'
 import TitleList from '../components/TitleList'
 import AddressForm from '../components/AddressForm'
@@ -15,6 +16,7 @@ import checkAddressDuplicate from '../services/helpers/address'
 import CheckoutShipping from '../components/checkout-tabs/CheckoutShipping'
 import CheckoutPayment from '../components/checkout-tabs/CheckoutPayment'
 import Loader from '../components/Loader'
+import Link from 'next/link'
 
 const Checkout  = ({
     addAddress, user, isLoading, ...props
@@ -27,7 +29,8 @@ const Checkout  = ({
     const [shippingDetail, setShippingDetail] = useState(null)
     const [shippingSendData, setShippingSendData] = useState(null)
     const [isModal, setIsModal] = useState(false)
-    
+    const [isSuccess, setIsSuccess] = useState(null)
+    const [order, setOrder] = useState(null)
     useEffect(()=> {
         if(currentStep === 2){
             if(props.isEditable){
@@ -118,9 +121,16 @@ const Checkout  = ({
                 addAddress(userId, newAddressB, props.address, allAddresses)
             }
         }
+        const mainAddressRaw = addressSelect ? {
+            ...addressSelect,
+            email
+        } : {
+            ...address,
+            email
+        }
         setInfoDetails({...values})
         setCurrentStep(1)
-        setMainAddress(addressSelect || address)
+        setMainAddress(mainAddressRaw)
         setShipAddress(addressSelect_ship || addressSelect || addressShip || address)
     }
     const onShippingSubmit = (e, values, shippingSendData) => {
@@ -131,7 +141,12 @@ const Checkout  = ({
         })
         setShippingSendData(shippingSendData)
     }
-    const onPaymentSubmit = (e, values) => {
+    const onPaymentSubmit = (order) => {
+        alert("")
+        if(order){
+            setOrder(order)
+            setIsSuccess(true)
+        }
     }
     const onPaymentFail = (res)=> {
         console.log({
@@ -146,13 +161,52 @@ const Checkout  = ({
     let checkoutClass = "";
     let loaderClass = "c-hidden";
     if(isLoading){
-      
-          checkoutClass = "c-hidden"
-          loaderClass = ""
-       }
+        checkoutClass = "c-hidden"
+        loaderClass = ""
+    }
     
    console.log({loaderClass})
+    if(!props.isPersist){
+        return (<>
+            <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
+            <Loader />
+        </>)
+    }else if(props.cartItems && props.cartItems.length == 0){
+        return <Layout>
+            <div className="o-success">
+                <div className="o-success__main o-success__main--center">
+                    <Heading versions={["large", "upper"]} parentClass="c-privacy" >0 Items</Heading>
+                    <div className="mt-3" />
+                    <Heading versions={["small", ]} parentClass="c-privacy " >Your bag is empty.</Heading>
+                    {/* <p className="o-success__descp mt-3">The order information will be sent via e-mail to {order && order.userDetails && order.userDetails.email} </p> */}
+                </div>
 
+                <div className="o-success__btn-wrap w-30 m-auto ">
+                    <Link href="/">
+                        <a className="c-btn c-btn--block c-btn--outline" >Continue shopping</a>
+                    </Link>
+                </div>
+            </div>
+        </Layout>
+    }
+    if(isSuccess){
+        return <Layout>
+            
+            <div className="o-success">
+                <div className="o-success__main o-success__main--center">
+                    <Heading versions={["large", "upper"]} parentClass="c-privacy" >Thank you <br /> for your order</Heading>
+                    <Heading versions={["small", "upper", "gold"]} parentClass="mt-3 c-privacy " >Order Number: {order && order._id}</Heading>
+                    <p className="o-success__descp mt-3">The order information will be sent via e-mail to {order && order.userDetails && order.userDetails.email} </p>
+                </div>
+
+                <div className="o-success__btn-wrap w-30 m-auto ">
+                    <Link href="/">
+                        <a className="c-btn c-btn--block c-btn--outline" >Continue shopping</a>
+                    </Link>
+                </div>
+            </div>
+        </Layout>
+    }
     return (
         <div className="loaderClass">
         
@@ -242,6 +296,7 @@ const mapStateToProps = state => ({
     user: state.user,
     isLoading: state.loading.isLoading,
     isEditable: state.cart.isEditable,
+    cartItems: state.cart.items
 })
 const mapActionToProps = {
     addAddress, setEditable

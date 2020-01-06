@@ -63,6 +63,21 @@ class CheckoutInfo extends React.Component {
             }
         }, 100);
     }
+    componentDidUpdate(prevProps){
+        if(prevProps.addresses !== this.props.addresses){
+            const {
+                addresses, form
+            } = this.props
+            if(addresses.length > 0){
+                const address = addresses.find(el => el.isDefault) || addresses[0]
+                if(address){
+                    form.setFieldsValue({
+                        email: address.email
+                    })
+                }
+            }
+        }
+    }
     generateAddStr = address => {
         const {
             country,
@@ -161,8 +176,7 @@ class CheckoutInfo extends React.Component {
     onSameShippingChange = e => {
         this.setState({
             sameShipping: e.target.checked
-        })
-    }
+        })}
     changeAddress = ({ ...address }, key = "address", search = true) => {
         const {
             city,
@@ -265,7 +279,8 @@ class CheckoutInfo extends React.Component {
                                             } = e.target
                                             if (value !== null) {
                                                 setFieldsValue({
-                                                    newAddress: false
+                                                    newAddress: false,
+                                                    email: value.email
                                                 })
                                             }
                                         }}

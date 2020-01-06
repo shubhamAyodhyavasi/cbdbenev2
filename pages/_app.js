@@ -31,14 +31,20 @@ class MyApp extends App {
     //     return {pageProps};
 
     // }
-
+    // componentDidMount(){
+    //     console.clear()
+    //     console.log({props: this.props})
+    // }
+    // componentDidUpdate(prevProps){
+    //     console.log({prevProps, props: this.props})
+    // }
     render() {
         const {Component, pageProps, store} = this.props; 
         return (
                 <Provider store={store}>
-            <PersistGate loading={null} persistor={store.__persistor} loading={<Component {...pageProps} />} >
-                    <Component {...pageProps} />
-            </PersistGate>
+                    <PersistGate persistor={store.__persistor} loading={<Component isPersist={false} {...pageProps} />} >
+                        <Component isPersist={true} {...pageProps} />
+                    </PersistGate>
                 </Provider>
         );
     }

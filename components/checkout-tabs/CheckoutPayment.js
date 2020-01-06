@@ -1,3 +1,4 @@
+import Router from "next/router"
 import TitleList from "../TitleList"
 import Button from "../form-components/Button"
 import moment from "moment"
@@ -6,8 +7,7 @@ import { connect } from 'react-redux'
 import regex from "../../services/helpers/regex"
 import Input from '../form-components/Input'
 import Checkbox from '../form-components/Checkbox';
-import { showRegBar } from '../../redux/actions/drawers'
-import { setLoading } from '../../redux/actions/loading'
+import { showRegBar, setLoading, hideCartBar } from '../../redux/actions'
 import validator from "../../services/helpers/validator";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import projectSettings from '../../constants/projectSettings';
@@ -18,7 +18,7 @@ import msgStrings from "../../constants/msgStrings"
 import Loader from "../Loader"
 import {
     setShippingCharge,
-    setShippingType
+    setShippingType, clearCart
 } from '../../redux/actions/cart'
 import Cleave from 'cleave.js/react';
 
@@ -87,6 +87,7 @@ class CheckoutPayment extends React.Component {
         console.log({
             res
         })
+        setLoading(false)
         const {
             onFailed 
         } = this.props
@@ -235,35 +236,15 @@ class CheckoutPayment extends React.Component {
             .then(res => {
                 const resJson = res.data
                 if (resJson.status) {
-                    this.props.setLoading(false)
-                    // window.location.href = "/";
-                    this.setState(
-                        {
-                            modalData: "orderPlacedSuccessfully",
-                            modalTitle: "orderPlacedModalTitle",
-                            modal: true,
-                            clearCart: true,
-                            SpinnerToggle: false,
-                            // loading: false
-                        },
-                        () => {
-                            // this.modalDismiss();
-                            const {
-                                history,
-                                location,
-                                user: {
-                                    userMetaId
-                                }
-                            } = this.props
-                            //   clearCart();
-                            //   history.push({
-                            //     pathname:  "/order-success",
-                            //     state: {
-                            //       order: resJson.data
-                            //     }
-                            //   })
-                        }
-                    );
+                    const {
+                        onSubmit, setLoading, clearCart, hideCartBar
+                    } = this.props
+                    setLoading(false)
+                    clearCart()
+                    hideCartBar()
+                    if (typeof onSubmit === "function") {
+                        onSubmit(resJson.data)
+                    }
                 } else {
                     console.log(resJson);
                     alert("Server Error")
@@ -294,7 +275,7 @@ class CheckoutPayment extends React.Component {
        
         e.preventDefault()
         const {
-            onSubmit, shippingSendData, address
+            shippingSendData, address
         } = this.props
         const {
             isCard
@@ -347,14 +328,7 @@ class CheckoutPayment extends React.Component {
                         }
                     })
                     .catch(console.log)
-                // if (typeof onSubmit === "function") {
-                //     const order = generateOrder()
-                //     console.log({
-                //         order
-                //     })
-                //     order.then(res => console.log({res}))
-                //     // onSubmit(e, values, address, addressShip)
-                // }
+                
             }
         })
     }
@@ -938,7 +912,7 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = {
     addCardAuthorize,
     getCards,
-    setLoading
+    setLoading, clearCart, hideCartBar
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Form.create({ name: "CheckoutPayment" })(CheckoutPayment))

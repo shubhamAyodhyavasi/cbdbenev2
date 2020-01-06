@@ -17,6 +17,7 @@ import {
   // Collapse
 } from "reactstrap";
 import Link from 'next/link'
+import onlyLogin from "../../components/hoc/onlyLogin"
 import classNames from "classnames";
 import { connect } from "react-redux";
 // import { Helmet } from "react-helmet";
@@ -833,4 +834,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addToCart, showCartBar }
-)(MyAccount);
+)(onlyLogin(MyAccount));

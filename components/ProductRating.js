@@ -5,7 +5,7 @@ const ProductRating = ({reviews}) =>{
     const getAvg = reviews => {
       const newArr = reviews.map(el => el.overall);
       const sum = newArr.reduce((a, b) => a + b, 0);
-      return sum / reviews.length;
+      return (sum / reviews.length).toFixed(1);
     };
     const countOf = (reviews, rate) => reviews.filter(el => el.overall === rate).length
     const avgReview = getAvg(reviews)

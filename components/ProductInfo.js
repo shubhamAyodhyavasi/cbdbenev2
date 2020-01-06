@@ -99,6 +99,9 @@ class ProductInfo extends React.Component {
   
   getAvg = reviews => {
     if(reviews){
+        console.log({
+            reviews
+        })
         const newArr = reviews.map(el => el.overall);
         const sum = newArr.reduce((a, b) => a + b, 0);
         return sum / reviews.length;
