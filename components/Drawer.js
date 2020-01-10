@@ -33,7 +33,7 @@ class Drawer extends React.Component {
         return (
             <AntDrawer
                 className={className}
-                placement="right"
+                placement={this.props.placement}
                 closable={false}
                 onClose={onClose}
                 visible={visible}
@@ -63,6 +63,7 @@ const DrawerTitle = ({ onClose, title }) => (
     </div>
 )
 Drawer.defaultProps = {
-    versions: []
+    versions: [], 
+    placement: "right"
 }
 export default Drawer
