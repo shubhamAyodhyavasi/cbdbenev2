@@ -18,7 +18,7 @@
         @include bpm-lg{
             order: 1;
             width: 50%;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
             text-align: right;
         }
     }
@@ -31,8 +31,15 @@
     }
     &__btn-wrapper {
         display: flex;
+        width:100%;
         @include bpm-lg{
             order: 3;
+        } 
+    }
+    &__btn-wrap:first-child {
+        width:100%;
+        @include bp-sm{
+            width:auto;
         } 
     }
 
@@ -132,6 +139,9 @@
     }
 }
 
+.c-product-info .c-btn--outline{
+    width:100%;
+}
 .product-view{
     .carousel__image{
         background-color: $light-color-2;
@@ -151,7 +161,7 @@
             height: 1px;
             border-radius: 50%;
             padding: 3px;
-            margin: 5px;
+            margin: 3px;
         &--selected{
             background: #000;
             border: 1px solid #000;
@@ -159,7 +169,7 @@
             height: 1px;
             border-radius: 50%;
             padding: 3px;
-            margin: 0px;
+            margin: 3px;
         }
     }
 }

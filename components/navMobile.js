@@ -56,7 +56,7 @@ const NavMobile = ({
       <span onClick={() => setOpen(!isOpen)} className={classNames("c-nav__menu-tgl", {
                 "c-nav__menu-tgl--opened": isOpen
       })}></span>
-      <Fade top when={isOpen}>
+      <Fade left when={isOpen}>
       <ul className="c-nav__list">
         {items.filter(el => {
           if (user._id) {

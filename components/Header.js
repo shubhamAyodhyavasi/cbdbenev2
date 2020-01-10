@@ -63,10 +63,10 @@ const Header = ({bg, theme, versions, fixed}) => {
                     [versionClass]: versions
                 })}> 
                         <NavMobile parent="c-header" items={mobileMenus} />
-                        <Nav parent="c-header" items={mainMenus} />
-                        <Logo />
-                        <Nav parent="c-header" isRight={true} items={rightMenus} />
-                        <NavMobile parent="c-header" items={mobileMenusRight} />    
+                            <Nav parent="c-header" items={mainMenus} />
+                            <Logo parent="c-header" />
+                            <Nav parent="c-header" isRight={true} items={rightMenus} />
+                            <NavMobile parent="c-header" onlyCart={true} items={mobileMenusRight} />   
                 </header>
             </div>
       

@@ -20,6 +20,10 @@
     &--block{
         display: block;
         width: 100%;
+        @include bpm-sm{
+            width: 60%;
+            margin: auto;
+        }
     }
     &--btm-br{
         position: relative;
@@ -52,7 +56,7 @@
         border: 1px solid $base-color;
         padding: 6px 25px;
         // font-weight: 600;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.5px;        
         &:hover{
             background: $base-color;
             color: $light-color; 
