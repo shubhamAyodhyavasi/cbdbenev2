@@ -7,7 +7,7 @@ import { FiPlus, FiMinus } from 'react-icons/fi'
 import './styles/app.scss'
 import Drawer from './Drawer'
 import CartDrawer from './CartDrawer'
-import MainMenu from './MainMenu'
+import MobileMenus from './MobileMenus'
 import { toggleCartBar, hideCartBar, toggleRegBar } from '../redux/actions/drawers'
 import { unsetUser } from '../redux/actions/user'
 // import { c } from '../redux/actions/cart'
@@ -60,7 +60,7 @@ const NavMobile = ({
       {/* <Fade left when={isOpen}> */}
      {/* </Fade> */}
       <Drawer onClose={() =>{setOpen(false)}} title="Bene" visible={isOpen} placement="left">
-        <MainMenu items={items} user={user} />
+        <MobileMenus items={items} user={user} />
       </Drawer>
       <Drawer onClose={hideCartBar} title="Cart" visible={isCartOpen} >
         <CartDrawer />

@@ -9,7 +9,7 @@ import './styles/app.scss'
 import Drawer from './Drawer'
 import navMobile from './navMobile'
 import CartDrawer from './CartDrawer'
-import MainMenu from './MainMenu'
+import MobileMenus from './MobileMenus'
 import { toggleCartBar, hideCartBar, toggleRegBar } from '../redux/actions/drawers'
 import { unsetUser } from '../redux/actions/user'
 // import { c } from '../redux/actions/cart'
@@ -17,8 +17,27 @@ import Registration from './popups/Registration';
 import Login from './popups/Login';
 import { Menu, Dropdown, Icon, Collapse } from 'antd';
 
+const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
 
-const MobileMenu = ({items, user }) => {
+
+    const onClick = (e, action) => {
+        if (action === "link") {
+    
+        }
+        if (action === "cart") {
+          toggleCartBar();
+          // setIsCartOpen(!isCartOpen)
+        }
+        if (action === "reg") {
+            console.log("fdsfdsfds")
+          toggleRegBar()
+        }
+        if (action === "logout") {
+          unsetUser()
+        }
+      }
+
+
     return (
         <ul className="c-nav__list">
           {items.filter(el => {
@@ -35,6 +54,7 @@ const MobileMenu = ({items, user }) => {
                 el.link ?
                   <Link as={el.as || el.link} href={el.link}>
                     <a onClick={(e) => {
+                        console.log({"onnnnn": el})
                       onClick(e, el.action)
                     }} className="c-nav__link">
                       {el.label}
@@ -43,6 +63,7 @@ const MobileMenu = ({items, user }) => {
                   </Link>
                   : (
                     <span onClick={(e) => {
+                        // console.log({"onlcick":el   })
                         onClick(e, el.action)
                       }} className="c-nav__link">
                         {el.label}
@@ -78,5 +99,15 @@ MobileMenu.defaultProps = {
     items: []
   }
 
-   
-export default MobileMenu
+  const mapStateToProps = state => ({
+    isCartOpen: state.drawers.isCartOpen,
+    isRegOpen: state.drawers.isRegOpen,
+    hasLogin: state.drawers.hasLogin,
+    user: state.user
+  })
+
+
+
+export default connect(mapStateToProps, { toggleCartBar, hideCartBar, toggleRegBar, unsetUser })(MobileMenu)
+  
+// export default MobileMenu
