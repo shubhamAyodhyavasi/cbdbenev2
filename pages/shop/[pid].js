@@ -13,6 +13,7 @@ import {connect} from 'react-redux'
 import fetch from "isomorphic-unfetch";
 import projectSettings from '../../constants/projectSettings'
 import apiList from '../../services/apis/apiList'
+import Error from 'next/error'
 const product = {
     title: "CBD Isolate 500 mg"
 }
@@ -47,7 +48,7 @@ const Product = ({product, allProducts, ...props}) => {
         const {
             productList
         } = state
-        
+        console.clear()
         console.log({
             props: props,
             product: product,
@@ -57,6 +58,9 @@ const Product = ({product, allProducts, ...props}) => {
         const productAttr = getProductAttributes(product, allProducts)
         const image = getProductImage(product, "sectionB") //|| "/images/cbd-oil.png"
         const productImage = getProductImage(product) ? projectSettings.serverUrl + getProductImage(product) : "/images/cbd-oil.png"
+        if(props.err){
+            return <Error {...props.err} />
+        }
         return (
             <Layout headerTheme="dark" fixed={true}>
                 <ProductInfo 
@@ -109,7 +113,7 @@ Product.getInitialProps = async ({query, res: resMain}) => {
     const allRes        = await fetch(apiList.getAllProducts)
     const allProductObj = await allRes.json()
     const allProducts   = getVisibleProducts(allProductObj.products).filter(el => el._id !== query.pid)
-    if(product.length && product[0] || productObj.status){
+    if(product.length && product[0] && productObj.status){
         return {
             product: product.length && product[0],
             productObj,

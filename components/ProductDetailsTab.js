@@ -89,7 +89,7 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
             <div className="col-12 c-product-details-tab__contain-col text-center">
                 <div className="row">
                     <div className="col-lg-8 col-md-9">
-                        {product.faqcontent.map((el, key)=> <TitleList key={key} title={el.title} >
+                        {product.faqcontent && product.faqcontent.map((el, key)=> <TitleList key={key} title={el.title} >
                             {el.description}
                         </TitleList>)}
                     </div>

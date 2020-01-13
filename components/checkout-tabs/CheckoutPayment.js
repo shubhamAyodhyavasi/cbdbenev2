@@ -611,7 +611,7 @@ class CheckoutPayment extends React.Component {
         //     })
         //     .catch(console.log)
         // }
-        const refId = referrer && referrer.referralUrlId;
+        const refId = (referrer && referrer.referralUrlId) || null;
         const {
             id: shipmentid,
             selected_rate,
@@ -636,7 +636,7 @@ class CheckoutPayment extends React.Component {
             carrier: (selected_rate && selected_rate.carrier) || "shipment_failed",
         };
         const order = generateOrderObj({
-            referralId: null,
+            referralId: refId,
             cart, user, confirmShipRes: shippingDetails,
             stateObj: {
                 paymentMethod: "Authorize",
@@ -907,7 +907,7 @@ const mapStateToProps = (state) => ({
     user: state.user,
     cart: state.cart,
     cards: state.cards.cards,
-
+    referrer: state.referrer,
 })
 const mapActionToProps = {
     addCardAuthorize,

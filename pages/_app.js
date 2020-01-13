@@ -33,7 +33,6 @@ class MyApp extends App {
 
     // }
     // componentDidMount(){
-    //     console.clear();
     //     console.log("aaaaaaaaaaaaaaaa",{props: this.props})
     //     if(typeof this.props.router !== "undefined"){
     //         const {
