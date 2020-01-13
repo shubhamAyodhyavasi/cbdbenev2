@@ -67,11 +67,9 @@ const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onC
                     {products.map((el, i) => {
                         return (
                         <Link key={i} href={`/shop/${el._id}`}>
-                            <a>
                                 <div className="col-md-6 c-category-products__product">
                                     <ProductCard product={el} versions={["show-price", "full-height"]} title={el.title} subTitle={el.subTitle} image={projectSettings.serverUrl + getProductImage(el)} price={ el.dsaleprice } />
                                 </div>
-                            </a>
                         </Link>
                     )})}
 				</Flickity>
