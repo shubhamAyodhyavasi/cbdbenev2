@@ -95,7 +95,7 @@ class Home extends React.Component {
       products
     })
     return (
-      <Layout title="Home" >
+      <Layout title="Home" headerTheme="light" >
         <Banner
           image="/images/bundle.jpg"
           mobileImage="/images/home-banner-mobile.png"

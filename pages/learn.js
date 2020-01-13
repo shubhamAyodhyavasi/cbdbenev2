@@ -2735,7 +2735,8 @@ How should I take CBD softgel capsules?
       )
     };
     return (
-        <Layout headerTheme="dark" fixed={true}>
+    
+    <Layout headerTheme="dark" fixed={true}>
 
             <div
             className={classNames("c-learn-page", {

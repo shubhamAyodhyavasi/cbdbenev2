@@ -4,10 +4,10 @@ import MainForm from "./details"
 const privacy = () => {
     return (
         <Layout headerVersions={["bg-light"]} headerTheme="dark">
-            <div className="c-privacy__page-title">
+            <div className="c-privacy__page-title c-privacy__mt-85">
                 <Heading versions={["large"]} parentClass="c-privacy" >PRIVACY AND COOKIES POLICY</Heading>
             </div>
-            <MainForm/>
+            {/* <MainForm/> */}
             <div className="c-privacy__content">
                 <Heading>
                     Welcome to CBD bené

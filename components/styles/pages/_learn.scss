@@ -2,6 +2,9 @@
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 100px;
+    @include bpm-md{
+        padding-top: 42px;
+    }
 }
 .border-right-gold{
     border-right:1px solid #cfa564;
