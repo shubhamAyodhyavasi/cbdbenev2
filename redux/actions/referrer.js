@@ -1,6 +1,6 @@
-// import { SET_REFERRER } from "./type";
+import { SET_REFERRER } from "./type";
 
-// export const setReferrer = payload => ({
-//   type: SET_REFERRER,
-//   payload
-// });
+export const setReferrer = payload => ({
+  type: SET_REFERRER,
+  payload
+});

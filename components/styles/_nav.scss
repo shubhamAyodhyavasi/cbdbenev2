@@ -108,5 +108,13 @@
         @include bp-md{
             display: none;
         }
+        .c-nav{
+            &__list{
+                pointer-events: none;
+                &--opened{
+                    pointer-events: all;
+                }
+            }
+        }
     }
 }

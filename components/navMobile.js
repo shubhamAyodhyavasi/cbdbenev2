@@ -57,7 +57,9 @@ const NavMobile = ({
                 "c-nav__menu-tgl--opened": isOpen
       })}></span>
       <Fade top when={isOpen}>
-      <ul className="c-nav__list">
+      <ul className={classNames("c-nav__list", {
+        "c-nav__list--opened": isOpen
+      })}>
         {items.filter(el => {
           if (user._id) {
             return el.onlyLogin !== false

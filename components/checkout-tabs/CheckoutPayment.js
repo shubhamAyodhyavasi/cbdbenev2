@@ -46,7 +46,7 @@ class CheckoutPayment extends React.Component {
             shippingDetail: props.shippingDetail,
             isCard: true,
             collapseKey: ["card"],
-            
+            isFailed: false,
 
         }
         this.generateOrder = this.generateOrder.bind(this)
@@ -87,12 +87,15 @@ class CheckoutPayment extends React.Component {
         console.log({
             res
         })
-        setLoading(false)
+        this.props.setLoading(false)
+        this.setState({
+            isFailed: true
+        })
         const {
             onFailed 
         } = this.props
         if(typeof onFailed === 'function'){
-            onFailed()
+            onFailed(res)
         }
     } 
     combinePromiseProduct = (promise, el) =>
@@ -285,7 +288,6 @@ class CheckoutPayment extends React.Component {
         })
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                
                 // this.state = {loading: true}
                 this.props.setLoading(true)
                 console.log({"Sssssssssss": this.state.loading})
@@ -319,15 +321,13 @@ class CheckoutPayment extends React.Component {
                                     }else{
                                         this.onBankPay(order, values)
                                     }
-                                })
+                                }).catch(this.onFailed)
                             })
                         }else{
-                            console.log({
-                                res
-                            })
+                            this.onFailed(res)
                         }
                     })
-                    .catch(console.log)
+                    .catch(this.onFailed)
                 
             }
         })
@@ -583,7 +583,7 @@ class CheckoutPayment extends React.Component {
                             transactionId
                         };
                         this.finalOrderSubmit(placeOrderNew(sendAbleOrder));
-                    });
+                    }).catch(this.onFailed);
                 } else {
                     this.onFailed(res)
                 }

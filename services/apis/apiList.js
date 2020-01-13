@@ -42,5 +42,12 @@ const apiList = {
     placeOrderNew                   : `${baseUrl}/order/process/order/`,
     allOrderList                    : `${baseUrl}/order/getorders/`,
     orderList                       : `${baseUrl}/order/api/getbyuser/`,
+
+    getAllCreatives                 : `${baseUrl}/ambassador-portal/creatives/api/all/`,
+    getAmbassadorDetails            : `${baseUrl}/ambassador-portal/stats/`,
+    updateAff                       : `${baseUrl}/ambassador-portal/update/`,
+    ambassadorPortalLogin           : `${baseUrl}/ambassador-portal/login/`,
+    ambassadorPortalRegistration    : `${baseUrl}/ambassador-portal/register/`,
+    addAmbassador                   : `${baseUrl}/ambassador-portal/add/url/`,
 }
 export default apiList

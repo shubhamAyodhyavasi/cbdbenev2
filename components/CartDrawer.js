@@ -5,10 +5,10 @@ import { getProductTitle, getProductShortDesc } from '../services/helpers/produc
 import { getGrandTotal } from '../services/helpers/cart'
 import { numberFormat } from '../services/helpers/misc'
 import { initialCart } from '../constants/reduxInitialStates'
-import { modifyItem, removeFromCart } from '../redux/actions/cart'
+import { modifyItem, removeFromCart, hideCartBar } from '../redux/actions'
 import Link from 'next/link'
 import Heading from './Heading'
-const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
+const CartDrawer = ({ complete, cart, modifyItem, removeFromCart, hideCartBar }) => {
     const qtyChange = (qty, oldItem) => {
         modifyItem(
             {
@@ -28,9 +28,6 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
     )
     const hasItems = cart.items.length > 0 ? true : false
     const taxPrice = cart.taxPercent ? (cart.taxPercent * cart.subTotal).toFixed(2) : 0
-    console.log({
-        cart
-    })
     return (
         <div className="c-cart-drawer" >
             <p style={{color: "#fff"}}>
@@ -103,8 +100,8 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart }) => {
                 <Heading parentClass="c-cart-item" versions={["white"]} >0 Items</Heading>
                 <Heading parentClass="c-cart-item" versions={["gold", "btm-br"]} >Your bag is empty</Heading>
                 <div className="c-cart-drawer__btn-wrapper mt-auto">
-                    <Link href="/shop">
-                        <a className="c-btn c-btn--block c-btn--outline-gold" >Continue shopping</a>
+                    <Link href="/shop" >
+                        <a onClick={hideCartBar} className="c-btn c-btn--block c-btn--outline-gold" >Continue shopping</a>
                     </Link>
                 </div>
             </>
@@ -120,4 +117,4 @@ CartDrawer.defaultProps = {
 const mapStateToProps = state => ({
     cart: state.cart
 })
-export default connect(mapStateToProps, { modifyItem, removeFromCart })(CartDrawer)
+export default connect(mapStateToProps, { modifyItem, removeFromCart, hideCartBar })(CartDrawer)

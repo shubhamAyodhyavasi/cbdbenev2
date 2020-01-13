@@ -1,9 +1,10 @@
+import socialLinks from './socialLinks'
 const footerMenu = [
     {
         heading: "Customer service",
         menus: [
             {
-                slug: "#",
+                slug: "/account",
                 title: "My Account"
             },
             {
@@ -38,19 +39,19 @@ const footerMenu = [
         heading: "Social",
         menus: [
             {
-                slug: "#",
+                slug: socialLinks.facebook || "#",
                 title: "Facebook"
             },
             {
-                slug: "#",
+                slug: socialLinks.youtube || "#",
                 title: "Youtube"
             },
             {
-                slug: "#",
+                slug: socialLinks.instagram || "#",
                 title: "Instagram"
             },
             {
-                slug: "#",
+                slug: socialLinks.twitter || "#",
                 title: "Twitter"
             },
         ]

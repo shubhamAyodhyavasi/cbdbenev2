@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Router from 'next/router'
 import Loader from '../../components/Loader'
 import { countryCodeList } from "../../services/extra/allCountryCode";
-// import "react-phone-input-2/dist/style.css";
+// import "react-phone-input-2/lib/style.css";
 import { AddressForm } from "../../components/address/form";
 import Layout from '../../components/Layouts/Layout'
 import classNames from "classnames";

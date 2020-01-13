@@ -5,6 +5,7 @@ import App from "next/app";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import {makeStore} from "../redux/store";
+import AppWrapper from "../components/AppWrapper"
 
 import withRedux from "next-redux-wrapper";
 
@@ -32,18 +33,30 @@ class MyApp extends App {
 
     // }
     // componentDidMount(){
-    //     console.clear()
-    //     console.log({props: this.props})
+    //     console.clear();
+    //     console.log("aaaaaaaaaaaaaaaa",{props: this.props})
+    //     if(typeof this.props.router !== "undefined"){
+    //         const {
+    //             query, asPath
+    //         } = router
+    //         if(query.ref){
+
+    //         }
+    //     }
     // }
     // componentDidUpdate(prevProps){
     //     console.log({prevProps, props: this.props})
     // }
+
+    
     render() {
         const {Component, pageProps, store} = this.props; 
         return (
                 <Provider store={store}>
                     <PersistGate persistor={store.__persistor} loading={<Component isPersist={false} {...pageProps} />} >
-                        <Component isPersist={true} {...pageProps} />
+                        <AppWrapper router={this.props.router}>
+                            <Component isPersist={true} {...pageProps} />
+                        </AppWrapper>
                     </PersistGate>
                 </Provider>
         );

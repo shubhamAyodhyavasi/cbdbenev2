@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 // import AddReviews from "./AddReviews";
 import FadeTransition from "../../services/extra/FadeTransition";
 // import { postReview } from "../../actions";
-// import { imagePack } from "../Constants";
+// import { imagePack } from "../../constants/Constants";
 import { chooseProducts, reviewSuccessMsg } from "../../constants/constantMessage";
 import Link from 'next/link'
 import Router from 'next/router'
@@ -11,8 +11,8 @@ import Router from 'next/router'
 
 const postReview = (review, countryCode) => dispatch => {
     postReviewApi(review)
-      .then(res => res.json())
-      .then(res => {
+      .then(rep => {
+        const res = rep.data
         if (res.status) {
           dispatch({
             type: REVIEW_POSTED,

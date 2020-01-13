@@ -37,8 +37,8 @@ class MySubscription extends Component {
       // let userid = user._id;
       if (user.userMetaId) {
         getOrders(user.userMetaId)
-          .then(res => res.json())
-          .then(resJson => {
+          .then(res => {
+            const resJson = res.data
             if (resJson.status) {
               const orderList = resJson.orders.sort(function(a, b) {
                 return new Date(b.createdOn) - new Date(a.createdOn);
@@ -93,8 +93,8 @@ class MySubscription extends Component {
               const res = resRaw.data
             if (res.user && res.user._id) {
                 getOrders(user.userMetaId)
-                .then(res => res.json())
-                .then(resJson => {
+                .then(res => {
+                  const resJson = res.data
                   if (resJson.status) {
                     const orderList = resJson.orders.sort(function(a, b) {
                       return new Date(b.createdOn) - new Date(a.createdOn);

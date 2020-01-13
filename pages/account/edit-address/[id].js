@@ -3,8 +3,8 @@ import Router, { withRouter } from 'next/router'
 import { connect } from "react-redux";
 import Loader from '../../../components/Loader'
 import MyAccountSidebar from "../../../components/MyAccountSidebar";
-// import { countryCodeList } from "../allCountryCode";
-// import "react-phone-input-2/dist/style.css";
+// import { countryCodeList } from "../../constants/allCountryCode";
+// import "react-phone-input-2/lib/style.css";
 import { AddressForm } from "../../../components/address/form";
 import regexReplace from "../../../services/helpers/regexReplace";
 import { editAddress, getAddress } from "../../../redux/actions/address";

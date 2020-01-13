@@ -4,7 +4,7 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   const { payload, type } = action;
-
+  
   switch (type) {
     case SET_APUSER:
       return payload;

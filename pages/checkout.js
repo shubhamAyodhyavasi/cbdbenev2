@@ -18,6 +18,9 @@ import CheckoutPayment from '../components/checkout-tabs/CheckoutPayment'
 import Loader from '../components/Loader'
 import Link from 'next/link'
 
+const {
+    baseUrl
+} = projectSettings
 const Checkout  = ({
     addAddress, user, isLoading, ...props
 }) => {
@@ -29,6 +32,7 @@ const Checkout  = ({
     const [shippingDetail, setShippingDetail] = useState(null)
     const [shippingSendData, setShippingSendData] = useState(null)
     const [isModal, setIsModal] = useState(false)
+    const [failedRes, setFailedRes] = useState(null)
     const [isSuccess, setIsSuccess] = useState(null)
     const [order, setOrder] = useState(null)
     useEffect(()=> {
@@ -142,7 +146,6 @@ const Checkout  = ({
         setShippingSendData(shippingSendData)
     }
     const onPaymentSubmit = (order) => {
-        alert("")
         if(order){
             setOrder(order)
             setIsSuccess(true)
@@ -152,6 +155,23 @@ const Checkout  = ({
         console.log({
             res
         })
+        switch(res.config.url) {
+            case baseUrl+"/ship/confirm/":
+                setFailedRes("shipment failed")
+            break;
+            case baseUrl+"/authorize/create/subscription/":
+            case baseUrl+"/authorize/create/subscription/profile/":
+            case baseUrl+"/authorize/create/subscription/bank/":
+                setFailedRes("subscription failed")
+            break;
+            case baseUrl+"/authorize/chargeprofile/":
+            case baseUrl+"/authorize/charge/":
+            case baseUrl+"/authorize/charge/bank/":
+                setFailedRes("payment failed")
+            break;
+            default:
+                setFailedRes("something went wrong")
+        }  
         setIsModal(true)
     }
     console.log({
@@ -171,7 +191,7 @@ const Checkout  = ({
             <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
             <Loader />
         </>)
-    }else if(props.cartItems && props.cartItems.length == 0){
+    }else if((props.cartItems && props.cartItems.length == 0) && !isSuccess){
         return <Layout>
             <div className="o-success">
                 <div className="o-success__main o-success__main--center">
@@ -282,7 +302,8 @@ const Checkout  = ({
                     window.location.href = "/"
                 }} 
                 visible={isModal}>
-                Order is Successfully Places
+                    {failedRes}
+                {/* Order is Successfully Places */}
             </Modal>
         </CheckoutLayout>
         

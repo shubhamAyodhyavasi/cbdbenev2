@@ -52,8 +52,8 @@ class ProductInfo extends React.Component {
       if (this.props.user._id) {
         const userid = this.props.user._id;
         addToWishList(userid, productmainId, _id, productSlug)
-          .then(res => res.json())
-          .then(resJson2 => {
+          .then(resJson => {
+            const resJson2 = resJson.data
             if (resJson2.status) {
               var wishlist = "";
               const wishListRes = resJson2.wishlist;
@@ -152,28 +152,31 @@ class ProductInfo extends React.Component {
         console.log({
             product
         })
-        const reviewsLength = this.props.reviews && this.props.reviews.length
+        const reviewsLength = this.props.reviews ? this.props.reviews.length : 0
+        const headingAndReviews = () => <>
+            <div className="c-product-info__title-col">
+                <Heading versions={["default"]} parentClass="c-product-info">{product && (product.title || (product.productid && product.productid.producttitle))}</Heading>
+                <Heading subHeading="true" parentClass="c-product-info">{product && (product.sdescription || (product.productid && product.productid.sdescription))}</Heading>
+            </div>
+            <div className="c-product-info__rating-wrapper">
+                {reviewsLength > 0 && <div className="c-product-info__rate">
+                    <Rate 
+                        style={{ color: '#000' }}
+                        className="c-product-info__stars c-product-info__stars--sm " 
+                        disabled value={avgReviews} 
+                        allowHalf={true} />
+                    <p className="c-product-info__review">{reviewsLength} Reviews({avgReviews})</p>
+                </div>}
+            </div>
+        </>
         return (
             <div className="c-product-info container">
                 <div className="row c-product-info__row">
                     <div className="col-md-6 c-product-info__image-col">
                         <div class="c-product-info__mobile-sec">
-                        <div className="c-product-info__title-wrap">
-                            <div className="c-product-info__title-col">
-                                <Heading versions={["default"]} parentClass="c-product-info">{product && (product.title || (product.productid && product.productid.producttitle))}</Heading>
-                                <Heading subHeading="true" parentClass="c-product-info">{product && (product.sdescription || (product.productid && product.productid.sdescription))}</Heading>
+                            <div className="c-product-info__title-wrap">
+                                {headingAndReviews()}
                             </div>
-                            <div className="c-product-info__rating-wrapper">
-                                <div className="c-product-info__rate">
-                                    <Rate 
-                                        style={{ color: '#000' }}
-                                        className="c-product-info__stars c-product-info__stars--sm " 
-                                        disabled value={avgReviews} 
-                                        allowHalf={true} />
-                                    <p className="c-product-info__review">{reviewsLength} reviews({avgReviews})</p>
-                                </div>
-                            </div>
-                        </div>
                         </div>
                         <div className="c-product-info__img-wrapper">
                             {gallery && gallery.length > 0 && <ImageZoom images={gallery} />}
@@ -183,20 +186,7 @@ class ProductInfo extends React.Component {
                     </div>
                     <div className="col-md-6">
                         <div className="c-product-info__title-wrap lg-hide">
-                            <div className="c-product-info__title-col">
-                                <Heading versions={["default"]} parentClass="c-product-info">{product && (product.title || (product.productid && product.productid.producttitle))}</Heading>
-                                <Heading subHeading="true" parentClass="c-product-info">{product && (product.sdescription || (product.productid && product.productid.sdescription))}</Heading>
-                            </div>
-                            <div className="c-product-info__rating-wrapper">
-                                <div className="c-product-info__rate">
-                                    <Rate 
-                                        style={{ color: '#000' }}
-                                        className="c-product-info__stars" 
-                                        disabled value={avgReviews} 
-                                        allowHalf={true} />
-                                    <p className="c-product-info__review">{reviewsLength} reviews({avgReviews})</p>
-                                </div>
-                            </div>
+                            {headingAndReviews()}
                         </div>
                         <div className="c-product-info__description">
                             <Heading subHeading="true" versions={["default", "lft-br"]} parentClass="c-product-info">{product &&(product.description || (product.productid && product.productid.description))}</Heading>

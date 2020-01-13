@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Lodar from "../lodar";
+import Loader from "../Loader";
 import MyAccountSidebar from "../MyAccountSidebar";
-// import { countryCodeList } from "../allCountryCode";
-import "react-phone-input-2/dist/style.css";
+// import { countryCodeList } from "../../constants/allCountryCode";
+import "react-phone-input-2/lib/style.css";
 import { AddressForm } from "../form";
-import { regExReplace } from "../Constants";
-import { editAddress, getAddress } from "../../actions/address";
+import { regExReplace } from "../../constants/Constants";
+import { editAddress, getAddress } from "../../redux/actions/address";
 import { fieldValidation } from "../../services/extra/validations";
 import { Card } from "reactstrap";
 import classNames from "classnames";
@@ -24,7 +24,7 @@ import {
   addressAdded,
   addressAddedModalTitle
   // someThingWrongTryAgain
-} from "../../constantMessage";
+} from "../../constants/constantMessage";
 // import {
 //   // Input,
 //   Select
@@ -438,7 +438,7 @@ class EditAddress extends Component {
           [className]: className
         })}
       >
-        {this.state.SpinnerToggle && <Lodar />}
+        {this.state.SpinnerToggle && <Loader />}
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 ">

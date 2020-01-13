@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classNames from "classnames";
-// import { imagePack } from "../Constants";
+// import { imagePack } from "../../constants/Constants";
 
 class LeafCheckBox extends Component {
   onChange = ev => {
