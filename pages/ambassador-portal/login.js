@@ -374,6 +374,7 @@ class Login extends Component {
                       value={login_email}
                       onChange={this.handelTextChange}
                       type="text"
+                      className="c-input__input mb-4"
                       data-validate={["email", "required"]}
                       onFocus={e => this.setFocus(e)}
                       onBlur={e => this.unSetFocus(e)}
@@ -402,6 +403,7 @@ class Login extends Component {
                       value={login_password}
                       onChange={this.handelTextChange}
                       type="password"
+                      className="c-input__input mb-4"
                       data-validate={["required"]}
                       onFocus={e => this.setFocus(e)}
                       onBlur={e => this.unSetFocus(e)}
@@ -416,18 +418,12 @@ class Login extends Component {
                         </p>
                       )}
                   </div>
-                  <br />
-                  <div>
-                    <button type="submit" className="btn btn-main btn7">
-                      Login
-                    </button>
-                  </div>
+                  
                   <div className="row">
                     <ul className="login-variation-ul p-0 d-flex w-100 justify-content-between flex-wrap ">
                       <li>
-                        <Link
-                          href={`/ambassador-portal/registration`}
-                        >
+                        <Link href={`/ambassador-portal/registration`}>
+                          {/* Do you have an account yet.  */}
                           <a>Registration</a>
                         </Link>
                       </li>
@@ -439,6 +435,11 @@ class Login extends Component {
                         </Link>
                       </li>
                     </ul>
+                  </div>
+                  <div className="text-center">
+                    <button type="submit" className="btn btn-main btn7 c-btn c-btn--outline w-100 mb-4">
+                      Login
+                    </button>
                   </div>
                 </form>
               </div>
