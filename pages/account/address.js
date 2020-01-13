@@ -137,9 +137,9 @@ class ListAddress extends Component {
                                 "/account/add-address"
                               }
                             >
-                              <center>
+                              <a><center>
                                 <Icon size={14} icon={plus} />
-                              </center>
+                              </center></a>
                             </Link>
                           </div>
                         </CardBody>

@@ -83,8 +83,8 @@ export default class AddressAutoFill extends Component {
         "User-Agent": "my program (gzip)"
       }
     })
-      .then(res => res.json())
-      .then(res => {
+      .then(resRaw => {
+        const res = resRaw.data
         console.log({ res });
         if (res.results && res.results.length > 0) {
           const address = res.results[0].address_components;

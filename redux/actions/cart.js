@@ -57,8 +57,8 @@ export const fetchCart = userId => dispatch => {
   // console.log({ userId });
 
   getSingleUserApi(userId)
-    .then(res => res.json())
-    .then(res => {
+    .then(rep => {
+      const res = rep.data
       console.log({ res });
       if (res.status && res.user && res.user.cart) {
         dispatch({

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Lodar from "../lodar";
+import Loader from "../Loader";
 import MyAccountSidebar from "../MyAccountSidebar";
 import { getSingleUserApi } from "../../services/api/";
-import { getAddress } from "../../actions";
+import { getAddress } from "../../redux/actions";
 import SingleAddress from "./singleAddress";
-import { Link } from "react-router-dom";
+import Link from 'next/link'
 import classNames from "classnames";
 
 import {
@@ -45,9 +45,7 @@ class ListAddress extends Component {
   getuserDetails(_id) {
     getSingleUserApi(_id)
       .then(res => {
-        return res.json();
-      })
-      .then(rep => {
+        rep = res.data
         if (rep.user) {
           this.setState(
             {
@@ -77,7 +75,7 @@ class ListAddress extends Component {
           [className]: className
         })}
       >
-        {this.state.SpinnerToggle && <Lodar />}
+        {this.state.SpinnerToggle && <Loader />}
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 ">
@@ -96,13 +94,15 @@ class ListAddress extends Component {
                         <CardBody>
                           <div className="h-100 d-flex flex-column justify-content-center">
                             <Link
-                              to={
-                                "/" + location.countryCode + "/my-address-add"
+                              href={
+                                "/my-address-add"
                               }
                             >
-                              <center>
-                                <Icon size={64} icon={ic_library_add} />
-                              </center>
+                              <a>
+                                <center>
+                                  <Icon size={64} icon={ic_library_add} />
+                                </center>
+                              </a>
                             </Link>
                             <h4 className="text-center">Add Address</h4>
                           </div>

@@ -44,7 +44,6 @@ import BasicFunction from "../../services/extra/basicFunction";
 //   getOrderByUser,
 //   orderDelete
 // } from "../../services/api";
-// import { Link } from "react-router-dom";
 import MyAccountSidebar from "../../components/MyAccountSidebar";
 import Loader from '../../components/Loader'
 // import { Lodar, } from "../";
@@ -92,7 +91,6 @@ class MyAccount extends Component {
       });
     }
     getOrders(this.props.user.userMetaId)
-    //   .then(res => res.json())
       .then(res => {
           const resJson = res.data
         if (resJson.status) {
@@ -200,8 +198,8 @@ class MyAccount extends Component {
             SpinnerToggle: true
           });
           orderDelete({ id })
-            .then(res => res.json())
-            .then(resJson => {
+            .then(res => {
+              const resJson = res.data
               if (resJson.status) {
                 this.setState({
                   conformShow: false,
@@ -210,7 +208,6 @@ class MyAccount extends Component {
                 });
               }
               getOrders(this.props.user.userMetaId)
-                // .then(res => res.json())
                 .then(res => {
                     resJson = res.data
                   if (resJson.status) {

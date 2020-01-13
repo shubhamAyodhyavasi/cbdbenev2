@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { filePath } from "../Constants";
+// import { filePath } from "../../constants/Constants";
 import projectSettings from "../constants/projectSettings.js"
 import ProductViewSlider from "./ProductViewSlider";
 

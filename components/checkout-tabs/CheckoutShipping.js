@@ -298,7 +298,7 @@ class CheckoutShipping extends React.Component {
                 }}
                 >
                   {
-                    shippingRates.map((el, i)=> <Radio key={i} value={el}>{el.customRate} ({el.customName})</Radio>)
+                    shippingRates.map((el, i)=> <Radio key={i} value={el}>{el.customRate.toFixed(2)} ({el.customName})</Radio>)
                   }
                 </Radio.Group>
               )}

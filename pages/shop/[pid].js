@@ -47,6 +47,7 @@ const Product = ({product, allProducts, ...props}) => {
         const {
             productList
         } = state
+        
         console.log({
             props: props,
             product: product,

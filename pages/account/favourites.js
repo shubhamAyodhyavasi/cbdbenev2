@@ -3,7 +3,7 @@ import Icon from "react-icons-kit";
 // import { Helmet } from "react-helmet";
 import { trash, shoppingCart } from "react-icons-kit/fa";
 import { connect } from "react-redux";
-// import { filePath, encodeUrlFn } from "../Constants";
+// import { filePath, encodeUrlFn } from "../../constants/Constants";
 import projectSettings from "../../constants/projectSettings.js"
 
 import classNames from "classnames";
@@ -31,7 +31,6 @@ import {
   getProductById
 } from "../../services/api";
 import Layout from '../../components/Layouts/Layout'
-// import { Link } from "react-router-dom";
 import Link from 'next/link'
 import MyAccountSidebar from "../../components/MyAccountSidebar";
 import Loader from '../../components/Loader'

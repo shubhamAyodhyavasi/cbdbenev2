@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Lodar from "../lodar";
+import Loader from "../Loader";
 import MyAccountSidebar from "../MyAccountSidebar";
-import { countryCodeList } from "../allCountryCode";
-import "react-phone-input-2/dist/style.css";
+import { countryCodeList } from "../../constants/allCountryCode";
+import "react-phone-input-2/lib/style.css";
 import { AddressForm } from "../form";
 
 import classNames from "classnames";
 
-import { addAddress } from "../../actions/address";
+import { addAddress } from "../../redux/actions/address";
 import { fieldValidation } from "../../services/extra/validations";
 import { Card } from "reactstrap";
 import { Modal } from "../modal";
-import { regExReplace, enableCountry } from "../Constants";
+import { regExReplace, enableCountry } from "../../constants/Constants";
 import {
   firstNameMissingErrMsg,
   lastNameMissingErrMsg,
@@ -27,7 +27,7 @@ import {
   addressAdded,
   addressAddedModalTitle
   // someThingWrongTryAgain
-} from "../../constantMessage";
+} from "../../constants/constantMessage";
 // import {
 //   // Input,
 //   Select
@@ -391,7 +391,7 @@ class AddAddressForm extends Component {
           [className]: className
         })}
       >
-        {this.state.SpinnerToggle && <Lodar />}
+        {this.state.SpinnerToggle && <Loader />}
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 ">

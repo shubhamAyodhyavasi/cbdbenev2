@@ -285,8 +285,8 @@ export const editCard = (
       cards: newCard
     }
   })
-    .then(res => res.json())
-    .then(res => {
+    .then(rep => {
+      const res = rep.data
       console.log({ res });
       const cards = returnCards(res);
       dispatch(setCards(cards));

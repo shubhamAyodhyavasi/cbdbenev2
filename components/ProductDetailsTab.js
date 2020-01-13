@@ -18,12 +18,15 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
         direction
     } = product
     const getAvg = reviews => {
-        const newArr = reviews.map(el => el.overall);
-        const sum = newArr.reduce((a, b) => a + b, 0);
-        return (sum / reviews.length).toFixed(1);
+        if(reviews){
+            const newArr = reviews.map(el => el.overall);
+            const sum = newArr.reduce((a, b) => a + b, 0);
+            return (sum / reviews.length).toFixed(1);
+        }
+        return 0
     };
     const avgReview     = getAvg(reviews)
-    const totalReview   = reviews.length
+    const totalReview   = reviews && reviews.length || 0
     const tabs = [
         {
             title: "Details",
@@ -56,14 +59,14 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
             </TabContainer>
         },
         {
-            title: "REviews",
+            title: "Reviews",
             content: <TabContainer>
             <div className="col-12 c-product-details-tab__contain-col text-center">
                 {/* <Heading parentClass={componentClass} h="4" subHeading={true} >Suggested Use</Heading>
                 <p className={`${componentClass}__text`} >{direction}</p> */}
                 <div className="row">
                     <div className="col-lg-8 col-md-9">
-                        {reviews.map((el, key)=> <TitleList key={key} title={el.title} >
+                        {reviews && reviews.map((el, key)=> <TitleList key={key} title={el.title} >
                             {el.content}
                         </TitleList>)}
                     </div>
@@ -104,11 +107,11 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
     ] : tabs
     return (
         <div className={className}>
-            <Tabs tabs={allTabs} onChange={(e)=> {
+            <Tabs tabs={allTabs} onChange={(e, a)=> {
                 if(e === "4"){
-                    console.log({product})
-                    // alert("")
-                    Router.push(`${projectSettings.filePath}${product.labsheet}`)
+                    if(typeof window !== "undefined"){
+                        window.location.href = `${projectSettings.labSheetPath}${product.labsheet}`
+                    }
                 }
             }} parentClass={componentClass} />
         </div>

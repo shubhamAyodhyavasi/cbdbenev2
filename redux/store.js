@@ -17,7 +17,8 @@ const middlewares = [
         "user",
         "wishList",
         "checkout",
-        "firstSetting"
+        "firstSetting",
+        "ambassadoruser",
       ]
     })
 ];
@@ -28,7 +29,8 @@ const persistConfig = {
     whitelist: [
       "cart",
       "user",
-      "firstSetting"
+      "firstSetting",
+      "ambassadoruser",
     ]
 };
 

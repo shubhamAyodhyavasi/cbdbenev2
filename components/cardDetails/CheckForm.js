@@ -22,7 +22,7 @@ const {
 //   // stateArr,
 //   // imagePack,
   
-// } from "../Constants";
+// } from "../../constants/Constants";
 
 const regExReplace = {
   name: /[^a-zA-Z]/g,

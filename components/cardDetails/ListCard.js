@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Lodar from "../lodar";
+import Loader from "../Loader";
 import MyAccountSidebar from "../MyAccountSidebar";
 import { getSingleUserApi } from "../../services/api/";
 import SingleCard from "./SingleCard";
@@ -12,7 +12,7 @@ import {
   // ic_add, ic_clear
 } from "react-icons-kit/md/";
 import Icon from "react-icons-kit";
-import { getCards } from "../../actions";
+import { getCards } from "../../redux/actions";
 import SingleCheck from "./SingleCheck";
 
 import classNames from "classnames";
@@ -74,9 +74,7 @@ class ListCard extends Component {
   getuserDetails(_id) {
     getSingleUserApi(_id)
       .then(res => {
-        return res.json();
-      })
-      .then(rep => {
+        const rep = res.data
         if (rep.user) {
           this.setState(
             {
@@ -109,7 +107,7 @@ class ListCard extends Component {
           [className]: className
         })}
       >
-        {this.state.SpinnerToggle && <Lodar />}
+        {this.state.SpinnerToggle && <Loader />}
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 ">
