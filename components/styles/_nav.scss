@@ -57,6 +57,16 @@
         align-items: center;
         padding-left: 30px;
         list-style: none;
+        flex-wrap:wrap;
+        @include bpm-md{
+           padding-left:0;
+           margin-top: 25px;
+        }
+    }
+    &__sub-menu-item{
+        @include bpm-md{
+            width:100%;
+        }
     }
     &__sub-menu-tgl{
         padding-left: 5px;

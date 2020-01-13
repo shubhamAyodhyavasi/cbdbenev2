@@ -19,7 +19,7 @@ import { Menu, Dropdown, Icon, Collapse } from 'antd';
 
 const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
 
-
+  const [isOpen, setOpen] = useState(false)
     const onClick = (e, action) => {
         if (action === "link") {
     
@@ -38,17 +38,20 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
       }
 
 
-    return (
-        <ul className="c-nav__list">
+    return  (
+    <ul className="c-nav__list">
           {items.filter(el => {
             if (user._id) {
               return el.onlyLogin !== false
             } else {
               return el.onlyLogin !== true
             }
-          }).map((el, ind) => <li key={ind} className={classNames("c-nav__list-item", {
+          }).map((el, ind) => <li 
+         
+          key={ind} className={classNames("c-nav__list-item", {
             "c-nav__list-item--has-sub-menu": el.subMenus
           })}>
+            
             <div className="c-nav__list-item-inner">
               {
                 el.link ?
@@ -78,7 +81,7 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
             </div>
             {
               el.subMenus && <ul className="c-nav__sub-menu">
-                  qwer
+                  
                 {el.subMenus.map((elx, i) =>
                     <li key={i} className="c-nav__sub-menu-item">
                       <Link as={elx.as || elx.link} href={elx.link}>
@@ -91,6 +94,7 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
               </ul>
             }
           </li>)}
+          
         </ul>
     )
 }
@@ -109,5 +113,4 @@ MobileMenu.defaultProps = {
 
 
 export default connect(mapStateToProps, { toggleCartBar, hideCartBar, toggleRegBar, unsetUser })(MobileMenu)
-  
-// export default MobileMenu
+ 
