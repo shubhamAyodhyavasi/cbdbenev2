@@ -6,7 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import {makeStore} from "../redux/store";
 import AppWrapper from "../components/AppWrapper"
-
+import Router from 'next/router'
 import withRedux from "next-redux-wrapper";
 
 
@@ -37,9 +37,10 @@ class MyApp extends App {
     //     if(typeof this.props.router !== "undefined"){
     //         const {
     //             query, asPath
-    //         } = router
-    //         if(query.ref){
-
+    //         } = this.props.router
+    //         if(query.token && asPath.includes("/users/forgetpassword/")){
+    //             alert("")
+    //             Router.push("/")
     //         }
     //     }
     // }

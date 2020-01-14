@@ -19,6 +19,7 @@ const apiList = {
     updateUserDetails               : `${baseUrl}/users/api/profile/`,
     getUserDetails                  : `${baseUrl}/users/api/profile/`,
     updateUserPassword              : `${baseUrl}/users/api/profile/password/`,
+    forgotPassword                  : `${baseUrl}/users/api/forgetpassword/`,
 
     contact                         : `${baseUrl}/contact-us/`,
 

@@ -8,3 +8,5 @@ export const getUserDetails     = userId            => axios.get(apiList.getUser
 export const updateUserDetails  = body              => axios.post(apiList.updateUserDetails, {...body})
 export const updateUserPassword = body              => axios.post(apiList.updateUserPassword, {...body})
 export const getOrders          = userId            => axios.get(apiList.orderList+userId)
+export const forgotPassword     = body              => axios.post(apiList.forgotPassword, {...body, firststep: "aa"})
+export const setForgotPassword  = body              => axios.post(apiList.forgotPassword, {...body})
