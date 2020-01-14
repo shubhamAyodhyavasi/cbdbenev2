@@ -8,11 +8,11 @@ const footerMenu = [
                 title: "My Account"
             },
             {
-                slug: "#",
+                slug: "/shipping-returns",
                 title: "Shipping & Returns"
             },
             {
-                slug: "#",
+                slug: "/learn",
                 title: "FAQ"
             },
             {
@@ -25,11 +25,11 @@ const footerMenu = [
         heading: "Company",
         menus: [
             {
-                slug: "#",
+                slug: "/track-order",
                 title: "Track My Order"
             },
             {
-                slug: "#",
+                slug: "/ambassador-portal",
                 title: "Affiliate Program"
             },
             
