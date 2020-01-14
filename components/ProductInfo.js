@@ -128,7 +128,7 @@ class ProductInfo extends React.Component {
             productid,
             title
         } = product
-        const productName = combo === true ? title : productid.producttitle;
+        const productName = combo === true ? title : (productid ? productid.producttitle : (title || ""));
 
         const addToCartFn = () =>{
             if(isSubscribed){

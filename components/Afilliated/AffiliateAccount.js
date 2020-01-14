@@ -154,7 +154,8 @@ class AffiliateAccount extends Component {
           country: account.country || account.country,
           state: account.state.value || account.state,
           city: account.city,
-          address: account.address
+          address: account.address,
+          zip: account.zip || account.zipcode
         }
       });
     }
@@ -511,7 +512,8 @@ class AffiliateAccount extends Component {
       selectedShippingCountry: e.country,
       selectedShippingCity: e.state,
       city: e.city,
-      zip: e.zip
+      zip: e.zip,
+      zipcode: e.zip,
     });
     if (e.other && e.other.length > 0) {
       this.setState({

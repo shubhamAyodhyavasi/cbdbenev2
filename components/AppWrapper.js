@@ -8,18 +8,11 @@ import { addAmbassador } from "../services/api"
 const basicFunction = new BasicFunction();
 class AppWrapper extends React.Component {
     componentDidMount(){
-        console.clear()
-        const {
-            props
-        } = this
-        console.log({
-            props
-        })
         this.referrerSetting()
         if(typeof this.props.router !== "undefined"){
             const {
                 query, asPath
-            } = props.router
+            } = this.props.router
             if(query.ref){
             }
         }
