@@ -12,7 +12,7 @@ const LearnCollapse = props => {
     <div
       style={{
         marginBottom: "10px",
-        border: "1px solid transparent"        
+        border: "1px solid transparent"     
       }}
       className=""
     >

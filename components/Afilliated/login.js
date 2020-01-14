@@ -373,7 +373,6 @@ class Login extends Component {
                       value={login_email}
                       onChange={this.handelTextChange}
                       type="text"
-                      className="c-input__input"
                       data-validate={["email", "required"]}
                       onFocus={e => this.setFocus(e)}
                       onBlur={e => this.unSetFocus(e)}

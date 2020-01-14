@@ -140,9 +140,9 @@ class Login extends Component {
                   }
                 });
                 this.props.setAPUser(resJson.user);
-                // setTimeout(() => {
-                //   Router.push("/ambassador-portal/");
-                // }, 2000);
+                setTimeout(() => {
+                  Router.push("/ambassador-portal/");
+                }, 2000);
               } else if (resJson.messages) {
                 if (resJson.messages.length > 1) {
                   this.setState({
@@ -403,7 +403,7 @@ class Login extends Component {
                       value={login_password}
                       onChange={this.handelTextChange}
                       type="password"
-                      className="c-input__input mb-4"
+                      className="c-input__input mb-1"
                       data-validate={["required"]}
                       onFocus={e => this.setFocus(e)}
                       onBlur={e => this.unSetFocus(e)}
@@ -420,20 +420,19 @@ class Login extends Component {
                   </div>
                   
                   <div className="row">
-                    <ul className="login-variation-ul p-0 d-flex w-100 justify-content-between flex-wrap ">
-                      <li>
-                        <Link href={`/ambassador-portal/registration`}>
-                          {/* Do you have an account yet.  */}
-                          <a>Registration</a>
-                        </Link>
-                      </li>
-                      <li>
+                    <ul className="login-variation__list-wrapper d-flex w-100 justify-content-between flex-wrap mb-2">
+                    <li className="login-variation__list text-right">
                         <Link
                           href={`/ambassador-portal/forgot-password`}
                         >
-                          <a>Forgot your password ?</a>
+                          <a className="login-variation__list-link">Forgot password ?</a>
                         </Link>
                       </li>
+                      <li className="login-variation__list mt-4 text-center"> <b>Do you have an account yet. 
+                        <Link href={`/ambassador-portal/registration`}>
+                          <a className="text-uppercase login-variation__list-link"> Registration</a>
+                        </Link></b>
+                      </li>                      
                     </ul>
                   </div>
                   <div className="text-center">
