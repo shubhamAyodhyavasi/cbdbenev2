@@ -35,10 +35,10 @@ export default class ReferralVisits extends Component {
         >
           <thead>
             <tr>
-              <th>URL</th>
-              <th>Referring URL</th>
-              <th>Converted</th>
-              <th>Date</th>
+              <th className="w-25">URL</th>
+              <th className="w-25">Referring URL</th>
+              <th className="w-25">Converted</th>
+              <th className="w-25">Date</th>
             </tr>
           </thead>
           <tbody>

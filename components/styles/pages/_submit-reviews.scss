@@ -138,6 +138,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 .modal__logo-wrapper {
@@ -152,7 +153,10 @@
     padding: 0 13px 13px;
     }
 }
-
+.modal-header{
+    background: #302d23;
+    border-radius:0;
+}
 .modal-footer__logo {
     width: 85px;
     display: block;
@@ -160,6 +164,9 @@
     @include bp-md{
         width: 100px;
     }
+}
+.modal-header .close {
+    color: #cfa564;
 }
 
 .modal__heading {

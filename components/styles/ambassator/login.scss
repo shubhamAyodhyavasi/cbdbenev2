@@ -28,3 +28,43 @@
       margin-bottom: 0;
     }
   }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    background: transparent;
+    border: transparent;
+    border-bottom: 2px solid #000;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus{
+    border-color:transparent;
+}
+.ambassador{
+    min-height: calc(100vh - 420px );
+    &__table-wrapper {
+        display: flex;
+        // flex-wrap: wrap;
+        margin-top: 60px;
+    }
+    &__table-desp {
+        padding-left: 30px;
+        width: 100%;
+    }
+    &__table-heading{
+        width: 230px;
+        padding-right: 25px;
+        border-right: 1px solid #cfa564;
+    }
+}
+.react-tel-input .form-control,
+.react-tel-input .flag-dropdown,
+.react-tel-input .flag-dropdown:hover .selected-flag ,
+.c-select{
+    background-color: transparent !important;
+    border: transparent;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    width:100%;
+}
+.table thead th {
+    border-bottom: 0;
+}

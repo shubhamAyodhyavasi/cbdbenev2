@@ -25,10 +25,19 @@ export default class LogoutConfirmModel extends Component {
           toggle={this.cancelLogout}
           className={"full-modal"}
         >
-          <ModalHeader toggle={this.cancelLogout}>{confirmLogout}</ModalHeader>
+          <ModalHeader toggle={this.cancelLogout}>
+          <div className="modal__logo-wrapper">
+                        <a className="c-logo  modal-footer__logo" href="/">
+                            <img src="/images/logo-new.png" className="modal__logo-img" alt="bené" />
+                        </a>
+                        <div className="modal__heading">
+    <h2 className="modal__heading-text">{confirmLogout}</h2>
+                        </div>
+                    </div>
+          </ModalHeader>
           <div className="Modal-body center-modal">
             <div className="modal-inner">
-              <div className="modal-content p-3">
+              <div className="modal-content p-5">
                 <Icon
                   icon={ic_error_outline}
                   className="text-center"
@@ -38,10 +47,10 @@ export default class LogoutConfirmModel extends Component {
                 <p className="text-center title-80">
                   Do you really want to logout?
                 </p>
-                <div className="row">
+                <div className="row mt-4">
                   <div className="col-6 text-center">
                     <button
-                      className="btn w15 btn-info btn6 m-auto"
+                      className="c-btn c-btn--outline modal__button"
                       onClick={this.confirmLogout}
                     >
                       Yes
@@ -49,7 +58,7 @@ export default class LogoutConfirmModel extends Component {
                   </div>
                   <div className="col-6 text-center">
                     <button
-                      className="btn w15 btn-info btn7 m-auto"
+                      className="c-btn c-btn--outline modal__button"
                       onClick={this.cancelLogout}
                     >
                       No
