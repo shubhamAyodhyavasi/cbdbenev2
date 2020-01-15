@@ -48,13 +48,6 @@ const Product = ({product, allProducts, ...props}) => {
         const {
             productList
         } = state
-        console.clear()
-        console.log({
-            props: props,
-            product: product,
-            pid,
-            router
-        })
         const productAttr = getProductAttributes(product, allProducts)
         const image = getProductImage(product, "sectionB") //|| "/images/cbd-oil.png"
         const productImage = getProductImage(product) ? projectSettings.serverUrl + getProductImage(product) : "/images/cbd-oil.png"

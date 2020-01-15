@@ -12,6 +12,7 @@ import { unsetUser } from '../redux/actions/user'
 // import { c } from '../redux/actions/cart'
 // import $ from 'jquery';
 import Registration from './popups/Registration';
+import ForgetPassword from './popups/ForgetPassword';
 import Login from './popups/Login';
 import { Menu, Dropdown } from 'antd';
 const Nav = ({
@@ -150,8 +151,9 @@ className={classNames("c-nav", {
       <Drawer onClose={toggleRegBar} title={
         hasLogin ? "Login" : "Registration"
       } visible={isRegOpen} >
-        {!hasLogin && <Registration />}
+        {/* {!hasLogin && <Registration />} */}
         {hasLogin && <Login />}
+        {!hasLogin && <ForgetPassword />}
       </Drawer>
     </nav>
   )
