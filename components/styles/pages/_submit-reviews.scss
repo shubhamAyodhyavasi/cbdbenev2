@@ -165,7 +165,8 @@
         width: 100px;
     }
 }
-.modal-header .close {
+.modal-header .close,
+.modal-title {
     color: #cfa564;
 }
 
@@ -179,6 +180,9 @@
     padding: 20px;
     margin-left: 30px;
     }
+}
+.modal-content{
+    text-align: center;
 }
 
 .modal__heading-text {
