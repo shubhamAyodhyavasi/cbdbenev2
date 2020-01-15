@@ -8,13 +8,13 @@ export default class RefferralPayout extends Component {
       (key, index) =>
         key.paid && (
           <tr key={index}>
-            <th>{basicFunction.dateTimeInMonthName(key.paidon)}</th>
-            <td>
+            <td data-label="Date"><b>{basicFunction.dateTimeInMonthName(key.paidon)}</b></td>
+            <td data-label="Amount">
               {basicFunction.currancyAddWithNumber(
                 basicFunction.getParchantage(25, key.amount)
               )}
             </td>
-            <td>Paid</td>
+            <td data-label="Status">Paid</td>
           </tr>
         )
     );
