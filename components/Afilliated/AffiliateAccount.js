@@ -590,14 +590,16 @@ class AffiliateAccount extends Component {
       <div className="container pl-0 pr-0">
         {this.state.SpinnerToggle && <Loader />}
         <form onSubmit={this.onSubmit}>
-          <div className="row frm-details">
+          <div className="row frm-details mb-3">
             <div className="col-md-12">
               <div
                 className={classNames("has-input", {
                   "has-error": name_err
                 })}
               >
-                <h2>Account</h2>
+                <div class="ambassador__table-wrapper">
+                <h2 className="ambassador__table-heading">Account</h2>
+                <div class="ambassador__table-desp">                
                 <label>Name*</label>
                 <input
                   id="name"
@@ -605,6 +607,7 @@ class AffiliateAccount extends Component {
                   data-pattern="fullname"
                   onChange={this.onTextChange}
                   value={name}
+                  className="c-input__input mb-4"
                   type="text"
                   name="name"
                   maxLength="20"
@@ -616,9 +619,6 @@ class AffiliateAccount extends Component {
                       : name_errMsg}
                   </p>
                 )}
-              </div>
-            </div>
-          </div>
 
           {/* <div className="row frm-details">
             <div className="col-md-12">
@@ -650,6 +650,8 @@ class AffiliateAccount extends Component {
           </div> */}
 
           <AddressAutoFill
+          colSize={12}
+          colSizeState={4}
             autofillformresponse={e => {
               this.shippingaddressautoFill(e);
             }}
@@ -663,7 +665,7 @@ class AffiliateAccount extends Component {
             ]}
           />
 
-          <div className="row frm-details">
+          <div className="row frm-details mb-5">
             <div className="col-md-6">
               <div
                 className={classNames("has-input", {
@@ -703,6 +705,7 @@ class AffiliateAccount extends Component {
                   value={fax}
                   type="text"
                   name="fax"
+                  className="c-input__input"
                   maxLength="12"
                 />
                 {/* {fax_err && (
@@ -711,7 +714,7 @@ class AffiliateAccount extends Component {
               </div>
             </div>
           </div>
-          <div className="row frm-details">
+          <div className="row frm-details mb-5">
             <div className="col-md-6">
               <div
                 className={classNames("has-input", {
@@ -725,6 +728,7 @@ class AffiliateAccount extends Component {
                   type="text"
                   name=""
                   disabled={true}
+                  className="c-input__input"
                 />
                 {currency_err && (
                   <p className="error">
@@ -776,6 +780,7 @@ class AffiliateAccount extends Component {
                   type="text"
                   name="language"
                   disabled={true}
+                  className="c-input__input"
                 />
                 {language_err && (
                   <p className="error">
@@ -817,11 +822,16 @@ class AffiliateAccount extends Component {
           <div className="row frm-details">
             <div className="col-md-4 pl-0 pr-0">
               <div className="col-12 has-input">
-                <button className="btn btn3"> Update</button>
+                <button className="btn btn3 c-btn--outline"> Update</button>
               </div>
               <br />
             </div>
           </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
         </form>
         <PopUpModel
           showModal={showModal}

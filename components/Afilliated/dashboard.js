@@ -166,6 +166,7 @@ class LoginDashboard extends Component {
     }
     const { className } = this.props;
     return (
+      <div className="ambassador">
       <div
         className={classNames("container-fluid", {
           [className]: className
@@ -283,7 +284,9 @@ class LoginDashboard extends Component {
               <Row>
                 {ambassador_data && (
                   <Col sm="12">
-                    <h2>Ambassador URL</h2>
+                    <div class="ambassador__table-wrapper">
+                    <h2 className="ambassador__table-heading">Ambassador URL</h2>
+                    <div class="ambassador__table-desp">
                     <p>
                       Your ambassador ID is: <b>{ambassador_data.ambass_id}</b>{" "}
                     </p>
@@ -298,6 +301,8 @@ class LoginDashboard extends Component {
                     <p>
                       Your email id is: <b>{ambassador_data.email}</b>
                     </p>
+                    </div>
+                    </div>
                   </Col>
                 )}
               </Row>
@@ -308,7 +313,9 @@ class LoginDashboard extends Component {
               <br />
               <Row>
                 <Col sm="12">
-                  <h2>Statistics</h2>
+                <div class="ambassador__table-wrapper">
+                  <h2 className="ambassador__table-heading">Statistics</h2>
+                  <div class="ambassador__table-desp">
                   <Statistics
                     countUnpaid={countUnpaid}
                     countPaid={countPaid}
@@ -317,6 +324,8 @@ class LoginDashboard extends Component {
                     amountPaid={amountPaid}
                     amountUnPaid={amountUnPaid}
                   />
+                  </div>
+                  </div>
                 </Col>
               </Row>
             </div>
@@ -326,11 +335,15 @@ class LoginDashboard extends Component {
               <br />
               <Row>
                 <Col sm="12">
-                  <h2>Referrals</h2>
-                  <Referrals
-                    ambassador_data={this.state.ambassador_data}
-                    totalCount={totalCount}
-                  />
+                <div class="ambassador__table-wrapper">
+                  <h2 className="ambassador__table-heading">Referrals</h2>
+                    <div class="ambassador__table-desp">
+                    <Referrals
+                      ambassador_data={this.state.ambassador_data}
+                      totalCount={totalCount}
+                    />
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </div>
@@ -340,11 +353,15 @@ class LoginDashboard extends Component {
               <br />
               <Row>
                 <Col sm="12">
-                  <h2>Referral Payouts</h2>
-                  <RefferralPayout
-                    ambassador_data={ambassador_data}
-                    countPaid={countPaid}
-                  />
+                <div class="ambassador__table-wrapper">
+                  <h2 className="ambassador__table-heading">Referral Payouts</h2>
+                    <div class="ambassador__table-desp">
+                      <RefferralPayout
+                        ambassador_data={ambassador_data}
+                        countPaid={countPaid}
+                      />
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </div>
@@ -354,13 +371,17 @@ class LoginDashboard extends Component {
               <br />
               <Row>
                 <Col sm="12">
-                  <h2>Referral URL Visits</h2>
-                  <p>
+                <div class="ambassador__table-wrapper">
+                  <h2 className="ambassador__table-heading">Referral URL Visits</h2>
+                  <div class="ambassador__table-desp">
+                  {/* <p>
                     Column one lists the visit URL in relative format, column
                     two lists the referrer, and column three indicates whether
                     the visit converted into a referral.
-                  </p>
+                  </p> */}
                   <ReferralVisits ambassador_data={ambassador_data} />
+                  </div>
+                  </div>
                 </Col>
               </Row>
             </div>
@@ -369,11 +390,15 @@ class LoginDashboard extends Component {
             <div className="container">
               <br />
               <div>
-                <h2>Creatives</h2>
+              <div class="ambassador__table-wrapper">
+                <h2 className="ambassador__table-heading">Creatives</h2>
+                <div class="ambassador__table-desp">
                 <Creatives
                   creatives={this.state.creatives}
                   ambassador={this.state.ambassador}
                 />
+                </div>
+                </div>
               </div>
               <br />
               <br />
@@ -431,6 +456,7 @@ class LoginDashboard extends Component {
           cancelLogout={() => this.cancelLogout()}
           confirmLogout={() => this.confirmLogout()}
         />
+      </div>
       </div>
     );
   }

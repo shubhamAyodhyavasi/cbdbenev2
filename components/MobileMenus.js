@@ -52,7 +52,9 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
             "c-nav__list-item--has-sub-menu": el.subMenus
           })}>
             
-            <div className="c-nav__list-item-inner">
+            {/* <div  onClick={()={
+                      alert(el.label)
+                    }}  className="c-nav__list-item-inner"> */}
               {
                 el.link ?
                   <Link as={el.as || el.link} href={el.link}>
@@ -78,7 +80,6 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
                   "c-nav__sub-menu-tgl--opened": isOpen
                 })}>{isOpen ? <FiMinus /> : <FiPlus />}</span>
               } */}
-            </div>
             {
               el.subMenus && <ul className="c-nav__sub-menu">
                   

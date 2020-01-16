@@ -289,11 +289,13 @@ class AffiliateBankInformation extends Component {
     return (
       <div className="container pl-0 pr-0">
         {this.state.SpinnerToggle && <Loader />}
-        <h2>Bank Information</h2>
-        <p>
+        <div class="ambassador__table-wrapper">
+        <h2 className="ambassador__table-heading">Bank Information</h2>
+        <div class="ambassador__table-desp">
+        {/* <p>
           You must submit Tax Information to be able to edit Payment Information
           or to change Payee/Account Holder's Name.
-        </p>
+        </p> */}
         <div className="w100 d-block pt-3 pb-3">
           <img
             src={imagePack.checkHelp}
@@ -302,10 +304,10 @@ class AffiliateBankInformation extends Component {
           />
         </div>
         <form onSubmit={this.onSubmit}>
-          <div className="row frm-details">
+          <div className="row frm-details mb-4">
             <div className="col-md-6">
               <div
-                className={classNames("has-input", {
+                className={classNames(" col-md-12 has-input", {
                   "has-error": false
                 })}
               >
@@ -317,12 +319,13 @@ class AffiliateBankInformation extends Component {
                   value={minPayAmt}
                   type="text"
                   name="minPayAmt"
+                  className="c-input__input"
                 />
               </div>
             </div>
             <div className="col-md-6">
               <div
-                className={classNames("has-input", {
+                className={classNames("col-md-12 has-input", {
                   "has-error": false
                 })}
               >
@@ -335,11 +338,12 @@ class AffiliateBankInformation extends Component {
                   value={currency}
                   type="text"
                   name="currency"
+                  className="c-input__input"
                 />
               </div>
             </div>
           </div>
-          <div className="row frm-details">
+          <div className="row frm-details mb-4">
             <div className="col-md-6">
               <Input
                 label="Name on Account*"
@@ -349,6 +353,7 @@ class AffiliateBankInformation extends Component {
                 dataValidate={["required"]}
                 dataPattern=""
                 maxLength="40"
+                classToBe="c-input__input"
                 isError={accName_err}
                 errorMsg={
                   accName_errMsg && accName_errMsg === "can't be empty"
@@ -392,6 +397,7 @@ class AffiliateBankInformation extends Component {
                 isError={routingType_err}
                 onChange={this.onTextChange}
                 maxLength={9}
+                classToBe="c-input__input"
                 errorMsg={
                   routingType_errMsg && routingType_errMsg === "can't be empty"
                     ? routingTypeMissingMsg
@@ -400,7 +406,7 @@ class AffiliateBankInformation extends Component {
               />
             </div>
           </div>
-          <div className="row frm-details">
+          <div className="row frm-details mb-4">
             <div className="col-md-6">
               <Input
                 label="Checking Account Number*"
@@ -411,6 +417,7 @@ class AffiliateBankInformation extends Component {
                 dataValidate={["number", "required"]}
                 isError={accountNumber_err}
                 maxLength={17}
+                classToBe="c-input__input"
                 onChange={this.onTextChange}
                 errorMsg={
                   accountNumber_errMsg &&
@@ -430,6 +437,7 @@ class AffiliateBankInformation extends Component {
                 dataValidate={["number", "required", "repassword"]}
                 isError={accountNumberConfirm_err}
                 maxLength={17}
+                classToBe="c-input__input"
                 onChange={this.onTextChange}
                 dataMatch={accountNumber}
                 errorMsg={
@@ -485,7 +493,7 @@ class AffiliateBankInformation extends Component {
               </div>
             </div>
           </div> */}
-          <div className="row frm-details">
+          <div className="row frm-details mb-4">
             <div className="col-md-6">
               <Input
                 label="Driver's License Number*"
@@ -495,6 +503,7 @@ class AffiliateBankInformation extends Component {
                 dataValidate={["required"]}
                 isError={drivingLicense_err}
                 onChange={this.onTextChange}
+                classToBe="c-input__input"
                 errorMsg={
                   drivingLicense_errMsg &&
                   drivingLicense_errMsg === "can't be empty"
@@ -505,7 +514,7 @@ class AffiliateBankInformation extends Component {
             </div>
             <div className="col-md-6">
               <div
-                className={classNames("has-input", {
+                className={classNames("col-md-12 has-input", {
                   "has-error": false
                 })}
               >
@@ -514,7 +523,7 @@ class AffiliateBankInformation extends Component {
                   value={dlState}
                   name="dlState"
                   onChange={this.onSelectChange}
-                  className="form-control"
+                  className="form-control c-select"
                 >
                   {stateArr.map((el, index) => (
                     <option key={index} value={el}>
@@ -554,20 +563,23 @@ class AffiliateBankInformation extends Component {
             </div>
           </div> */}
           <br />
-          <div className="row frm-details">
+          <div className="row frm-details mb-4">
             <div className="col-md-4 pl-0 pr-0">
               <div className="col-12 has-input">
-                <button className="btn btn3"> Update</button>
+                <button className="btn btn3 c-btn--outline"> Update</button>
               </div>
               <br />
             </div>
-          </div>
+            </div>
+          
         </form>
         <PopUpModel
           showModal={showModal}
           modalData={modalData}
           disableModel={() => this.disableModel()}
         />
+        </div>
+          </div>
       </div>
     );
   }

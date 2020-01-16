@@ -28,3 +28,90 @@
       margin-bottom: 0;
     }
   }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    background: transparent;
+    border: transparent;
+    border-bottom: 2px solid #000;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus{
+    border-color:transparent;
+}
+.ambassador{
+    min-height: calc(100vh - 420px );
+    &__table-wrapper {
+        display: flex;
+        margin-top: 60px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    &__table-desp {
+        padding-left: 30px;
+        width: calc(100% - 300px);
+        @include bpm-md{
+            width:100%;
+            padding-left: 0px;
+        }
+    }
+    &__table-heading{
+        width: 230px;
+        padding-right: 25px;
+        border-right: 1px solid #cfa564;
+        @include bpm-md{
+            border-right: none;
+            border-bottom: 1px solid #cfa564;
+            padding-right: 0px;
+        }
+    }
+}
+.react-tel-input .form-control,
+.react-tel-input .flag-dropdown,
+.react-tel-input .flag-dropdown:hover .selected-flag ,
+.c-select{
+    background-color: transparent !important;
+    border: transparent;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    width:100%;
+}
+.table thead th {
+    border-bottom: 0;
+}
+
+@media (max-width: 760px){
+    .table { 
+              width: 100%; 
+        }
+    
+        .table, .table thead, .table tbody, .table th, .table td, .table tr { 
+            display: block; 
+        }
+        .table thead tr { 
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        
+        .table tr { border: 1px solid #ccc; }
+        
+        .table td {
+            border: none;
+            border-bottom: 1px solid #eee; 
+            position: relative;
+            padding-left: 55%; 
+        }
+    
+        .table td:before { 
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 45%; 
+            padding-right: 10px; 
+            white-space: nowrap;
+            content: attr(data-label);
+            color: #000;
+            font-weight: bold;
+        }
+    
+    }

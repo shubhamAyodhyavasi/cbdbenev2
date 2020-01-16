@@ -501,11 +501,10 @@ class AffiliateTax extends Component {
                   "has-error": name_err
                 })}
               >
-                <h2>IRS Form W-9</h2>
-                <p>
-                  Request for Taxpayer Identification and Certification Click
-                  here for W-9 Instructions:
-                </p>
+                <div class="ambassador__table-wrapper">
+                <h2 className="ambassador__table-heading">IRS Form W-9</h2>
+                <div class="ambassador__table-desp">
+                
                 <label>Name, as shown on your income tax return*</label>
                 <input
                   id="name"
@@ -516,6 +515,7 @@ class AffiliateTax extends Component {
                   type="text"
                   name="name"
                   maxLength="20"
+                  className="c-input__input mb-4"
                 />
                 {name_err && (
                   <p className="error">
@@ -524,10 +524,7 @@ class AffiliateTax extends Component {
                       : name_errMsg}
                   </p>
                 )}
-              </div>
-            </div>
-          </div>
-          <div className="row frm-details">
+          <div className="row frm-details mb-4">
             <div className="col-md-12">
               <div
                 className={classNames("has-input", {
@@ -536,7 +533,7 @@ class AffiliateTax extends Component {
               >
                 <label>Business Type*</label>
                 <select
-                  className="form-control"
+                  className="form-control c-select"
                   id="businessType"
                   data-validate={["required"]}
                   onChange={this.onTextChange}
@@ -562,6 +559,8 @@ class AffiliateTax extends Component {
           </div>
 
           <AddressAutoFill
+          colSize={12}
+          colSizeState={4}
             autofillformresponse={e => {
               this.shippingaddressautoFill(e);
             }}
@@ -590,6 +589,7 @@ class AffiliateTax extends Component {
                   type="text"
                   name="zipcode"
                   maxLength="10"
+                  className="c-input__input"
                 />
                 {zipcode_err && (
                   <p className="error">
@@ -602,12 +602,18 @@ class AffiliateTax extends Component {
             </div>
           </div>
 
-          <div className="row frm-details">
+          <div className="row frm-details mb-2 mt-5 ">
             <div className="col-md-4 pl-0 pr-0">
               <div className="col-12 has-input">
-                <button className="btn btn3"> Update</button>
+                <button className="btn btn3 c-btn--outline"> Update</button>
               </div>
               <br />
+            </div>
+          </div>
+        
+        </div>
+        </div>
+              </div>
             </div>
           </div>
         </form>

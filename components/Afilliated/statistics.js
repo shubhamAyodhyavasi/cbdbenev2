@@ -18,10 +18,10 @@ export default class Statistics extends Component {
         <Table className="new-res-table" bordered>
           <thead>
             <tr>
-              <th>Unpaid Referrals</th>
-              <th>Paid Referrals</th>
-              <th>Visits</th>
-              <th>Conversion Rate</th>
+              <th className="w-25">Unpaid Referrals</th>
+              <th className="w-25">Paid Referrals</th>
+              <th className="w-25">Visits</th>
+              <th className="w-25">Conversion Rate</th>
             </tr>
           </thead>
           <tbody>
@@ -57,9 +57,9 @@ export default class Statistics extends Component {
         <Table className="new-res-table" bordered>
           <thead>
             <tr>
-              <th>Unpaid Earnings</th>
-              <th>Paid Earnings</th>
-              <th>Commission Rate</th>
+              <th className="w-25">Unpaid Earnings</th>
+              <th className="w-50">Paid Earnings</th>
+              <th className="w-25">Commission Rate</th>
             </tr>
           </thead>
           <tbody>
