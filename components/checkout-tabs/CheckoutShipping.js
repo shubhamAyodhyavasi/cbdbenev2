@@ -1,4 +1,4 @@
-import TitleList from "../TitleList"
+import TitleList from "../TItleList"
 import Button from "../form-components/Button"
 import { Form, Radio } from "antd"
 import { connect } from 'react-redux'

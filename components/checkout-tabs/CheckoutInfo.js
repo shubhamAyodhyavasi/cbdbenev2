@@ -4,7 +4,7 @@ import Checkbox from '../form-components/Checkbox';
 import Button from '../form-components/Button'
 import { showRegBar } from '../../redux/actions/drawers'
 import { getAddress } from '../../redux/actions/address'
-import TitleList from '../TitleList'
+import TitleList from '../TItleList'
 import { Form, Radio } from 'antd'
 import validator from "../../services/helpers/validator";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
