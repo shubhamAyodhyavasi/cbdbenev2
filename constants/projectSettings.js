@@ -1,5 +1,6 @@
 const projectName           = "bene";
 const baseUrl               = "http://localhost:4000";
+const docMzUrl              = "http://localhost:3001";
 const serverUrl             = "https://admin.cbdbene.com/";
 const googleApiKey          = "AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk"
 const shippingFreeAfter     = 75;
@@ -46,5 +47,6 @@ export default {
     accountTypeOpt,
     filePath,
     labSheetPath,
-    countryTax
+    countryTax,
+    docMzUrl
 }

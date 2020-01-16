@@ -5,7 +5,7 @@ import Checkbox from '../form-components/Checkbox';
 import { connect } from 'react-redux'
 import Button from '../form-components/Button';
 import { forgotPassword } from '../../services/api';
-import { showHasLogin, toggleRegBar } from '../../redux/actions/drawers'
+import { drawerToDisplay, toggleRegBar } from '../../redux/actions/drawers'
 import { setUser } from '../../redux/actions/user'
 import regex from '../../services/helpers/regex';
 import {sendEmailMsg} from '../../constants/constantMessage'
@@ -73,7 +73,7 @@ class ForgetForm extends React.Component{
     }
     render(){
         const {
-            showHasLogin, form: {
+            drawerToDisplay, form: {
                 getFieldDecorator
             }
         } = this.props
@@ -107,7 +107,9 @@ class ForgetForm extends React.Component{
                     </Form.Item>
                     <div>
                         <p className="c-registration__inst">Back to <span 
-                            onClick={showHasLogin}
+                            onClick={()=> {
+                                drawerToDisplay("login")
+                            }}
                             className="c-registration__link">Login</span></p>
                     </div>
                     <div className="c-registration__error-block">
@@ -126,7 +128,9 @@ class ForgetForm extends React.Component{
                     <br/>
                     <br/>
                         <p className="c-registration__inst">Back to <span 
-                            onClick={showHasLogin}
+                            onClick={()=> {
+                                drawerToDisplay("login")
+                            }}
                             className="c-registration__link">Login</span></p>
                 </div>} */}
             </div>
@@ -136,6 +140,6 @@ class ForgetForm extends React.Component{
 
 const ForgetPassword = Form.create({name: 'registration'})(ForgetForm)
 const mapActionToProps = ({
-    showHasLogin, setUser, toggleRegBar
+    drawerToDisplay, setUser, toggleRegBar
 })
 export default connect(state => state, mapActionToProps)(ForgetPassword)

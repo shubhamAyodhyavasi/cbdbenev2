@@ -17,7 +17,7 @@ import Login from './popups/Login';
 import { Menu, Dropdown } from 'antd';
 const Nav = ({
   parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
-  toggleRegBar, isRegOpen, hasLogin, user, unsetUser
+  toggleRegBar, isRegOpen, loginDisplay, user, unsetUser
 }) => {
   const inputEl = useRef(null);
   const [isOpen, setOpen] = useState(false)
@@ -149,11 +149,11 @@ className={classNames("c-nav", {
         <CartDrawer />
       </Drawer>
       <Drawer onClose={toggleRegBar} title={
-        hasLogin ? "Login" : "Registration"
+        loginDisplay === "register" ? "Registration" :  "Login"
       } visible={isRegOpen} >
-        {/* {!hasLogin && <Registration />} */}
-        {hasLogin && <Login />}
-        {!hasLogin && <ForgetPassword />}
+        {loginDisplay === "register" && <Registration />}
+        {loginDisplay === "login" && <Login />}
+        {loginDisplay === "forget" && <ForgetPassword />}
       </Drawer>
     </nav>
   )
@@ -165,7 +165,7 @@ Nav.defaultProps = {
 const mapStateToProps = state => ({
   isCartOpen: state.drawers.isCartOpen,
   isRegOpen: state.drawers.isRegOpen,
-  hasLogin: state.drawers.hasLogin,
+  loginDisplay: state.drawers.toDisplay,
   user: state.user
 })
 export default connect(mapStateToProps, { toggleCartBar, hideCartBar, toggleRegBar, unsetUser })(Nav)

@@ -1,7 +1,7 @@
 import { 
   TOGGLE_CART_BAR, SHOW_CART_BAR, HIDE_CART_BAR,
   TOGGLE_REGISTRATION_BAR, SHOW_REGISTRATION_BAR, HIDE_REGISTRATION_BAR,
-  HAS_LOGIN
+  HAS_LOGIN, TO_DISPLAY
 } from "./type";
 
 export const toggleCartBar = (a) => dispatch => {
@@ -51,3 +51,7 @@ export const showHasLogin = () => ({
   type: HAS_LOGIN,
   payload: true
 });
+export const drawerToDisplay = payload => ({
+  type: TO_DISPLAY,
+  payload
+})

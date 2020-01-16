@@ -7,6 +7,7 @@ export default class PersonalDetails extends Component{
 
     saveAndContinue = (e) => {
         e.preventDefault()
+        const { values } = this.props;
         this.props.nextStep()
     }
 
@@ -16,7 +17,14 @@ export default class PersonalDetails extends Component{
     }
 
     render(){
-        const { values } = this.props;
+        const { values: {
+            weight,
+            weight_err,
+            age,
+            age_err,
+            notes,
+            notes_err,
+        } } = this.props;
         return(
             <form 
             // onSubmit={onSubmit} 
@@ -24,13 +32,15 @@ export default class PersonalDetails extends Component{
             <div className="container-fluid">
                 <div className="row justify-content-center">                
                     <div className="col-md-5">
-                        <Input parentClass="c-address-form" label="Weight" value={values.weight} onChange={this.props.handleChange('weight')} />
-                    
-                        <Input parentClass="c-address-form" label="Age" value={values.age} onChange={this.props.handleChange('age')} />
-                   
-                        <Input parentClass="c-address-form" label="Notes for Doctor" value={values.notes} onChange={this.props.handleChange('notes')} />
+                        <Input parentClass="c-address-form" label="Weight" value={weight} onChange={this.props.handleChange('weight')} />
+                        {weight_err && <span className="error" >{weight_err}</span>}
+                        <Input parentClass="c-address-form" label="Age" value={age} onChange={this.props.handleChange('age')} />
+                        {age_err && <span className="error" >{age_err}</span>}
+                        <Input parentClass="c-address-form" label="Notes for Doctor" value={notes} onChange={this.props.handleChange('notes')} />
+                        {notes_err && <span className="error" >{notes_err}</span>}
                         <div class="c-personalDetails__btn-wrap">
-                            <Button className="tab__btn" onClick={this.back} versions={["outline", "block"]}>Back</Button>
+                            {/* <Button className="tab__btn" onClick={this.back} versions={["outline", "block"]}>Back</Button> */}
+                            <span />
                             <Button className="tab__btn" onClick={this.saveAndContinue}>Next</Button>
                         </div>                      
                         

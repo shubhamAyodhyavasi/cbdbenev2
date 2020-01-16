@@ -25,13 +25,23 @@ export default class Scheduling extends Component{
                 
                     <p class="c-scheduling__para">How Long do you expect this consultation to go on for?</p>
                     <div className="radio__wrapper">
-                                    <AntRadio className="c-contact-form__radio b-border-none " value="15 min">
-                                        <b>15 min</b>                                            
-                                    </AntRadio>
-                                    <AntRadio className="c-contact-form__radio b-border-none" value="30 min">
-                                        <b>30 min</b>                                            
-                                    </AntRadio>                                    
-                                </div>
+                    <AntRadio.Group onChange={(e)=> {
+                        this.props.radioChange(e, "scheduling")
+                    }} value={values.scheduling}>
+                        <AntRadio className="c-contact-form__radio b-border-none" value={15}>
+                            <b>15 min</b>
+                        </AntRadio>
+                        <AntRadio className="c-contact-form__radio b-border-none" value={30}>
+                            <b>30 min</b>
+                        </AntRadio>
+                    </AntRadio.Group>
+                        {/* <AntRadio className="c-contact-form__radio b-border-none " value="15">
+                            <b>15 min</b>                                            
+                        </AntRadio>
+                        <AntRadio className="c-contact-form__radio b-border-none" value="30">
+                            <b>30 min</b>                                            
+                        </AntRadio>                                     */}
+                    </div>
 
                     
                     <div class="c-personalDetails__btn-wrap">

@@ -1,6 +1,6 @@
 import projectSettings from "../../constants/projectSettings";
 const {
-    baseUrl
+    baseUrl, docMzUrl
 } = projectSettings
 const apiList = {
     getAllProducts                  : `${baseUrl}/products/api/all/`,
@@ -50,5 +50,10 @@ const apiList = {
     ambassadorPortalLogin           : `${baseUrl}/ambassador-portal/login/`,
     ambassadorPortalRegistration    : `${baseUrl}/ambassador-portal/register/`,
     addAmbassador                   : `${baseUrl}/ambassador-portal/add/url/`,
+
+
+    // doc mz
+    getDoctors                      : `${docMzUrl}/doctors/get`,
+    getDoctorById                   : `${docMzUrl}/doctors/getdoc/`,
 }
 export default apiList

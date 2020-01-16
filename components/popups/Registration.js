@@ -5,7 +5,7 @@ import Checkbox from '../form-components/Checkbox';
 import { connect } from 'react-redux'
 import Button from '../form-components/Button';
 import { registerUser } from '../../services/api';
-import { showHasLogin, toggleRegBar } from '../../redux/actions/drawers'
+import { drawerToDisplay, toggleRegBar } from '../../redux/actions/drawers'
 import { setUser } from '../../redux/actions/user'
 import regex from '../../services/helpers/regex';
 import reactComponentDebounce from 'react-component-debounce';
@@ -83,7 +83,7 @@ class RegistrationForm extends React.Component{
     }
     render(){
         const {
-            showHasLogin, form: {
+            drawerToDisplay, form: {
                 getFieldDecorator
             }
         } = this.props
@@ -141,7 +141,9 @@ class RegistrationForm extends React.Component{
                         })(<Checkbox versions={["gold"]} >I agree to  Terms and Conditions and Privacy Policy</Checkbox>)}
                         </Form.Item>
                         <p className="c-registration__inst">Already have an account? <span 
-                            onClick={showHasLogin}
+                            onClick={()=> {
+                                drawerToDisplay("login")
+                            }}
                             className="c-registration__link">SIGN IN</span></p>
                     </div>
                     <div className="c-registration__error-block">
@@ -160,7 +162,9 @@ class RegistrationForm extends React.Component{
                     <br/>
                     <br/>
                         <p className="c-registration__inst">You can login from <span 
-                            onClick={showHasLogin}
+                            onClick={()=> {
+                                drawerToDisplay("login")
+                            }}
                             className="c-registration__link">HERE</span></p>
                 </div>}
             </div>
@@ -170,6 +174,6 @@ class RegistrationForm extends React.Component{
 
 const Registration = Form.create({name: 'registration'})(RegistrationForm)
 const mapActionToProps = ({
-    showHasLogin, setUser, toggleRegBar
+    drawerToDisplay, setUser, toggleRegBar
 })
 export default connect(state => state, mapActionToProps)(Registration)

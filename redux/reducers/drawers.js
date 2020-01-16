@@ -1,13 +1,14 @@
 import { 
   TOGGLE_CART_BAR, SHOW_CART_BAR, HIDE_CART_BAR,
   TOGGLE_REGISTRATION_BAR, SHOW_REGISTRATION_BAR, HIDE_REGISTRATION_BAR,
-  HAS_LOGIN
+  HAS_LOGIN, TO_DISPLAY
 } from "../actions/type";
 
 const initialState = {
   isCartOpen: false,
   isRegOpen: false,
   hasLogin: false,
+  toDisplay: "register"
 };
 
 export default (state = initialState, action) => {
@@ -54,6 +55,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         hasLogin: payload
+      };
+
+    case TO_DISPLAY:
+      return {
+        ...state,
+        toDisplay: payload
       };
 
     default:

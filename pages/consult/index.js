@@ -1,14 +1,14 @@
-import Layout from '../components/Layouts/Layout'
-import Banner from '../components/Banner'
+import Layout from '../../components/Layouts/Layout'
+import Banner from '../../components/Banner'
 import { connect } from 'react-redux'
-import { getProducts } from '../redux/actions'
-import CategoryProducts from '../components/CategoryProducts'
-import categoryList from '../constants/categoryList'
-import Heading from '../components/Heading'
-import ContactFrom from '../components/forms/ContactForm'
-import Button from '../components/form-components/Button'
-import TitleList from '../components/TitleList'
-
+import { getProducts } from '../../redux/actions'
+import CategoryProducts from '../../components/CategoryProducts'
+import categoryList from '../../constants/categoryList'
+import Heading from '../../components/Heading'
+import ContactFrom from '../../components/forms/ContactForm'
+import Button from '../../components/form-components/Button'
+import TitleList from '../../components/TitleList'
+import Head from 'next/head'
 class Contact extends React.Component {
     constructor(props) {
         super(props)
@@ -69,7 +69,7 @@ class Contact extends React.Component {
           activeCategory, products
         } = this.state
         return (
-            <Layout className="c-consult-page" title="Contact">
+            <Layout className="c-consult-page" title="Consult">
             <Banner
               image="/images/consult.jpg"
               image2x="/images/contact-banner@2x.jpg"
@@ -81,7 +81,7 @@ class Contact extends React.Component {
                   "heading-l-br", "btm-logo", "content","no-overlay","black-heading"
                 ]}
                 extraButton={
-                  <Button versions={["outline", "block"]}>
+                  <Button type="link" link="/consult/get-in-touch" versions={["outline", "block"]}>
                     Get in touch
                   </Button>
                 }
@@ -109,7 +109,7 @@ class Contact extends React.Component {
                       </TitleList>
                     </div>
                     <div className="text-md-right mt-4 mb-4">
-                      <Button versions={["outline"]}>
+                      <Button type="link" link="/consult/get-in-touch" versions={["outline"]}>
                         Get Started
                       </Button>
                     </div>
@@ -135,7 +135,7 @@ class Contact extends React.Component {
                       <li className="c-consult-page__list-item">What are the different options available for taking CBD?</li>
                     </ul>
                     <div className="c-consult-page__button-wrapper">
-                      <Button versions={["outline-gold", "block"]}>
+                      <Button type="link" link="/consult/get-in-touch" versions={["outline-gold", "block"]}>
                         Get in touch
                       </Button>
                     </div>

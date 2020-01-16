@@ -4,6 +4,7 @@ import { Button } from 'antd';
 export default class Success extends Component{
     saveAndContinue = (e) => {
         e.preventDefault();
+        this.props.nextStep()
         //@shubham Do the api call here
     }
 

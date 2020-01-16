@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Button from '../form-components/Button';
 import { loginUser } from '../../services/api';
 import msgStrings from '../../constants/msgStrings';
-import { hideHasLogin, toggleRegBar } from '../../redux/actions/drawers'
+import { toggleRegBar, drawerToDisplay } from '../../redux/actions/drawers'
 import { setUser } from '../../redux/actions/user'
 import regex from '../../services/helpers/regex';
 import reactComponentDebounce from 'react-component-debounce';
@@ -78,7 +78,7 @@ class LoginForm extends React.Component{
     }
     render(){
         const {
-            hideHasLogin, 
+            drawerToDisplay, 
             form: {
                 getFieldDecorator 
             }
@@ -125,7 +125,9 @@ class LoginForm extends React.Component{
                         )}
                     </Form.Item>
                     <div className="c-login__forget">
-                        <span className="c-login__link c-login__link--gold" >Forgot Password?</span>
+                        <span onClick={()=> {
+                            drawerToDisplay("forget")
+                        }} className="c-login__link c-login__link--gold" >Forgot Password?</span>
                     </div>
                     <div className="c-login__error-block">
                         {
@@ -137,7 +139,9 @@ class LoginForm extends React.Component{
                     </div>
                     <div>
                         <p className="c-login__inst">Don't have an account yet. <span 
-                            onClick={hideHasLogin}
+                            onClick={()=> {
+                                drawerToDisplay("register")
+                            }}
                             className="c-login__link">REGISTER</span></p>
                     </div>
                     <Button theme='outline-gold' disabled={isLoading} versions={["block"]} >Login</Button>
@@ -158,7 +162,7 @@ class LoginForm extends React.Component{
                     <br/>
                         <p className="c-login__inst">You can login from <span 
                             onClick={()=> {
-
+                                drawerToDisplay("login")
                             }}
                             className="c-login__link">HERE</span></p>
                 </div>}
@@ -169,6 +173,6 @@ class LoginForm extends React.Component{
 
 const Login = Form.create({name: 'login'})(LoginForm)
 const mapActionToProps = ({
-    hideHasLogin, setUser, toggleRegBar
+    setUser, toggleRegBar, drawerToDisplay
 })
 export default connect(state => state, mapActionToProps)(Login)
