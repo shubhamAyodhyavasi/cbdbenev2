@@ -13,6 +13,7 @@ import Icon from "react-icons-kit";
 import SelectMulti from "react-select";
 
 import styles from '../../constants/styles';
+
 const {
   selectStyle, colors, fonts
 } = styles

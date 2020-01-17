@@ -327,7 +327,7 @@ const Checkout  = ({
                     <div className="modal-dismiss"
                     //  onClick={this.toggle}
                     >
-                        <ReactIcon icon={ic_clear} size={"32"} />
+                    <ReactIcon icon={ic_clear} size={"32"} />
                     </div>
                         <div className="c-susbmit-r__wrapper justify-content-center">
                         <Icon

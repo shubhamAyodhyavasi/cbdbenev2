@@ -74,7 +74,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart, hideCartBar })
                             />}
                             <CartItem
                                 title={"Total"}
-                                price={grandTotal}
+                                price={`$${grandTotal}`}
                                 total={true}
                                 versions={["no-border"]}
                             />

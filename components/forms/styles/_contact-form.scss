@@ -55,3 +55,9 @@
         color: $dark-color-2;
     }
 }
+
+
+.ant-dropdown-menu-item:hover,
+.ant-dropdown-menu-submenu-title:hover {
+    background: #cfa5641f;
+}

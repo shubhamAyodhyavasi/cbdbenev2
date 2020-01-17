@@ -50,8 +50,12 @@
         svg{
             width: auto;
             height: 1em;
+            &:hover path{
+                    color: #cfa564;
+                }
+            }
         }
-    }
+    
     &__sub-menu{
         display: flex;
         align-items: center;

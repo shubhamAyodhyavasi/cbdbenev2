@@ -72,8 +72,8 @@ class SingleCard extends Component {
               <div className="row align-items-md-center my-order__my-card">
                 <div className="col-md-6 col-sm-6 col-12">
                   <div className="my-order__card-detail">
-                    <h6>{cardType ? cardType : "No Name"}</h6>
-                    <p className="ml-5">
+                    <h6 className="m-0">{cardType ? cardType : "No Name"}</h6>
+                    <p className="ml-5 m-0">
                   
                     {cardNumber} | {expirationDate}
                     {/* {this.convertCardNumber(card.cardnumber)} */}
@@ -81,7 +81,7 @@ class SingleCard extends Component {
                   </div>
                 </div>
                 <div className="col-md-6 col-sm-6 col-12 d-md-flex justify-content-md-end">
-                  <ul className="my-order__address-ul">
+                  <ul className="my-order__address-ul m-0">
                     {/* <li>
                     <Button
                       color="link"
@@ -95,14 +95,14 @@ class SingleCard extends Component {
                       <Button
                         onClick={this.deleteCard}
                         color="link"
-                        className="simple-link"
+                        className="simple-link my-order__t-btn"
                       >
                         Delete
                       </Button>
                     </li>
                     {card.isDefault ? (
                       <li>
-                        <Button color="link" className="simple-link" disabled>
+                        <Button color="link" className="simple-link my-order__t-btn" disabled>
                           <Icon
                             size="20"
                             style={{ color: "green" }}
@@ -115,7 +115,7 @@ class SingleCard extends Component {
                         <Button
                           onClick={this.setDefaultCard}
                           color="link"
-                          className="simple-link"
+                          className="simple-link my-order__t-btn"
                         >
                           Set as Default
                         </Button>

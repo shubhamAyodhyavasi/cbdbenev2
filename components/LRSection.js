@@ -1,6 +1,6 @@
 import Button from './form-components/Button'
 import Heading from './Heading'
-const LRSection = ({heading, subHeading, content, children, link, linkText, image, alt}) => (
+const LRSection = ({heading, subHeading, content, children, link, linkText, image, alt, onLinkClick}) => (
     <div className="c-lr-section">
         <div className="c-lr-section__head-wrapper">
             <div className="row c-lr-section__row align-items-center">
@@ -26,6 +26,11 @@ const LRSection = ({heading, subHeading, content, children, link, linkText, imag
                     {linkText && <Button 
                             theme="btm-br"
                             type="link" 
+                            onClick={()=> {
+                                if(typeof onLinkClick === "function"){
+                                    onLinkClick()
+                                }
+                            }}
                             link={link || "#"} >{linkText}</Button>}
                     </div>
                 </div>

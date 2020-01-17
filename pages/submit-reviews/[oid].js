@@ -226,10 +226,10 @@ class NormalLoginForm extends React.Component {
                                     res
                                 })
                                 if(res.data.status){
-                                    alert("success")
+                                    // alert("success")
                                 }
                             }).catch(err => {
-                                alert("fail")
+                                // alert("fail")
                                 console.log({err})
                             })
                         }
@@ -237,7 +237,7 @@ class NormalLoginForm extends React.Component {
                         console.log({
                             err
                         })
-                        alert("fail")
+                        // alert("fail")
                         this.setState({
                             isLoading: false
                         })

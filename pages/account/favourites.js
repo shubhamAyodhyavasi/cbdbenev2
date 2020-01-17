@@ -461,7 +461,8 @@ class Favourites extends Component {
                                               }
                                             >
                                               {" "}
-                                              <Icon icon={trash} />
+                                              {/* <Icon icon={trash} /> */}
+                                              Delete
                                             </Button>
                                             <Button
                                               className="btn2 mobile-remove-btn-padding my-order__t-btn"
@@ -476,7 +477,8 @@ class Favourites extends Component {
                                               }}
                                             >
                                               {" "}
-                                              <Icon icon={shoppingCart} />
+                                              {/* <Icon icon={shoppingCart} /> */}
+                                              Buy
                                             </Button>
                                           </ButtonGroup>
                                         </div>
@@ -533,7 +535,8 @@ class Favourites extends Component {
                                             }
                                           >
                                             {" "}
-                                            <Icon icon={trash} />
+                                            {/* <Icon icon={trash} /> */}
+                                            Delete
                                           </Button>
                                           <Button
                                             className="btn2 mobile-remove-btn-padding my-order__t-btn"
@@ -546,7 +549,8 @@ class Favourites extends Component {
                                             }
                                           >
                                             {" "}
-                                            <Icon icon={shoppingCart} />
+                                            {/* <Icon icon={shoppingCart} /> */}
+                                            Buy
                                           </Button>
                                         </ButtonGroup>
                                       </div>
@@ -599,7 +603,10 @@ class Favourites extends Component {
                                             }
                                           >
                                             {" "}
-                                            <Icon icon={trash} />
+                                            {/* <Icon icon={trash} />
+                                             */}
+                                             
+                                             Delete
                                           </Button>
                                           <Button
                                             className="btn2 mobile-remove-btn-padding my-order__t-btn"
@@ -612,7 +619,8 @@ class Favourites extends Component {
                                             }
                                           >
                                             {" "}
-                                            <Icon icon={shoppingCart} />
+                                            {/* <Icon icon={shoppingCart} /> */}
+                                            Buy
                                           </Button>
                                         </ButtonGroup>
                                       </div>

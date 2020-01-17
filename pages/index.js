@@ -24,7 +24,8 @@ class Home extends React.Component {
       activeCategory: "Featured",
       allProducts: props.products.products || [],
       products: props.products.featured || [],
-      combos: []
+      combos: [],
+      isLrSection: false
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -85,7 +86,7 @@ class Home extends React.Component {
   }
   render() {
     const {
-      activeCategory, products, combos
+      activeCategory, products, combos, isLrSection
     } = this.state
     // const {
     //   products
@@ -94,6 +95,7 @@ class Home extends React.Component {
       props: this.props,
       products
     })
+    const lrText = `In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.`
     return (
       <Layout title="Home" headerTheme="light" >
         <Banner
@@ -120,10 +122,17 @@ class Home extends React.Component {
           heading="bene"
           subHeading="organically grown hemp extract"
           linkText="READ MORE"
+          onLinkClick={()=> {
+            this.setState(prevState => ({
+              isLrSection: !prevState.isLrSection
+            }))
+          }}
           Link="/"
           image="/images/bundle2.jpg"
         >
-          In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.
+          {
+            isLrSection ? lrText : lrText.split(" ").filter((el, i)=> i < 10 ).join(" ")
+          }
         </LRSection>
         </Fade>
         <Fade>

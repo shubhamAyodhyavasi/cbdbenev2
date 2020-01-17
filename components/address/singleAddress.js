@@ -78,7 +78,7 @@ class SingleAddress extends Component {
                   <Button
                     onClick={this.editAddress}
                     color="link"
-                    className="my-order__simple-link"
+                    className="my-order__simple-link my-order__t-btn"
                   >
                     Edit
                   </Button>
@@ -87,14 +87,17 @@ class SingleAddress extends Component {
                   <Button
                     onClick={this.deleteAddress}
                     color="link"
-                    className="my-order__simple-link"
+                    className="my-order__simple-link my-order__t-btn"
                   >
                     Delete
                   </Button>
                 </li>
                 <li>
                   {address.isDefault && (
-                    <Button color="link" className="my-order__simple-link" disabled>
+                    <Button 
+                     color="link"
+                     className="my-order__simple-link my-order__t-btn"
+                     disabled>
                       <Icon
                         size="20"
                         style={{ color: "green" }}
@@ -106,7 +109,7 @@ class SingleAddress extends Component {
                     <Button
                       onClick={this.setDefaultAddress}
                       color="link"
-                      className="my-order__simple-link"
+                      className="my-order__simple-link my-order__t-btn"
                     >
                       Set as Default
                     </Button>
