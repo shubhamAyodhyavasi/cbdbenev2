@@ -7,7 +7,7 @@ import categoryList from '../../constants/categoryList'
 import Heading from '../../components/Heading'
 import ContactFrom from '../../components/forms/ContactForm'
 import Button from '../../components/form-components/Button'
-import TitleList from '../../components/TitleList'
+import TitleList from '../../components/TItleList'
 import Head from 'next/head'
 class Contact extends React.Component {
     constructor(props) {

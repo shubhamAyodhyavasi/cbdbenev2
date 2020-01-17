@@ -1,5 +1,5 @@
 import Router from "next/router"
-import TitleList from "../TitleList"
+import TitleList from "../TItleList"
 import Button from "../form-components/Button"
 import moment from "moment"
 import { Form, Radio, Collapse, Select  } from "antd"
