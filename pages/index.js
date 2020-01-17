@@ -102,7 +102,7 @@ class Home extends React.Component {
           heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
           content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
         >
-          <Button parentClass="c-home" theme={'outline-gold'} >Shop all products</Button>
+          <Button parentClass="c-home" type="link" link="/shop" theme={'outline-gold'} >Shop all products</Button>
         </Banner>
         {(products && products.length > 0) && 
         <Fade>

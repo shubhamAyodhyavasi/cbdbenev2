@@ -633,7 +633,7 @@ class Favourites extends Component {
                 </div>
 
                   <Link
-                    href={"/" + location.countryCode + "/shop"}
+                    href={"/shop"}
                   >
                     <a
                     className="mt-5 btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"

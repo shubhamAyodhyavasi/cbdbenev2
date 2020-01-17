@@ -7,7 +7,7 @@ import AddressForm from '../components/AddressForm'
 import Checkbox from '../components/form-components/Checkbox'
 import Button from '../components/form-components/Button'
 import Radio from '../components/form-components/Radio'
-import { Steps, Modal } from 'antd'
+import { Steps } from 'antd'
 import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
 import {addAddress, setEditable} from '../redux/actions'
 import { connect } from 'react-redux'
@@ -17,6 +17,11 @@ import CheckoutShipping from '../components/checkout-tabs/CheckoutShipping'
 import CheckoutPayment from '../components/checkout-tabs/CheckoutPayment'
 import Loader from '../components/Loader'
 import Link from 'next/link'
+import { FullModal } from "../components/modal";
+import ReactIcon from "react-icons-kit";
+import { ic_clear } from "react-icons-kit/md/";
+import Icon from "react-icons-kit";
+import { ic_error_outline } from "react-icons-kit/md/";
 
 const {
     baseUrl
@@ -167,7 +172,7 @@ const Checkout  = ({
             case baseUrl+"/authorize/chargeprofile/":
             case baseUrl+"/authorize/charge/":
             case baseUrl+"/authorize/charge/bank/":
-                setFailedRes("payment failed")
+                setFailedRes("Transaction failed")
             break;
             default:
                 setFailedRes("something went wrong")
@@ -290,7 +295,7 @@ const Checkout  = ({
                         </div>
                     </TitleList> */}
             </div>
-            <Modal 
+            {/* <FullModal 
                 maskClosable={true}
                 footer={null}
                 onOk={()=> {
@@ -301,10 +306,39 @@ const Checkout  = ({
                     setIsModal(false)
                     window.location.href = "/"
                 }} 
-                visible={isModal}>
+                isOpen={isModal}>
                     {failedRes}
                 {/* Order is Successfully Places */}
-            </Modal>
+           
+
+
+            <FullModal 
+                    isOpen={isModal}
+                >
+                    <div className="c-submit-r__product-selector">                    
+                    <div className="modal__logo-wrapper">
+                        <a className="c-logo  modal-footer__logo" href="/">
+                            <img src="/images/logo-new.png" className="modal__logo-img" alt="bené" />
+                        </a>
+                        <div className="modal__heading">
+                            <h2 className="modal__heading-text">Order Failed :-</h2>
+                        </div>
+                    </div>
+                    <div className="modal-dismiss"
+                    //  onClick={this.toggle}
+                    >
+                        <ReactIcon icon={ic_clear} size={"32"} />
+                    </div>
+                        <div className="c-susbmit-r__wrapper justify-content-center">
+                        <Icon
+                            icon={ic_error_outline}
+                            className="text-center mr-4 clr-red"
+                            size="64"
+                            />                          
+                        <h3>{failedRes}</h3>
+                        </div> 
+                    </div>
+                </FullModal>
         </CheckoutLayout>
         
         </div>

@@ -31,8 +31,8 @@
     }
     &__btn-wrapper {
         display: flex;
-        width:100%;
-        @include bpm-lg{
+        @include bpm-lg{            
+            width:100%;
             order: 3;
         } 
     }
@@ -99,8 +99,11 @@
     }
     &__price{
         font-size: 32px;
-        font-family: $sub-font;
+        font-family: "Ovo", serif;
         margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
     &__heading{
         font-size: 20px;

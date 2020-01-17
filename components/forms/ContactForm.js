@@ -2,6 +2,16 @@ import {Form, Radio as AntRadio } from 'antd'
 import Input from '../form-components/Input';
 import Button from '../form-components/Button';
 import { contactUs } from '../../services/api';
+import regex from '../../services/helpers/regex';
+import reactComponentDebounce from 'react-component-debounce';
+
+
+
+const DebounceInput = reactComponentDebounce({
+    valuePropName: 'value',
+    triggerMs: 1000,
+  })(Input);
+
 class Contact extends React.Component {
     constructor(props){
         super(props)
@@ -77,20 +87,33 @@ class Contact extends React.Component {
                             <div className="c-contact-form__main-form">
                                 <Item>
                                     {getFieldDecorator('name', {
+                                        
                                         rules: [
-                                            { required: true, message: 'Please input your name!' }
+                                            { required: true, message: 'Please input your name!' },
+                                            {max: 20}
                                         ],
                                     })(
-                                        <Input versions={["light"]} parentClass="c-contact-form" label="Name" />
+                                        <DebounceInput versions={["light"]}
+                                        pattern={[
+                                            '^.{8,}$', // min 8 chars
+                                            '(?=.*\\d)', // number required
+                                            '(?=.*[A-Z])', // uppercase letter
+                                          ]}
+                                         parentClass="c-contact-form" label="Name" />
                                     )}
                                 </Item>
                                 <Item>
                                     {getFieldDecorator('email', {
                                         rules: [
-                                            { required: true, message: 'Please input your e-mail!' }
+                                            { required: true, message: 'Please input your e-mail!' },
+                                            {max:40, message:"You can't use more than 40 characters."},
+                                            { 
+                                                pattern: regex.email, 
+                                                message: 'Please enter a valid E-mail!' 
+                                            },
                                         ],
                                     })(
-                                        <Input versions={["light"]} parentClass="c-contact-form" label="E-mail" />
+                                        <DebounceInput versions={["light"]} parentClass="c-contact-form" label="E-mail" />
                                     )}
                                 </Item>
                                 <Item>

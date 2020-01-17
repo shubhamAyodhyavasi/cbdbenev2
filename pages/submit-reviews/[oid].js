@@ -332,7 +332,7 @@ class NormalLoginForm extends React.Component {
                         placeholder="Review title"
                         versions={["light"]}
                         label="Review title"
-                        parentClass="c-contact-form"
+                        parentClass="c-contact-form c-input__input"
                     />,
                     )}
                 </Form.Item>
