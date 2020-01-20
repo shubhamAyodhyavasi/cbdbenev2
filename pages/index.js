@@ -131,7 +131,7 @@ class Home extends React.Component {
           image="/images/bundle2.jpg"
         >
           {
-            isLrSection ? lrText : lrText.split(" ").filter((el, i)=> i < 10 ).join(" ")
+            isLrSection ? lrText : lrText.split(" ").filter((el, i)=> i < 17 ).join(" ")
           }
         </LRSection>
         </Fade>
