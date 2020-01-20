@@ -13,6 +13,7 @@ import { getAllCombos } from '../services/api'
 import BundleProducts from '../components/BundleProducts'
 import ScrollAnimation from "react-animate-on-scroll";
 import Fade from 'react-reveal/Fade';
+import { Collapse } from 'reactstrap';
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -130,9 +131,18 @@ class Home extends React.Component {
           Link="/"
           image="/images/bundle2.jpg"
         >
-          {
-            isLrSection ? lrText : lrText.split(" ").filter((el, i)=> i < 10 ).join(" ")
-          }
+          <div className="c-less-more">
+            <div className="c-less-more__less" >
+            {lrText}
+            </div>
+            <Collapse isOpen={isLrSection}>
+              <div className="c-less-more__whole">
+                <div className="c-less-more__whole-inner">
+                  {lrText}
+                </div>
+              </div>
+            </Collapse>
+          </div>
         </LRSection>
         </Fade>
         <Fade>
