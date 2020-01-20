@@ -199,7 +199,7 @@ class NormalLoginForm extends React.Component {
                     const {
                         overall
                     } = values
-                    getProductById(selectedProduct.productMeta)
+                    getProductById(selectedProduct.productMeta || selectedProduct.comboId)
                     .then(res => {
                         console.log({res})
                         if(res.data.product_details){

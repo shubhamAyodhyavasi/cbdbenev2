@@ -8,7 +8,7 @@ const initialState = {
   isCartOpen: false,
   isRegOpen: false,
   hasLogin: false,
-  toDisplay: "register"
+  toDisplay: "login"
 };
 
 export default (state = initialState, action) => {

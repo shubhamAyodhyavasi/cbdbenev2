@@ -414,7 +414,7 @@ class Favourites extends Component {
                           <tbody>
                             {wishList.map((itm, index) => {
                               console.log({
-                                item: itm.productDetails
+                                item: itm
                               });
                               if (itm.combo) {
                                 const {
@@ -518,7 +518,7 @@ class Favourites extends Component {
                                           <Link
                                             href={
                                               "/shop/" +
-                                              itm.productDetails.comboid._id
+                                              itm.productmeta
                                             }
                                           >
                                             <a className="btn9 mobile-remove-btn-padding my-order__t-btn">
@@ -588,8 +588,7 @@ class Favourites extends Component {
                                           <Link
                                             href={
                                               "/shop/" +
-                                              itm.productDetails.productid
-                                                ._id
+                                              itm.productmeta
                                             }
                                           >
                                             <a

@@ -50,11 +50,13 @@
         svg{
             width: auto;
             height: 1em;
-            &:hover path{
+            &:hover {
+                path, circle{
                     color: #cfa564;
                 }
             }
         }
+    }
     
     &__sub-menu{
         display: flex;
