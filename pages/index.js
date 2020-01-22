@@ -26,7 +26,8 @@ class Home extends React.Component {
       allProducts: props.products.products || [],
       products: props.products.featured || [],
       combos: [],
-      isLrSection: false
+      isLrSection: false,
+      isWillness: false
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -87,7 +88,7 @@ class Home extends React.Component {
   }
   render() {
     const {
-      activeCategory, products, combos, isLrSection
+      activeCategory, products, combos, isLrSection,isWillness
     } = this.state
     // const {
     //   products
@@ -120,9 +121,9 @@ class Home extends React.Component {
           }
         <Fade>
         <LRSection
-          heading="bene"
-          subHeading="organically grown hemp extract"
-          linkText="READ MORE"
+          heading="bené"
+          subHeading="Organically grown hemp extract"
+          linkText="Read More"
           onLinkClick={()=> {
             this.setState(prevState => ({
               isLrSection: !prevState.isLrSection
@@ -149,7 +150,7 @@ class Home extends React.Component {
         <HHSection
           heading="Bundles of awesomeness!"
           subHeading="Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off."
-          linkText="READ MORE"
+          linkText="Read More"
           Link="/"
           bg="light-2"
           // images={[
@@ -169,11 +170,28 @@ class Home extends React.Component {
             <div class="wellness-wrapper__img">
               <img class="wellness-wrapper__img--img img-fluid" src="/images/consult-image.jpg" />
             </div>          
-            <div class="wellness-wrapper__desp">
-              <p class="wellness-wrapper__desp--text">Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.</p>
+            <div class="wellness-wrapper__desp"> 
+            <div className="c-less-more">
+            <div className="c-less-more__less" >
+            Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
+
+            </div>
+            <Collapse isOpen={isWillness}>
+              <div className="c-less-more__whole">
+                <div className="c-less-more__whole-inner">
+                Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
+
+                </div>
+              </div>
+            </Collapse>
+          </div>
+       
+              <p class="wellness-wrapper__desp--text">
+                Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
+                </p>
               <div class="wellness-wrapper__btn">
                 <div className="mt-4 mb-4">
-                  <Button parentClass="c-home" versions={["btm-br-gold"]} theme={['btm-br']} >READ MORE</Button>
+                  <Button parentClass="c-home" versions={["btm-br-gold"]} theme={['btm-br']} >Read More</Button>
                 </div>
               </div>
               <div class="willness-img">

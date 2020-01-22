@@ -83,7 +83,7 @@ class OrderListItem extends React.Component {
                             products.map((el, key) => {
 
                                 return (
-                                    <tr key={i}>
+                                    <tr key={i} className="table__repeated-row">
                                         <td data-label="Title"> {itm.title}</td>
                                         <td data-label="Rate" className="inline-data">
                                             {"$ " + itm.unitPrice}

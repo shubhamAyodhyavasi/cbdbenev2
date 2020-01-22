@@ -191,6 +191,12 @@
         font-size:20px;
     }
 }
+.modal .full-modal.modal-dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 input#normal_login_name,

@@ -312,7 +312,7 @@ class CheckForm extends Component {
               </div>
               <form onSubmit={this.onSubmit}>
                 <div className="row frm-details">
-                  <div className="col-md-12 mb-4">
+                  <div className="col-md-12 mb-4 c-input__input">
                     <Input
                       label="Name on Account*"
                       name="accName"
@@ -329,8 +329,8 @@ class CheckForm extends Component {
                       }
                     />
                   </div>
-                  <div className="col-md-12 mb-4">
-                    <div className="col-12 pl-0 pr-0">
+                  <div className="col-md-12 mb-4 pl-0 pr-0 ">
+                    <div className="c-input__input">
                       <div className="has-input">
                         {/* <label>Account Type*</label> */}
                       </div>
@@ -342,11 +342,11 @@ class CheckForm extends Component {
                         placeholder="Account Type"
                         onChange={this.changeAccountType}
                         options={accountTypeOpt}
-                        className="my-account__input ant-input c-input__input "
+                        className="my-account__input ant-input "
                       />
                     </div>
                   </div>
-                  <div className="col-md-12 mb-4">
+                  <div className="col-md-12 mb-4 c-input__input">
                     <Input
                       label="Bank Routing Number*"
                       name="routingType"
@@ -365,7 +365,7 @@ class CheckForm extends Component {
                       }
                     />
                   </div>
-                  <div className="col-md-12 mb-4">
+                  <div className="col-md-12 mb-4 c-input__input">
                     <Input
                       label="Checking Account Number*"
                       name="accountNumber"
@@ -384,7 +384,7 @@ class CheckForm extends Component {
                       }
                     />
                   </div>
-                  <div className="col-md-12 mb-4">
+                  <div className="col-md-12 mb-4 c-input__input">
                     <Input
                       label="Re-enter Checking Account Number*"
                       name="accountNumberConfirm"
@@ -461,7 +461,7 @@ class CheckForm extends Component {
                 <div className="row frm-details">
                   <div className="col-md-4 pl-0 pr-0">
                     <div className="col-12 has-input">
-                      <button className="btn btn3"> Save account</button>
+                      <button className="btn btn3 c-btn--outline c-btn"> Save account</button>
                     </div>
                     <br />
                   </div>

@@ -466,7 +466,7 @@ class EditAddress extends Component {
                 <div className="my-order__alert">
                 <h3 className="my-order__alert--msg">Your Address</h3>
                 </div>
-                <div className="billing-address-text p-4 card-title  ">
+                <div className="billing-address-text p-4 card-title flag-none  ">
                     <AddressForm                     
                       name={shipping_first_name}
                       nameId="shipping_first_name"

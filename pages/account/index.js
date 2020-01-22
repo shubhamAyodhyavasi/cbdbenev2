@@ -555,7 +555,7 @@ class MyAccount extends Component {
                   >
                     <a 
                     className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
-                     >START SHOPPING</a>
+                     >Start Shopping</a>
                   </Link>
                 </CardBody>
               </Card>
@@ -592,7 +592,7 @@ class MyAccount extends Component {
                             orderSingle: this.state.orderSingle
                           });
                           return (
-                            <tr key={i}>
+                            <tr key={i} className="table__repeated-row">
                               <td data-label="Title"> {itm.title}</td>
                               <td data-label="Rate" className="inline-data">
                                 {" "}
@@ -633,6 +633,9 @@ class MyAccount extends Component {
                           );
                         })
                       : ""}
+
+                      <br />
+                      <br />
                     <tr className="order-view-bottom">
                       <td className="hide-in-res" colSpan="3">
                         Sub Total
@@ -765,7 +768,7 @@ class MyAccount extends Component {
                 ) : (
                   ""
                 )}
-                <hr />
+                {/* <hr /> */}
               </div>
             </ModalBody>
             {/* <ModalFooter>
