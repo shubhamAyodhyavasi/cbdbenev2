@@ -155,7 +155,11 @@ class CheckoutInfo extends React.Component {
                     values
                 })
                 const {
-                    country
+                    country,
+                    firstname,
+                    lastname,
+                    firstname_ship,
+                    lastname_ship
                 } = values
                 const aa = getCountryCode(country)
                 console.log({
@@ -164,9 +168,13 @@ class CheckoutInfo extends React.Component {
                 if (typeof onSubmit === "function") {
                     onSubmit(e, values, {
                         ...address,
+                        firstname,
+                        lastname,
                         addressStr: address.addressStr.trim() === "" ? this.generateAddStr(address) : address.addressStr
                     }, {
                         ...addressShip,
+                        firstname: firstname_ship,
+                        lastname: lastname_ship,
                         addressStr: addressShip.addressStr.trim() === "" ? this.generateAddStr(addressShip) : addressShip.addressStr
                     })
                 }
