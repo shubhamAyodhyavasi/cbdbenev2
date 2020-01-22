@@ -273,7 +273,6 @@ class ListCard extends Component {
                               </CardBody>
                             </Card>
                           </div>
-                        
                       </div>
                     </CardBody>
                   </Card>

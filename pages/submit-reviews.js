@@ -29,9 +29,9 @@ const SubmitReviews = props => {
             <section class="c-submit-r__about">
                 <div class="container">
                     <div class="row">
-                        <div className="mt-auto c-submit-r__about--center" >
+                        <div className="w-100 mt-auto c-submit-r__about--center" >
                             <Heading>
-                                LET'S GET STARTED! <br />WHAT DID YOU THINK ABOUT THIS PROJECT?
+                                LET'S GET STARTED! <br />WHAT DID YOU THINK ABOUT THIS PRODUCT?
                             </Heading>
                         </div>
                     </div>
@@ -56,7 +56,10 @@ const SubmitReviews = props => {
                                 <h3 class="c-submit-r__rating--name__small">Overall <br/> rating</h3>
                             </div>
                             <div class="c-submit-r__rating--star">
-                                <Rate />
+                            <Rate 
+                                style={{ color: '#000' }}
+                                className="c-product-info__stars" 
+                                 />
                             </div>
                         </div>
                     </div>

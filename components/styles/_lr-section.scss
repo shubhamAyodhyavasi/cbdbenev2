@@ -5,6 +5,7 @@
     justify-content: center;
     @include bp-md{
         min-height: 100vh;
+        background: #fff;
     }
     &__heading{
         font-size: 50px;
@@ -29,7 +30,7 @@
     &__btn-wrapper{
         text-align: right;
         @include bp-md{
-            padding-left: 40px;
+            padding-left: 40px;           
         }
     }
 }

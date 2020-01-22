@@ -61,3 +61,12 @@
 .ant-dropdown-menu-submenu-title:hover {
     background: #cfa5641f;
 }
+.ant-input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+}
+.error {
+    color: red;
+}

@@ -122,7 +122,7 @@ class Contact extends React.Component {
             <div className="c-consult-page__container c-consult-page__container--black">
                 <div className="row justify-content-center">
                   <div className="col-lg-8 text-center">
-                    <Heading versions={["white"]}>
+                    <Heading versions={["white", "upper"]}>
                       Topics you can discuss with the doctor:
                     </Heading>
                     <ul className="c-consult-page__list">

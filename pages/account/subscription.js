@@ -720,7 +720,7 @@ class MySubscription extends Component {
                   >
                     <a 
                     className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
-                     >START SHOPPING</a>
+                     >Start Shopping</a>
                   </Link>
                 </CardBody>
               </Card>

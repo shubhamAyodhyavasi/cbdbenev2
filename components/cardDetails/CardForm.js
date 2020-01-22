@@ -362,7 +362,7 @@ class CardForm extends Component {
               /> */}
               <form onSubmit={this.submitRegistration}>
                 <div
-                  className={classNames("has-input", {
+                  className={classNames("has-input c-input__input mb-4", {
                     "has-error": cardnameErr
                   })}
                 >
@@ -376,12 +376,12 @@ class CardForm extends Component {
                     maxLength="30"
                     data-validate={["required"]}
                     placeholder="Card Full Name"
-                    className="my-account__input ant-input c-input__input mb-4"
+                    className="my-account__input ant-input"
                   />
                   {cardnameErr ? <p className="error">{cardNameErrMsg}</p> : ""}
                 </div>
                 <div
-                  className={classNames("has-input", {
+                  className={classNames("has-input c-input__input mb-4", {
                     "has-error": cardNumberErr
                   })}
                 >
@@ -399,7 +399,7 @@ class CardForm extends Component {
                     // placeholder="0000-0000-0000-0000"
                     autoComplete="off"
                     placeholder="Card Number*"
-                    className="my-account__input ant-input c-input__input mb-4"
+                    className="my-account__input ant-input"
                   />
                   {cardNumberErr ? (
                     <p className="error">{cardNumberErrMsg}</p>
@@ -411,7 +411,7 @@ class CardForm extends Component {
                 <div className="row">
                   <div className="col-md-6">
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input c-input__input mb-4", {
                         "has-error": expDateErr
                       })}
                     >
@@ -429,7 +429,7 @@ class CardForm extends Component {
                         // placeholder="mm/yy"
                         autoComplete="off"
                         placeholder="Expiration Date*"
-                        className="my-account__input ant-input c-input__input mb-4"
+                        className="my-account__input ant-input"
                       />
                       {expDateErr ? (
                         <p className="error">{expDateErrMsg}</p>
@@ -440,7 +440,7 @@ class CardForm extends Component {
                   </div>
                   <div className="col-md-6">
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input c-input__input mb-4", {
                         "has-error": cvNumberErr
                       })}
                     >
@@ -458,7 +458,7 @@ class CardForm extends Component {
                         placeholder="123"
                         autoComplete="off"
                         placeholder="CVV Code*"
-                        className="my-account__input ant-input c-input__input mb-4"
+                        className="my-account__input ant-input"
                       />
                       {cvNumberErr ? (
                         <p className="error">{cvNumberErrMsg}</p>

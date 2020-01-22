@@ -16,6 +16,7 @@
     &--dark{
         .c-input{
             &__input{
+                -moz-appearance: textfield;
                 color: $light-color-2;
                 border-color: $brand-color-1;
             }

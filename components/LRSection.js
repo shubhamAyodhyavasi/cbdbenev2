@@ -4,8 +4,7 @@ const LRSection = ({heading, subHeading, content, children, link, linkText, imag
     <div className="c-lr-section">
         <div className="c-lr-section__head-wrapper">
             <div className="row c-lr-section__row align-items-center">
-                <div className="flex-grow-0 c-lr-section__heading-wrapper">
-                    
+                <div className="flex-grow-0 c-lr-section__heading-wrapper">                    
                     <Heading parentClass="c-lr-section" >{heading}</Heading>
                 </div>
                 <div className="col-md-6 c-lr-section__sub-heading-wrapper">

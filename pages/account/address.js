@@ -136,9 +136,9 @@ class ListAddress extends Component {
                               href={
                                 "/account/add-address"
                               }
-                            >
+                            > 
                               <a><center>
-                                <Icon size={14} icon={plus} />
+                                <Icon style={{ color: '#cfa564' }} size={14} icon={plus} />
                               </center></a>
                             </Link>
                           </div>

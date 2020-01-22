@@ -115,3 +115,16 @@
         }
     
     }
+    .order-view-bottom td:first-child {
+        text-align: right;
+    }
+    .order-view-bottom td {
+        border-top: 0;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-weight: 500;
+    }
+    .table__repeated-row{
+        border-bottom:1px solid #eee ;
+        margin-top:10px;
+    }

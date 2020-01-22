@@ -129,7 +129,7 @@ class SubmitReviews extends React.Component {
                         <div class="row">
                             <div className="w-100 mt-auto c-submit-r__about--center" >
                                 <Heading>
-                                    LET'S GET STARTED! <br />WHAT DID YOU THINK ABOUT THIS PROJECT?
+                                    LET'S GET STARTED! <br />WHAT DID YOU THINK ABOUT THIS PRODUCT?
                                 </Heading>
                             </div>
 
@@ -272,7 +272,10 @@ class NormalLoginForm extends React.Component {
                                 {getFieldDecorator('overall', {
                                     initialValue: 4
                                 })(
-                                    <Rate />
+                                    <Rate 
+                                    style={{ color: '#000' }}
+                                    className="c-product-info__stars" 
+                                     />
                                 )}
                                 </Form.Item>
                             </div>

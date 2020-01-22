@@ -126,18 +126,27 @@
     }
 
     &__t-btn {
-        background:transparent;
+        background-color:transparent !important;
         color: #000;
         border: 0;
         font-size: 14px;
         padding: 0 10px;
+        border-color:transparent !important;
+        box-shadow: none ;
        
 
         &:hover {
             background: #fff;
-            color: $brand-color-1;
+            color: $brand-color-1 !important;
             text-decoration: underline;
             border: 0;
+        }
+        &:focus{
+            box-shadow: none !important; 
+        }
+        &:active{
+            color: $brand-color-1 !important; 
+            text-decoration: underline;
         }
     }
 
@@ -355,6 +364,10 @@ img.favrate-list-image-width {
 .my-order__table--name,
 .my-order__table--action {
     margin-bottom: 20px;
+}
+
+.flag-none .flag-dropdown {
+    display: none;
 }
 /*------------- change password -------------------*/
 .a-cp {
