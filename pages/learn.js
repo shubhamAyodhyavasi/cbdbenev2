@@ -1425,10 +1425,10 @@ How should I take CBD softgel capsules?
           >
             Yes, you can retrieve an invoice for your order anytime by visiting
             the{" "}
-            <Link href={`/account`}>my orders </Link>{" "}
+            <Link href={`/account`}><a>my orders </a></Link>{" "}
             under the{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             menu.
           </LearnCollapsePlus>
@@ -1453,7 +1453,7 @@ How should I take CBD softgel capsules?
             item has shipped from our warehouse. You can also track your order
             in the{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             section.
           </LearnCollapsePlus>
@@ -1553,7 +1553,7 @@ How should I take CBD softgel capsules?
             to place a new order and return the unwanted items back to us. To
             have us return your order visit the{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             section.
           </LearnCollapsePlus>
@@ -1587,7 +1587,7 @@ How should I take CBD softgel capsules?
             received your unwanted items. You can return your order by visiting
             the{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             section.
           </LearnCollapsePlus>
@@ -1599,10 +1599,10 @@ How should I take CBD softgel capsules?
           <p>
             Log in to{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             and select “
-            <Link href={`/account`}>my orders </Link>
+            <Link href={`/account`}><a>my orders </a></Link>
             ” to view a complete list of orders. We store information about your
             recent order (including tracking information) as well as past
             orders.{" "}
@@ -1698,7 +1698,7 @@ How should I take CBD softgel capsules?
           >
             Yes. Please visit My Payments section in the{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             menu to update your payment methods. You can add or edit multiple
             payment methods here also ‘Set as Default’ here.
@@ -1790,14 +1790,14 @@ How should I take CBD softgel capsules?
           >
             Click{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             menu in the navigation bar and click Profile.
             <ol>
               <li>
                 On{" "}
                 <Link href={`/account`}>
-                  My Account{" "}
+                  <a>My Account{" "}</a>
                 </Link>{" "}
                 tab, click on Change Password.
               </li>
@@ -1831,7 +1831,7 @@ How should I take CBD softgel capsules?
               <li>
                 Click{" "}
                 <Link href={`/account`}>
-                  My Account{" "}
+                  <a>My Account{" "}</a>
                 </Link>{" "}
                 menu in the navigation bar and click Log in.
               </li>
@@ -1841,7 +1841,7 @@ How should I take CBD softgel capsules?
               <li>
                 On{" "}
                 <Link href={`/account`}>
-                  My Account{" "}
+                  <a>My Account{" "}</a>
                 </Link>{" "}
                 tab, click on Change Password{" "}
               </li>
@@ -2072,7 +2072,7 @@ How should I take CBD softgel capsules?
               <span>
                 How do I cancel or modify{" "}
                 <Link href={`/my-subscription`}>
-                  my subscription{" "}
+                  <a>my subscription{" "}</a>
                 </Link>
                 ?>
               </span>
@@ -2086,11 +2086,11 @@ How should I take CBD softgel capsules?
               <li>
                 Click{" "}
                 <Link href={`/account`}>
-                  My Account{" "}
+                  <a>My Account{" "}</a>
                 </Link>{" "}
                 menu in the navigation bar and click{" "}
                 <Link href={`/my-subscription`}>
-                  my subscriptions{" "}
+                  <a>my subscriptions{" "}</a>
                 </Link>
                 s to view a complete list of all your subscriptions.
               </li>
@@ -2117,11 +2117,11 @@ How should I take CBD softgel capsules?
               <li>
                 Click{" "}
                 <Link href={`/account`}>
-                  My Account{" "}
+                  <a>My Account{" "}</a>
                 </Link>{" "}
                 menu in the navigation bar and click{" "}
                 <Link href={`/my-subscription`}>
-                  my subscriptions{" "}
+                  <a>my subscriptions{" "}</a>
                 </Link>
                 s to view a complete list of all your subscriptions.
               </li>
@@ -2146,7 +2146,7 @@ How should I take CBD softgel capsules?
           >
             Yes, you can change your payment at any time in your{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             section. If you do not make any changes, the default payment method
             you designated for your first order will be used on all subsequent
@@ -2413,7 +2413,7 @@ How should I take CBD softgel capsules?
           <p>
             Yes. Please visit My Address section in the{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             menu to update your shipping addresses. You can add or edit multiple
             shipping addresses here and also ‘Set as Default’ here.
@@ -2575,7 +2575,7 @@ How should I take CBD softgel capsules?
               <li>
                 On the website, please go to{" "}
                 <Link href={`/account`}>
-                  My Account{" "}
+                  <a>My Account{" "}</a>
                 </Link>{" "}
                 section.{" "}
               </li>
@@ -2596,7 +2596,7 @@ How should I take CBD softgel capsules?
           >
             To change or cancel an appointment, first locate the appointment on{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             section of CBDbene.com. Select Cancel Visit{" "}
           </LearnCollapsePlus>
@@ -2672,7 +2672,7 @@ How should I take CBD softgel capsules?
           <p>
             You can visit the doctor by going to Visits on{" "}
             <Link href={`/account`}>
-              My Account{" "}
+              <a>My Account{" "}</a>
             </Link>{" "}
             menu, find the appointment, and click ‘Virtual waiting room’. You
             will be placed in queue in the virtual waiting room of the doctor.{" "}
