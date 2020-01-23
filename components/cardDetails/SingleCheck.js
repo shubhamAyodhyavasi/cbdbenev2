@@ -93,7 +93,7 @@ class SingleCheck extends Component {
                   </p>
                 </div>
                 <div className="col-md-4 col-sm-4 col-xs-12 d-md-flex justify-content-md-end">
-                  <ul className="address-ul">
+                  <ul className="my-order__address-ul m-0">
                     {/* <li>
                     <Button
                       color="link"
@@ -107,14 +107,14 @@ class SingleCheck extends Component {
                       <Button
                         onClick={this.deleteCard}
                         color="link"
-                        className="simple-link"
+                        className="simple-link my-order__t-btn"
                       >
                         Delete
                       </Button>
                     </li>
                     {card.isDefault ? (
                       <li>
-                        <Button color="link" className="simple-link" disabled>
+                        <Button color="link" className="simple-link my-order__t-btn" disabled>
                           <Icon
                             size="20"
                             style={{ color: "green" }}
