@@ -12,6 +12,9 @@
             box-shadow: none;
             border-bottom: 1px solid $dark-color-2;
         }
+        &--important{
+            border-bottom: 1px solid #000 !important;
+        }
     }
     &--dark{
         .c-input{
@@ -22,6 +25,7 @@
             }
         }
     }
+    
 }
 // override ant design
 .has-error .ant-input:focus{
