@@ -36,7 +36,7 @@ const Shop = ({ productList, ...props }) => {
         setSearchValue(value)
     }
     return (
-        <Layout headerVersions={["bg-light"]} headerTheme="dark">
+        <Layout headerVersions={["bg-dark"]} headerTheme="dark">
             <div className="c-shop-page">
                 <div className="container-fluid">
                     <div className="c-shop-page__row c-shop-page__row--light-bg row">

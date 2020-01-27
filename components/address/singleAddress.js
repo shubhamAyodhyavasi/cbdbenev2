@@ -46,10 +46,11 @@ class SingleAddress extends Component {
       other,
       zip,
       addressStr
-  } = address
-  const addressLine =  `${city}, ${state}, ${country}, ${zip}`.trim()
-  return (addressLine.toLowerCase() === addressStr.toLowerCase().trim())
-  
+    } = address
+    if(!addressStr)
+      return false
+    const addressLine =  `${city}, ${state}, ${country}, ${zip}`.trim()
+      return (addressLine.toLowerCase() === addressStr.toLowerCase().trim())
   }
   render() {
     const { address } = this.props;
@@ -60,10 +61,10 @@ class SingleAddress extends Component {
         <Card className="panel-section my-order__panel">
           <CardBody className="my-order__singleadd">            
             <div className="w-100">
-            <p className="l-h">
-            {address.firstname + " "}
+              <p className="l-h">
+                {address.firstname + " "}
                 {address.lastname  + " "}
-              { !this.isSameAddress(address) &&  address.addressStr}  
+                { !this.isSameAddress(address) &&  address.addressStr}  
                 {address.city && <span>{address.city}, </span>}
                 {address.state && <span>{address.state}, </span>}
                 {address.country && <span>{address.country}, </span>}

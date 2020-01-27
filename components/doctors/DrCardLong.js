@@ -5,6 +5,7 @@ import {
 import Link from "next/link";
 import { getName, getAddress, getTaxonomy , getSlug } from "../../services/helpers/DoctorHelpers";
 // import RatingStars from '../RatingStars/RatingStars';
+import AppointmentCard from "../../components/doctors/appointment/AppointmentCard/AppointmentCard"
 
 class DrCardLong extends Component {
     constructor(props) {
@@ -41,7 +42,8 @@ class DrCardLong extends Component {
                             </Link>
                         </Col>
                         <Col className="c-dr-card-long__time-wrap" span={10}>
-                           Dr. Andrew Fagelman is board certified with the American Board of Internal Medicine and current physician at SOHO Health NY.
+                           {/* Dr. Andrew Fagelman is board certified with the American Board of Internal Medicine and current physician at SOHO Health NY. */}
+                            <AppointmentCard doctor={doctor}  />
                         </Col>
                     </Row>
                 </Card>

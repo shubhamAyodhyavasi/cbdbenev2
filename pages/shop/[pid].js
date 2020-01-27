@@ -55,7 +55,7 @@ const Product = ({product, allProducts, ...props}) => {
             return <Error {...props.err} />
         }
         return (
-            <Layout headerTheme="dark" fixed={true}>
+            <Layout  headerTheme="dark" fixed={true}>
                 <ProductInfo 
                 product={product} reviews={props.reviews} productAttr={productAttr.filter((el,i)=> i < 3 )} image={productImage}>
                 </ProductInfo>

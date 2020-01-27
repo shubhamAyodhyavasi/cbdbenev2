@@ -23,8 +23,8 @@ const Category = ({ productList, ...props }) => {
         }
     })
     return (
-        // <Layout headerVersions={["bg-light"]} headerTheme="dark">
-            <Layout className="c-consult-page" title="Contact"> 
+        <Layout headerVersions={["bg-light"]} fixed={true} headerTheme="dark">
+             {/* <Layout headerVersions={["bg-dark"]} className="c-consult-page" title="Category">  */}
             <div className="c-category-page">
                 <HImgSection version={["full", "content-bottom"]} image={"/images/oil-page.jpg"} >
                     <div>

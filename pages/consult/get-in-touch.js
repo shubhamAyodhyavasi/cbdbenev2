@@ -11,6 +11,7 @@ import { getDoctors } from '../../services/api'
 import apiList from '../../services/apis/apiList'
 import fetch from 'isomorphic-fetch'
 import DrCardLong from '../../components/doctors/DrCardLong'
+import doctorData from "../../public/api/beneGetDoctor.json"
 class Contact extends React.Component {
     constructor(props) {
         super(props)
@@ -20,16 +21,17 @@ class Contact extends React.Component {
             products: props.products.featured || []
         }
     }
-    static getInitialProps = async () => {
-        const res = await fetch(apiList.getDoctors)
-        const doctors = await res.json()
-        return {
-            doctors: doctors.data.filter((e, i )=> i < 2 )
-        }
-    }
+    // static getInitialProps = async () => {
+    //     const res = await fetch(apiList.getDoctors)
+    //     const doctors = await res.json()
+    //     return {
+    //         doctors: doctors.data.filter((e, i )=> i < 2 )
+    //     }
+    // }
     componentDidMount() {
         console.log({
-            props: this.props
+            props: this.props,
+            doctorData
         })
     }
     changeCategory = (activeCategory) => {
@@ -165,6 +167,10 @@ const mapStateToProps = state => ({
 Contact.defaultProps = {
     products: {
 
-    }
+    },
+    doctors: [
+      doctorData.data,
+      doctorData.data,
+    ]
 }
 export default connect(mapStateToProps, {  })(Contact)

@@ -228,6 +228,21 @@ class CheckoutInfo extends React.Component {
             })
         }
     }
+    returnAddressStr = address =>{
+        const {
+            country,
+            state,
+            city,
+            other,
+            zip,
+            addressStr
+          } = address
+        if(!addressStr){
+            const addressLine =  `${city}, ${state}, ${country}, ${zip}`.trim()
+            return addressLine
+        }
+        return addressStr
+    }
     render() {
         const componentClass = "c-checkout-info"
         const {
@@ -294,7 +309,7 @@ class CheckoutInfo extends React.Component {
                                         }}
                                     >
                                         {
-                                            addresses.map((el, i) => <Radio key={i} value={el}>{el.addressStr}</Radio>)
+                                            addresses.map((el, i) => <Radio key={i} value={el}>{this.returnAddressStr(el)}</Radio>)
                                         }
                                     </Radio.Group>
                                 )}
@@ -536,7 +551,7 @@ class CheckoutInfo extends React.Component {
                                                     }}
                                                 >
                                                     {
-                                                        addresses.map((el, i) => <Radio key={i} value={el}>{el.addressStr}</Radio>)
+                                                        addresses.map((el, i) => <Radio key={i} value={el}>{this.returnAddressStr(el)}</Radio>)
                                                     }
                                                 </Radio.Group>
                                             )}
