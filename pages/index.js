@@ -99,9 +99,9 @@ class Home extends React.Component {
     })
     const lrText = `In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.`
     return (
-      <Layout title="Home" headerTheme="light" >
+      <Layout title="Home" headerTheme="light"  >
         <Banner
-          image="/images/bundle.jpg"
+          image="/images/home-banner.png"
           mobileImage="/images/home-banner-mobile.png"
           heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
           content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
@@ -129,7 +129,7 @@ class Home extends React.Component {
               isLrSection: !prevState.isLrSection
             }))
           }}
-          Link="/"
+          // Link="/"
           image="/images/bundle2.jpg"
         >
           <div className="c-less-more">
@@ -150,8 +150,8 @@ class Home extends React.Component {
         <HHSection
           heading="Bundles of awesomeness!"
           subHeading="Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off."
-          linkText="Read More"
-          Link="/"
+          linkText="Shop All"
+          link="/shop"
           bg="light-2"
           // images={[
           //   "/images/cbd-group.png",
@@ -191,7 +191,16 @@ class Home extends React.Component {
                 </p>
               <div class="wellness-wrapper__btn">
                 <div className="mt-4 mb-4">
-                  <Button parentClass="c-home" versions={["btm-br-gold"]} theme={['btm-br']} >Read More</Button>
+                  <Button 
+                    parentClass="c-home" 
+                    type="link" 
+                    versions={["btm-br-gold"]}
+                    onLinkClick={()=> {
+                      this.setState(prevState => ({
+                        isLrSection: !prevState.isLrSection
+                      }))
+                    }}
+                    theme={['btm-br']} >Read More</Button>
                 </div>
               </div>
               <div class="willness-img">

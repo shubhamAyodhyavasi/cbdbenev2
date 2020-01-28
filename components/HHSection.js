@@ -22,11 +22,13 @@ const HHSection = ({heading, subHeading, linkText, link, images, bg, children}) 
                         {subHeading}
                     </Heading>
                 </div>
-                <div className="col-lg-5 c-hh-section__btn-wrapper">
+                <div className="col-lg-5 c-hh-section__btn-wrapper mt-4">
                 {linkText && <Button 
                     theme="outline"
                     type="link" 
-                    link={link || "#"} >{linkText}</Button>}
+                    className="mt-3"
+                    link={link || "#"} >{linkText}
+                    </Button>}
                 </div>
                 {
                     images.map((el, i) => 

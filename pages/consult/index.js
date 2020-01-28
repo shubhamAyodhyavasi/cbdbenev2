@@ -68,8 +68,8 @@ class Contact extends React.Component {
         const {
           activeCategory, products
         } = this.state
-        return (
-            <Layout className="c-consult-page" title="Consult">
+        return ( 
+            <Layout className="c-consult-page" title="Consult" headerTheme="dark" fixed={true}>
             <Banner
               image="/images/consult.jpg"
               image2x="/images/contact-banner@2x.jpg"

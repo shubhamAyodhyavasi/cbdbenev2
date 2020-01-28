@@ -27,6 +27,11 @@
     &__content-wrap{
         text-align: justify;
     }
+    &__img{
+        @include bpm-md{
+            margin-top: 30px;
+        }
+    }
     &__btn-wrapper{
         text-align: right;
         @include bp-md{

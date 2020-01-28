@@ -7,6 +7,9 @@
     &--light-2{
         background-color: $light-color-2;
     }
+    &__heading-wrapper{
+        margin-bottom: 1rem;
+    }
     &__heading{
         @include bp-xxl{
             font-size: 50px;
@@ -20,6 +23,7 @@
         }
     }
 }
+    
 
 
 
