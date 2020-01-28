@@ -5,12 +5,15 @@
         border: none;
         border-radius: 0;
         border: none;
-        border-bottom: 1px solid ;
+        border-bottom: 1px solid #000 !important ;
         background-color: transparent !important;
         &:focus,&:hover{
             outline: none !important;
             box-shadow: none;
             border-bottom: 1px solid $dark-color-2;
+        }
+        &--important{
+            border-bottom: 1px solid #000 !important;
         }
     }
     &--dark{
@@ -22,6 +25,7 @@
             }
         }
     }
+    
 }
 // override ant design
 .has-error .ant-input:focus{

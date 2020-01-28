@@ -68,7 +68,7 @@ class Contact extends React.Component {
             doctors
         } = this.props
         return (
-            <Layout className="c-consult-page" title="Consult">
+            <Layout className="c-consult-page" title="Consult" headerTheme="dark" fixed={true}>
             <Banner
               image="/images/consult.jpg"
               image2x="/images/contact-banner@2x.jpg"

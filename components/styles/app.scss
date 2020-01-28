@@ -59,13 +59,14 @@
 
 
 // extra can be transfer in file
-.c-less-more__less {line-height: 1.4em;height: 1.4em;overflow: hidden;}
+.c-less-more__less {line-height:2em;height: 2em;overflow: hidden;font-size: 16px;}
 
 .c-less-more__whole{
     overflow: hidden;
 }
 
 .c-less-more__whole-inner {
-    margin-top: -1.4em;
-    line-height: 1.4em;
+    margin-top: -2em;
+    line-height: 2em;
+    font-size: 16px;
 }

@@ -7,7 +7,7 @@ const LRSection = ({heading, subHeading, content, children, link, linkText, imag
                 <div className="flex-grow-0 c-lr-section__heading-wrapper">                    
                     <Heading parentClass="c-lr-section" >{heading}</Heading>
                 </div>
-                <div className="col-md-6 c-lr-section__sub-heading-wrapper">
+                <div className="col-md-4 c-lr-section__sub-heading-wrapper">
                     <h4 className="c-lr-section__sub-heading">
                         {subHeading}
                     </h4>
@@ -30,7 +30,7 @@ const LRSection = ({heading, subHeading, content, children, link, linkText, imag
                                     onLinkClick()
                                 }
                             }}
-                            link={link || "#"} >{linkText}</Button>}
+                            link={link} >{linkText}</Button>}
                     </div>
                 </div>
                 <div className="c-lr-section__col c-lr-section__col--image c-lr-section__col--sm-7 col-sm-7">

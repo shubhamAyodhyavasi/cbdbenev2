@@ -3,7 +3,10 @@ import classNames from 'classnames'
 const Button = ({type, value, children, onClick, link, theme, parentClass, versions, disabled}) => {
     const parent = `${parentClass}__btn`
     const versionClass = versions.map(el => (`c-btn--${el}`)).join(" ")
-
+    console.clear()
+    console.log({
+        link
+    })
     const onBtnClick = () => {
         if(typeof onClick === "function") onClick()
     }
@@ -21,10 +24,13 @@ const Button = ({type, value, children, onClick, link, theme, parentClass, versi
                 </button>
             )
         case "link":
+            if(typeof link === "string")
             return (<Link href={link}>
-                <a className={className}  onClick={onBtnClick} >{value}{children}</a>
+                <a className={className} onClick={onBtnClick} >{value}{children}</a>
             </Link>)
-        
+
+            return (
+                <span className={className} onClick={onBtnClick} >{value}{children}</span>)
     
         default:
             return (

@@ -169,7 +169,7 @@ class ListCard extends Component {
                               {myCheques && myCheques.length > 0 && (
                                 <Card
                                   // className="panel-section w-100"
-                                  className="w-100"
+                                  className="w-100 border-0"
                                 >
                                   <div className="col-12 pt-3">
                                     <div
