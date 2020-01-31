@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import Layout from "../../components/Layouts/Layout"
 import HImgSection from "../../components/HImgSection";
+import HHSection from '../../components/HHSection'
+import BundleProducts from '../../components/BundleProducts'
 import Heading from "../../components/Heading";
 import Logo from "../../components/Logo";
 import apiList from "../../services/apis/apiList";
@@ -8,7 +10,7 @@ import ProductCard from "../../components/ProductCard";
 import { getProductImage, getProductTitle, getProductShortDesc, getBasicPrice, addSlugToProduct, getVisibleProducts } from "../../services/helpers/product";
 import projectSettings from "../../constants/projectSettings";
 import fetch from 'isomorphic-unfetch'
-const Category = ({ productList, ...props }) => {
+const Category = ({ productList, combos, ...props }) => {
     const products = productList.map(el => {
         console.log({
             price:getBasicPrice(el),
@@ -39,6 +41,18 @@ const Category = ({ productList, ...props }) => {
                 </HImgSection>
                 <div className="c-category-page__products-wrapper">
                     <div className="c-category-page__row row">
+                        <div className="col-lg-4 col-md-6 d-flex justify-content-center">
+                            <div className="c-category-page__heading-wrapper">
+                                <Heading parentClass="c-category-page" versions={['large']} >
+                                    Discover
+                                    <br />
+                                    {`our ${props.category} line`}
+                                </Heading>
+                                {`Buy the highest quality \nCBD Isolate oil online extracted from \norganically grown hemp.`}
+                                Today we're confident that were providing you with the highest quality CBD you can find.
+                                <hr />
+                            </div>
+                        </div>
                         {
                             products.map(el => (
                                 <div key={el._id} className="col-lg-4 col-md-6">
@@ -48,6 +62,24 @@ const Category = ({ productList, ...props }) => {
                         }
                     </div>
                 </div>
+                {combos && (combos.length > 1) && <div className="c-category-page__combos-wrapper" >
+                    <div className="c-category-page__row row" >
+                        <div className="col-md-6 col-lg-4 offset-lg-1 mb-md-0 mb-3" >
+                            <Heading parentClass="c-category-page" versions={['large']} >
+                                TRY THE BUNDLES
+                            </Heading>
+                        </div>
+                        <div className="col-md-6" >
+                            <Heading parentClass="c-category-page" subHeading={true} versions={['lft-br']}  >
+                                Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.
+                            </Heading>
+                        </div>
+                        <div className="col-12">
+                            {/* <BundleProducts versions={["no-padding", "h-auto"]} bg="bggrey" products={combos} />  */}
+                            <BundleProducts versions={["no-padding", "h-auto"]} products={combos} /> 
+                        </div>
+                    </div>
+                </div>}
             </div>
         </Layout>
     )
@@ -60,12 +92,18 @@ Category.getInitialProps = async ({ query }) => {
             
         return {
             category: query.cid,
-            productList: visibleProducts.map(el => addSlugToProduct(el))
+            productList: visibleProducts.map(el => addSlugToProduct(el)),
+            combos: [],
         }
     }else{
         const res = await fetch(apiList.getAllProducts)
         const productList = await res.json()
         const visibleProducts = getVisibleProducts(productList.products)
+
+        const comboRes      = await fetch(apiList.getAllCombos)
+        const comboList     = await comboRes.json()
+        const visibleCombo  = getVisibleProducts(comboList.combos)
+
         const categoryProduct = visibleProducts.filter(el => {
             if(el.categoryid ){
                 if(el.categoryid.constructor === Array){
@@ -78,7 +116,8 @@ Category.getInitialProps = async ({ query }) => {
         })
         return {
             category: query.cid,
-            productList: categoryProduct.map(el => addSlugToProduct(el))
+            productList: categoryProduct.map(el => addSlugToProduct(el)),
+            combos: visibleCombo.map(el => addSlugToProduct(el)),
         }
     }
 }

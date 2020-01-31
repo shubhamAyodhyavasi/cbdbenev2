@@ -13,6 +13,7 @@ import { getAllCombos } from '../services/api'
 import BundleProducts from '../components/BundleProducts'
 import ScrollAnimation from "react-animate-on-scroll";
 import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 import { Collapse } from 'reactstrap';
 // import Head from 'next/head'
 // import Nav from '../components/nav'
@@ -99,7 +100,7 @@ class Home extends React.Component {
     })
     const lrText = `In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.`
     return (
-      <Layout title="Home" headerTheme="light"  >
+      <Layout title="Home" headerTheme="light" homeLogo={true} >
         <Banner
           image="/images/home-banner.png"
           mobileImage="/images/home-banner-mobile.png"
@@ -172,32 +173,32 @@ class Home extends React.Component {
             </div>          
             <div class="wellness-wrapper__desp"> 
             <div className="c-less-more">
-            <div className="c-less-more__less" >
-            Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
+            <div className="c-less-more__less c-less-more__less--large" >
+            Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs.<br />We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
 
             </div>
-            <Collapse isOpen={isWillness}>
+            <Fade when={isWillness}>
               <div className="c-less-more__whole">
-                <div className="c-less-more__whole-inner">
-                Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
+                <div className="c-less-more__whole-inner  c-less-more__whole-inner--large">
+                Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs.<br />We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
 
                 </div>
               </div>
-            </Collapse>
+            </Fade>
           </div>
        
-              <p class="wellness-wrapper__desp--text">
+              {/* <p class="wellness-wrapper__desp--text">
                 Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
-                </p>
+                </p> */}
               <div class="wellness-wrapper__btn">
                 <div className="mt-4 mb-4">
                   <Button 
                     parentClass="c-home" 
                     type="link" 
                     versions={["btm-br-gold"]}
-                    onLinkClick={()=> {
+                    onClick={()=> {
                       this.setState(prevState => ({
-                        isLrSection: !prevState.isLrSection
+                        isWillness: !prevState.isWillness
                       }))
                     }}
                     theme={['btm-br']} >Read More</Button>

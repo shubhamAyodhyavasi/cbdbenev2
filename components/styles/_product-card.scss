@@ -40,6 +40,13 @@
         margin-bottom: 0;
         font-size: 1.1em;
         font-weight: 500;
+        @include bp-xxl{
+            font-size: 18px;
+        }
+    }
+    &__price{
+        font-family: $sub-font;
+        font-size: 1.3em;
     }
     &__sub-title{
         font-weight: 500;

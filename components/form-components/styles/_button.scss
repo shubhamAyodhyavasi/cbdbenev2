@@ -10,6 +10,11 @@
     text-decoration: none;
     // font-weight: 500;
     transition: all .3s;
+    cursor: pointer;
+    @include bp-xxl{
+        font-size: $font-size-xxl;
+    }
+
     &:hover{
         text-decoration: none;
         color: $base-color;

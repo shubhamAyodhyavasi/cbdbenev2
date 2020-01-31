@@ -6,7 +6,7 @@ import '../styles/app.scss'
 import Footer from '../Footer'
 import classNames from 'classnames'
 
-const Layout = ({title, children, isHeaderBg, headerTheme, headerVersions, pageClass, fixed}) => (
+const Layout = ({title, children, isHeaderBg, headerTheme, headerVersions, pageClass, fixed, homeLogo}) => (
   <div className={classNames("c-layout", {
     [pageClass]: pageClass
   })}>
@@ -14,7 +14,7 @@ const Layout = ({title, children, isHeaderBg, headerTheme, headerVersions, pageC
       <title>{title ? title : projectSettings.projectName}</title>
       <link rel='icon' href='/favicon.ico' />
     </Head>
-    <Header theme={headerTheme} versions={headerVersions} bg={isHeaderBg} fixed={fixed}/>
+    <Header theme={headerTheme} homeLogo={homeLogo} versions={headerVersions} bg={isHeaderBg} fixed={fixed}/>
     {children}
     <Footer />
   </div>

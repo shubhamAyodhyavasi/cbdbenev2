@@ -59,7 +59,21 @@
 
 
 // extra can be transfer in file
-.c-less-more__less {line-height:2em;height: 2em;overflow: hidden;font-size: 16px;}
+.c-less-more__less {
+    line-height:2em;
+    height: 2em;
+    overflow: hidden;
+    font-size: 16px;
+    @include bp-xxl{
+        font-size: $font-size-xxl;
+    }
+    &--large{
+        height: 6em;
+        @include bpm-xs{
+            height: 10em;
+        }
+    }
+}
 
 .c-less-more__whole{
     overflow: hidden;
@@ -69,4 +83,14 @@
     margin-top: -2em;
     line-height: 2em;
     font-size: 16px;
+    @include bp-xxl{
+        font-size: $font-size-xxl;
+    }
+    
+    &--large{
+        margin-top: -6em;
+        @include bpm-xs{
+            margin-top: -10em;
+        }
+    }
 }

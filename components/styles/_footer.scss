@@ -5,6 +5,9 @@
         font-size: 18px;
         font-family: $sub-font;
         margin-bottom: 20px;
+        @include bp-xxl{
+            font-size: 20px;
+        }
     }
     &__menu-list{
         padding-left: 0;
@@ -18,6 +21,9 @@
         color: $base-color;
         text-decoration: none;
         font-size: 14px;
+        @include bp-xxl{
+            font-size: 16px;
+        }
         &:hover{
             text-decoration: none;
             color: $brand-color-1;
@@ -42,9 +48,14 @@
     }
     &__text{
         font-size: 14px;
+        
+        @include bp-xxl{
+            font-size: 16px;
+        }
     }
     &__logo-wrapper{
         padding-bottom: 40px;
+        display: inline-block;
         @media(min-width: 1400px){
             padding-bottom: 80px;
         }

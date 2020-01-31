@@ -48,6 +48,9 @@
         max-width: 100%;
         position: relative;
         z-index: 3;
+        @include bp-xxl{
+            width: 710px;
+        }
         @include bpm-md{
             text-align: left;
             display: flex;
@@ -66,12 +69,18 @@
             font-size: 64px;
             line-height: 1;
         }
+        @include bp-xxl{
+            font-size: 94px;
+        }
     }
     &__text{
         font-size: $base-font-size;
         letter-spacing: 0.5px;
         margin: 30px 0;
-        line-height: 2;        
+        line-height: 2;      
+        @include bp-xxl{
+            font-size: 17px;
+        }  
     }
     &__logo{
         display: inline-block;

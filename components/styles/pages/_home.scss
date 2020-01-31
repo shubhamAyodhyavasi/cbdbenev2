@@ -4,5 +4,9 @@
             padding-left: 50px;
             padding-right: 50px;
         }
+        @include bp-xxl{
+            padding: 10px 80px;
+            font-size: 22px;
+        }
     }
 }

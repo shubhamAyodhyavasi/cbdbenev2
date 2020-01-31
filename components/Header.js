@@ -15,7 +15,7 @@ import mobileMenusRight from '../constants/mobileMenusRight';
 
 
 
-const Header = ({bg, theme, versions, fixed}) => {
+const Header = ({bg, theme, versions, fixed, homeLogo}) => {
     const versionClass = versions.map(el => (`c-header--${el}`)).join(" ")
     const [isFixed, setIsFixed] = useState(false)
     const [show, setIsShow] = useState(true)
@@ -43,9 +43,10 @@ const Header = ({bg, theme, versions, fixed}) => {
     false,
     300
   )
-
+    const logoVersion =  homeLogo ? [] : ["non-home"]
  
     if(fixed){
+
     return (
         <div>
         
@@ -63,10 +64,10 @@ const Header = ({bg, theme, versions, fixed}) => {
                     [versionClass]: versions
                 })}> 
                         <NavMobile parent="c-header" items={mobileMenus} />
-                            <Nav parent="c-header" items={mainMenus} />
-                            <Logo parent="c-header" />
-                            <Nav parent="c-header" isRight={true} items={rightMenus} />
-                            <NavMobile parent="c-header" onlyCart={true} items={mobileMenusRight} />   
+                        <Nav parent="c-header" items={mainMenus} />
+                        <Logo parent="c-header" text={!homeLogo} versions={logoVersion} />
+                        <Nav parent="c-header" isRight={true} items={rightMenus} />
+                        <NavMobile parent="c-header" onlyCart={true} items={mobileMenusRight} />   
                 </header>
             </div>
       
@@ -88,7 +89,7 @@ const Header = ({bg, theme, versions, fixed}) => {
                     })}> 
                             <NavMobile parent="c-header" items={mobileMenus} />
                             <Nav parent="c-header" items={mainMenus} />
-                            <Logo parent="c-header" />
+                            <Logo parent="c-header" text={!homeLogo} versions={logoVersion} />
                             <Nav parent="c-header" isRight={true} items={rightMenus} />
                             <NavMobile parent="c-header" onlyCart={true} items={mobileMenusRight} />
                     </header>

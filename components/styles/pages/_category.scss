@@ -1,5 +1,25 @@
 .c-category-page{
-    &__products-wrapper{
+    &__products-wrapper, &__combos-wrapper{
         padding: 40px;
+    }
+    &__combos-wrapper{
+        padding-bottom: 0;
+        background-color: #fff;
+    }
+    &__heading-wrapper{
+        padding-top: 50px;
+        @include bp-md{
+            padding-top: 100px;
+            width: 400px;
+            max-width: 100%;
+        }
+    }
+    &__sub-heading{
+        font-size: 18px;
+    }
+    .c-h-img-section{
+        &--full{
+            min-height: calc(90vh - 80px);
+        }
     }
 }
