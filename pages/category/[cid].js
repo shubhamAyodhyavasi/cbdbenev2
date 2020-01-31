@@ -10,6 +10,8 @@ import ProductCard from "../../components/ProductCard";
 import { getProductImage, getProductTitle, getProductShortDesc, getBasicPrice, addSlugToProduct, getVisibleProducts } from "../../services/helpers/product";
 import projectSettings from "../../constants/projectSettings";
 import fetch from 'isomorphic-unfetch'
+import { category as categoryData } from '../../site-content'
+import parse from "html-react-parser"
 const Category = ({ productList, combos, ...props }) => {
     const products = productList.map(el => {
         console.log({
@@ -30,7 +32,7 @@ const Category = ({ productList, combos, ...props }) => {
             <div className="c-category-page">
                 <HImgSection version={["full", "content-bottom"]} image={"/images/oil-page.jpg"} >
                     <div>
-                        <Heading parentClass="c-category-page" versions={['lft-br', 'large']} >{`Buy the highest quality \nCBD Isolate oil online extracted from \norganically grown hemp.`}</Heading>
+                        <Heading parentClass="c-category-page" versions={['lft-br', 'large']} >{parse(categoryData.title)}</Heading>
                     </div>
                     <br />
                     <br />
@@ -48,8 +50,7 @@ const Category = ({ productList, combos, ...props }) => {
                                     <br />
                                     {`our ${props.category} line`}
                                 </Heading>
-                                {`Buy the highest quality \nCBD Isolate oil online extracted from \norganically grown hemp.`}
-                                Today we're confident that were providing you with the highest quality CBD you can find.
+                                {parse(categoryData.content)}
                                 <hr />
                             </div>
                         </div>

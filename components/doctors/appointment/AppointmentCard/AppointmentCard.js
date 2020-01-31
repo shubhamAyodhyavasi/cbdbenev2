@@ -53,11 +53,7 @@ export default class AppointmentCard extends Component {
     };
     onDateChange = dates => {
         const doctorObj = this.props.doctor || {}// JSON.parse(localStorage.getItem("user"))
-        console.clear()
-        console.log({
-            doctorObj,
-            props: this.props
-        })
+        
         const {
             _id: doctor
         } = doctorObj

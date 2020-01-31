@@ -51,6 +51,7 @@ const apiList = {
     ambassadorPortalLogin           : `${baseUrl}/ambassador-portal/login/`,
     ambassadorPortalRegistration    : `${baseUrl}/ambassador-portal/register/`,
     addAmbassador                   : `${baseUrl}/ambassador-portal/add/url/`,
+    forgotPasswordAff               : `${baseUrl}/ambassador-portal/forgetpassword/`,
 
 
     // doc mz

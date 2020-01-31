@@ -3,10 +3,7 @@ import classNames from 'classnames'
 const Button = ({type, value, children, onClick, link, theme, parentClass, versions, disabled}) => {
     const parent = `${parentClass}__btn`
     const versionClass = versions.map(el => (`c-btn--${el}`)).join(" ")
-    console.clear()
-    console.log({
-        link
-    })
+    
     const onBtnClick = () => {
         if(typeof onClick === "function") onClick()
     }

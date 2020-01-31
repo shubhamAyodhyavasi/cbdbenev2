@@ -15,6 +15,8 @@ import SearchBox from "../../components/form-components/SearchBox";
 import fetch from "isomorphic-unfetch";
 import { Collapse } from "reactstrap";
 import { Icon } from 'antd'
+import { shop as shopData } from '../../site-content'
+import parse from "html-react-parser"
 const Shop = ({ productList, combos, ...props }) => {
     
     const [searchValue, setSearchValue] = useState("")
@@ -69,7 +71,7 @@ const Shop = ({ productList, combos, ...props }) => {
                 <div className="container-fluid">
                     <div className="c-shop-page__row c-shop-page__row--light-bg row">
                         <div className="col-md-6">
-                            <Heading versions={["lft-br"]} parentClass="c-shop-page" >Discover the whole range of cbd products</Heading>
+                            <Heading versions={["lft-br"]} parentClass="c-shop-page" >{parse(shopData.title)}</Heading>
                         </div>
                         <div className="col-md-6 mt-5 mt-md-0">
                             <div className="c-shop-page__filter-box">
@@ -120,12 +122,12 @@ const Shop = ({ productList, combos, ...props }) => {
                     <div className="c-category-page__row row" >
                         <div className="col-md-6 col-lg-4 offset-lg-1 mb-md-0 mb-3" >
                             <Heading parentClass="c-category-page" versions={['large']} >
-                                TRY THE BUNDLES
+                                {parse(shopData.bundleTitle)}
                             </Heading>
                         </div>
                         <div className="col-md-6" >
                             <Heading parentClass="c-category-page" subHeading={true} versions={['lft-br']}  >
-                                Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.
+                                {parse(shopData.bundleSubTitle)}
                             </Heading>
                         </div>
                         <div className="col-12">

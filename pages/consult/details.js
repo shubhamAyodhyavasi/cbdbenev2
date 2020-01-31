@@ -41,10 +41,6 @@ class MainForm extends Component {
 	}
 
 	componentDidMount(){
-		console.clear()
-		console.log({
-			props: this.props
-		})
 		if(this.props.isPersist && !this.props.user._id){
 			this.props.showRegBar();
 		}
