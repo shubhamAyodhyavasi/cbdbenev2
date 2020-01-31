@@ -3,7 +3,7 @@ import Heading from "../components/Heading"
 
 const Accessibility = ()=> {
     return (
-        <Layout headerVersions={["bg-light"]} headerTheme="dark">
+        <Layout headerVersions={["bg-light"]} fixed={true} headerTheme="dark">
             <div className="c-accessibility__page-title">
                 <Heading versions={["large"]} parentClass="c-accessibility" >Website accessibility</Heading>
             </div>

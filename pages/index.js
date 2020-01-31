@@ -100,7 +100,7 @@ class Home extends React.Component {
     })
     const lrText = `In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.`
     return (
-      <Layout title="Home" headerTheme="light" homeLogo={true} >
+      <Layout title="Home" headerTheme="light" homeLogo={true} pageClass={"c-home"} >
         <Banner
           image="/images/home-banner.png"
           mobileImage="/images/home-banner-mobile.png"

@@ -21,6 +21,7 @@ const Layout = ({title, children, isHeaderBg, headerTheme, headerVersions, pageC
 )
 
 Layout.defaultProps = {
-  isHeaderBg: false
+  isHeaderBg: false,
+  fixed: true
 }
 export default Layout

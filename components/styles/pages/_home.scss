@@ -9,4 +9,12 @@
             font-size: 22px;
         }
     }
+    .c-header{
+        &__wrapper{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+    }
 }
