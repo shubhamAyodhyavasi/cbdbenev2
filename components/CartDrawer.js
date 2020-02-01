@@ -64,7 +64,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart, hideCartBar })
                                     cart.taxPercent ? ["small", "no-border"] : ["small"] 
                                 }
                             />
-                            {cart.taxPercent && cart.taxPercent > 0 && <CartItem
+                            {(taxPrice > 0 ) && <CartItem
                                 small={true}
                                 title={"Taxes"}
                                 // price={`${(cart.taxPercent) ? cart.taxPercent : 0}`}
