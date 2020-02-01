@@ -111,7 +111,7 @@ export default class AppointmentCard extends Component {
                 // [typeClass]: typeClass,
                 [parent]: parentClass
             })}>
-                <Card parentClass="" title={title}>
+                <Card title={title}>
                     {doctor && <AppointmentSlider onDateChange={this.onDateChange} />}
                     <div className="c-appointment-card__scroll-wrapper">
                         <CustomScroll heightRelativeToParent="100%">
