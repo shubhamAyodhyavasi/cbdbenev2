@@ -2,8 +2,8 @@ import Heading from './Heading';
 import { Rate } from 'antd';
 
 const ProductRating = ({reviews}) =>{
-    const getAvg = reviews => {
-      const newArr = reviews.map(el => el.overall);
+    const getAvg = (reviews) => {
+      const newArr = (reviews).map(el => el.overall);
       const sum = newArr.reduce((a, b) => a + b, 0);
       return (sum / reviews.length).toFixed(1);
     };
@@ -44,5 +44,8 @@ const ProductRating = ({reviews}) =>{
         </div>
     )
         
+}
+ProductRating.defaultProps = {
+    reviews: []
 }
 export default ProductRating

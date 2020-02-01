@@ -5,10 +5,13 @@ import TitleList from './TItleList'
 import Heading from './Heading'
 import { Rate } from 'antd';
 import Router from 'next/router'
+import moment from 'moment'
 import projectSettings from '../constants/projectSettings'
 import FadeTransition from "../services/extra/FadeTransition";
 import Fade from 'react-reveal/Fade';
+import ProductRating from '../components/ProductRating'
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
+
 const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
     const componentClass = `c-product-details-tab`
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
@@ -185,22 +188,29 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
                         <div className="col-12 c-product-details-tab__contain-col">
                             {/* <Heading parentClass={componentClass} h="4" subHeading={true} >Suggested Use</Heading>
                             <p className={`${componentClass}__text`} >{direction}</p> */}
-                            {totalReview > 0 ? <div className="row">
-                                <div className="col-lg-8 col-md-9">
-                                    {reviews && reviews.map((el, key)=> <TitleList key={key} title={el.title} >
-                                        {el.content}
-                                    </TitleList>)}
-                                </div>
-                                <div className="col-lg-4 col-md-3 text-right">
-                                    <Rate 
-                                        style={{ color: '#000' }}
-                                        className="c-product-details-tab__stars" 
-                                        disabled value={avgReview} 
-                                        allowHalf={true} />
-                                    <p className="c-product-details-tab__review-para">{totalReview} reviews</p>
-                                    <h1 className="c-product-details-tab__review-heading">{avgReview}</h1>
-                                </div>
-                            </div> 
+                            {totalReview > 0 ? <>
+                                <ProductRating reviews={reviews} />
+                                <section className="rating">
+                                    {reviews && reviews.map((el, key)=> <ReviewItem key={key} {...el} />)}
+                                    
+                                </section>
+                                {/* <div className="row">
+                                    <div className="col-lg-8 col-md-9">
+                                        {reviews && reviews.map((el, key)=> <TitleList key={key} title={el.title} >
+                                            {el.content}
+                                        </TitleList>)}
+                                    </div>
+                                    <div className="col-lg-4 col-md-3 text-right">
+                                        <Rate 
+                                            style={{ color: '#000' }}
+                                            className="c-product-details-tab__stars" 
+                                            disabled value={avgReview} 
+                                            allowHalf={true} />
+                                        <p className="c-product-details-tab__review-para">{totalReview} reviews</p>
+                                        <h1 className="c-product-details-tab__review-heading">{avgReview}</h1>
+                                    </div>
+                                </div>  */}
+                            </>
                             :
                             <div className="row pt-5">
                                 <div className="col-md-10 offset-md-1 text-center">
@@ -243,6 +253,34 @@ const TabContainer = ({children, isActive}) => {
             {children}
         </div>
     </div>
+}
+
+const ReviewItem = ({
+    title,
+    content,
+    createdOn,
+    userName,
+    overall
+}) => {
+    return (<div className="container rating__wrapper">
+        <div className="rating__star">
+            <h5 className="rating__star--name">{userName || "Steve"}</h5>
+            {/* overall */}
+            <Rate 
+                style={{ color: '#000' }}
+                className="rating__stars" 
+                disabled value={overall} 
+                allowHalf={true} />
+        </div>
+        <div className="rating__text">
+            <h5 className="rating__text--name">{title}</h5>
+            <p className="rating__text--msg">{content}</p>
+        </div>
+        <div className="rating__date">
+            <p className="rating__date--msg">{moment(createdOn).format("dd, MMMM, YYYY")}</p>
+            {/* <p className="rating__date--msg">12 september 2017</p> */}
+        </div>
+    </div>)
 }
 
 ProductDetailsTab.defaultProps = {
