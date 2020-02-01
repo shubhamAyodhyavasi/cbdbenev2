@@ -289,9 +289,9 @@ class AffiliateBankInformation extends Component {
     return (
       <div className="container pl-0 pr-0">
         {this.state.SpinnerToggle && <Loader />}
-        <div class="ambassador__table-wrapper">
+        <div className="ambassador__table-wrapper">
         <h2 className="ambassador__table-heading">Bank Information</h2>
-        <div class="ambassador__table-desp">
+        <div className="ambassador__table-desp">
         {/* <p>
           You must submit Tax Information to be able to edit Payment Information
           or to change Payee/Account Holder's Name.

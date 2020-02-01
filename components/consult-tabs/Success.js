@@ -17,8 +17,8 @@ export default class Success extends Component{
         const {values: { firstName, lastName, phoneNumber, zipCode, state, weight, age, notes }} = this.props;
 
         return(
-            <div class="c-confirmation">
-                <div class="container-fluid">
+            <div className="c-confirmation">
+                <div className="container-fluid">
                     <div className="row justify-content-center">
                         <div className="col-md-6">
                     <h1 className="c-confirmation__center">Confirm your Appointment</h1>
@@ -29,7 +29,7 @@ export default class Success extends Component{
                     {phoneNumber}
                     { zipCode}
 
-                        <div class="c-personalDetails__btn-wrap">
+                        <div className="c-personalDetails__btn-wrap">
                             <Button className="tab__btn" onClick={this.back}>Back</Button>
                             <Button className="tab__btn" onClick={this.saveAndContinue}>Confirm Appointment</Button>
                         </div>                     

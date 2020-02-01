@@ -38,7 +38,7 @@ export default class PersonalDetails extends Component{
                         {age_err && <span className="error" >{age_err}</span>}
                         <Input parentClass="c-address-form" label="Notes for Doctor" value={notes} onChange={this.props.handleChange('notes')} />
                         {notes_err && <span className="error" >{notes_err}</span>}
-                        <div class="c-personalDetails__btn-wrap">
+                        <div className="c-personalDetails__btn-wrap">
                             {/* <Button className="tab__btn" onClick={this.back} versions={["outline", "block"]}>Back</Button> */}
                             <span />
                             <Button className="tab__btn" onClick={this.saveAndContinue}>Next</Button>

@@ -23,7 +23,7 @@ export default class Scheduling extends Component{
                 <div className="row justify-content-center">                
                     <div className="col-md-5">
                 
-                    <p class="c-scheduling__para">How Long do you expect this consultation to go on for?</p>
+                    <p className="c-scheduling__para">How Long do you expect this consultation to go on for?</p>
                     <div className="radio__wrapper">
                     <AntRadio.Group onChange={(e)=> {
                         this.props.radioChange(e, "scheduling")
@@ -44,7 +44,7 @@ export default class Scheduling extends Component{
                     </div>
 
                     
-                    <div class="c-personalDetails__btn-wrap">
+                    <div className="c-personalDetails__btn-wrap">
                             <Button className="tab__btn" onClick={this.back} versions={["outline", "block"]}>Back</Button>
                             <Button className="tab__btn" onClick={this.saveAndContinue}>Next</Button>
                         </div>  

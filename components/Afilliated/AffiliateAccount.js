@@ -597,9 +597,9 @@ class AffiliateAccount extends Component {
                   "has-error": name_err
                 })}
               >
-                <div class="ambassador__table-wrapper">
+                <div className="ambassador__table-wrapper">
                 <h2 className="ambassador__table-heading">Account</h2>
-                <div class="ambassador__table-desp">                
+                <div className="ambassador__table-desp">                
                 <label>Name*</label>
                 <input
                   id="name"

@@ -174,7 +174,7 @@ class ProductInfo extends React.Component {
             <div className="c-product-info container">
                 <div className="row c-product-info__row">
                     <div className="col-md-6 c-product-info__image-col">
-                        <div class="c-product-info__mobile-sec">
+                        <div className="c-product-info__mobile-sec">
                             <div className="c-product-info__title-wrap">
                                 {headingAndReviews()}
                             </div>

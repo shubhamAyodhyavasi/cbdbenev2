@@ -29,46 +29,46 @@ class Home extends React.Component {
           <div className="reviews__heading">
             <div className="reviews__wrap">
               <h1 className="reviews__wrap--text">
-                <span class="reviews__wrap--xl">bene</span> reviews
+                <span className="reviews__wrap--xl">bene</span> reviews
               </h1>
             </div>
             <div className="reviews__icon">
-              <img class="img-fluid" src="/images/logo-new.png" />
+              <img className="img-fluid" src="/images/logo-new.png" />
             </div>
           </div>
-          <div class="reviews__img">
-            <img class="img-fluid" src="/images/reviews-bnr.png" />
+          <div className="reviews__img">
+            <img className="img-fluid" src="/images/reviews-bnr.png" />
           </div>
         </div>
 
-        <section class="write">
-          <div class="write__reviews">
-            <h3 class="write__reviews--text">
+        <section className="write">
+          <div className="write__reviews">
+            <h3 className="write__reviews--text">
               What our clients think about <br />
               bené and how they rate us
             </h3>
-            <a class="write__btn c-btn c-btn--outline " href="#">
+            <a className="write__btn c-btn c-btn--outline " href="#">
               Write a reviews
             </a>
           </div>
         </section>
         <ProductRating reviews={reviews} />
 
-        <section class="rating">
-          {/* <div class="container rating__wrapper">
-            <div class="rating__star">
-              <h5 class="rating__star--name">Name</h5>
+        <section className="rating">
+          {/* <div className="container rating__wrapper">
+            <div className="rating__star">
+              <h5 className="rating__star--name">Name</h5>
             </div>
-            <div class="rating__text">
-              <h5 class="rating__text--name">Best product ever!!!</h5>
-              <p class="rating__text--msg">
+            <div className="rating__text">
+              <h5 className="rating__text--name">Best product ever!!!</h5>
+              <p className="rating__text--msg">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud.
               </p>
             </div>
-            <div class="rating__date">
-              <p class="rating__date--msg">12 september 2017</p>
+            <div className="rating__date">
+              <p className="rating__date--msg">12 september 2017</p>
             </div>
           </div> */}
           {
@@ -81,18 +81,18 @@ class Home extends React.Component {
   }
 }
 const ReviewItem = ({review}) => (
-  <div class="container rating__wrapper">
-    <div class="rating__star">
-      <h5 class="rating__star--name">{review.userid ? review.userid.email.split("@")[0] : "Guest"}</h5>
+  <div className="container rating__wrapper">
+    <div className="rating__star">
+      <h5 className="rating__star--name">{review.userid ? review.userid.email.split("@")[0] : "Guest"}</h5>
     </div>
-    <div class="rating__text">
-      <h5 class="rating__text--name">{review.title}</h5>
-      <p class="rating__text--msg">
+    <div className="rating__text">
+      <h5 className="rating__text--name">{review.title}</h5>
+      <p className="rating__text--msg">
         {review.content}
       </p>
     </div>
-    <div class="rating__date">
-      <p class="rating__date--msg">{moment(review.createdOn).format("DD MMMM YYYY")}</p>
+    <div className="rating__date">
+      <p className="rating__date--msg">{moment(review.createdOn).format("DD MMMM YYYY")}</p>
     </div>
   </div>
 )

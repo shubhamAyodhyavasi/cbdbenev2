@@ -37,7 +37,7 @@ export default class AddressRadio extends Component {
                       type="radio" 
                       name={name} 
                       checked={checked}
-                      class="float-right"
+                      className="float-right"
                       onChange={this.onChange}
                       id={id} 
                     /> {title}

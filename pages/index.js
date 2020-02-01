@@ -192,15 +192,15 @@ class Home extends React.Component {
           <BundleProducts versions={["no-padding", "h-auto"]} bg="bggrey" products={combos} />
         </HHSection>
         </Fade>
-        <section class="wellness">
-          <div class="wellness__heading">
-            <h3 class="wellness__heading--text">{parse(fifthTitle)}</h3>
+        <section className="wellness">
+          <div className="wellness__heading">
+            <h3 className="wellness__heading--text">{parse(fifthTitle)}</h3>
           </div>
-          <div class="wellness-wrapper">
-            <div class="wellness-wrapper__img">
-              <img class="wellness-wrapper__img--img img-fluid" src="/images/consult-image.jpg" />
+          <div className="wellness-wrapper">
+            <div className="wellness-wrapper__img">
+              <img className="wellness-wrapper__img--img img-fluid" src="/images/consult-image.jpg" />
             </div>          
-            <div class="wellness-wrapper__desp"> 
+            <div className="wellness-wrapper__desp"> 
             <div className="c-less-more">
             <div className="c-less-more__less c-less-more__less--large" >
               {parse(fifthContent)}
@@ -215,10 +215,10 @@ class Home extends React.Component {
             </Fade>
           </div>
        
-              {/* <p class="wellness-wrapper__desp--text">
+              {/* <p className="wellness-wrapper__desp--text">
                 Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
                 </p> */}
-              <div class="wellness-wrapper__btn">
+              <div className="wellness-wrapper__btn">
                 <div className="mt-4 mb-4">
                   <Button 
                     parentClass="c-home" 
@@ -232,8 +232,8 @@ class Home extends React.Component {
                     theme={['btm-br']} >{parse(fifthBtnText)}</Button>
                 </div>
               </div>
-              <div class="willness-img">
-                <img class="img-fluid" src="/images/cbd-wellness.png"></img>
+              <div className="willness-img">
+                <img className="img-fluid" src="/images/cbd-wellness.png"></img>
               </div>
             </div>
           </div>

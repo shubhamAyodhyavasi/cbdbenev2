@@ -124,9 +124,9 @@ class SubmitReviews extends React.Component {
                         </div>
                     </div>
                 </section>
-                <section class="c-submit-r__about">
-                    <div class="container">
-                        <div class="row">
+                <section className="c-submit-r__about">
+                    <div className="container">
+                        <div className="row">
                             <div className="w-100 mt-auto c-submit-r__about--center" >
                                 <Heading>
                                     LET'S GET STARTED! <br />WHAT DID YOU THINK ABOUT THIS PRODUCT?
@@ -260,14 +260,14 @@ class NormalLoginForm extends React.Component {
         
         <Form onSubmit={this.handleSubmit} className="login-form">  
             { isLoading && <Loader />}
-            <section class="c-submit-r__rating">
-                <div class="c-submit-r__row row justify-content-center">
-                    <div class="col-lg-6 text-center ">
-                        <div class="c-submit-r__rating__wrapper">
-                            <div class="c-submit-r__rating--name">
-                                <h3 class="c-submit-r__rating--name__small">Overall <br/> rating</h3>
+            <section className="c-submit-r__rating">
+                <div className="c-submit-r__row row justify-content-center">
+                    <div className="col-lg-6 text-center ">
+                        <div className="c-submit-r__rating__wrapper">
+                            <div className="c-submit-r__rating--name">
+                                <h3 className="c-submit-r__rating--name__small">Overall <br/> rating</h3>
                             </div>
-                            <div class="c-submit-r__rating--star">
+                            <div className="c-submit-r__rating--star">
                                 <Form.Item>
                                 {getFieldDecorator('overall', {
                                     initialValue: 4
@@ -283,14 +283,14 @@ class NormalLoginForm extends React.Component {
                     </div>
                 </div>
             </section>
-            <section class="c-submit-r__rating">
-                <div class="c-submit-r__row row justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <div class="c-submit-r__rating__wrapper">
-                            <div class="c-submit-r__rating--name">
-                                <h3 class="c-submit-r__rating--name__small">I WOULD RECOMMEND<br/> THIS PRODUCT</h3>
+            <section className="c-submit-r__rating">
+                <div className="c-submit-r__row row justify-content-center">
+                    <div className="col-lg-6 text-center">
+                        <div className="c-submit-r__rating__wrapper">
+                            <div className="c-submit-r__rating--name">
+                                <h3 className="c-submit-r__rating--name__small">I WOULD RECOMMEND<br/> THIS PRODUCT</h3>
                             </div>
-                            <div class="c-submit-r__rating--star">
+                            <div className="c-submit-r__rating--star">
                                 <div className="radio__wrapper">
                                     <Form.Item>
                                     {getFieldDecorator('recommend', {
@@ -308,9 +308,9 @@ class NormalLoginForm extends React.Component {
                     </div>
                 </div>
             </section>
-            <div class="s-review__form container ">
-                <div class="row justify-content-center">
-                <div class="col-md-6 s-review__from-wrapper">   
+            <div className="s-review__form container ">
+                <div className="row justify-content-center">
+                <div className="col-md-6 s-review__from-wrapper">   
                           
                 {/* <Form.Item>
                     {getFieldDecorator('name', {
@@ -355,12 +355,12 @@ class NormalLoginForm extends React.Component {
                 </div>
             </div>
         </div>
-        <div class="s-review__form container ">
-            <div class="row justify-content-center">
-            <div class="col-md-12">
-                <h3 class="s-review__from-heading">Tell us more about yourself and connect</h3>
+        <div className="s-review__form container ">
+            <div className="row justify-content-center">
+            <div className="col-md-12">
+                <h3 className="s-review__from-heading">Tell us more about yourself and connect</h3>
             </div>
-                <div class="col-md-6 s-review__from-wrapper">
+                <div className="col-md-6 s-review__from-wrapper">
                 <Form.Item>
                     {getFieldDecorator('location', {
                     rules: [{ required: true, message: 'Please tell us where are you from!' }],
