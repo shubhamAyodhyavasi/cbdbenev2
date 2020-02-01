@@ -21,15 +21,17 @@
         position: relative;
         min-height: calc(90vh - 80px);
         &:after{
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: 1;
-            background-color: rgba($light-color-2, .6);
+            @include bpm-xs{
+                content: "";
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 1;
+                background-color: rgba($light-color-2, .6);
+            }
         }
         .c-h-img-section{
             @include bpm-md{
