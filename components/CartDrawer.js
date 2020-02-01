@@ -28,6 +28,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart, hideCartBar })
     )
     const hasItems = cart.items.length > 0 ? true : false
     const taxPrice = cart.taxPercent ? (cart.taxPercent * cart.subTotal).toFixed(2) : 0
+    const shippingCharge = (cart.shippingCharge || 0).toFixed(2) || 0
     return (
         <div className="c-cart-drawer" >
             <p style={{color: "#fff"}}>
@@ -58,7 +59,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart, hideCartBar })
                             <CartItem
                                 small={true}
                                 title={"Shipping"}
-                                price={`$${cart.shippingCharge}`}
+                                price={`$${shippingCharge}`}
                                 total={true}
                                 versions={
                                     cart.taxPercent ? ["small", "no-border"] : ["small"] 
