@@ -26,8 +26,56 @@ export const home = {
 }
 
 export const category = {
-    title: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
-    content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`
+    topicals: {
+        bannerTitle: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
+        title: `Discover our topicals line`,
+        content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`,
+        bundleTitle: `TRY THE BUNDLES`,
+        bundleContent: `Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.`,
+    }
+    ,
+    pets:{
+        bannerTitle: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
+        title: `Discover our pets line`,
+        content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`,
+        bundleTitle: `TRY THE BUNDLES`,
+        bundleContent: `Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.`,
+    },
+    edibles:{
+        bannerTitle: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
+        title: `Discover our edibles line`,
+        content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`,
+        bundleTitle: `TRY THE BUNDLES`,
+        bundleContent: `Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.`,
+    },
+    capsules:{
+        bannerTitle: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
+        title: `Discover our capsules line`,
+        content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`,
+        bundleTitle: `TRY THE BUNDLES`,
+        bundleContent: `Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.`,
+    },
+    oils:{
+        bannerTitle: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
+        title: `Discover our oils line`,
+        content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`,
+        bundleTitle: `TRY THE BUNDLES`,
+        bundleContent: `Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.`,
+    },
+    bundles:{
+        bannerTitle: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
+        title: `Discover our bundles line`,
+        content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`,
+        bundleTitle: `TRY THE BUNDLES`,
+        bundleContent: `Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.`,
+    },
+
+    // default 
+    bannerTitle: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp.`,
+    title: `Discover our products`,
+    content: `Buy the highest quality CBD Isolate oil online extracted from organically grown hemp. Today we're confident that were providing you with the highest quality CBD you can find.`,
+    bundleTitle: `TRY THE BUNDLES`,
+    bundleContent: `Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.`,
 }
 
 export const shop = {

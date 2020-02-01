@@ -26,13 +26,20 @@ const Category = ({ productList, combos, ...props }) => {
             ...el,
         }
     })
+    const currentCategory       = categoryData[props.category] || categoryData
+
+    const bannerTitle           = currentCategory.bannerTitle
+    const title                 = currentCategory.title
+    const content               = currentCategory.content
+    const bundleTitle           = currentCategory.bundleTitle
+    const bundleContent         = currentCategory.bundleContent
     return (
         <Layout headerVersions={["bg-light"]} fixed={true} headerTheme="dark">
              {/* <Layout headerVersions={["bg-dark"]} className="c-consult-page" title="Category">  */}
             <div className="c-category-page">
                 <HImgSection parentClass="c-category-page" version={["full", "content-bottom"]} image={"/images/oil-page.jpg"} >
                     <div>
-                        <Heading parentClass="c-category-page" versions={['lft-br', 'large']} >{parse(categoryData.title)}</Heading>
+                        <Heading parentClass="c-category-page" versions={['lft-br', 'large']} >{parse(bannerTitle)}</Heading>
                     </div>
                     <br />
                     <br />
@@ -46,11 +53,12 @@ const Category = ({ productList, combos, ...props }) => {
                         <div className="col-lg-4 col-md-6 d-flex justify-content-center">
                             <div className="c-category-page__heading-wrapper">
                                 <Heading parentClass="c-category-page" versions={['large']} >
-                                    Discover
+                                    {/* Discover
                                     <br />
-                                    {`our ${props.category} line`}
+                                    {`our ${props.category} line`} */}
+                                    {parse(title)}
                                 </Heading>
-                                {parse(categoryData.content)}
+                                {parse(content)}
                                 <hr />
                             </div>
                         </div>
@@ -67,12 +75,14 @@ const Category = ({ productList, combos, ...props }) => {
                     <div className="c-category-page__row row" >
                         <div className="col-md-6 col-lg-4 offset-lg-1 mb-md-0 mb-3" >
                             <Heading parentClass="c-category-page" versions={['large']} >
-                                TRY THE BUNDLES
+                                {/* TRY THE BUNDLES */}
+                                {parse(bundleTitle)}
                             </Heading>
                         </div>
                         <div className="col-md-6" >
                             <Heading parentClass="c-category-page" subHeading={true} versions={['lft-br']}  >
-                                Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off.
+                                {/* Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off. */}
+                                {parse(bundleContent)}
                             </Heading>
                         </div>
                         <div className="col-12">
