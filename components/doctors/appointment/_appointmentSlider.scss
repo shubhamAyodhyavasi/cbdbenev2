@@ -5,7 +5,30 @@
         font-weight: bold;
         text-align: center;
     }
+    &__day{
+
+    }
+    &__time{
+        font-family: $sub-font;
+        margin-top: 15px;
+        font-size: 1.3em;
+    }
+}
+.c-dr-card-long{
+    border-bottom: 1px solid #000;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    &__card{
+        position: relative;
+        background-color: transparent;
+        border: none;
+    }
+    &__address{
+        position: absolute;
+        right: 20px;
+        padding: 5px;
+        bottom: -35px;
+    }
 }
 
-
-/**************customAPSCSS****************/@at-root
+/**************customAPSCSS****************/

@@ -100,9 +100,11 @@ class Contact extends React.Component {
                         </Heading>
                     </div>
                     <div className="col-12">
+                      <div className="container">
                         {
-                            doctors.map((doctor, key) => <DrCardLong doctor={doctor} key={key} />)
+                          doctors.map((doctor, key) => <DrCardLong doctor={doctor} key={key} />)
                         }
+                      </div>
                     </div>
                   <div className="col-md-8 col-lg-7 d-flex flex-column ">
                     <div className="mt-auto" >

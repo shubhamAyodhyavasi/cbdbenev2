@@ -33,18 +33,21 @@ class DrCardLong extends Component {
                             <img src="../../../../images/dr-demo-5.jpg" className="c-dr-card-long__img" />
                         </Col>
                         <Col className="c-dr-card-long__description" span={8}>
-                            <Link href={"/doctors/"+slug}><h3 className="c-dr-card-long__title">{title}</h3></Link>
+                            {/* <Link href={"/doctors/"+slug}> */}
+                                <h3 className="c-dr-card-long__title">{title}</h3>
+                            {/* </Link> */}
                             <p className="c-dr-card-long__designation">{taxonomy}</p>
-                            <Rate rating={4} />
-                            <p className="c-dr-card-long__address">{address}</p>
-                            <Link href={"/doctors/"+slug}>
+                            <Rate disabled={true} rating={4} color={"#000"} />
+                            {/* <p className="c-dr-card-long__address">{address}</p> */}
+                            {/* <Link href={"/doctors/"+slug}> */}
                                 <a>View Profile <Icon type="arrow-right" /></a>
-                            </Link>
+                            {/* </Link> */}
                         </Col>
-                        <Col className="c-dr-card-long__time-wrap" span={10}>
+                        <Col className="c-dr-card-long__time-wrap" offset={4} span={10}>
                            {/* Dr. Andrew Fagelman is board certified with the American Board of Internal Medicine and current physician at SOHO Health NY. */}
                             <AppointmentCard doctor={doctor}  />
                         </Col>
+                        <p className="c-dr-card-long__address">{address}</p>
                     </Row>
                 </Card>
             </div>
