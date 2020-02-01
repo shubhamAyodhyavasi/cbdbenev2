@@ -26,6 +26,13 @@
             font-size: 50px;
         }
     }
+    &__contain-col{
+        @include bp-xxl{
+            &--detail{
+                max-width: 320px;
+            }
+        }
+    }
     .c-title-list {
         position: relative;
         padding-top: 20px;

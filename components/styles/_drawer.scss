@@ -44,6 +44,9 @@
                 flex-direction: column;
                 flex: 1;
             }
+            &-wrapper-body{
+                overflow: visible;
+            }
         }
         .c-cart-drawer{
             display: flex;

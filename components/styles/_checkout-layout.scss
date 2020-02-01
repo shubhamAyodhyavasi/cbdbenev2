@@ -9,6 +9,9 @@
             width:auto;
         }
     }
+    &__row{
+        width: calc(100% + 30px);
+    }
     &__main{
         padding-top: 100px;
         padding-left: 40px;

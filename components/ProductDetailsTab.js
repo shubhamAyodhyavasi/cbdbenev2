@@ -136,7 +136,7 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
             <TabContent activeTab={currentTab} >
                 <TabPane tabId="0">
                     <TabContainer isActive={currentTab === "0"} >
-                        <div className="col-lg-2 col-md-6 c-product-details-tab__contain-col">
+                        <div className="col-lg-3 col-md-6 c-product-details-tab__contain-col c-product-details-tab__contain-col--detail">
                             <TitleList parentClass="c-product-details-tab" title="Total Cbd" >
                                 {`${totalcbdmg} mg`}
                             </TitleList>
@@ -144,7 +144,7 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
                                 {cbdperunitmg}
                             </TitleList>
                         </div>
-                        <div className="col-lg-2 offset-lg-1 col-md-6 c-product-details-tab__contain-col">
+                        <div className="col-lg-3 offset-lg-1 col-md-6 c-product-details-tab__contain-col c-product-details-tab__contain-col--detail">
                             <TitleList parentClass="c-product-details-tab" title="Total Servings" >
                                 {servings}
                             </TitleList>
@@ -222,7 +222,7 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
                                         </TitleList>)}
                                     </div>
                                     : 
-                                    <div className="col-md-10 offset-md-1 text-center">
+                                    <div className="col-md-10 offset-md-1 text-center pt-5">
                                         <Heading parentClass={componentClass} h="4" subHeading={true} >We don't have any faq's for this product.</Heading>
                                     </div>
                                 }
