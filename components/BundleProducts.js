@@ -66,11 +66,9 @@ const BundleProducts = ({ heading, subHeading, categoryList, activeCategory, onC
 				>
                     {products.filter(product => product.visibilitytype ).map((el, i) => {
                         return (
-                        <Link key={i} href={`/shop/${el._id}`}>
-                                <div className="col-md-6 c-category-products__product">
-                                    <ProductCard product={el} versions={["show-price", "full-height"]} title={el.title} subTitle={el.subTitle} image={projectSettings.serverUrl + getProductImage(el)} price={ el.dsaleprice } />
-                                </div>
-                        </Link>
+                            <div key={i} className="col-md-6 c-category-products__product">
+                                <ProductCard product={el} versions={["show-price", "full-height"]} title={el.title} subTitle={el.subTitle} image={projectSettings.serverUrl + getProductImage(el)} price={ el.dsaleprice } />
+                            </div>
                     )})}
 				</Flickity>
                 <SliderLine ref={sliderLine} left={left} />
