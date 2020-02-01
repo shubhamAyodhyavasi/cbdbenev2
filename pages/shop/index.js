@@ -34,7 +34,8 @@ const Shop = ({ productList, combos, ...props }) => {
             subTitle: getProductShortDesc(el),
             price: getBasicPrice(el),
         }
-    }).filter(el => {
+    })
+    const applySearch = products => products.filter(el => {
         if(searchValue === "") return true
         return el.title.toLowerCase().includes(searchValue.toLowerCase())
     })
@@ -110,7 +111,7 @@ const Shop = ({ productList, combos, ...props }) => {
                 <div className="c-shop-page__products-wrapper">
                     <div className="c-shop-page__row row">
                         {
-                            products.map(el => (
+                            applySearch(products).map(el => (
                                 <div key={el._id} className="col-lg-4 col-md-6">
                                     <ProductCard product={el} versions={["show-price", "full-height"]} title={el.title} subTitle={el.subTitle} image={el.image} price={el.price && el.price.sale_price} />
                                 </div>

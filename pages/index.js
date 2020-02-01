@@ -15,6 +15,8 @@ import ScrollAnimation from "react-animate-on-scroll";
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import { Collapse } from 'reactstrap';
+import { home as homeData } from '../site-content/index'
+import parse from "html-react-parser"
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -98,16 +100,44 @@ class Home extends React.Component {
       props: this.props,
       products
     })
-    const lrText = `In our own quest to enhance total balance and reduce stress, we set out to understand, what is CBD. We met manufacturers from across the world. We spoke with doctors.`
+    const {
+      banner: {
+        title: bannerTitle,
+        content: bannerContent,
+        btnText: bannerBtnText,
+      },
+      categorySlider: {
+        title: categoryTitle
+      },
+      thirdSection:{
+        bigTitle: thirdBirTitle,
+        title: thirdTitle,
+        content: thirdContent,
+        btnText: thirdBtnText
+      },
+      bundlesSlider: {
+        title: bundlesTitle,
+        subTitle: bundlesSubTitle,
+        btnText: bundlesBtnText,
+      },
+      fifthSection: {
+        title: fifthTitle,
+        content: fifthContent,
+        btnText: fifthBtnText,
+      }
+    } = homeData
+    
     return (
       <Layout title="Home" headerTheme="light" homeLogo={true} pageClass={"c-home"} >
         <Banner
           image="/images/home-banner.png"
           mobileImage="/images/home-banner-mobile.png"
-          heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
-          content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
+          // heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
+          heading={parse(bannerTitle)}
+          // content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
+          content={parse(bannerContent)}
         >
-          <Button parentClass="c-home" type="link" link="/shop" theme={'outline-gold'} >Shop all products</Button>
+          <Button parentClass="c-home" type="link" link="/shop" theme={'outline-gold'} >{parse(bannerBtnText)}</Button>
         </Banner>
         {(products && products.length > 0) && 
         <Fade>
@@ -117,14 +147,14 @@ class Home extends React.Component {
             activeCategory={activeCategory}
             onCategoryChange={this.changeCategory}
             products={products}
-            heading="Discover the products line" />  
+            heading={parse(categoryTitle)} />  
           </Fade>
           }
         <Fade>
         <LRSection
-          heading="bené"
-          subHeading="Organically grown hemp extract"
-          linkText="Read More"
+          heading={parse(thirdBirTitle)}
+          subHeading={parse(thirdTitle)}
+          linkText={parse(thirdBtnText)}
           onLinkClick={()=> {
             this.setState(prevState => ({
               isLrSection: !prevState.isLrSection
@@ -135,12 +165,12 @@ class Home extends React.Component {
         >
           <div className="c-less-more">
             <div className="c-less-more__less" >
-            {lrText}
+            {parse(thirdContent)}
             </div>
             <Collapse isOpen={isLrSection}>
               <div className="c-less-more__whole">
                 <div className="c-less-more__whole-inner">
-                  {lrText}
+                  {parse(thirdContent)}
                 </div>
               </div>
             </Collapse>
@@ -149,9 +179,9 @@ class Home extends React.Component {
         </Fade>
         <Fade>
         <HHSection
-          heading="Bundles of awesomeness!"
-          subHeading="Give our bundles a try with our 60-day, money-back guarantee. The perfect gift. A great way to enjoy premium CBD at an incredible price. All bundles are 20% off."
-          linkText="Shop All"
+          heading={parse(bundlesTitle)}
+          subHeading={parse(bundlesSubTitle)}
+          linkText={parse(bundlesBtnText)}
           link="/shop"
           bg="light-2"
           // images={[
@@ -164,8 +194,7 @@ class Home extends React.Component {
         </Fade>
         <section class="wellness">
           <div class="wellness__heading">
-            <h3 class="wellness__heading--text">bené means <b>wellness</b> in Italian<br/>
-            And that's what we're all about</h3>
+            <h3 class="wellness__heading--text">{parse(fifthTitle)}</h3>
           </div>
           <div class="wellness-wrapper">
             <div class="wellness-wrapper__img">
@@ -174,14 +203,13 @@ class Home extends React.Component {
             <div class="wellness-wrapper__desp"> 
             <div className="c-less-more">
             <div className="c-less-more__less c-less-more__less--large" >
-            Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs.<br />We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
+              {parse(fifthContent)}
 
             </div>
             <Fade when={isWillness}>
               <div className="c-less-more__whole">
                 <div className="c-less-more__whole-inner  c-less-more__whole-inner--large">
-                Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs.<br />We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
-
+                  {parse(fifthContent)}
                 </div>
               </div>
             </Fade>
@@ -201,7 +229,7 @@ class Home extends React.Component {
                         isWillness: !prevState.isWillness
                       }))
                     }}
-                    theme={['btm-br']} >Read More</Button>
+                    theme={['btm-br']} >{parse(fifthBtnText)}</Button>
                 </div>
               </div>
               <div class="willness-img">

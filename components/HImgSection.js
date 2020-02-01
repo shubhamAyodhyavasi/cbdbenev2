@@ -9,12 +9,12 @@ const HImgSection = ({image, children, parentClass, version}) => {
             [versionClass]: version
         })}>
             <div className="row c-h-img-section__row" >
-                <div className="col-md-6 c-h-img-section__content-wrapper">
+                <div className="col-lg-6 c-h-img-section__content-wrapper">
                     <div className="c-h-img-section__content">
                         {children}
                     </div>
                 </div>
-                <div className="col-md-6 c-h-img-section__img-wrapper">
+                <div className="col-lg-6 c-h-img-section__img-wrapper">
                     <img src={image} className="c-h-img-section__img" />
                 </div>
             </div>

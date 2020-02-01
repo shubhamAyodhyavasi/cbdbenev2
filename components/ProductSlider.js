@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import Flickity from 'react-flickity-component';
 import SliderLine from './SliderLine';
 import ProductCard from './ProductCard'
-import { getProductTitle, getProductImage, getProductShortDesc } from '../services/helpers/product';
+import { getProductTitle, getProductImage, getProductShortDesc, getBasicPrice } from '../services/helpers/product';
 import projectSettings from '../constants/projectSettings';
 const ProductSlider = ({products, parentClass, versions}) => {
     const componentClass = `c-product-slider`
@@ -52,7 +52,7 @@ const ProductSlider = ({products, parentClass, versions}) => {
                     className="c-category-products__slider"
 				>
                     {
-                        products.map((el, i)=> {
+                        products.filter(product => product.visibilitytype ).map((el, i)=> {
                             const title     = getProductTitle(el)
                             const image     = getProductImage(el)
                             const subTitle  = getProductShortDesc(el)
@@ -61,8 +61,10 @@ const ProductSlider = ({products, parentClass, versions}) => {
                                     <ProductCard  
                                         subTitle={subTitle}
                                         product={el}
+                                        price={el.dsaleprice}
                                         image={image && projectSettings.serverUrl + image}
                                         title={title}
+                                        versions={["show-price", "full-height"]}
                                         parentClass={componentClass} />
                                 </div>
                             )

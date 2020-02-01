@@ -49,9 +49,9 @@ const ProductCard = ({ versions, parentClass, image, title, subTitle, price, add
                 <CardUpper />
             }
             <div className={`${componentClass}__btn-wrapper`}>
-                <p className={`${componentClass}__price`}>
+                {price && <p className={`${componentClass}__price`}>
                     ${price}
-                </p>
+                </p>}
                 <Button onClick={() => addToCartFn(product)} parentClass={componentClass} theme="outline" >Add to Cart</Button>
             </div>
         </div>

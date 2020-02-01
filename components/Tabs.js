@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { Tabs as AntTabs } from 'antd';
-const Tabs = ({onChange, tabs, defaultActiveKey, versions, parentClass}) => {
+const Tabs = ({onChange, tabs, defaultActiveKey, versions, parentClass, onNextClick, onPrevClick}) => {
     const componentClass = `c-tabs`
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
     const parent = `${parentClass}__${componentClass.replace("c-", "")}`
@@ -12,7 +12,7 @@ const Tabs = ({onChange, tabs, defaultActiveKey, versions, parentClass}) => {
         TabPane
     } = AntTabs
 	return (
-        <AntTabs className={classNames(className)} defaultActiveKey={defaultActiveKey} onChange={onChange}>
+        <AntTabs className={classNames(className)} defaultActiveKey={defaultActiveKey} onChange={onChange} onNextClick={onNextClick} onPrevClick={onPrevClick} >
             {tabs.map((el, i)=> 
             <TabPane className="c-tabs__pane" tab={el.title} key={`${i}`}>
                 {el.content}

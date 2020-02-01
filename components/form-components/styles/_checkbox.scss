@@ -14,6 +14,10 @@
                 right: 0;
                 margin: auto;
                 background-color: $brand-color-1;
+                @include bpm-xs{
+                    width: 8px;
+                    height: 8px;
+                }
             }
         }
     }
@@ -25,9 +29,17 @@
     
     &__icon{
         position: relative;
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         svg {
             width: 50px;
             height: auto;
+            @include bpm-xs{
+                width: 40px;
+            }
         }
     }
     &--gold{

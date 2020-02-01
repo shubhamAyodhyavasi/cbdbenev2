@@ -15,6 +15,7 @@ import projectSettings from '../constants/projectSettings'
 import BasicFunction from "../services/extra/basicFunction";
 import {addToWishList, deleteWishList} from "../services/api";
 import ImageZoom from "./ImageZoom"
+import { Collapse, } from 'reactstrap';
 const basicFunction = new BasicFunction();
 class ProductInfo extends React.Component {
     constructor(props){
@@ -23,7 +24,7 @@ class ProductInfo extends React.Component {
             qty: 1,
             isSubscribed: false,
             subsDuration: "3",
-
+            isAllIngredient: false
         }
     }
     
@@ -110,7 +111,7 @@ class ProductInfo extends React.Component {
   };
     render(){
         const {
-            qty, isSubscribed, subsDuration
+            qty, isSubscribed, subsDuration, isAllIngredient
         } = this.state
         const {
             image, product, productAttr, addToCart, cart, showCartBar, allProducts
@@ -195,6 +196,18 @@ class ProductInfo extends React.Component {
                             {productAttr.map((el, i)=> (
                                 <TitleList parentClass="c-product-info" key={i} title={el.title} >{el.description}</TitleList>
                             ))}
+                            <TitleList onTitleClick={()=> {
+                                this.setState(prevState => ({
+                                    isAllIngredient: !prevState.isAllIngredient
+                                }))
+                            }} parentClass="c-product-info" title={<>All Ingredient<br /><Icon type={isAllIngredient ? "minus" : "plus"} /> </>} >
+                                <Collapse isOpen={!isAllIngredient}>
+                                    {product.keyingredients}
+                                </Collapse>
+                                <Collapse isOpen={isAllIngredient}>
+                                    {product.allingredients}
+                                </Collapse>
+                            </TitleList>
                         </div>
                         <div className="c-product-info__subscribe-wrapper">
                             <Checkbox checked={isSubscribed} onChange={()=> {this.setState(prevState => ({

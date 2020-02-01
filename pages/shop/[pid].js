@@ -57,16 +57,16 @@ const Product = ({product, allProducts, ...props}) => {
         return (
             <Layout  headerTheme="dark" fixed={true}>
                 <ProductInfo 
-                product={product} reviews={props.reviews} productAttr={productAttr.filter((el,i)=> i < 3 )} image={productImage}>
+                product={product} reviews={props.reviews} productAttr={productAttr.filter((el,i)=> i < 1 )} image={productImage}>
                 </ProductInfo>
-                <HImgSection version={["full"]} image={projectSettings.filePath + image} >
+                <HImgSection parentClass={"c-product-single"} version={["full"]} image={projectSettings.filePath + image} >
                     <div>
                         <Heading >{getProductDescription(product)}</Heading>
                     </div>
                     <div className="c-product-single__list">
                         {
                             productAttr.map((el, i) => {
-                                if(i < 3) return null
+                                if(i < 1) return null
                                 return <TitleList parentClass="c-product-single" key={i} title={el.title} >{el.description}</TitleList>
                             })
                         }
@@ -78,7 +78,7 @@ const Product = ({product, allProducts, ...props}) => {
                 <div className="c-product-single__related-section">
                     <div className="row">
                         <div className="col-md-6">
-                            <Heading versions={["default", "upper"]} >Acompany with</Heading>
+                            <Heading versions={["default", "upper", "weight-500"]} >Accompany with</Heading>
                         </div>
                         <div className="col-md-6">
                             <Heading subHeading={true} versions={["default", "lft-br"]} >bene means wellness in Italian And that's what we're all about.</Heading>

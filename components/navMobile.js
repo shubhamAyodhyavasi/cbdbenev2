@@ -39,8 +39,8 @@ const NavMobile = ({
     return <div className={classNames("c-nav__icon-menu-wrapper c-nav__icon-menu-wrapper--mobile", {
       [`${parent}__nav`]: parent,
     })}>{
-        items.map(el => (
-        <span onClick={(e) => {
+        items.map((el, key) => (
+        <span key={key} onClick={(e) => {
           onClick(e, el.action)
         }} className="c-nav__icon c-nav__icon--mobile">
           {el.label}

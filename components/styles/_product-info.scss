@@ -70,6 +70,9 @@
         @include bpm-lg{
             font-size:12px;  
         }
+        @media (max-width: 500px){
+            font-size: 10px;
+        }
     }
     &__size{
         font-size: 24px;
@@ -86,6 +89,13 @@
         padding-top: 20px;
         padding-bottom: 20px;
         border-bottom: 1px solid $dark-color-2;
+        @include bpm-md{
+            .c-title-list{
+                &__title-wrap{
+                    margin-bottom: 20px;
+                }
+            }
+        }
     }
     &__subscribe-wrapper{
         padding-top: 20px;
@@ -116,6 +126,8 @@
         font-size: 20px;
         @include bp-sm{
             font-size:30px;  
+            margin-bottom: 0;
+            font-weight: 500;
         }
     }
     &__btn{
@@ -145,6 +157,19 @@
     &__mobile-sec{
         @include bp-xs{
             display:none;
+        }
+    }
+    &__quantity{
+        font-size: 30px;
+    }
+    .c-checkbox{
+        &__label-text{
+            color: $brand-color-1;
+            font-weight: 500;
+            @include bp-xl{
+                font-size: 16px;
+                padding-left: 15px;
+            }
         }
     }
 }

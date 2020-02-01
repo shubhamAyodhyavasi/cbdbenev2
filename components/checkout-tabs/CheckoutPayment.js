@@ -775,7 +775,7 @@ class CheckoutPayment extends React.Component {
                                     </Form.Item>
                                     <div className="container-fluid p-0">
                                         <div className="row">
-                                            <div className="col-8">
+                                            <div className="col-6 col-sm-8 ">
                                                 <Form.Item>
                                                     {getFieldDecorator('expiry', {
                                                         rules: isCard && !profileValue && [{
@@ -792,7 +792,7 @@ class CheckoutPayment extends React.Component {
                                                     )}
                                                 </Form.Item>
                                             </div>
-                                            <div className="col-4">
+                                            <div className="col-6 col-sm-4">
                                                 <Form.Item>
                                                     {getFieldDecorator('cvv', {
                                                         rules: isCard && !profileValue && [{

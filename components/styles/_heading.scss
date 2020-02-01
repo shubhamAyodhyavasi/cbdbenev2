@@ -16,7 +16,7 @@
         font-weight: 300;
     }
     &--large{
-        @media (min-width: 1200px){
+        @media (min-width: 1400px){
             font-size: 48px;
         }
     }
@@ -58,5 +58,41 @@
     &--btm-br{
         padding-bottom: 10px;
         border-bottom: 1px solid $brand-color-1;
+    }
+    
+    &--weight{
+        &-100{
+            font-weight: 100;
+        }
+        &-200{
+            font-weight: 200;
+        }
+        &-300{
+            font-weight: 300;
+        }
+        &-400{
+            font-weight: 400;
+        }
+        &-500{
+            font-weight: 500;
+        }
+        &-600{
+            font-weight: 600;
+        }
+        &-700{
+            font-weight: 700;
+        }
+        &-800{
+            font-weight: 800;
+        }
+        &-900{
+            font-weight: 900;
+        }
+        &-bold{
+            font-weight: bold;
+        }
+        &-normal{
+            font-weight: normal;
+        }
     }
 }

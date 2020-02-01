@@ -73,7 +73,7 @@ const CategoryProducts = ({ heading, subHeading, categoryList, activeCategory, o
                     reloadOnUpdate={true}
                     className="c-category-products__slider"
 				>
-                    {products.map((el, i) => (
+                    {products.filter(product => product.visibilitytype ).map((el, i) => (
                         <Link key={i} href={`/shop/${el._id}`}>
                             <div className="col-lg-4 c-category-products__product">
                                 <img

@@ -36,6 +36,10 @@
         @media(min-width: 1400px){
             padding: 80px;
         }
+        @include bpm-xs{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
     &__heading{
         &.c-heading{
@@ -77,10 +81,41 @@
 
 }
 
+.c-checkout{
+    &__nav-wrapper{
+        .ant-steps-item-title{
+            @include bpm-xs{
+                font-size: 14px;
+                padding-right: 5px;
+            }
+        }
+    }
+    &__btn{
+        @include bpm-xs{
+            width: 100%;
+        }
+    }
+    .c-title-list{
+        &__title{
+            @include bpm-xs{
+                color: $brand-color-1;
+            }
+        }
+        &__title-wrap{
+            margin-bottom: 10px;
+        }
+    }
+}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
+}
+
+// extra need to remove later
+
+#CheckoutPayment_expiry{
+    height: 36px;
 }

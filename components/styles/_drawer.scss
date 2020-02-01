@@ -8,8 +8,35 @@
         background-color: $dark-color-1;
         padding-left: 40px;
         padding-right: 40px;
+        @include bpm-xs{
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        
     }
-
+    @include bpm-xs{
+        .c-btn--block{
+            width: 100%;
+        }
+        .c-cart-item{
+            &__heading{
+                font-size: 18px;
+            }
+            &__sub-heading{
+                font-size: 19px;
+                &.c-sub-heading{
+                    &--small{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .c-quantity{
+            &__btn{
+                font-size: 18px;
+            }
+        }
+    }
     &--cart{
         .ant-drawer{
             &-content, &-wrapper-body, &-body{
