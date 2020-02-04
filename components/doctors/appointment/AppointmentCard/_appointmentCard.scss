@@ -1,17 +1,17 @@
 .c-appointment-card{
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    width: 700px;
     max-width: 100%;
     // margin-bottom: -120px;
-    @media(min-width: 1600px){
-        width: 650px;
-    }
+    // @media(min-width: 1600px){
+    //     width: 650px;
+    // }
     &--shadow{
         box-shadow: 0px 5px 30px rgba(#000, .2);
     }
     &__date-btn{
-        margin: 6px 3px;
+        margin: 16px 3px;
         // padding: 10px 0px;
         height: 40px;
         cursor: pointer;
@@ -23,6 +23,7 @@
         background-color: $light-color-2;
         border: 1px solid $brand-color-1;
         transition: all .3s;
+        text-transform: uppercase;
         &:hover{
             background-color: $brand-color-1;
             color: #fff;
@@ -37,8 +38,8 @@
         // background-size: auto 46px;
         // background-position: top 3px center;
         // background-image: url('/images/line.png');
-        background: linear-gradient(0deg, transparent 20px, black 20px, transparent 21px);
-        background-size: 10px 46px;
+        background: linear-gradient(0deg, transparent 25px, black 25px, transparent 26px);
+        background-size: 10px 56px;
         background-position: top;
         background-repeat: repeat-y;
     }
@@ -70,7 +71,12 @@
         }
     }
     // override ant design css
-
+    &__slider-row{
+        @media (max-width: 575px) {
+            margin-left: -17%;
+            margin-right: -17%;
+        }
+    }
     .ant-card-head-title{
         text-align: center;
     }

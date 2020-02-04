@@ -24,31 +24,33 @@ class DrCardLong extends Component {
         const slug = getSlug(doctor).toLowerCase()
         if(address.trim() === "")
         return null
-        
+        const review = parseFloat((Math.random() + 4).toFixed(1))
+        const totalReview = parseInt((Math.random() * 100))
         return (
             <div className="c-dr-card-long">
                 <Card className="c-dr-card-long__card">
-                    <Row type="flex" >
-                        <Col className="c-dr-card-long__img-wrap">
-                            <img src="../../../../images/dr-demo-5.jpg" className="c-dr-card-long__img" />
-                        </Col>
-                        <Col className="c-dr-card-long__description" span={8}>
-                            {/* <Link href={"/doctors/"+slug}> */}
-                                <h3 className="c-dr-card-long__title">{title}</h3>
-                            {/* </Link> */}
-                            <p className="c-dr-card-long__designation">{taxonomy}</p>
-                            <Rate disabled={true} rating={4} color={"#000"} />
-                            {/* <p className="c-dr-card-long__address">{address}</p> */}
-                            {/* <Link href={"/doctors/"+slug}> */}
-                                <a>View Profile <Icon type="arrow-right" /></a>
-                            {/* </Link> */}
-                        </Col>
-                        <Col className="c-dr-card-long__time-wrap" offset={4} span={10}>
+                    <div className="row justify-content-around" >
+                        <div className="c-dr-card-long__left-col" >
+                            <div className="c-dr-card-long__img-wrap" >
+                                <img src={this.props.image} className="c-dr-card-long__img img-fluid" />
+                            </div>
+                            <div className="c-dr-card-long__description" >
+                                <div className="c-dr-card-long__rate-wrapper">
+                                    <Rate disabled={true} value={review} className="c-dr-card-long__rate" allowHalf={true} style={{ color: '#000' }} />
+                                    <p className="c-dr-card-long__rate-text">{totalReview} reviews({review})</p>
+                                </div>
+                                <div className="c-dr-card-long__detail">
+                                    <h3 className="c-dr-card-long__title">{title}</h3>
+                                    <p className="c-dr-card-long__designation">{taxonomy}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="c-dr-card-long__time-wrap" >
                            {/* Dr. Andrew Fagelman is board certified with the American Board of Internal Medicine and current physician at SOHO Health NY. */}
-                            <AppointmentCard doctor={doctor}  />
-                        </Col>
+                            <AppointmentCard onAppointment={this.props.onAppointment} doctor={doctor}  />
+                        </div>
                         <p className="c-dr-card-long__address">{address}</p>
-                    </Row>
+                    </div>
                 </Card>
             </div>
         );

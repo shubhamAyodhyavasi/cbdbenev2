@@ -16,6 +16,7 @@ import subMenus from "./subMenus";
 import errors from "./errors";
 import extras from "./extras";
 import loading from "./loading";
+import appointment from "./appointment";
 
 export default {
   cart,
@@ -35,5 +36,6 @@ export default {
   subMenus,
   errors,
   extras,
+  appointment,
   loading
 };

@@ -16,3 +16,4 @@ export * from "./subMenus";
 export * from "./errors";
 export * from "./extras";
 export * from "./loading";
+export * from "./appointment";

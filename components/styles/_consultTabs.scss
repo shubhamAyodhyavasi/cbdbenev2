@@ -105,24 +105,23 @@ background:#faf7f5;
 
 
 @media (max-width:768px){
-    .c-product-details-tab .ant-tabs-tab {
-        width: 100%;
-        margin: auto;
-    }
-    
-    .c-product-details-tab .ant-tabs-nav > div {
-        justify-content: center;
-        display: block;
-        align-items: center;
-    }
-    
-    .c-product-details-tab .c-tabs .ant-tabs-tab {
-        margin-left: 0;
-        margin: auto;
-    }
-    
-    .c-product-details-tab .ant-tabs-tab {
-        text-align: center;
+    .c-product-details-tab, .c-consultTabs{
+        .ant-tabs-tab {
+            width: 100%;
+            margin: auto;
+        }
+        .ant-tabs-nav > div {
+            justify-content: center;
+            display: block;
+            align-items: center;
+        }
+        .c-tabs .ant-tabs-tab {
+            margin-left: 0;
+            margin: auto;
+        }
+        .ant-tabs-tab {
+            text-align: center;
+        }    
     }
 }
 

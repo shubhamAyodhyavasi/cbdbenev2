@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Router, { withRouter } from 'next/router'
 import UserDetails from '../../components/consult-tabs/UserDetails';
 import PersonalDetails from '../../components/consult-tabs/PersonalDetails';
 import Success from '../../components/consult-tabs/Success';
@@ -10,6 +11,9 @@ import {  showRegBar, hideRegBar } from '../../redux/actions'
 import Scheduling from "../../components/consult-tabs/Scheduling";
 import IntakeDetails from "../../components/consult-tabs/intakeDetails"
 import { Tabs } from 'antd';
+import {
+	unsetCurrentAppointment
+  } from "../../redux/actions"
 
 const { TabPane } = Tabs;
 
@@ -22,6 +26,9 @@ class MainForm extends Component {
 		super(props);
 		this.state = {
 			step: props.user._id ? 2 : 1,
+			name: "",
+			name_err: "",
+			gender: "male",
 			firstName: '',
 			lastName: '',
 			email: '',
@@ -36,15 +43,27 @@ class MainForm extends Component {
 			weight_err: '',
 			age_err: '',
 			notes_err: '',
-			scheduling: 15
+			scheduling: 15,
+			allergies: '',
+			allergies_err: '',
+			currentCondition: '',
+			currentCondition_err: '',
 		}
 	}
 
 	componentDidMount(){
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
+		console.info({
+			props: this.props
+		})
 		if(this.props.isPersist && !this.props.user._id){
 			this.props.showRegBar();
 		}
+		if(this.props.isPersist && !this.props.currentAppointment){
+			Router.push("/consult/get-in-touch")
+		}
 	}
+	
 	componentDidUpdate(prevProps){
 		if(this.props.isPersist !== prevProps.isPersist){
 			this.props.showRegBar();
@@ -55,6 +74,10 @@ class MainForm extends Component {
 			})
 		}
 	}
+	componentWillUnmount(){
+		this.props.unsetCurrentAppointment()
+	}
+
 	nextStep = (values = []) => {
 		const { step } = this.state;
 		const isValid = values.every(el => el && el.trim() !== "")
@@ -89,19 +112,52 @@ class MainForm extends Component {
 			this.nextStep()
 		}
 	}
+	intakeNext = () => {
+		const {
+			allergies,
+			currentCondition,
+		} = this.state
+		const fields = this.validateIntake()
+		const allValid = Object.values(fields).every(el => el === "");
+		console.log({
+			fields
+		})
+		this.setState({
+			...fields
+		})
+		if(allValid){
+			this.nextStep()
+		}
+	}
 	validateDetails = () => {
 		const {
 			weight,
 			age,
-			notes
+			notes,
+			name,
 		} = this.state
-		const weight_err = weight.trim() !== "" ? '' : 'Please enter weight';
-		const age_err = age.trim() !== "" ? '' : 'Please enter age';
-		const notes_err = notes.trim() !== "" ? '' : 'Please enter notes';
+		const name_err 				= name.trim() !== "" ? '' : 'Please enter name';
+		const weight_err 			= weight.trim() !== "" ? (isNaN(weight) ? "Please enter only number" : '') : 'Please enter weight';
+		const age_err 				= age.trim() !== "" ? (isNaN(age) ? "Please enter only number" : '') : 'Please enter age';
+		const notes_err 			= notes.trim() !== "" ? '' : 'Please enter notes';
 		return ({
 			weight_err,
 			age_err,
 			notes_err,
+			name_err,
+		})
+	}
+	validateIntake = () => {
+		const {
+			allergies,
+			currentCondition,
+
+		} = this.state
+		const allergies_err 		= allergies.trim() !== "" ? '' : 'Please enter allergies';
+		const currentCondition_err 	= currentCondition.trim() !== "" ? '' : 'Please enter current condition';
+		return ({
+			allergies_err,
+			currentCondition_err,
 		})
 	}
 	handleChange = (input) => (event) => {
@@ -128,6 +184,9 @@ class MainForm extends Component {
 			isPersist
 		} = this.props
 		const { 
+			name, 
+			name_err, 
+			gender, 
 			firstName, 
 			lastName, 
 			phoneNumber, 
@@ -140,8 +199,15 @@ class MainForm extends Component {
 			notes, 
 			notes_err,
 			scheduling,
+			allergies,
+			allergies_err,
+			currentCondition,
+			currentCondition_err,
 		} = this.state;
 		const values = { 
+			name, 
+			name_err, 
+			gender, 
 			firstName, 
 			lastName, 
 			phoneNumber, 
@@ -154,6 +220,10 @@ class MainForm extends Component {
 			notes,
 			notes_err,
 			scheduling,
+			allergies,
+			allergies_err,
+			currentCondition,
+			currentCondition_err,
 		};
 		return (
 			<Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
@@ -169,9 +239,10 @@ class MainForm extends Component {
 					<TabPane tab="Personal Details" key="2">
 						<div className="c-privacy__page-title" />
 						<PersonalDetails
-							nextStep={this.detailNext}
+							nextStep={this.nextStep}
 							prevStep={this.prevStep}
 							handleChange={this.handleChange}
+							radioChange={this.radioChange}
 							values={values}
 						/>  
 					</TabPane>
@@ -193,7 +264,9 @@ class MainForm extends Component {
 						/> 
 					</TabPane>
 					<TabPane tab="Confirmation" key="5">
-						<Success nextStep={()=> {
+						<Success 
+							prevStep={this.prevStep}
+							nextStep={()=> {
 							console.log({
 								state: this.state
 							})
@@ -207,9 +280,10 @@ class MainForm extends Component {
 	}
 }
 const mapStateToProps = state => ({
-	user: state.user
+	user: state.user,
+	currentAppointment: state.appointment.currentAppointment
 })
 const mapActionsToProps = {
-	showRegBar, hideRegBar
+	showRegBar, hideRegBar, unsetCurrentAppointment
 }
-export default connect(mapStateToProps, mapActionsToProps)(MainForm);
+export default connect(mapStateToProps, mapActionsToProps)(withRouter(MainForm));

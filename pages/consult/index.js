@@ -73,7 +73,7 @@ class Contact extends React.Component {
             <Banner
               image="/images/consult.jpg"
               image2x="/images/contact-banner@2x.jpg"
-              heading={<span>Consult a certified<br />
+              heading={<span>Consult a certified <br />
                 doctor about CBD</span>}
               bottomLogo={true}
               versions={[

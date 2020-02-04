@@ -57,7 +57,7 @@ export default class AppointmentCard extends Component {
         const {
             _id: doctor
         } = doctorObj
-        const limit = 5
+        const limit = 3 // 5 
         const date = new Date(dates[0])
         this.setState({
             // isLoading: true,
@@ -115,7 +115,7 @@ export default class AppointmentCard extends Component {
                     {doctor && <AppointmentSlider onDateChange={this.onDateChange} />}
                     <div className="c-appointment-card__scroll-wrapper">
                         <CustomScroll heightRelativeToParent="100%">
-                            <Row type="flex" className={classNames("c-appointment-card__scroll-row", {
+                            <Row type="flex" justify="center" className={classNames("c-appointment-card__scroll-row", {
                                 "c-appointment-card__scroll-row--loading": isLoading
                             })}>
                                 {!isLoading && <Dates appointments={appointments} onClick={(e, a) => {
@@ -123,6 +123,9 @@ export default class AppointmentCard extends Component {
                                         e, a
                                     })
                                     console.log('aid',a._id)
+                                    if(typeof this.props.onAppointment === "function"){
+                                        this.props.onAppointment(a, e)
+                                    }
                                     // localStorage.setItem('timeslotid',a._id)
                                     this.setState({ isPopup: true })
                                     console.log('a obj', { e })
@@ -139,12 +142,23 @@ export default class AppointmentCard extends Component {
         )
     }
 }
-const Dates = ({ appointments, dates, onClick }) =>
+const Dates = ({ appointments, dates, onClick }) =>{
+    const customDates = [
+        new Date("02-04-2020"),
+        new Date("02-05-2020"),
+        new Date("02-06-2020"),
+    ]
+    // remove customDates and use dates for real data
+    return (customDates || dates).map((el, i) => {
+        console.log({
+            dates
+        })
+        if(typeof localStorage !== "undefined")
+            localStorage.setItem('manualdate', el)
 
-    dates.map((el, i) => {
-        localStorage.setItem('manualdate', el)
         const datesArr = getDatesFromArray(appointments, el);
-        return (<Col className="c-appointment-card__date-col" offset={i === 0 && 2} key={i} span={4}>
+        
+        return (<Col className="c-appointment-card__date-col"  key={i} span={8} sm={6} >
             {datesArr.map((elx, i) =>
                 <span key={i}
                     className={classNames("c-appointment-card__date-btn", {
@@ -158,9 +172,7 @@ const Dates = ({ appointments, dates, onClick }) =>
 
                         console.log(moonLanding.getDate());
                         localStorage.setItem('timeslotid',elx._id)
-                           localStorage.setItem('manualbookedfor',moonLanding)
-
-
+                        localStorage.setItem('manualbookedfor',moonLanding)
                         localStorage.setItem('manualtime', elx.date)
 
 
@@ -173,3 +185,4 @@ const Dates = ({ appointments, dates, onClick }) =>
             )}
         </Col>)
     })
+}

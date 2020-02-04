@@ -65,6 +65,7 @@
     &__heading{
         color: $brand-color-1;
         font-size: 38px;
+        word-break: break-word;
         @include bp-md{
             font-size: 64px;
             line-height: 1;

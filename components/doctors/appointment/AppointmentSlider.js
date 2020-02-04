@@ -8,7 +8,7 @@ class AppointmentSlider extends Component {
     super(props);
     this.state = {
       sliderPage: 1,
-      sliderTotalCount: 5,
+      sliderTotalCount: 3, // 5,
       sliderDate: []
     };
     this.getSingleDateView = this.getSingleDateView.bind(this);
@@ -38,10 +38,10 @@ class AppointmentSlider extends Component {
     </div>;
   }
   getSliderDate(page, direction = 0) {
-
+    const number = this.state.sliderTotalCount;
     var date = [];
-    var i = page * 5 - 5;
-    var limit = 5 * page;
+    var i = (page * number) - number;
+    var limit = number * page;
     const {
       onDateChange
     } = this.props
@@ -98,7 +98,7 @@ class AppointmentSlider extends Component {
 
     } = this.state
     return (
-      <Row>
+      <Row type="flex" justify="center" className="c-appointment-card__slider-row" >
 
         <Col span={2}>
           {
@@ -111,7 +111,7 @@ class AppointmentSlider extends Component {
         </Col>
         {
           sliderDate.map((key, index) =>
-            <Col span={4} key={index}>
+            <Col span={6} key={index}>
               {this.getSingleDateView(key)}
               {/* { key} */}
             </Col>
