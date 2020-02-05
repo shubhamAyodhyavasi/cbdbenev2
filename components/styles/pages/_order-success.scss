@@ -6,6 +6,10 @@
     &__main {
         padding: 50px;
         padding-bottom: 30px;
+        @include bpm-xs{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
     }
     &__btn-wrap{
         width:360px;

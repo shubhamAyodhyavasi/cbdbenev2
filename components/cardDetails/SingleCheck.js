@@ -77,7 +77,7 @@ class SingleCheck extends Component {
       } = card.bankAccount;
       return (
         <div className="col-md-12 col-sm-12 col-xs-12">
-          <Card className="panel-section">
+          <Card className="panel-section border-0">
             <CardBody>
               <div className="row align-items-md-center">
                 <div className="col-md-8 col-sm-8 col-xs-12">
@@ -107,14 +107,14 @@ class SingleCheck extends Component {
                       <Button
                         onClick={this.deleteCard}
                         color="link"
-                        className="simple-link my-order__t-btn"
+                        className="simple-link my-order__t-btn btn-link"
                       >
                         Delete
                       </Button>
                     </li>
                     {card.isDefault ? (
                       <li>
-                        <Button color="link" className="simple-link my-order__t-btn" disabled>
+                        <Button color="link" className="simple-link my-order__t-btn btn-link" disabled>
                           <Icon
                             size="20"
                             style={{ color: "green" }}
@@ -127,7 +127,7 @@ class SingleCheck extends Component {
                         <Button
                           onClick={this.setDefaultCard}
                           color="link"
-                          className="simple-link"
+                          className="simple-link my-order__t-btn btn-link"
                         >
                           Set as Default
                         </Button>

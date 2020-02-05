@@ -52,12 +52,12 @@ class ForgetForm extends React.Component{
                         })
                     }else{
                         this.setState({
-                            error: res.data.message || "something wrong"
+                            error: res.data.message || "User not found"
                         })
                     }
                 }else{
                     this.setState({
-                        error: "something wrong"
+                        error: "User not found"
                     })
                 }
             })
@@ -65,7 +65,7 @@ class ForgetForm extends React.Component{
                 console.log({err});
                 this.setState({
                     isLoading: false,
-                    error: "something wrong"
+                    error: "User not found"
                 })
             })
           }

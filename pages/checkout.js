@@ -219,8 +219,8 @@ const Checkout  = ({
             
             <div className="o-success">
                 <div className="o-success__main o-success__main--center">
-                    <Heading versions={["large", "upper"]} parentClass="c-privacy" >Thank you <br /> for your order</Heading>
-                    <Heading versions={["small", "upper", "gold"]} parentClass="mt-3 c-privacy " >Order Number: {order && order._id}</Heading>
+                    <Heading versions={["large", "upper", "order"]} parentClass="c-privacy" >Thank you <br /> for your order</Heading>
+                    <Heading versions={["small", "upper", "gold", "order-no"]} parentClass="mt-3 c-privacy" >Order Number: {order && order._id}</Heading>
                     <p className="o-success__descp mt-3">The order information will be sent via e-mail to {order && order.userDetails && order.userDetails.email} </p>
                 </div>
 
@@ -314,6 +314,7 @@ const Checkout  = ({
 
             <FullModal 
                     isOpen={isModal}
+                    toggle={()=> setIsModal(!isModal)}
                 >
                     <div className="c-submit-r__product-selector">                    
                     <div className="modal__logo-wrapper">
@@ -325,7 +326,7 @@ const Checkout  = ({
                         </div>
                     </div>
                     <div className="modal-dismiss"
-                    //  onClick={this.toggle}
+                     onClick={()=> setIsModal(!isModal)}
                     >
                     <ReactIcon icon={ic_clear} size={"32"} />
                     </div>

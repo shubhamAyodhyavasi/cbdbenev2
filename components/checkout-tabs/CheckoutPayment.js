@@ -807,12 +807,12 @@ class CheckoutPayment extends React.Component {
                                         </div>
                                     </div>
 
-                                    <Form.Item>
+                                    {isLogin && <Form.Item>
                                         {getFieldDecorator('savecard', {
                                             valuePropName: 'checked',
                                             initialValue: false,
                                         })(<Checkbox versions={["gold"]} >Save this card for next time</Checkbox>)}
-                                    </Form.Item>
+                                    </Form.Item>}
                                 </>
                             </Panel>
                         </Collapse>
@@ -882,12 +882,12 @@ class CheckoutPayment extends React.Component {
                                         )}
                                     </Form.Item>
 
-                                    <Form.Item>
+                                    {isLogin && <Form.Item>
                                         {getFieldDecorator('savecard', {
                                             valuePropName: 'checked',
                                             initialValue: false,
                                         })(<Checkbox versions={["gold"]} >Save this account for next time</Checkbox>)}
-                                    </Form.Item>
+                                    </Form.Item>}
                                 </>
                             </Panel>
                         </Collapse>

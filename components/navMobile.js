@@ -13,10 +13,11 @@ import { unsetUser } from '../redux/actions/user'
 // import { c } from '../redux/actions/cart'
 import Registration from './popups/Registration';
 import Login from './popups/Login';
+import ForgetPassword from './popups/ForgetPassword';
 import { Menu, Dropdown, Icon, Collapse } from 'antd';
 const NavMobile = ({
   parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
-  toggleRegBar, isRegOpen, hasLogin, user, unsetUser, onlyCart
+  toggleRegBar, isRegOpen, hasLogin, user, unsetUser, onlyCart, loginDisplay
 }) => {
   const [isOpen, setOpen] = useState(false)
   // const [isCartOpen, setIsCartOpen] = useState(false)
@@ -66,10 +67,11 @@ const NavMobile = ({
         <CartDrawer />
       </Drawer>
       <Drawer onClose={toggleRegBar} title={
-        hasLogin ? "Login" : "Registration"
+        loginDisplay === "register" ? "Registration" :  "Login"
       } visible={isRegOpen} >
-        {!hasLogin && <Registration />}
-        {hasLogin && <Login />}
+        {loginDisplay === "register" && <Registration />}
+        {loginDisplay === "login" && <Login />}
+        {loginDisplay === "forget" && <ForgetPassword />}
       </Drawer>
     </nav>
   )
@@ -80,6 +82,7 @@ const mapStateToProps = state => ({
   isCartOpen: state.drawers.isCartOpen,
   isRegOpen: state.drawers.isRegOpen,
   hasLogin: state.drawers.hasLogin,
+  loginDisplay: state.drawers.toDisplay,
   user: state.user
 })
 export default connect(mapStateToProps, { toggleCartBar, hideCartBar, toggleRegBar, unsetUser })(NavMobile)

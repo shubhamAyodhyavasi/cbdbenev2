@@ -24,6 +24,21 @@
     &--transform{
         text-transform:uppercase;
     }
+
+    &--order{
+        @include bpm-xs{
+            font-size: 22px;
+        }
+    }
+    &--order-no{
+        font-size: 24px;
+        @include bpm-lg{
+            font-size: 22px;
+        }
+        @include bpm-xs{
+            font-size: 18px;
+        }
+    }
 }
 .c-sub-heading{
     font-family: $sub-font;

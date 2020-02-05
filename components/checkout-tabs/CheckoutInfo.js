@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Input from '../form-components/Input'
 import Checkbox from '../form-components/Checkbox';
 import Button from '../form-components/Button'
-import { showRegBar } from '../../redux/actions/drawers'
+import { showRegBar, drawerToDisplay } from '../../redux/actions/drawers'
 import { getAddress } from '../../redux/actions/address'
 import TitleList from '../TItleList'
 import { Form, Radio } from 'antd'
@@ -53,10 +53,38 @@ class CheckoutInfo extends React.Component {
             form.setFieldsValue({
                 ...oldValues
             })
+            const {
+                city,
+                state,
+                country,
+                zip,
+                "city-ship": cityShip,
+                "state-ship": stateShip,
+                "country-ship": countryShip,
+                "zip-ship": zipShip,
+            } = oldValues
+            this.setState(prevState => ({
+                address: {
+                    ...prevState.address,
+                    city: city || prevState.address.city,
+                    state: state || prevState.address.state,
+                    country: country || prevState.address.country,
+                    zip: zip || prevState.address.zip,
+                    addressStr: prevState.address.addressStr
+                },
+                addressShip: {
+                    ...prevState.addressShip,
+                    city: cityShip || prevState.addressShip.city,
+                    state: stateShip || prevState.addressShip.state,
+                    country: countryShip || prevState.addressShip.country,
+                    zip: zipShip || prevState.addressShip.zip,
+                    addressStr: prevState.addressShip.addressStr
+                }
+            }))
         }
-        console.log({
-            props: this.props
-        })
+        // console.log({
+        //     props: this.props
+        // })
         setTimeout(() => {
             if (this.props.user._id) {
                 this.props.getAddress(this.props.user._id)
@@ -239,21 +267,22 @@ class CheckoutInfo extends React.Component {
           } = address
         if(!addressStr){
             const addressLine =  `${city}, ${state}, ${country}, ${zip}`.trim()
-            return addressLine
+            const trimmedLine = addressLine.trim().replace(/^,/g, "").trim().replace(/^,/g, "").trim().replace(/^,/g, "").trim();
+            return trimmedLine
         }
         return addressStr
     }
     render() {
         const componentClass = "c-checkout-info"
         const {
-            showRegBar,
+            showRegBar, drawerToDisplay, 
             user, form, addresses
         } = this.props
         const {
             sameShipping,
             address, addressShip
         } = this.state
-        const { getFieldDecorator, getFieldValue, setFieldsValue, isFieldTouched } = form
+        const { getFieldDecorator, getFieldValue, setFieldsValue, isFieldTouched, getFieldsValue } = form
         const isLogin = user._id ? true : false
         console.log({
             form
@@ -284,8 +313,11 @@ class CheckoutInfo extends React.Component {
                         </Form.Item>
                         {!isLogin && <div className={componentClass + "__login-wrapper"}>
                             Already have an account? <span
-                                onClick={showRegBar}
-                                className={componentClass + "__login-btn"}>SIGN IN</span>
+                                onClick={()=> {
+                                    drawerToDisplay("login")
+                                    showRegBar()
+                                }}
+                                className={componentClass + "__login-btn cursor-pointer"}>SIGN IN</span>
                         </div>}
                     </TitleList>
                     <TitleList versions={["sm-border"]} parentClass={componentClass} title="Shipping Information" >
@@ -508,14 +540,14 @@ class CheckoutInfo extends React.Component {
                                             )}
                                         </Form.Item>
                                     </div>
-                                    <div className="col-12">
+                                    {isLogin && <div className="col-12">
                                         <Form.Item>
                                             {getFieldDecorator('saveaddress', {
                                                 valuePropName: 'checked',
                                                 initialValue: true,
                                             })(<Checkbox versions={["gold"]} >Save this information for next time</Checkbox>)}
                                         </Form.Item>
-                                    </div>
+                                    </div>}
 
                                 </div>
                             </div>
@@ -721,14 +753,14 @@ class CheckoutInfo extends React.Component {
                                                 )}
                                             </Form.Item>
                                         </div>
-                                        <div className="col-12">
+                                        {isLogin && <div className="col-12">
                                             <Form.Item>
                                                 {getFieldDecorator('saveaddress_ship', {
                                                     valuePropName: 'checked',
                                                     initialValue: true,
                                                 })(<Checkbox versions={["gold"]} >Save this information for next time</Checkbox>)}
                                             </Form.Item>
-                                        </div>
+                                        </div>}
                                     </>
                                 }
                             </div>
@@ -747,6 +779,6 @@ const mapStateToProps = (state) => ({
     state
 })
 const mapActionToProps = {
-    showRegBar, getAddress
+    showRegBar, getAddress, drawerToDisplay
 }
 export default connect(mapStateToProps, mapActionToProps)(Form.create({ name: "checkoutInfo" })(CheckoutInfo))

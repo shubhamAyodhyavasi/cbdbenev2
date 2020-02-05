@@ -9,13 +9,14 @@ import CartDrawer from '../CartDrawer'
 import { connect } from 'react-redux'
 import Drawer from '../Drawer'
 import Registration from '../popups/Registration';
+import ForgetPassword from '../popups/ForgetPassword';
 import Login from '../popups/Login';
 import {toggleRegBar} from '../../redux/actions/drawers'
 import { Collapse } from 'reactstrap';
 
 
 const CheckoutLayout = ({title, children,isRegOpen,
-  hasLogin, toggleRegBar
+  hasLogin, toggleRegBar, loginDisplay
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [windowWidth, setWindowWidth] = useState( typeof window !== 'undefined' ? window.innerWidth : 0);
@@ -74,10 +75,11 @@ const CheckoutLayout = ({title, children,isRegOpen,
           </div>
       </div>
       <Drawer onClose={toggleRegBar} title={
-        hasLogin? "Login" : "Registration"
-        } visible={isRegOpen} >
-          {!hasLogin && <Registration />}
-          {hasLogin && <Login />}
+        loginDisplay === "register" ? "Registration" :  "Login"
+      } visible={isRegOpen} >
+        {loginDisplay === "register" && <Registration />}
+        {loginDisplay === "login" && <Login />}
+        {loginDisplay === "forget" && <ForgetPassword />}
       </Drawer>
     </div>
   )
@@ -86,6 +88,7 @@ const CheckoutLayout = ({title, children,isRegOpen,
 const mapStateToProps = state => ({
   isRegOpen: state.drawers.isRegOpen,
   hasLogin: state.drawers.hasLogin,
+  loginDisplay: state.drawers.toDisplay,
   user: state.user
 })
 export default connect(mapStateToProps, {toggleRegBar})(CheckoutLayout)
