@@ -17,7 +17,7 @@
 
 .c-favourites{
     &__item{
-        background: #fff;
+        background: $light-color;
         padding: 60px 0;
     }
     &__row{
@@ -40,7 +40,7 @@
         align-items: flex-end;
         justify-content: space-between;
         width: 100%;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid $black;
         margin: 30px 0;
     }
 
@@ -63,10 +63,10 @@
         padding-left: 0;
 
         &__list {
-            color: #000;
+            color: $black;
         }
         &__list-link {
-            color: #000;   
+            color: $black;   
             &:hover {
                 color:$brand-color-1;
             }

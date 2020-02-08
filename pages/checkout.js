@@ -52,20 +52,6 @@ const Checkout  = ({
         }
     })
     
-    const address = [
-        {
-            address: "125th St, New York, NY 10027, USA",
-            id: 1
-        },
-        {
-            address: "127th St, New York, NY 10027, USA",
-            id: 2
-        },
-        {
-            address: "165 Courtland St NE, Atlanta, GA 30303, USA",
-            id: 3
-        },
-    ]
     const onInfoSubmit = (e, values, address, addressShip) => {
         console.log({
             e, values
@@ -94,10 +80,10 @@ const Checkout  = ({
         }
         const addressB = {
             ...addressShip,
-            email_ship,
-            firstname_ship,
-            lastname_ship,
-            phone_ship,
+            email: email_ship,
+            firstname: firstname_ship,
+            lastname: lastname_ship,
+            phone: phone_ship,
         }
         const allAddresses  = props.address.address || []
         const idTime        = new Date().getTime();
@@ -132,10 +118,12 @@ const Checkout  = ({
         }
         const mainAddressRaw = addressSelect ? {
             ...addressSelect,
-            email
+            phone,
+            email,
         } : {
             ...address,
-            email
+            email,
+            phone,
         }
         setInfoDetails({...values})
         setCurrentStep(1)
@@ -275,19 +263,6 @@ const Checkout  = ({
                     }
                     
                 </TitleList>} */}
-                {!address.length && 
-                    <>
-                        <TitleList parentClass="c-checkout" versions={["sm-border"]} title="Shipping Information" >
-                            <AddressForm />
-                            <div className="col-12">
-                                <Checkbox parentClass="c-checkout" versions={["gold"]} >Ship to the same adress</Checkbox>
-                            </div>
-                        </TitleList>
-                        <TitleList parentClass="c-checkout" versions={["sm-border"]} title="Shipping Information" >
-                            <AddressForm />
-                        </TitleList>
-                    </>
-                }
                 
                 {/* <TitleList parentClass="c-checkout" versions={["sm-border"]} >
                     <div className="col-12">

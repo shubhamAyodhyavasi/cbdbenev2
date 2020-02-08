@@ -8,7 +8,6 @@
         justify-content: center;
         height: 100%;
         padding: 0 10px;
-        // border-left: 1px solid #eee;
     }
     &__steps{
         padding: 0 10px;
@@ -41,7 +40,7 @@
         .ant-list-item{
             cursor: pointer;
             &:hover{
-                background-color: rgba(black, .03);
+                background-color: rgba($black, .03);
             }
         }
     }

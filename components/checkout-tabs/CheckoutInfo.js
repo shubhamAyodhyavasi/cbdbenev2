@@ -409,7 +409,7 @@ class CheckoutInfo extends React.Component {
                                                 },
                                                 ],
                                             })(
-                                                <DebounceInput type="number"  value="" parentClass="c-address-form" name="number" label="Phone Number" />
+                                                <DebounceInput type="number" parentClass="c-address-form" name="number" label="Phone Number" />
                                             )}
                                         </Form.Item>
                                     </div>

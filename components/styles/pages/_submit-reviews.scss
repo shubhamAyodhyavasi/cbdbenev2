@@ -19,7 +19,7 @@
         align-items: flex-end;
         justify-content: space-around;
         width: 100%;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid $black;
         margin: 30px auto;
     }
 
@@ -82,14 +82,14 @@
 
 .modal-dismiss {
     text-align: right;
-    color: #cfa564;
+    color: $brand-color-1;
     width: 100%;
     position: absolute;
     background: transparent;
     @include bp-md{
         width: 10%;
         position:static;
-        background: #302d23;
+        background: $dark-color-1;
         padding:10px 20px;
     }
 }
@@ -142,7 +142,7 @@
 }
 
 .modal__logo-wrapper {
-    background-color: #302D23;
+    background-color: $dark-color-1;
     display: flex;
     align-items: center;
     width: 100%;
@@ -154,7 +154,7 @@
     }
 }
 .modal-header{
-    background: #302d23;
+    background: $dark-color-1;
     border-radius:0;
 }
 .modal-footer__logo {
@@ -167,14 +167,14 @@
 }
 .modal-header .close,
 .modal-title {
-    color: #cfa564;
+    color: $brand-color-1;
 }
 
 .modal__heading {
     text-align: left;
     width: 80%;
     padding: 15px;
-    border-left: 1px solid #cfa564;  
+    border-left: 1px solid $brand-color-1;  
     @include bp-md{
     width: 80%;
     padding: 20px;
@@ -186,7 +186,7 @@
 }
 
 .modal__heading-text {
-    color: #cfa564;
+    color: $brand-color-1;
     @include bpm-md{
         font-size:20px;
     }

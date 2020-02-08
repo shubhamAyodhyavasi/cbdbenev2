@@ -5,6 +5,7 @@ import projectSettings from '../../constants/projectSettings'
 import '../styles/app.scss'
 import Footer from '../Footer'
 import classNames from 'classnames'
+import ChatBot from '../chatBot/ChatBot'
 
 const Layout = ({title, children, isHeaderBg, headerTheme, headerVersions, pageClass, fixed, homeLogo}) => (
   <div className={classNames("c-layout", {
@@ -16,6 +17,7 @@ const Layout = ({title, children, isHeaderBg, headerTheme, headerVersions, pageC
     </Head>
     <Header theme={headerTheme} homeLogo={homeLogo} versions={headerVersions} bg={isHeaderBg} fixed={fixed}/>
     {children}
+    <ChatBot />
     <Footer />
   </div>
 )

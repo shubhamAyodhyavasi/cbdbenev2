@@ -5,7 +5,7 @@
         border: none;
         border-radius: 0;
         border: none;
-        border-bottom: 1px solid #000 !important ;
+        border-bottom: 1px solid $black !important ;
         background-color: transparent !important;
         &:focus,&:hover{
             outline: none !important;
@@ -13,7 +13,7 @@
             border-bottom: 1px solid $dark-color-2;
         }
         &--important{
-            border-bottom: 1px solid #000 !important;
+            border-bottom: 1px solid $black !important;
         }
     }
     &--dark{
@@ -27,11 +27,15 @@
     }
     
 }
+// override old design
+.has-input{
+    padding-bottom: 10px;
+}
 // override ant design
 .has-error .ant-input:focus{
     box-shadow: none;
 }
 
 .has-error .ant-input:not([disabled]) {
-    border-color: #f5222d;
+    border-color: $error-color;
 }

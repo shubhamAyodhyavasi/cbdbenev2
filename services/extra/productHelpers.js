@@ -144,10 +144,7 @@ export const directAddToCart = product => {
   return variablePriceSet({
     ...product,
     ...newVariation,
-    qty: {
-      label: "1",
-      value: "1"
-    }
+    qty: 1
   });
 };
 export const getAttrListing = (attr = []) =>

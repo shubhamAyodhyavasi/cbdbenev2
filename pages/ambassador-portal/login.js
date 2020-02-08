@@ -354,8 +354,8 @@ class Login extends Component {
                 />
               </FadeTransition>
             </div>
-            <div className="col-lg-5  p-md-5 p-3 col-md-6 register shadowBoxBackground">
-              <h1 className="title-80">Log in to Ambassador Portal</h1>
+            <div className="col-lg-5  p-md-5 p-3 col-md-6 register shadowBoxBackground ambassador-login-form">
+              <h2 className="title-80">Log in to Ambassador Portal</h2>
               <br />
 
               <div className="inside-form Larger ">

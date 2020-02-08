@@ -29,10 +29,10 @@
     }
     &__related-section{
         padding: 100px 40px;
-        background-color: #faf7f5;
+        background-color: $light-color-2;
     }
     &__h-img-section{
-        background-color: #fff;
+        background-color: $light-color;
         .c-h-img-section{
             &__content-wrapper{
                 position: relative;

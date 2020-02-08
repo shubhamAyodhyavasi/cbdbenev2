@@ -1,5 +1,5 @@
 .c-layout{
-    background-color: #faf7f5;
+    background-color: $light-color-2;
 }
 .c-product-info{
     padding: 50px 20px 50px;
@@ -191,15 +191,15 @@
 .carousel{    
     &__dot{
         background: transparent;
-            border: 1px solid #000;
+            border: 1px solid $black;
             width: 1px;
             height: 1px;
             border-radius: 50%;
             padding: 3px;
             margin: 3px;
         &--selected{
-            background: #000;
-            border: 1px solid #000;
+            background: $black;
+            border: 1px solid $black;
             width: 1px;
             height: 1px;
             border-radius: 50%;

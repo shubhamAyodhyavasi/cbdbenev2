@@ -77,7 +77,7 @@
                 background-color: $brand-color-1;
                 box-shadow: none !important;
                 &:after{
-                    background-color: #fff;
+                    background-color: $light-color;
                     border-color: $brand-color-1;
                 }
             }
@@ -97,5 +97,5 @@
 }
 
 .ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner{
-    border-color:#cfa564;
+    border-color:$brand-color-1;
 }

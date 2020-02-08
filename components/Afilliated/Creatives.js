@@ -8,7 +8,8 @@ export default class Creatives extends Component {
         <div
           style={{ width: "100%" }}
           onClick={this.copyText}
-          className="snippet-text p-3"
+          className="snippet-text p-md-3"
+          style={{wordBreak:'break-all'}}
         >
           {link}
         </div>

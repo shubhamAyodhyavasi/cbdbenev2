@@ -57,7 +57,7 @@ const Product = ({product, allProducts, ...props}) => {
         return (
             <Layout  headerTheme="dark" fixed={true}>
                 <ProductInfo 
-                product={product} reviews={props.reviews} productAttr={productAttr.filter((el,i)=> i < 1 )} image={productImage}>
+                product={product} reviews={props.reviews} productAttr={productAttr.filter((el,i)=> product.combo ? i < 2 : i < 1 )} image={productImage}>
                 </ProductInfo>
                 <HImgSection parentClass={"c-product-single"} version={["full"]} image={projectSettings.filePath + image} >
                     <div>
@@ -66,7 +66,7 @@ const Product = ({product, allProducts, ...props}) => {
                     <div className="c-product-single__list">
                         {
                             productAttr.map((el, i) => {
-                                if(i < 1) return null
+                                if(product.combo ? i < 2 : i < 1) return null
                                 return <TitleList parentClass="c-product-single" key={i} title={el.title} >{el.description}</TitleList>
                             })
                         }

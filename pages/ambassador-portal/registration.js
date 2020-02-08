@@ -641,7 +641,7 @@ class Registration extends Component {
                   />
                 </FadeTransition>
               </div>
-              <div className="col-lg-10  p-md-5 p-3 col-md-10 register shadowBoxBackground">
+              <div className="p-md-5 p-3 register shadowBoxBackground ambassador-reg-form">
                 <h1 className="title-80">AMBASSADOR APPLICATION</h1>
                 <br />
                 <div className="inside-form Larger ">
@@ -649,12 +649,13 @@ class Registration extends Component {
                     <div className="row">
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error": registration_firstName_err
                           })}
                         >
                           <label>First Name:</label>
                           <input
+                            className="c-input__input"
                             id="registration_firstName"
                             name="registration_firstName"
                             value={registration_firstName}
@@ -676,12 +677,13 @@ class Registration extends Component {
                       </div>
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error": registration_lastName_err
                           })}
                         >
                           <label>Last Name:</label>
                           <input
+                            className="c-input__input"
                             id="registration_lastName"
                             name="registration_lastName"
                             value={registration_lastName}
@@ -706,7 +708,7 @@ class Registration extends Component {
                     <div className="row">
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error":
                               registration_email_err &&
                               !focusName.includes("registration_email_err")
@@ -714,6 +716,7 @@ class Registration extends Component {
                         >
                           <label>Email:</label>
                           <input
+                            className="c-input__input"
                             id="registration_email"
                             name="registration_email"
                             value={registration_email}
@@ -738,13 +741,14 @@ class Registration extends Component {
                       </div>
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error": registration_phone_err
                           })}
                         >
                           <label>Phone Number:</label>
 
                           <ReactPhoneInput
+                            inputClass="c-input__input"
                             containerClass="react-tel-input react-phone"
                             id="registration_phone"
                             name="registration_phone"
@@ -768,12 +772,13 @@ class Registration extends Component {
                     <div className="row">
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error": registration_profession_err
                           })}
                         >
                           <label>Profession:</label>
                           <input
+                            className="c-input__input"
                             id="registration_profession"
                             name="registration_profession"
                             value={registration_profession}
@@ -795,7 +800,7 @@ class Registration extends Component {
                       </div>
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error":
                               registration_website_err &&
                               !focusName.includes("registration_website_err")
@@ -803,6 +808,7 @@ class Registration extends Component {
                         >
                           <label>Website:</label>
                           <input
+                            className="c-input__input"
                             id="registration_website"
                             name="registration_website"
                             value={registration_website}
@@ -829,7 +835,7 @@ class Registration extends Component {
                     <div className="row">
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error":
                               registration_instagram_err &&
                               !focusName.includes("registration_instagram_err")
@@ -837,6 +843,7 @@ class Registration extends Component {
                         >
                           <label>Instagram:</label>
                           <input
+                            className="c-input__input"
                             id="registration_instagram"
                             name="registration_instagram"
                             value={registration_instagram}
@@ -863,7 +870,7 @@ class Registration extends Component {
                       </div>
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error":
                               registration_facebook_err &&
                               !focusName.includes("registration_facebook_err")
@@ -871,6 +878,7 @@ class Registration extends Component {
                         >
                           <label>Facebook:</label>
                           <input
+                            className="c-input__input"
                             id="registration_facebook"
                             name="registration_facebook"
                             value={registration_facebook}
@@ -900,7 +908,7 @@ class Registration extends Component {
                     <div className="row">
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error":
                               registration_ZipCode_err &&
                               !focusName.includes("registration_ZipCode_err")
@@ -908,6 +916,7 @@ class Registration extends Component {
                         >
                           <label>Zip Code:</label>
                           <input
+                            className="c-input__input"
                             id="registration_ZipCode"
                             name="registration_ZipCode"
                             value={registration_ZipCode}
@@ -931,12 +940,13 @@ class Registration extends Component {
                       </div>
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error": registration_NetworkSize_err
                           })}
                         >
                           <label>Network Size:</label>
                           <select
+                            className="c-input__input"
                             id="registration_NetworkSize"
                             name="registration_NetworkSize"
                             value={registration_NetworkSize}
@@ -963,12 +973,13 @@ class Registration extends Component {
                     </div>
 
                     <div
-                      className={classNames("has-input", {
+                      className={classNames("has-input c-input", {
                         "has-error": registration_wantTo_err
                       })}
                     >
                       <label>Why do you want to be an Ambassador?:</label>
                       <input
+                        className="c-input__input"
                         id="registration_wantTo"
                         name="registration_wantTo"
                         value={registration_wantTo}
@@ -989,7 +1000,7 @@ class Registration extends Component {
                     <div className="row">
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error":
                               registration_password_err &&
                               !focusName.includes("registration_password_err")
@@ -997,6 +1008,7 @@ class Registration extends Component {
                         >
                           <label>Password:</label>
                           <input
+                            className="c-input__input"
                             id="registration_password"
                             name="registration_password"
                             value={registration_password}
@@ -1025,7 +1037,7 @@ class Registration extends Component {
                       </div>
                       <div className="col-md-6">
                         <div
-                          className={classNames("has-input", {
+                          className={classNames("has-input c-input", {
                             "has-error":
                               registration_confirmPassword_err &&
                               !focusName.includes(
@@ -1035,6 +1047,7 @@ class Registration extends Component {
                         >
                           <label>Confirm Password:</label>
                           <input
+                            className="c-input__input"
                             id="registration_confirmPassword"
                             name="registration_confirmPassword"
                             value={registration_confirmPassword}
@@ -1063,7 +1076,9 @@ class Registration extends Component {
 
                     <div className="row">
                       <div className="col-md-4 offset-md-4">
-                        <button type="submit" className="btn btn-main btn7 w-100">
+                      <br />
+                      <br />
+                        <button type="submit" className="btn btn-main btn7 w-100 c-btn c-btn--outline">
                           Register
                         </button>
                       </div>
@@ -1072,14 +1087,14 @@ class Registration extends Component {
                 </div>
                 <div className="row">
                   <ul className="login-variation-ul p-0 d-flex w-100 justify-content-between flex-wrap">
-                    <li>
+                    <li className="d-block">
                       <Link
                         href={`/ambassador-portal/login`}
                       >
                         <a>Login</a>
                       </Link>
                     </li>
-                    <li>
+                    <li className="d-block">
                       <Link
                         href={`/ambassador-portal/forgot-password`}
                       >

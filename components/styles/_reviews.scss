@@ -1,6 +1,6 @@
 .reviews {
     display: flex;
-    background: #000;
+    background: $black;
     position: relative;
     margin: 0;
     padding: 0;
@@ -18,9 +18,9 @@
         width: 100%;
         padding: 90px 50px;
         padding-bottom: 0;
-        border-left: 1px solid #d7ab67;
+        border-left: 1px solid $brand-color-1;
         &--text{
-            color: #d5a966;
+            color: $brand-color-1;
             margin: 0;
         }
         &--xl{
@@ -67,7 +67,7 @@
         justify-content: space-between;
         align-items: flex-start;
         flex-wrap: wrap;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid $black;
         position: relative;
         margin-bottom: 20px;
         margin-top: 15px;
@@ -75,7 +75,7 @@
 
     &__star {
         width: 17%;
-        border-right: 1px solid #cfa564;
+        border-right: 1px solid $brand-color-1;
         max-width: 100%;
     }
 

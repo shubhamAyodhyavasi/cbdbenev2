@@ -1,22 +1,22 @@
-const projectName           = "bene";
-const baseUrl               = "http://localhost:4000";
-const docMzUrl              = "http://localhost:3001";
-const serverUrl             = "https://admin.cbdbene.com/";
-const googleApiKey          = "AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk"
-const shippingFreeAfter     = 75;
-const shippingExtraRate     = 5;
-const shippingStaticRate    = 5.95;
-const referralPresent       = 25;
-const defaultOrderStatus    = "Transaction completed - label generated";
-const defaultStatusInOrder  = "in process";
-const invoiceUrl            = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/public/invoices/";
-const subsPercent           = 10
-const filePath              = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/"
-const labSheetPath          = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/"
-const countryTax            = 15/100
+export const projectName           = "bene";
+export const baseUrl               = "http://localhost:4000";
+export const docMzUrl              = "http://localhost:3001";
+export const serverUrl             = "https://admin.cbdbene.com/";
+export const googleApiKey          = "AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk"
+export const shippingFreeAfter     = 75;
+export const shippingExtraRate     = 5;
+export const shippingStaticRate    = 5.95;
+export const referralPresent       = 25;
+export const defaultOrderStatus    = "Transaction completed - label generated";
+export const defaultStatusInOrder  = "in process";
+export const invoiceUrl            = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/public/invoices/";
+export const subsPercent           = 10
+export const filePath              = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/"
+export const labSheetPath          = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/"
+export const countryTax            = 15/100
 
-const enableCountry         = ["US", "USA", "United States"];
-const accountTypeOpt        = [
+export const enableCountry         = ["US", "USA", "United States"];
+export const accountTypeOpt        = [
     {
       label: "Checking",
       value: "checking"

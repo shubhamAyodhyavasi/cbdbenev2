@@ -14,6 +14,14 @@
         &--black{
             background-color: $base-color;
         }
+        &--white{
+            background-color: $light-color;
+        }
+        &--not-full{
+            @include bp-md{
+                min-height: auto;
+            }
+        }
     }
     &__list{
         padding-top: 80px;
@@ -50,6 +58,24 @@
         @include bpm-xs{
             font-size: 24px;
         }
+        &.c-heading{
+            &--very-large{
+                font-size: 24px;
+                line-height: 1.2;
+                @include bp-md{
+                    font-size: 40px;
+                }
+                @include bp-lg{
+                    font-size: 55px;
+                }
+                @include bp-xl{
+                    font-size: 65px;
+                }
+                @include bp-xxl{
+                    font-size: 78px;
+                }
+            }
+        }
     }
     &__title-list{
         .c-title-list{
@@ -67,7 +93,7 @@
                     border-left: 1px solid $brand-color-1;
                 }
                 &__text{
-                    color: #ffffff;
+                    color: $light-color;
                 }
             }
             .c-btn{
@@ -75,7 +101,7 @@
                 color: $brand-color-1;
                 &:hover{
                     background-color: $brand-color-1;
-                    color: #fff;
+                    color: $light-color;
                 }
             }
         }

@@ -19,7 +19,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(-78deg, #040404cc, #bb955b);
+            background-image: linear-gradient(-78deg, rgba($dark-color-1, 0.8), $brand-color-1);
             opacity: .7;
             z-index: 0;
         }

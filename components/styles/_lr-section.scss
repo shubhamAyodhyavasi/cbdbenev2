@@ -5,7 +5,7 @@
     justify-content: center;
     @include bp-md{
         min-height: 100vh;
-        background: #fff;
+        background: $light-color;
     }
     &__heading{
         font-size: 50px;

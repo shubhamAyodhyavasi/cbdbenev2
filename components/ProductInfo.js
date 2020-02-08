@@ -196,35 +196,36 @@ class ProductInfo extends React.Component {
                             {productAttr.map((el, i)=> (
                                 <TitleList parentClass="c-product-info" key={i} title={el.title} >{el.description}</TitleList>
                             ))}
-                            <TitleList onTitleClick={()=> {
+                            {!product.combo && <TitleList onTitleClick={()=> {
                                 this.setState(prevState => ({
                                     isAllIngredient: !prevState.isAllIngredient
                                 }))
-                            }} parentClass="c-product-info" title={<>All Ingredient<br /><Icon type={isAllIngredient ? "minus" : "plus"} /> </>} >
+                            }} parentClass="c-product-info" title={<>{isAllIngredient ? "All" : "Key"} Ingredients<br /><Icon type={isAllIngredient ? "minus" : "plus"} /> </>} >
                                 <Collapse isOpen={!isAllIngredient}>
                                     {product.keyingredients}
                                 </Collapse>
                                 <Collapse isOpen={isAllIngredient}>
                                     {product.allingredients}
                                 </Collapse>
-                            </TitleList>
+                            </TitleList>}
                         </div>
-                        <div className="c-product-info__subscribe-wrapper">
+                        <div className="c-product-info__subscribe-wrapper d-flex">
                             <Checkbox checked={isSubscribed} onChange={()=> {this.setState(prevState => ({
                                 isSubscribed: !prevState.isSubscribed
                             }))}} id={product && product._id} label={`Subscribe & save ${subsPercent}%`} />
+                            {
+                                isSubscribed && 
+                                <div style={{padding: "10px 15px"}}>
+                                <Select onChange={(e)=> this.setState({subsDuration: e})} value={subsDuration} >
+                                    <Option value="3">3 Months</Option>
+                                    <Option value="6">6 Months</Option>
+                                    <Option value="12">1 Year</Option>
+                                </Select>
+                                <br />
+                                </div>
+                            }
                         </div>
-                        {
-                            isSubscribed && 
-                            <div style={{paddingBottom: "20px"}}>
-                            <Select onChange={(e)=> this.setState({subsDuration: e})} value={subsDuration} >
-                                <Option value="3">3 Months</Option>
-                                <Option value="6">6 Months</Option>
-                                <Option value="12">1 Year</Option>
-                            </Select>
-                            <br />
-                            </div>
-                        }
+                        
                         <div className="c-product-info__atc-wrapper">
                             <div className="c-product-info__btn-wrapper">
                             <div className="c-product-info__btn-wrap">

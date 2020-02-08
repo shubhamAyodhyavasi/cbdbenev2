@@ -6,7 +6,7 @@
 
     &__wrapper {
         padding: 40px;
-        background: #fff;
+        background: $light-color;
         @include bpm-sm {
             padding: 10px;
         }
@@ -52,7 +52,7 @@
     &__subtitle {
         width: 640px;
         margin: 60px auto;
-        color: #cfa564;
+        color: $brand-color-1;
         font-weight: 500;
         max-width: 100%;
     }
@@ -75,7 +75,7 @@
             left: -17px;
             width: 7px;
             height: 7px;
-            background: #000;
+            background: $black;
             border-radius: 50px;
             margin: auto;
         }
@@ -90,7 +90,7 @@
     }
 
     &__dark-hr {
-        border-top: 1px solid #000;
+        border-top: 1px solid $black;
         margin-top: 60px;
     }
 
@@ -103,7 +103,7 @@
         flex-wrap: wrap;
         position: relative;
         align-items: flex-start;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid $black;
         justify-content: flex-start;
         margin-top: 40px;
 
@@ -116,18 +116,18 @@
     }
 
     &__t-link {
-        color: #000;
+        color: $black;
         text-decoration: none;
 
         &:hover {
-            color: #000;
+            color: $black;
             text-decoration: none;
         }
     }
 
     &__t-btn {
         background-color:transparent !important;
-        color: #000;
+        color: $black;
         border: 0;
         font-size: 14px;
         padding: 0 10px;
@@ -136,7 +136,7 @@
        
 
         &:hover {
-            background: #fff;
+            background: $light-color;
             color: $brand-color-1 !important;
             text-decoration: underline;
             border: 0;
@@ -197,7 +197,7 @@
 
             @include bpm-sm {
                 flex: 1 0 100%;
-                    background: #faf7f5;
+                background: $light-color-2;
             }
         }
         &--img {
@@ -266,13 +266,13 @@
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
-        color: #000;
+        color: $black;
     }
     
     &__simple-link {
-        color: #000;
+        color: $black;
         &:hover{
-            color:#cfa564;
+            color:$brand-color-1;
         }
     }
     &__add-item {
@@ -282,7 +282,7 @@
         font-size: 14px;
         margin-right: 20px;
         margin-bottom: 0;
-        color: #cfa562;
+        color: $brand-color-1;
     }
     &__transition-item3 {
         border: none;
@@ -318,17 +318,17 @@ a.my-accountLink {
     font-weight: 500;
 
     &:hover,  &.active  {
-        color: #000;
+        color: $black;
         text-decoration:underline;
         font-weight:600; 
     }
 
     &__link{
-        color: #000;
+        color: $black;
         font-size: 12px;
 
         &:hover  {
-            color: #000;
+            color: $black;
         }
     }
 }
@@ -336,11 +336,11 @@ a.my-accountLink {
     width: 85%;
     margin-bottom: 0;
     padding-top: 15px;
-    border-left: 1px solid #cfa564;
+    border-left: 1px solid $brand-color-1;
     padding-left: 25px;
 
     @include bpm-sm {
-        border-top: 1px solid #cfa564;
+        border-top: 1px solid $brand-color-1;
         border-left: none;
         padding-left: 0px;
         padding-top: 10px;
@@ -373,14 +373,14 @@ img.favrate-list-image-width {
 .a-cp {
     margin: 20px 0;
     width: 15%;
-    border-right: 1px solid #cfa564;
+    border-right: 1px solid $brand-color-1;
     padding-right: 50px;
     padding-left: 0;
     font-weight: 600;
     @include bpm-sm {
         width: 100%;
         border-right: 0;
-        border-bottom: 1px solid #cfa564;
+        border-bottom: 1px solid $brand-color-1;
         padding-bottom: 10px; 
         margin-bottom: 10px;
     }
@@ -398,7 +398,7 @@ img.favrate-list-image-width {
         }
     }
     &__error {
-        color: #f20000;
+        color: $error-color;
         margin-left: 170px;
     }
     &__has-input {

@@ -10,7 +10,7 @@ export default class ReferralVisits extends Component {
     if (arr)
       return arr.map((el, index) => (
         <tr key={index}>
-          <th data-label="URL" scope="row">
+          <th data-label="URL" style={{wordBreak: "break-all"}} scope="row">
             {el.url}
           </th>
           <td data-label="Referring URL">

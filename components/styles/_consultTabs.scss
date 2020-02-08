@@ -47,7 +47,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background-color: #202020;
+            background-color: $base-color;
         }
     }
     .ant-tabs-nav{
@@ -84,7 +84,7 @@
 }
 
 .ant-tabs{
-background:#faf7f5;
+background: $light-color-2;
 }
 
 .ant-tabs-nav{
@@ -92,14 +92,14 @@ background:#faf7f5;
 }
 
 .ant-tabs-nav .ant-tabs-tab-active:after{
-    background-color: black;
+    background-color: $black;
     position: absolute !important;
     bottom: 0;
     left: 0;
     width: 100%;
     content: '';
     pointer-events: none;
-    color: black;
+    color: $black;
     height: 3px;
 }
 

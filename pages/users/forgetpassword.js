@@ -141,8 +141,8 @@ class Contact extends React.Component {
             getFieldDecorator
         } = this.props.form
         return (
-            <Layout className="c-contact" title="Contact">
-                <div className="c-contact__container">
+            <Layout className="c-contact" title="Forget Password" headerTheme="dark">
+                <div className="c-contact__container forget-password-wrapper">
                     <Heading>
                         Set a new password
                     </Heading>

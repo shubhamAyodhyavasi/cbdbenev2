@@ -720,10 +720,17 @@ class CheckoutPayment extends React.Component {
                                     >
                                         {
                                             cards.map((el, i) => {
+                                                console.log({
+                                                    el, cards
+                                                })
                                                 if(el.creditCard){
                                                     return <Radio key={i} value={el}>{el.creditCard.cardNumber}</Radio>
-                                                }else if(el.bank){
-                                                    return <Radio key={i} value={el}>bank</Radio>
+                                                }else if(el.bankAccount){
+                                                    return <Radio key={i} value={el}>
+                                                        <span>
+                                                            Account Number {el.bankAccount.accountNumber}
+                                                        </span>
+                                                    </Radio>
                                                 }
                                                 return null
                                             })
