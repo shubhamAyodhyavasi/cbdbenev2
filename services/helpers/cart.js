@@ -393,7 +393,8 @@ export const getItemsHeightWidth = items => {
     qty: el.qty
   }))
   const itemsC = [].concat.apply([], itemsB);
-  const itemsD = combineLoop(itemsC)[0]
+  const itemsC1 = itemsC.map( el => new Array(el.qty).fill(el) ).flat()
+  const itemsD = combineLoop(itemsC1)[0]
 
   return {
     height: itemsD.h,
