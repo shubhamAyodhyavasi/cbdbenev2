@@ -33,7 +33,7 @@ const Checkout  = ({
     const [currentStep, setCurrentStep] = useState(0)
     const [infoDetails, setInfoDetails] = useState({})
     const [mainAddress, setMainAddress] = useState(null)
-    const [shipAddress, setShipAddress] = useState(null)
+    const [billingAddress, setBillingAddress] = useState(null)
     const [shippingDetail, setShippingDetail] = useState(null)
     const [shippingSendData, setShippingSendData] = useState(null)
     const [isModal, setIsModal] = useState(false)
@@ -118,7 +118,7 @@ const Checkout  = ({
         }
         const mainAddressRaw = addressSelect ? {
             ...addressSelect,
-            phone,
+            // phone,
             email,
         } : {
             ...address,
@@ -128,7 +128,7 @@ const Checkout  = ({
         setInfoDetails({...values})
         setCurrentStep(1)
         setMainAddress(mainAddressRaw)
-        setShipAddress(addressSelect_ship || addressSelect || addressShip || address)
+        setBillingAddress(addressSelect_ship || addressSelect || addressShip || address)
     }
     const onShippingSubmit = (e, values, shippingSendData) => {
         setShippingDetail(values)
@@ -254,6 +254,7 @@ const Checkout  = ({
                         onFailed={onPaymentFail}
                         shippingDetail={shippingDetail} 
                         address={mainAddress} 
+                        billingAddress={billingAddress} 
                         shippingSendData={shippingSendData}
                         onSubmit={onPaymentSubmit} />}
                 </div>

@@ -1018,7 +1018,6 @@ export default class BasicFunction {
     }))
     const itemsC = [].concat.apply([], itemsB);
     const itemsD = combineLoop(itemsC)[0]
-
     return {
       height: itemsD.h,
       width: itemsD.w,

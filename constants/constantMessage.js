@@ -231,7 +231,7 @@ export const shippingFreeAfter = 75;
 
 export const billingAddressMsg = "1. Billing Address";
 export const shippingAddressMsg = "Shipping Address";
-export const sameShippingMsg = "Ship to the same address";
+export const sameShippingMsg = "Bill to the same address";
 export const selectCarrierMsg = "2. Select your carrier";
 export const paymentMethodMsg = "3. Payment Method";
 export const reviewOrderMsg = "4. Review Your Order";

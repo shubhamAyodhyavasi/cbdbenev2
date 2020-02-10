@@ -550,11 +550,15 @@ export const generateOrderObj = ({stateObj,
       user,
       confirmShipRes})
     const { service, ...confirmRest } = confirmShipRes;
-    const { paymentMethod, address } = stateObj;
+    const { paymentMethod, address, billingAddress } = stateObj;
     const {
       addressStr,
       ...addressRest
     } = address
+    const {
+      addressStr: billingAddressStr,
+      ...billingAddressRest
+    } = billingAddress
     const {
       items,
       shippingCharge,
@@ -586,6 +590,10 @@ export const generateOrderObj = ({stateObj,
       userDetails: {
         address: addressStr,
         ...addressRest
+      },
+      billingAddress: {
+        address: billingAddressStr,
+        ...billingAddressRest
       },
       orderStatus: projectSettings.defaultOrderStatus,
       paymentMethod: paymentMethod === "stripe" ? "Authorize" : paymentMethod,

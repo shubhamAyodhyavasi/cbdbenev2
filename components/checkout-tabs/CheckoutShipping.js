@@ -29,7 +29,7 @@ const DebounceInput = reactComponentDebounce({
   })(Input);
 
 const {
-  countryTax, enableCountry
+  countryTax, enableCountry, customRates
 } = projectSettings
 
 class CheckoutShipping extends React.Component {
@@ -92,82 +92,95 @@ class CheckoutShipping extends React.Component {
       cart
     } = this.props
     this.setState({dataFetched:false})
-    getShippingRates(data)
-      .then(res => {
-        if (res.data.status) {
-          this.setState({dataFetched:true})
-          const rates = res.data.data.rates
-          const errMessages = res.data.data.messages
-          const breakData = getSingleElementByMultipleObject(
-            rates,
-            c => c.carrier
-          );
-          const isUspsRates = rates.some(el => el.carrier === "USPS")
-          const uspsRates = isUspsRates ? rates.filter(
-            el => el.carrier === "USPS"
-          ) : rates;
-          const shippingOptions = filterShippingRates(uspsRates)
-            .sort((a, b) => a.rate - b.rate);
-          const shippingOptionsNew = shippingOptions.map(el => {
-            if (projectSettings.shippingFreeAfter < cart.subTotal) {
-              if (el.customName === "Standard") {
-                return {
-                  ...el,
-                  customRate: 0
-                };
-              }
-            }
-            return el;
-          });
-          const objectOffKeys = Object.keys(breakData);
-          const shippingWrongZip = errMessages && errMessages.find(el => el.message === "to postal code: zipcode format must be zzzzz[pppp]")
-
-          if (errMessages &&
-            shippingWrongZip && shippingWrongZip.message === "to postal code: zipcode format must be zzzzz[pppp]"
-          ) {
-            let msg = "";
-            switch (shippingWrongZip.message) {
-              case "to postal code: zipcode format must be zzzzz[pppp]":
-                msg = msgStrings.INVALID_ZIP;
-                break;
-              default:
-                msg = errMessages[0].message;
-            }
-            this.setState({
-              shippingErrMsg: msg
-            });
-          } else if (rates && rates.length) {
-            this.setState(
-              {
-                shippingErrMsg: null,
-                shippingBreakData: breakData,
-                shippingCarrier: objectOffKeys,
-                shippingAllData: rates,
-                shippingAllResponse: res.data.data,
-                shippingRates: shippingOptionsNew // breakData[firstKey]
-              },
-              () => {
-                if (shippingOptionsNew.length > 0) {
-                  this.changeShippingMethod(shippingOptionsNew[0])
-                  // this.handleShippingTypeChange(shippingOptionsNew[0]);
-                }
-                else {
-                  this.setState({
-                    shippingErrMsg: msgStrings.NO_SHIPMENT
-                  });
-                }
-              }
+    const {
+      address : {
+        country
+      }
+    } = this.state
+    if(!enableCountry.includes(country)){
+      this.setState({
+        dataFetched:true,
+        shippingRates: customRates, 
+        isCustomRates: true,
+      }, ()=> this.changeShippingMethod(customRates[0]))
+    }else{
+      getShippingRates(data)
+        .then(res => {
+          if (res.data.status) {
+            this.setState({dataFetched:true, isCustomRates: false})
+            const rates = res.data.data.rates
+            const errMessages = res.data.data.messages
+            const breakData = getSingleElementByMultipleObject(
+              rates,
+              c => c.carrier
             );
+            const isUspsRates = rates.some(el => el.carrier === "USPS")
+            const uspsRates = isUspsRates ? rates.filter(
+              el => el.carrier === "USPS"
+            ) : rates;
+            const shippingOptions = filterShippingRates(uspsRates)
+              .sort((a, b) => a.rate - b.rate);
+            const shippingOptionsNew = shippingOptions.map(el => {
+              if (projectSettings.shippingFreeAfter < cart.subTotal) {
+                if (el.customName === "Standard") {
+                  return {
+                    ...el,
+                    customRate: 0
+                  };
+                }
+              }
+              return el;
+            });
+            const objectOffKeys = Object.keys(breakData);
+            const shippingWrongZip = errMessages && errMessages.find(el => el.message === "to postal code: zipcode format must be zzzzz[pppp]")
+  
+            if (errMessages &&
+              shippingWrongZip && shippingWrongZip.message === "to postal code: zipcode format must be zzzzz[pppp]"
+            ) {
+              let msg = "";
+              switch (shippingWrongZip.message) {
+                case "to postal code: zipcode format must be zzzzz[pppp]":
+                  msg = msgStrings.INVALID_ZIP;
+                  break;
+                default:
+                  msg = errMessages[0].message;
+              }
+              this.setState({
+                shippingErrMsg: msg
+              });
+            } else if (rates && rates.length) {
+              this.setState(
+                {
+                  shippingErrMsg: null,
+                  shippingBreakData: breakData,
+                  shippingCarrier: objectOffKeys,
+                  shippingAllData: rates,
+                  shippingAllResponse: res.data.data,
+                  shippingRates: shippingOptionsNew // breakData[firstKey]
+                },
+                () => {
+                  if (shippingOptionsNew.length > 0) {
+                    this.changeShippingMethod(shippingOptionsNew[0])
+                    // this.handleShippingTypeChange(shippingOptionsNew[0]);
+                  }
+                  else {
+                    this.setState({
+                      shippingErrMsg: msgStrings.NO_SHIPMENT
+                    });
+                  }
+                }
+              );
+            }
+  
+            setTimeout(() => {
+              console.log({
+                state: this.state
+              })
+            }, 1000);
           }
-
-          setTimeout(() => {
-            console.log({
-              state: this.state
-            })
-          }, 1000);
-        }
-      })
-      .catch(console.log)
+        })
+        .catch(console.log)
+    }
   }
   getShippingData = () => {
     const { cart } = this.props;
@@ -212,11 +225,18 @@ class CheckoutShipping extends React.Component {
   }
   changeShippingMethod = (method)=> {
     const {
+      isCustomRates
+    } = this.state
+    console.clear()
+    console.log({
+      isCustomRates
+    })
+    const {
       customRate, id, service
     } = method
     const { setShippingCharge, setShippingType } = this.props;
     const shippingType = service;
-    const { id: shpId } = this.state.shippingAllResponse;
+    const shpId = isCustomRates ? "custom_rates" : this.state.shippingAllResponse.id;
     const shippingCharge = parseFloat(customRate);
 
     this.setState({
@@ -230,11 +250,11 @@ class CheckoutShipping extends React.Component {
       this.props.cart,
     );
     setShippingType(shippingType, this.props.cart);
-      setTimeout(() => {
-        console.log({
-          cart: this.props.cart
-        })
-      }, 1000);
+    setTimeout(() => {
+      console.log({
+        cart: this.props.cart
+      })
+    }, 1000);
   }
   render() {
     const componentClass = "c-checkout-shipping"

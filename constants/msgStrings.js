@@ -246,7 +246,7 @@ shippingFreeAfter : 75,
 
 billingAddressMsg : "1. Billing Address",
 shippingAddressMsg : "Shipping Address",
-sameShippingMsg : "Ship to the same address",
+sameShippingMsg : "Bill to the same address",
 selectCarrierMsg : "2. Select your carrier",
 paymentMethodMsg : "3. Payment Method",
 reviewOrderMsg : "4. Review Your Order",

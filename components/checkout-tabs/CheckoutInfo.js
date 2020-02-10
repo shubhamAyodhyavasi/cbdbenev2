@@ -558,7 +558,7 @@ class CheckoutInfo extends React.Component {
                                 valuePropName: 'checked',
                                 initialValue: true,
                                 setFieldsValue: sameShipping
-                            })(<Checkbox onChange={this.onSameShippingChange} versions={["gold"]} >Ship to the same address</Checkbox>)}
+                            })(<Checkbox onChange={this.onSameShippingChange} versions={["gold"]} >Bill to the same address</Checkbox>)}
                         </Form.Item>
                         {
                             !sameShipping &&
