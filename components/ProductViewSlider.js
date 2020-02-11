@@ -54,9 +54,6 @@ class ProductViewSlider extends Component {
   }
   render() {
     const { productmeta, productid, productDetails, wishList } = this.props;
-    console.log({
-        image: this.props.imgArr
-    })
     return (
       <CarouselProvider
         naturalSlideWidth={100}

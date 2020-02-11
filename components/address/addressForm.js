@@ -107,7 +107,6 @@ class AddAddressForm extends Component {
     });
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.address);
     if (this.state.isSubmitted) {
       if (nextProps.address.address) {
         this.setState(
@@ -165,12 +164,6 @@ class AddAddressForm extends Component {
   }
   validateAddressFields(field, type, isReturn) {
     const { isError, errorMsg } = fieldValidation(this.state[field], type);
-    console.log({
-      field,
-      type,
-      isError,
-      state: this.state[field]
-    });
     this.setState({
       [`${field}Err`]: isError,
       [`${field}ErrMsg`]: errorMsg
@@ -223,9 +216,6 @@ class AddAddressForm extends Component {
       return this.validateAddressFields(el.name, el.type, true);
       // return null;
     });
-    console.log({
-      validate
-    })
     // const checkAll = validate.map(el => {
     //   console.log({
     //     el
@@ -234,9 +224,6 @@ class AddAddressForm extends Component {
     // });
     const flag = validate.some(a => {
       return a !== false;
-    });
-    console.log({
-      flag
     });
     if (!flag) {
       const { user } = this.props;
@@ -297,9 +284,6 @@ class AddAddressForm extends Component {
   }
   shippingaddressautoFill(e) {
     const { other, country, state, city, zip } = e;
-    console.log({
-      e
-    })
     this.setState(prevState => {
       return {
         shipping_address_name_01: other ? other : (prevState.shipping_address_name_01 || ""),

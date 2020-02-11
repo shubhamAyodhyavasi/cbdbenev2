@@ -163,7 +163,6 @@ class CheckoutInfo extends React.Component {
                 }
             })
             .catch(err => {
-                console.log({ err })
                 this.changeAddress({
                     ...address
                 }, key)
@@ -179,9 +178,6 @@ class CheckoutInfo extends React.Component {
         } = this.state
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log({
-                    values
-                })
                 const {
                     country,
                     firstname,
@@ -190,9 +186,6 @@ class CheckoutInfo extends React.Component {
                     lastname_ship
                 } = values
                 const aa = getCountryCode(country)
-                console.log({
-                    aa
-                })
                 if (typeof onSubmit === "function") {
                     onSubmit(e, values, {
                         ...address,
@@ -284,9 +277,6 @@ class CheckoutInfo extends React.Component {
         } = this.state
         const { getFieldDecorator, getFieldValue, setFieldsValue, isFieldTouched, getFieldsValue } = form
         const isLogin = user._id ? true : false
-        console.log({
-            form
-        })
         return (
 
             <div className={componentClass}>
@@ -469,7 +459,6 @@ class CheckoutInfo extends React.Component {
                                                         let container = document.getElementsByClassName("c-input c-input--default c-address-form__input");
                                                         //  let input = container.getElementsByTagName('input')
                                                         // container[3].value=""
-                                                         console.log({"ddd":container[3].firstChild.value })
                                                          container[3].firstChild.value = ""
                                                         
                                                         this.changeAddress({ ...address, city }, "address")

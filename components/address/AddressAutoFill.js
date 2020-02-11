@@ -70,9 +70,6 @@ export default class AddressAutoFill extends Component {
       other,
       address
     });
-    console.log({
-      address
-    });
     const searchStr = `https://maps.googleapis.com/maps/api/geocode/json?address=${address
       .split(" ")
       .join("+")}&key=${projectSettings.googleApiKey}`;
@@ -85,7 +82,6 @@ export default class AddressAutoFill extends Component {
     })
       .then(resRaw => {
         const res = resRaw.data
-        console.log({ res });
         if (res.results && res.results.length > 0) {
           const address = res.results[0].address_components;
           const zipObj = address.find(
@@ -126,7 +122,6 @@ export default class AddressAutoFill extends Component {
         }
       })
       .catch(err => {
-        console.log({ err });
         this.setState(
           {
             zip: ""

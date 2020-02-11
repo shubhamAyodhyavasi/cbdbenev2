@@ -117,7 +117,6 @@ class CheckForm extends Component {
     }
   }
   componentWillUnmount() {
-    console.log("unmount");
     this.props.clearErrors();
   }
   initialState = props => ({

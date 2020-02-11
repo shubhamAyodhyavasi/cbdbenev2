@@ -20,9 +20,6 @@ export const setUser = (user, cart = null) => dispatch => {
           userMetaObj: res.data.user,
           userObj: res.data.user.userid,
         }
-        console.log({
-          payload
-        })
         dispatch({
             type: SET_USER,
             payload
@@ -33,10 +30,6 @@ export const setUser = (user, cart = null) => dispatch => {
               cart: cart
             });
           } else if (res.data.user.cart) {
-            console.log({
-              cart,
-              res
-            });
             // dispatch({
             //   type: SET_CART,
             //   payload: res.data.user.cart

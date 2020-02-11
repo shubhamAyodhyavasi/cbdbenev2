@@ -19,9 +19,6 @@ class ChatProductList extends Component {
   }
 
   componentDidMount() {
-    console.log({
-      propsAA: this.props
-    });
     getAllProducts().then(res => {
       const products = getProductsByCategory((res.data.products || []), this.props.steps.categoryList.value)
       this.setState({

@@ -144,7 +144,6 @@ class AffForgotPass extends Component {
                 isLoading: false
               });
               if (resJson.status) {
-                // console.log({props: this.props})
                 this.setState({
                   modalData: {
                     title: sendEmailHeading,

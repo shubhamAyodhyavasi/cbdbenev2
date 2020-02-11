@@ -33,16 +33,7 @@ class AppWrapper extends React.Component {
             referralUrl = "";
           }
         }
-        // alert(ambassador_id)
-        console.log({
-          ambassador_id,
-          url,
-          location: window.location
-        });
         if (ambassador_id) {
-              console.log({
-              ambassador_id1: ambassador_id
-              });
               setReferrer({
               ambassadorId: ambassador_id,
               ambassadorUrl: referralUrl,

@@ -23,10 +23,6 @@ export default (state = initialState, action) => {
       };
 
     case SET_LOCATION:
-      console.log({
-        state,
-        payload
-      });
       return {
         ...state,
         ...payload

@@ -29,7 +29,6 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
           // setIsCartOpen(!isCartOpen)
         }
         if (action === "reg") {
-            console.log("fdsfdsfds")
           toggleRegBar()
         }
         if (action === "logout") {
@@ -59,7 +58,6 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
                 el.link ?
                   <Link as={el.as || el.link} href={el.link}>
                     <a onClick={(e) => {
-                        console.log({"onnnnn": el})
                       onClick(e, el.action)
                     }} className="c-nav__link">
                       {el.label}
@@ -68,7 +66,6 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
                   </Link>
                   : (
                     <span onClick={(e) => {
-                        // console.log({"onlcick":el   })
                         onClick(e, el.action)
                       }} className="c-nav__link">
                         {el.label}

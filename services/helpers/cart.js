@@ -465,7 +465,6 @@ const removeEmpty = obj => {
   Object.keys(obj).forEach(key => obj[key] === null && delete obj[key]);
 };
 const parseOrderProduct = (item) => {
-  console.log({ item });
   const isCombo = item.combo ? true : false,
     comboId = item.combo ? item._id : null,
     productId = item.combo ? null : item.productid._id,
@@ -515,15 +514,9 @@ const parseOrderProduct = (item) => {
   return order;
 }
 const getHeightWeight = (items) => {
-  console.log({ items });
   const height = items.map(el => el.height * parseFloat(el.qty));
   const width = items.map(el => el.width * parseFloat(el.qty));
   const length = items.map(el => el.length * parseFloat(el.qty));
-  console.log({
-    height: height.reduce((a, b) => a + b, 0),
-    width,
-    length
-  });
   const shape = {
     height: height.reduce((a, b) => a + b, 0),
     width: width.reduce((a, b) => a + b, 0),
@@ -536,7 +529,6 @@ export const getGrandTotal = (subTotal, taxPercent, shippingCharge, discount) =>
   const discountAmount = getDiscount(discount, subTotal);
   const total =
   parseFloat(amountWithTax || 0) - parseFloat(discountAmount || 0);
-  console.log({amountWithTax, discountAmount})
   return parseFloat(total.toFixed(2));
 }
 export const generateOrderObj = ({stateObj,
@@ -544,11 +536,6 @@ export const generateOrderObj = ({stateObj,
   cart,
   user,
   confirmShipRes}) => {
-    console.log({stateObj,
-      referralId,
-      cart,
-      user,
-      confirmShipRes})
     const { service, ...confirmRest } = confirmShipRes;
     const { paymentMethod, address, billingAddress } = stateObj;
     const {

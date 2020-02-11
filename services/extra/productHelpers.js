@@ -36,10 +36,6 @@ export const findByMatchingProperties = (set, properties) =>
 export const findByMatchingProperties2 = (set, properties) =>
   set.filter(function(entry) {
     return Object.keys(properties).every(function(key) {
-      console.log({
-        entry,
-        properties
-      });
       return entry[key] === properties[key];
     });
   });

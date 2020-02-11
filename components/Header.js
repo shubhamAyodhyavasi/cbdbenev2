@@ -33,7 +33,6 @@ const Header = ({bg, theme, versions, fixed, homeLogo}) => {
             setIsAtTop(true)
         }
          
-        // console.log({show})
         
       const isShow = currPos.y > prevPos.y
       if (isShow !== hideOnScroll) setHideOnScroll(isShow)

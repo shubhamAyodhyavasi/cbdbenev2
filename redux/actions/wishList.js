@@ -40,10 +40,6 @@ const wishListParser = wishList =>
 
 export const setWishList = wishList => dispatch => {
   const newWishList = wishListParser(wishList);
-  console.log({
-    wishList,
-    newWishList
-  });
   dispatch({
     type: SET_WISHLIST,
     payload: newWishList

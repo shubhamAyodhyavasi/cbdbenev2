@@ -84,9 +84,6 @@ class CheckoutPayment extends React.Component {
         })
     }
     onFailed = (res) => {
-        console.log({
-            res
-        })
         this.props.setLoading(false)
         this.setState({
             isFailed: true
@@ -124,7 +121,6 @@ class CheckoutPayment extends React.Component {
         });
 
     generateSubsData = (el, details) => {
-        console.log({el,details})
         const customAmount = parseFloat(el.subTotal); // + (Math.random() * 100)
         const {
             billto,
@@ -134,9 +130,6 @@ class CheckoutPayment extends React.Component {
             cardcode,
             expiry
         } = details;
-        console.log({
-            details
-        });
         const subsData = {
             amount: parseFloat(customAmount.toFixed(2)),
             name: billto.firstName + billto.lastName,
@@ -206,9 +199,7 @@ class CheckoutPayment extends React.Component {
     makeSubsPromise = (order, details) => {
         return order.products.map(el => {
             if (el.isSubscribed) {
-                console.log({"subs_authorize":el})
                 const subsData = this.generateSubsData(el, details);
-                console.log({subsData})
                 if (subsData.routingNumber) {
                     return this.combinePromiseProduct(
                         authorizeSubscriptionBank(subsData),
@@ -234,7 +225,6 @@ class CheckoutPayment extends React.Component {
     };
     finalOrderSubmit = orderApi => {
         // this.setState({loading: false})
-        // console.log({"loading": this.state.loading})
         orderApi
             .then(res => {
                 const resJson = res.data
@@ -249,7 +239,6 @@ class CheckoutPayment extends React.Component {
                         onSubmit(resJson.data)
                     }
                 } else {
-                    console.log(resJson);
                     alert("Server Error")
                     this.onFailed(resJson)
                     //   this.setState({
@@ -259,12 +248,8 @@ class CheckoutPayment extends React.Component {
                     //     SpinnerToggle: false
                     //   });
                 }
-                console.log({"loading": this.state.loading})
             })
             .catch(err => {
-                console.log({
-                    err
-                });
                 this.onFailed(err)
                 // this.setState({
                 //     modalData: someThingWrong,
@@ -283,28 +268,16 @@ class CheckoutPayment extends React.Component {
         const {
             isCard
         } = this.state
-        console.log({
-            cart: this.props
-        })
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 // this.state = {loading: true}
                 this.props.setLoading(true)
-                console.log({"Sssssssssss": this.state.loading})
-                console.log({
-                    values, 
-                    shippingSendData
-                })
                 if(shippingSendData.shipmentid === "custom_rates"){
                     const order = this.generateOrder()
                     
                     order.then(order => {
-                        console.log({
-                            isCard, order
-                        })
                         // this.setState({loading: false})
                         // this.props.setLoading(false)
-                        console.log({"Sssssssssss-inside": this.state.loading})
                         if(values.paymentProfile){
                             this.onProfilePay(order, values)
                         }else if(isCard){
@@ -323,16 +296,9 @@ class CheckoutPayment extends React.Component {
                                     confirmShipRes: res.data.data
                                 }, () => {
                                     const order = this.generateOrder()
-                                    console.log({
-                                        order
-                                    })
                                     order.then(order => {
-                                        console.log({
-                                            isCard, order
-                                        })
                                         // this.setState({loading: false})
                                         // this.props.setLoading(false)
-                                        console.log({"Sssssssssss-inside": this.state.loading})
                                         if(values.paymentProfile){
                                             this.onProfilePay(order, values)
                                         }else if(isCard){
@@ -356,9 +322,6 @@ class CheckoutPayment extends React.Component {
         const {
             address
         } = this.props
-        console.log({
-            order, values
-        })
         const {
             cardnumber: cardNumber,
             cvv,
@@ -416,15 +379,11 @@ class CheckoutPayment extends React.Component {
         };
         authorizeCharge(data)
             .then(res => {
-                console.log({ res });
                 if (res.data.status) {
                     const transactionId = res.data.transactionid
                     const {
                         savecard
                     } = values
-                    console.log({
-                        savecard
-                    })
                     if(savecard){
                         const bodyData = {
                             cardnumber,
@@ -447,7 +406,6 @@ class CheckoutPayment extends React.Component {
                             lastName: address.lastname,
                         }
                     })).then(res => {
-                        console.log({ res });
                         const sendAbleOrder = {
                             ...order,
                             products: res,
@@ -460,7 +418,6 @@ class CheckoutPayment extends React.Component {
                 }
             })
             .catch(err => {
-                console.log({ err })
                 this.onFailed(err)
             })
     }
@@ -520,7 +477,6 @@ class CheckoutPayment extends React.Component {
         };
         authorizeChargeBank(data)
             .then(res => {
-                console.log({ res });
                 if (res.data.status) {
                     const transactionId = res.data.transactionid
                     Promise.all(this.makeSubsPromise(order, {
@@ -531,7 +487,6 @@ class CheckoutPayment extends React.Component {
                             lastName: address.lastname,
                         }
                     })).then(res => {
-                        console.log({ res });
                         const sendAbleOrder = {
                             ...order,
                             products: res,
@@ -544,7 +499,6 @@ class CheckoutPayment extends React.Component {
                 }
             })
             .catch(err => {
-                console.log({ err })
                 this.onFailed(err)
             })
     }
@@ -582,7 +536,6 @@ class CheckoutPayment extends React.Component {
         };
         authorizeChargeProfile(data)
             .then(res => {
-                console.log({ res });
                 if (res.data.status) {
                     const transactionId = res.data.data && res.data.data.transactionResponse && res.data.data.transactionResponse.transId
                     
@@ -597,7 +550,6 @@ class CheckoutPayment extends React.Component {
                             address: addressStr
                         },
                     })).then(res => {
-                        console.log({ res });
                         const sendAbleOrder = {
                             ...order,
                             products: res,
@@ -610,7 +562,6 @@ class CheckoutPayment extends React.Component {
                 }
             })
             .catch(err => {
-                console.log({ err })
                 this.onFailed(err)
             })
     }
@@ -641,9 +592,6 @@ class CheckoutPayment extends React.Component {
             tracker,
             fees
         } = confirmShipRes || {};
-        console.log({
-            confirmShipRes
-        })
         const shippingDetails = {
             ...confirmShipRes,
             shipmentid,
@@ -673,7 +621,6 @@ class CheckoutPayment extends React.Component {
             form, user, cards
         } = this.props
         const isLogin = user._id ? true : false
-        console.log({user, cards})
         const {
             email, address, shippingDetail, collapseKey, isCard,
         } = this.state
@@ -742,9 +689,6 @@ class CheckoutPayment extends React.Component {
                                     >
                                         {
                                             cards.map((el, i) => {
-                                                console.log({
-                                                    el, cards
-                                                })
                                                 if(el.creditCard){
                                                     return <Radio key={i} value={el}>{el.creditCard.cardNumber}</Radio>
                                                 }else if(el.bankAccount){

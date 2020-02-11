@@ -132,18 +132,12 @@ export const getFeaturedProduct = (products = []) => {
   return filterProduct;
 };
 export const getVisibleProducts = (products = []) => {
-  console.log({
-    products
-  })
   const productsList = products.filter(el => {
     if (!el) return false;
     if (el.visibilitytype !== true) return false;
 
     return true;
   });
-  console.log({
-    productsList
-  })
   return productsList.map(el => {
     if (el.combo) return el
     if (el.variation) {

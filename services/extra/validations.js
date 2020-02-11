@@ -80,7 +80,6 @@ export const fieldValidation = (field = " ", type = " ") => {
     }
   }
   if (typeArr.includes("country")) {
-    console.log("enable", enableCountry.includes(field));
     if (!enableCountry.includes(field)) {
       return {
         isError: true,

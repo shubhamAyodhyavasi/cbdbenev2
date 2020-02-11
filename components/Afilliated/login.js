@@ -215,7 +215,6 @@ class Login extends Component {
     ]);
   }
   fieldVaidation(field, type, match) {
-    // console.log({field, type})
     const typeArr = type.split(",");
     if (typeArr.includes("required")) {
       if (!isEmpty(this.state[field])) {
@@ -289,7 +288,6 @@ class Login extends Component {
       }
     }
     if (typeArr.includes("password")) {
-      // console.log(this.state[field].length < 7)
       // if(isPostalCode(this.state[field])){
       if (this.state[field].length > 5) {
         this.setState({
@@ -305,7 +303,6 @@ class Login extends Component {
       }
     }
     if (typeArr.includes("repassword")) {
-      // console.log(this.state[field].length < 7)
       // if(isPostalCode(this.state[field])){
       if (this.state[field] === match) {
         this.setState({

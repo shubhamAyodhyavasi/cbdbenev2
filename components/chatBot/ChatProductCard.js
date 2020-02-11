@@ -29,9 +29,6 @@ class ChatProductCard extends Component {
     const { value: product, countryCode } = this.props.steps.products;
 
     if (!product) return <div />;
-    console.log({
-      propsYYY: this.props
-    });
     const productLink = `/shop/${product._id}`;
     const productTitle = product.title
       ? product.title

@@ -1,7 +1,4 @@
 const checkAddressDuplicate = (address, allAddresses) => {
-    console.log({
-        address, allAddresses
-    })
     const checkAdd = allAddresses.some(el => {
         const {
             id,

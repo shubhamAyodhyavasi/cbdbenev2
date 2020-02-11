@@ -80,11 +80,11 @@ class ChatBotElement extends Component {
   };
   render() {
     const theme = {
-      background: "#f6f3eb",
+      background: "#ffffff",
       // fontFamily: fonts.mainfont,
-      headerBgColor: "#202020",
-      headerFontColor: "#eee9e3",
-      headerFontSize: "15px",
+      headerBgColor: "#faf7f5",
+      headerFontColor: "#1A1811",
+      headerFontSize: "20px",
       botBubbleColor: "#eee9e3",
       botFontColor: "#202020",
       userBubbleColor: "#fff",
@@ -211,9 +211,6 @@ class ChatBotElement extends Component {
           return true;
         },
         trigger: props => {
-          console.log({
-            props
-          });
           return "repeat";
         }
       },
@@ -252,7 +249,6 @@ class ChatBotElement extends Component {
         id: "productSelected1",
         message: "Awesome! 😍",
         trigger: props => {
-          console.log({ props11: props });
           return "productSelected2";
         }
       },
@@ -381,19 +377,38 @@ class ChatBotElement extends Component {
               }}
               enableMobileAutoFocus={true}
               floating={true}
-              // botAvatar={imagePack.beneLeafThumb}
+              botAvatar={"/images/logo-new.png"}
               bubbleStyle={{
                 borderRadius: 0,
                 marginBottom: 0,
-                marginTop: "10px",
-                maxWidth: "70%"
+                // marginTop: "10px",
+                maxWidth: "70%",
+                background: "none",
+                fontSize: "16px",
+                boxShadow: "none"
+              }}
+              inputAttributes={{
+                placeHolder: "Type the "
               }}
               bubbleOptionStyle={{
                 borderRadius: 0,
                 marginBottom: 0,
-                marginTop: "10px"
+                marginTop: "10px",
+                background: "none",
+                fontSize: "16px",
+                boxShadow: "none",
+                borderBottom: '1px solid currentColor',
+                paddingRight: "30px",
+                fontWeight: "600",
+                paddingLeft: "0",
+                paddingBottom: "0",
+                marginRight: "10px",
+                minWidth: "40%",
+
               }}
               style={{
+                width: "450px",
+                maxWidth: "100%",
                 borderRadius: 0,
                 bottom: 0,
                 right: isOpen ? "380px" : "32px",

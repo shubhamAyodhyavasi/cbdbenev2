@@ -60,9 +60,6 @@ class SingleCard extends Component {
       // defaultCard,
       card
     } = this.props;
-    console.log({
-      props11: this.props
-    });
     if (card.creditCard) {
       const { cardType, expirationDate, cardNumber } = card.creditCard;
       return (

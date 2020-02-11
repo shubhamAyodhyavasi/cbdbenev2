@@ -58,9 +58,6 @@ class SingleCheck extends Component {
       // defaultCard,
       card
     } = this.props;
-    console.log({
-      props11: this.props
-    });
     const getAccountType = accountType => {
       const foundAccount = accountTypeOpt.find(el => el.value === accountType);
       if (foundAccount) {

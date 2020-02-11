@@ -123,12 +123,6 @@ export const getDoctorTimeLine = ({
   allAppointments,
   date
 }) => {
-  // console.clear()
-  console.log({
-    timeSlot,
-    allAppointments,
-    date
-  })
   const appointment = getAppointmentsOfDate(allAppointments, date)
   if(appointment.length < 1){
     return {

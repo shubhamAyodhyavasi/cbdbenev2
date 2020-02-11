@@ -157,10 +157,7 @@ class Registration extends Component {
     this.setState(
       prevState => ({
         focusName: [...prevState.focusName, name]
-      }),
-      () => {
-        //  console.log("focus",this.state.focusName)
-      }
+      })
     );
   }
   unSetFocus(e) {
@@ -182,7 +179,6 @@ class Registration extends Component {
       }),
       () => {
         this.fieldVaidation(id, type, match);
-        //  console.log("blur",this.state.focusName)
       }
     );
   }

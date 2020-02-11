@@ -161,17 +161,11 @@ class EditAddress extends Component {
           }
         );
       }
-      console.log({
-        id,
-        currentAddress,
-        props: this.props
-      });
     } else {
       this.props.getAddress(this.props.user._id);
     }
   };
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.address);
     if (this.state.isSubmitted) {
       if (nextProps.address.address) {
         this.setState(
@@ -246,9 +240,6 @@ class EditAddress extends Component {
   }
   submitRegistration(e) {
     e.preventDefault();
-    console.log({
-      sate: this.state
-    });
     const shippingFields = [
       {
         name: "shipping_first_name",

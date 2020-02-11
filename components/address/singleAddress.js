@@ -54,7 +54,6 @@ class SingleAddress extends Component {
   }
   render() {
     const { address } = this.props;
-    // console.log({addressSingle : address })
     if (!address) return <div />;
     return (
       <div className="col-md-12">

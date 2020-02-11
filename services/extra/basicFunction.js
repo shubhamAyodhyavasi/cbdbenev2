@@ -492,7 +492,6 @@ export default class BasicFunction {
     return true;
   }
   parseOrderProduct(item) {
-    console.log({ item });
     const isCombo = item.combo ? true : false,
       comboId = item.combo ? item._id : null,
       productId = item.combo ? null : item.productid._id,
@@ -571,7 +570,6 @@ export default class BasicFunction {
     user,
     confirmShipRes
   ) {
-    console.log({ user });
     const { service, ...confirmRest } = confirmShipRes;
     const { paymentMethod } = stateObj;
     const {
@@ -642,15 +640,10 @@ export default class BasicFunction {
     return parseFloat(total.toFixed(2));
   }
   getHeightWeight(items) {
-    console.log({ items });
     const height = items.map(el => el.height * parseFloat(el.qty));
     const width = items.map(el => el.width * parseFloat(el.qty));
     const length = items.map(el => el.length * parseFloat(el.qty));
-    console.log({
-      height: height.reduce((a, b) => a + b, 0),
-      width,
-      length
-    });
+    
     const shape = {
       height: height.reduce((a, b) => a + b, 0),
       width: width.reduce((a, b) => a + b, 0),
@@ -666,9 +659,6 @@ export default class BasicFunction {
     user,
     confirmShipRes
   ) {
-    console.log({
-      confirmShipRes
-    });
     const { service, ...confirmRest } = confirmShipRes;
     var transactionId = "000";
     const payType = stateObj.paymentMethod;
@@ -820,7 +810,6 @@ export default class BasicFunction {
       order.wasreferred = true;
       order.referral = referrer_url_id;
     }
-    console.log({ order, ...confirmRest });
     return { ...order, ...confirmRest };
   }
   getUserDetails(stateObj) {

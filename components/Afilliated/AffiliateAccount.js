@@ -207,7 +207,6 @@ class AffiliateAccount extends Component {
       }),
       () => {
         this.fieldVaidation(id, type, match);
-        // console.log("blur",this.state.focusName)
       }
     );
   }
@@ -500,9 +499,7 @@ class AffiliateAccount extends Component {
             this.autoModalOff();
           }
         })
-        .catch(err => {
-          //	 console.log("errrrrrr",err)
-        });
+        .catch(console.log);
     }
     await console.log("Working");
   };

@@ -68,7 +68,6 @@ class ListAddress extends Component {
       address: { address },
       className
     } = this.props;
-    console.log({ address });
     return (
       <div
         className={classNames("", {

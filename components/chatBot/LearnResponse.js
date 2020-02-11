@@ -43,9 +43,6 @@ export default class LearnResponse extends Component {
         //     previousStep: previousStep.message,
         //     result: this.result
         // })
-        console.log({
-            result: this.result
-        })
         if(this.result){
             if(this.result && this.result.length > 0){
                 return(
