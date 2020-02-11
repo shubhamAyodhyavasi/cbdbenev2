@@ -15,6 +15,7 @@ import Registration from './popups/Registration';
 import Login from './popups/Login';
 import ForgetPassword from './popups/ForgetPassword';
 import { Menu, Dropdown, Icon, Collapse } from 'antd';
+import CartIcon from './CartIcon';
 const NavMobile = ({
   parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
   toggleRegBar, isRegOpen, hasLogin, user, unsetUser, onlyCart, loginDisplay
@@ -45,7 +46,8 @@ const NavMobile = ({
           onClick(e, el.action)
         }} className="c-nav__icon c-nav__icon--mobile">
           {el.label}
-          {el.icon}
+          {/* {el.icon} */}
+          <CartIcon />
         </span>
       ))}
     </div>

@@ -15,6 +15,7 @@ import Registration from './popups/Registration';
 import ForgetPassword from './popups/ForgetPassword';
 import Login from './popups/Login';
 import { Menu, Dropdown } from 'antd';
+import CartIcon from './CartIcon';
 const Nav = ({
   parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
   toggleRegBar, isRegOpen, loginDisplay, user, unsetUser
@@ -121,6 +122,7 @@ className={classNames("c-nav", {
                   }} className="c-nav__link">
                     {el.label}
                     {el.icon}
+                    {el.isCart && <CartIcon />}
                   </span>)
           }
           {

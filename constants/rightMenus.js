@@ -35,7 +35,9 @@ const rightMenus = [
         onlyLogin: false
     },
     {
-        icon: <ReactSVG src="/images/cart-icon-1.svg" />,
+        // icon: <ReactSVG src="/images/cart-icon-1.svg" />,
+        // activeIcon: <ReactSVG src="/images/cart-icon-active.svg" />,
+        isCart: true,
         action: "cart"
     },
 ]

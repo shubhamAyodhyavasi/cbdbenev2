@@ -82,7 +82,9 @@
 
     //
     &__menu-tgl{
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 30px;
         height: 25px;
         &:before,
@@ -134,4 +136,40 @@
             }
         }
     }
+}
+.c-cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__count {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        right: 0;
+        text-align: center;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+        padding-top: 0.6em;
+        pointer-events: none;
+        font-size: 1.2em;
+        @include bp-md{
+            font-size: 0.8em;
+        }
+    }
+    
+    svg {
+        height: 2.5em;
+        @include bp-md{
+            height: 1.5em;
+        }
+    }
+}
+
+.c-header--light .c-cart-icon__count {
+    color: #000
+}
+.c-header--dark .c-cart-icon__count {
+    color: #fff
 }
