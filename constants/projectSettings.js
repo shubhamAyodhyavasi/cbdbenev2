@@ -101,6 +101,7 @@ export const customRates           = [
     customRate: 48.6,
   },
 ]
+export const topBarText            = "Free shipping on all orders above $75."; // make it empty string ("") to hide tha bar
 export default {
     projectName,
     baseUrl,
@@ -120,5 +121,6 @@ export default {
     labSheetPath,
     countryTax,
     docMzUrl,
-    customRates
+    customRates,
+    topBarText
 }

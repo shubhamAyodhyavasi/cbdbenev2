@@ -1,13 +1,11 @@
 import Layout from "../components/Layouts/Layout"
 import Heading from "../components/Heading"
-import MainForm from "./details"
 const privacy = () => {
     return (
         <Layout headerVersions={["bg-light"]} headerTheme="dark">
             <div className="c-privacy__page-title">
                 <Heading versions={["large"]} parentClass="c-privacy" >PRIVACY AND COOKIES POLICY</Heading>
             </div>
-            {/* <MainForm/> */}
             <div className="c-privacy__content">
                 <Heading>
                     Welcome to CBD bené

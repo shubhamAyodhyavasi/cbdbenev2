@@ -1,5 +1,6 @@
 .c-layout{
     background-color: $light-color-2;
+    position: relative;
 }
 .c-product-info{
     padding: 50px 20px 50px;
@@ -181,6 +182,8 @@
     .carousel__image{
         background-color: $light-color-2;
         background-size: contain !important;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 }
 .lg-hide {

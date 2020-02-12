@@ -1,0 +1,21 @@
+{
+    "eslint.lintTask.enable": true,
+    "cSpell.words": [
+        "Chck",
+        "Vaidation",
+        "ambassadoruser",
+        "autofilladddatatoparent",
+        "autofillformresponse",
+        "boxafteruser",
+        "cbdbene",
+        "firstname",
+        "firststep",
+        "fullname",
+        "getuser",
+        "inputwrapper",
+        "lastname",
+        "repassword",
+        "shippingaddressauto",
+        "singleadd"
+    ]
+}
