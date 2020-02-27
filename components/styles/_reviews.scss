@@ -82,13 +82,16 @@
         width: 17%;
         border-right: 1px solid $brand-color-1;
         max-width: 100%;
+        @include bpm-md{
+            width: 140px;
+        }
         @include bpm-sm{
             .ant-rate-star {
                 font-size: 15px !important;
             }
-        }
-        @include bpm-md{
-            width: 140px;
+            width: 100%;
+            margin-bottom: 20px;
+            order: 0;
         }
     }
     
@@ -99,11 +102,19 @@
         @include bpm-md{
             width: calc(90% - 110px);
         }
+        @include bpm-sm{
+            width: 100%;
+            order: 2;
+        }
     }
 
     &__date {
         position: absolute;
         top: 0;
         right:0px;
+        @include bpm-sm{
+            position: static;
+            order: 1;
+        }
     }
 }
