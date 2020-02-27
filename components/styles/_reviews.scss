@@ -60,7 +60,9 @@
 
 .rating {
     padding: 0 40px;
-    
+    @include bpm-sm{
+        padding: 0 40px;
+    }
 
     &__wrapper {
         display: flex;
@@ -71,18 +73,32 @@
         position: relative;
         margin-bottom: 20px;
         margin-top: 15px;
+        @include bpm-md{
+            max-width: 100%;
+        }
     }
 
     &__star {
         width: 17%;
         border-right: 1px solid $brand-color-1;
         max-width: 100%;
+        @include bpm-sm{
+            .ant-rate-star {
+                font-size: 15px !important;
+            }
+        }
+        @include bpm-md{
+            width: 140px;
+        }
     }
-
+    
     &__text {
         width: 80%;
         max-width: 100%;
         position: relative;
+        @include bpm-md{
+            width: calc(90% - 110px);
+        }
     }
 
     &__date {

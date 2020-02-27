@@ -96,10 +96,15 @@
         margin-bottom: 30px;
         .c-title-list{
             &__title-wrap{
-                width: 250px;
+                padding-bottom: 10px;
             }
-            &__detail-wrap{
-                width: calc(100% - 250px);
+            @include bp-sm{
+                &__title-wrap{
+                    width: 250px;
+                }
+                &__detail-wrap{
+                    width: calc(100% - 250px);
+                }
             }
             @include bp-lg{
                 &__title-wrap{

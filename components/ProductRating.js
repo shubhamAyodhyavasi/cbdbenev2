@@ -13,7 +13,7 @@ const ProductRating = ({reviews}) =>{
     return (
         <div className="pr-rating">
             <div className="row">
-                <div className="col-md-9">
+                <div className="col-lg-9 col-md-8">
                    <div className="pr-rating__left-sec">
                        <div className="pr-rating__wrapper pr-rating__wrapper--left">
                             <div className="pr-rating__rate-wrapper">
@@ -29,7 +29,7 @@ const ProductRating = ({reviews}) =>{
                        </div>
                    </div>
                 </div>
-                <div className="col-md-3">
+                <div className="col-lg-3 col-md-4">
                     <div className="pr-rating__right-sec">
                         <ul className="pr-rating__list-warpper">
                             <li className="pr-rating__list"> <Rate style={{ color: '#000' }} className="c-product-info__stars" disabled value={5}/> <span className="pr-rating__list--rate">({countOf(reviews, 5)})</span></li>

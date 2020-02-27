@@ -1,5 +1,7 @@
 .pr-rating{
-    padding: 110px 40px;
+    @include bp-md{
+        padding: 110px 40px;
+    }
     padding-top: 0;
     &__left-sec {
         border-right: 1px solid $brand-color-1;
@@ -17,6 +19,7 @@
     }
     &__list-warpper {
         list-style: none;
+        padding: 0;
     }
     &__list{
         &--rate {
