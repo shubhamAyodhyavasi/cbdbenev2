@@ -78,6 +78,7 @@ const Header = ({bg, theme, versions, fixed, homeLogo}) => {
                 <div className={classNames("c-header__wrapper", {
                     "c-header__wrapper--hidden": !show && !fixed,
                 })}>
+                    <script src={`https://maps.googleapis.com/maps/api/js?key=${projectSettings.googleApiKey}&libraries=places`} async defer></script>
                     <header onScroll={(e) => {
                     }}  className={classNames(" c-header", {
                         "c-header--light": true,

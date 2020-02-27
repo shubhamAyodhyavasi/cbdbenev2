@@ -83,7 +83,8 @@
 .modal-dismiss {
     text-align: right;
     color: $brand-color-1;
-    width: 100%;
+    // width: 100%;
+    right: 10px;
     position: absolute;
     background: transparent;
     @include bp-md{
