@@ -2,11 +2,6 @@ import {useState, useEffect } from 'react'
 import CheckoutLayout from '../components/Layouts/CheckoutLayout'
 import Layout from '../components/Layouts/Layout'
 import Heading from '../components/Heading'
-import TitleList from '../components/TItleList'
-import AddressForm from '../components/AddressForm'
-import Checkbox from '../components/form-components/Checkbox'
-import Button from '../components/form-components/Button'
-import Radio from '../components/form-components/Radio'
 import { Steps } from 'antd'
 import CheckoutInfo from '../components/checkout-tabs/CheckoutInfo'
 import {addAddress, setEditable} from '../redux/actions'
@@ -208,7 +203,7 @@ const Checkout  = ({
             <div className="o-success">
                 <div className="o-success__main o-success__main--center">
                     <Heading versions={["large", "upper", "order"]} parentClass="c-privacy" >Thank you <br /> for your order</Heading>
-                    <Heading versions={["small", "upper", "gold", "order-no"]} parentClass="mt-3 c-privacy" >Order Number: {order && order._id}</Heading>
+                    <Heading versions={["small", "upper", "gold", "order-no"]} parentClass="mt-3 c-privacy" >Order Number: {order && order._id.slice(-8)}</Heading>
                     <p className="o-success__descp mt-3">The order information will be sent via e-mail to {order && order.userDetails && order.userDetails.email} </p>
                 </div>
 

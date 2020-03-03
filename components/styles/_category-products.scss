@@ -81,7 +81,7 @@
         flex-direction: column;
         flex: 1;
         @include bp-lg{
-            align-items: flex-end;
+            align-items: flex-start;
             flex-direction: row;
         }
     }

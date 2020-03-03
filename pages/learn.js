@@ -1293,7 +1293,7 @@ How should I take CBD softgel capsules?
             isOpen={innerCollapse === "3_1_4"}
           >
             Email us at sales@cbdbene.com with a list of the products you wish
-            to buy or use the Contact Us page
+            to buy or use the <Link href={`/contact`}><a>Contact Us</a></Link>{" "} page
           </LearnCollapsePlus>
           <LearnCollapsePlus
             title="How do I contact customer service about a question I have?"
@@ -1302,7 +1302,7 @@ How should I take CBD softgel capsules?
             }}
             isOpen={innerCollapse === "3_1_5"}
           >
-            Email us at customerservice@cbdbene.com or use the Contact Us page
+            Email us at <a href="mailto:customerservice@cbdbene.com">customerservice@cbdbene.com</a> or use the <Link href={`/contact`}><a>Contact Us</a></Link>{" "}page
           </LearnCollapsePlus>
           <LearnCollapsePlus
             title="Can I get an invoice for my order?"

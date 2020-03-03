@@ -15,6 +15,18 @@ export const filePath              = "https://admin.cbdbene.com/var/www/cbdbene_
 export const labSheetPath          = "https://admin.cbdbene.com/var/www/cbdbene_3rde/cbdbene/"
 export const countryTax            = 15/100
 
+export const chatTheme = {
+  background: "#ffffff",
+  // fontFamily: fonts.mainfont,
+  headerBgColor: "#faf7f5",
+  headerFontColor: "#1A1811",
+  headerFontSize: "20px",
+  botBubbleColor: "#eee9e3",
+  botFontColor: "#202020",
+  userBubbleColor: "#fff",
+  userFontColor: "#4a4a4a"
+}
+
 export const enableCountry         = ["US", "USA", "United States"];
 export const accountTypeOpt        = [
     {
@@ -52,7 +64,7 @@ export const customRates           = [
     shipment_id: "shp_2255eb7f0e8b4775abcfe009be9ba569",
     carrier_account_id: "ca_5cd23a24d9c3427780dcfde68fbb1c76",
     customName: "Standard",
-    customRate: 0,
+    customRate: 15.89,
   },
   {
     id: "rate_custom2",
@@ -75,7 +87,7 @@ export const customRates           = [
     shipment_id: "shp_2255eb7f0e8b4775abcfe009be9ba569",
     carrier_account_id: "ca_5cd23a24d9c3427780dcfde68fbb1c76",
     customName: "Priority",
-    customRate: 15.89,
+    customRate: 20.54,
   },
   {
     id: "rate_custom3",
@@ -122,5 +134,6 @@ export default {
     countryTax,
     docMzUrl,
     customRates,
+    chatTheme,
     topBarText
 }

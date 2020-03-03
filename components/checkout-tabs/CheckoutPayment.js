@@ -239,7 +239,6 @@ class CheckoutPayment extends React.Component {
                         onSubmit(resJson.data)
                     }
                 } else {
-                    alert("Server Error")
                     this.onFailed(resJson)
                     //   this.setState({
                     //     modalData: someThingWrong,

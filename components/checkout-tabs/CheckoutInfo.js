@@ -510,8 +510,8 @@ class CheckoutInfo extends React.Component {
                                             {getFieldDecorator('zip', {
                                                 rules: [
                                                     { required: true, message: 'Please input your ZIP code!' },
-                                                    {pattern: /^\d{5}$|^\d{5}-\d{4}$/, message:"Please enter a valid zipcode!"},
-                                                    { max: 8, message: 'Please input your ZIP code!' },
+                                                    // {pattern: /^\d{5}$|^\d{5}-\d{4}$/, message:"Please enter a valid zipcode!"},
+                                                    { max: 10, message: 'Please input your ZIP code!' },
                                                 ],
                                                 initialValue: address.zip
                                             })(

@@ -52,7 +52,6 @@ const MobileMenu = ({items, user, toggleCartBar, toggleRegBar }) => {
           })}>
             
             {/* <div  onClick={()={
-                      alert(el.label)
                     }}  className="c-nav__list-item-inner"> */}
               {
                 el.link ?

@@ -174,9 +174,9 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
                             {warning && <TitleList parentClass="c-product-details-tab" title={"Warning"} >
                                 {warning}
                             </TitleList>}
-                            {indication && <TitleList parentClass="c-product-details-tab" title={"Indication"} >
+                            {/* {indication && <TitleList parentClass="c-product-details-tab" title={"Indication"} >
                                 {indication}
-                            </TitleList>}
+                            </TitleList>} */}
                             {warranty && <TitleList parentClass="c-product-details-tab" title={"Warranty"} >
                                 {warranty}
                             </TitleList>}

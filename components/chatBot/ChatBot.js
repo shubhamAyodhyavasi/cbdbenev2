@@ -13,6 +13,7 @@ import ChatMsgList from "./ChatMsgList";
 import ChatOrderList from "./ChatOrderList";
 import LearnResponse from "./LearnResponse";
 import { isEmpty, isEmail } from "validator";
+import { chatTheme } from "../../constants/projectSettings";
 
 const chatMsgList = new ChatMsgList();
 const {
@@ -79,16 +80,9 @@ class ChatBotElement extends Component {
     return notLogin;
   };
   render() {
+    chatTheme
     const theme = {
-      background: "#ffffff",
-      // fontFamily: fonts.mainfont,
-      headerBgColor: "#faf7f5",
-      headerFontColor: "#1A1811",
-      headerFontSize: "20px",
-      botBubbleColor: "#eee9e3",
-      botFontColor: "#202020",
-      userBubbleColor: "#fff",
-      userFontColor: "#4a4a4a"
+      ...chatTheme
     };
     const { isOpen, items } = this.props;
     const { opened, clear } = this.state;

@@ -67,7 +67,7 @@ class Contact extends React.Component {
           activeCategory, products
         } = this.state
         return (
-            <Layout className="c-contact" title="Contact">
+            <Layout className="c-contact" headerVersions={["dark"]} title="Contact">
             <Banner
               image="/images/contact-banner.jpg"
               image2x="/images/contact-banner@2x.jpg"

@@ -227,10 +227,6 @@ class CheckoutShipping extends React.Component {
     const {
       isCustomRates
     } = this.state
-    console.clear()
-    console.log({
-      isCustomRates
-    })
     const {
       customRate, id, service
     } = method
