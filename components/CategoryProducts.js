@@ -5,6 +5,7 @@ import projectSettings from '../constants/projectSettings';
 import Flickity from 'react-flickity-component';
 import Link from 'next/link';
 import SliderLine from './SliderLine';
+import { getProductTitle } from '../services/helpers/product'
 const CategoryProducts = ({ heading, subHeading, categoryList, activeCategory, onCategoryChange, products, bg, pp }) => {
     
     const sliderLine = useRef(null)
@@ -74,7 +75,7 @@ const CategoryProducts = ({ heading, subHeading, categoryList, activeCategory, o
                     className="c-category-products__slider"
 				>
                     {products.filter(product => product.visibilitytype ).map((el, i) => (
-                        <Link key={i} href={`/shop/${el._id}`}>
+                        <Link key={i} href={`/shop/${getProductTitle(el).replace(/ /g, "-")}`}>
                             <div className="col-lg-4 c-category-products__product">
                                 <img
                                     src={projectSettings.serverUrl + el.productImage}

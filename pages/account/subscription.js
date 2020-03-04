@@ -515,7 +515,7 @@ class MySubscription extends Component {
       if (subs.title)
         return (
           <Link
-            href={"/shop/" + subs._id }
+            href={"/shop/" + subs.title.replace(/ /g, "-") }
           >
             <a className="my-order__t-link">{subs.title}</a>
             

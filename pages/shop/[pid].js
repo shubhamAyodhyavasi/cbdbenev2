@@ -97,8 +97,8 @@ Product.getInitialProps = async ({query, res: resMain}) => {
     //     baseUrl
     // } = projectSettings
     let product         = null;
-    // const res           = await fetch(apiList.getProductByName+query.pid)
-    const res           = await fetch(apiList.getProductById+query.pid)
+    const res           = await fetch(apiList.getProductByName+query.pid)
+    // const res           = await fetch(apiList.getProductById+query.pid)
     const productObj    = await res.json()
 
     if(!productObj.product_details){

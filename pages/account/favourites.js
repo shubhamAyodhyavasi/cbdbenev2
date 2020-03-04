@@ -5,7 +5,7 @@ import { trash, shoppingCart } from "react-icons-kit/fa";
 import { connect } from "react-redux";
 // import { filePath, encodeUrlFn } from "../../constants/Constants";
 import projectSettings from "../../constants/projectSettings.js"
-
+import { getProductTitle } from "../../services/helpers/product";
 import classNames from "classnames";
 import {
   favouritesAlreadyProductIntoCartMessage,
@@ -286,7 +286,7 @@ class Favourites extends Component {
                 }
               }
             } else {
-              history.push("/" + location.countryCode + "/shop/" + productSlug);
+              history.push("/shop/" + getProductTitle(productItem).replace(/ /g, "-"));
             }
           } else {
             const product = resJson.product_details;
@@ -518,7 +518,7 @@ class Favourites extends Component {
                                           <Link
                                             href={
                                               "/shop/" +
-                                              itm.productmeta
+                                              getProductTitle(itm).replace(/ /g, "-")
                                             }
                                           >
                                             <a className="btn9 mobile-remove-btn-padding my-order__t-btn">
@@ -588,7 +588,7 @@ class Favourites extends Component {
                                           <Link
                                             href={
                                               "/shop/" +
-                                              itm.productmeta
+                                              getProductTitle(itm).replace(/ /g, "-")
                                             }
                                           >
                                             <a

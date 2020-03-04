@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import Button from './form-components/Button'
 import { connect } from 'react-redux'
 import { addToCart } from '../redux/actions/cart'
-import { directAddToCart } from '../services/helpers/product'
+import { directAddToCart, getProductTitle } from '../services/helpers/product'
 import Link from 'next/link'
 import { showCartBar } from '../redux/actions/drawers'
 const ProductCard = ({ versions, parentClass, image, title, subTitle, price, addToCart, product, showCartBar }) => {
@@ -40,7 +40,7 @@ const ProductCard = ({ versions, parentClass, image, title, subTitle, price, add
         })} className={className}>
             {
                 product && product._id ? 
-                <Link href={`/shop/${product._id}`}>
+                <Link href={`/shop/${getProductTitle(product).replace(/ /g, "-")}`}>
                     <a className={`${componentClass}__overlay-link`}>
                         <CardUpper />
                     </a>

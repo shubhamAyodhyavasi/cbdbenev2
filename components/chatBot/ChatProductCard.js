@@ -7,6 +7,7 @@ import { filePath } from "../../constants/projectSettings";
 import { directAddToCart, getBasicPrice } from "../../services/extra";
 import BasicFunction from "../../services/extra/basicFunction";
 import { addToCart, toggleCartBar } from "../../redux/actions";
+import { getProductTitle } from '../../services/helpers/product'
 
 const basicFunction = new BasicFunction();
 class ChatProductCard extends Component {
@@ -29,7 +30,7 @@ class ChatProductCard extends Component {
     const { value: product, countryCode } = this.props.steps.products;
 
     if (!product) return <div />;
-    const productLink = `/shop/${product._id}`;
+    const productLink = `/shop/${getProductTitle(product).replace(/ /g, "-")}`;
     const productTitle = product.title
       ? product.title
       : product.productid && product.productid.producttitle;

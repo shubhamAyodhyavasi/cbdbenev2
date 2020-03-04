@@ -32,6 +32,7 @@ import {
   showCartBar
 } from '../../redux/actions/drawers'
 import { variablePriceSet } from "../../services/extra/cartHealpers";
+import { getProductTitle } from "../../services/helpers/product";
 import { 
   getProductDetailApi, getUserDetails, getOrders, getProductById
 } from "../../services/api";
@@ -409,9 +410,7 @@ class MyAccount extends Component {
                                     </th>
                                     <td data-label="Name" className="my-order__t-col my-order__table--name">
                                       {order.products.map((pro, i) => {
-                                        const link = `/shop/${
-                                              pro._id
-                                            }`;
+                                        const link = `/shop/${pro.title.replace(/ /g, "-")}`;
                                         return (
                                           <p>
                                             <Link key={i} href={link}>

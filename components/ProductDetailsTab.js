@@ -162,7 +162,7 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews, allProducts
                                                     })
                                                     return <div key={item.combo_pid} className="col-lg-6 col-md-6 col-12 c-product-details-tab__contain-col">
                                                         <TitleList parentClass="c-product-details-tab" versions={["wide-title", "height-100p"]} title={
-                                                            <Link href={`/shop/${item.combo_pid}`}>
+                                                            <Link href={`/shop/${getProductTitle(productItem).replace(/ /g, "-")}`}>
                                                                 <a>
                                                                     {title}
                                                                 </a>

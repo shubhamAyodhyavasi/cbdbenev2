@@ -29,7 +29,7 @@ class OrderListItem extends React.Component {
                         products.map((el, key) => {
                             return <Link key={key}>
                                 <a className={`${componentClass}__link ${componentClass}__link--title`}
-                                    href={`/shop/${el.productMeta}`}>{el.title}</a>
+                                    href={`/shop/${el.title.replace(/ /g, "-")}`}>{el.title}</a>
                             </Link>
                         })
                     }
