@@ -24,10 +24,10 @@ const footerMenu = [
     {
         heading: "Company",
         menus: [
-            {
-                slug: "/track-order",
-                title: "Track My Order"
-            },
+            // {
+            //     slug: "/track-order",
+            //     title: "Track My Order"
+            // },
             {
                 slug: "/ambassador-portal",
                 title: "Affiliate Program"

@@ -136,8 +136,10 @@ export const formErrorMessage =
   "Something's not right with this form details. ";
 
 // contact page
-export const msgSent = "Thank you for your message. It has been sent.";
+export const msgSent = "Thank you for contacting us. We will contact you asap!";
 export const msgSentTitle = "Thank you";
+export const msgFailed = "There seems to be a problem. Try again later.";
+export const msgFailedTitle = "Error";
 
 // my order page
 export const myOrderPageFooterDetails = [

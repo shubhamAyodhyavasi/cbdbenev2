@@ -1065,23 +1065,22 @@ CBD dosing experiments have shown that small doses of CBD have a moderately ‘a
           THC has known psychoactive qualities sought by recreational users to provide a ‘high’. Our products contain pure hemp-extracted CBD and are completely free from THC. So, you’ll be able to get all the benefits without experiencing the “high” associated with THC use.
           </p>
           <LearnCollapsePlus
-            title="Does your CBD oil contain THC?
-
-            "
+            title="Does your CBD oil contain THC?"
             onClick={() => {
               this.changeInnerCollapse("2_9_1");
             }}
             isOpen={innerCollapse === "2_9_1"}
           >
-            MCT Coconut oil is well known to:
-            <ul>
-              <li>support weight loss by making you feel full</li>
-              <li>help energy burning and ketone production</li>
-              <li>improve your gut.</li>
-            </ul>
-            Additionally, MCT Coconut oil does not have a plant taste, so it’s
-            great for those who don’t care for the ‘hemp’ taste in Hemp Seed
-            Oil.
+            Our CBD Oil contains 0.0% THC or absolutely no THC. If fact, our products are rigorously tested to ensure we are THC free.
+          </LearnCollapsePlus>
+          <LearnCollapsePlus
+            title="How is THC removed from the CBD oil?"
+            onClick={() => {
+              this.changeInnerCollapse("2_9_1");
+            }}
+            isOpen={innerCollapse === "2_9_1"}
+          >
+            After the CBD oil is extracted from organically grown hemp, it is filtered via a chromatography media that takes away all the THC from the CBD Oil. The resulting oil is rich in all the beneficial cannabinoids except the THC.
           </LearnCollapsePlus>
         </div>
       ),
@@ -1089,46 +1088,32 @@ CBD dosing experiments have shown that small doses of CBD have a moderately ‘a
       "2_10": (
         <div>
           <p>
-            THC has known psychoactive qualities sought by recreational users to
-            provide a ‘high’. Our products contain pure hemp-extracted CBD and
-            are completely free from THC. So, you’ll be able to get all the
-            benefits without experiencing the “high” associated with THC use.
+            Medium-chain triglyceride (MCT) oil contains medium-length chains of fats called triglycerides. MCT oil is usually extracted from coconut oil. MCT Coconut oil has many health benefits because the body processes these shorter length fats easily.
           </p>
 
           <LearnCollapsePlus
-            title="Does your CBD oil contain THC?"
+            title="What are the benefits of MCT Coconut oil?"
             onClick={() => {
               this.changeInnerCollapse("2_10_1");
             }}
             isOpen={innerCollapse === "2_10_1"}
           >
-            Our CBD Oil contains 0.0% THC or absolutely no THC. If fact, our
-            products are rigorously tested to ensure we are THC free.
+            MCT Coconut oil is well known to:
+            <ul>
+              <li>support weight loss by making you feel full</li>
+              <li>help energy burning and ketone production</li>
+              <li>improve your gut.</li>
+            </ul>
+            Additionally, MCT Coconut oil does not have a plant taste, so it’s great for those who don’t care for the ‘hemp’ taste in Hemp Seed Oil.
           </LearnCollapsePlus>
           <LearnCollapsePlus
-            title="How is THC removed from the CBD oil?
-            "
+            title="Are all your CBD Products legal to use?"
             onClick={() => {
               this.changeInnerCollapse("2_10_2");
             }}
             isOpen={innerCollapse === "2_10_2"}
           >
-            After the CBD oil is extracted from organically grown hemp, it is
-            filtered via a chromatography media that takes away all the THC from
-            the CBD Oil. The resulting oil is rich in all the beneficial
-            cannabinoids except the THC.
-          </LearnCollapsePlus>
-          <LearnCollapsePlus
-            title="
-            Are all your CBD Products legal to use?
-            "
-            onClick={() => {
-              this.changeInnerCollapse("2_10_3");
-            }}
-            isOpen={innerCollapse === "2_10_3"}
-          >
-            Yes, all our CBD products have by 0.0% THC and thus, are completely
-            legal.
+            Yes, all our CBD products have by 0.0% THC and thus, are completely legal.
           </LearnCollapsePlus>
         </div>
       ),

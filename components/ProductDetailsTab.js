@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import classNames from 'classnames'
 import Tabs from "./Tabs"
 import TitleList from './TItleList'
@@ -9,10 +10,11 @@ import moment from 'moment'
 import projectSettings from '../constants/projectSettings'
 import FadeTransition from "../services/extra/FadeTransition";
 import Fade from 'react-reveal/Fade';
+import { getProductTitle, getProductShortDesc } from '../services/helpers/product'
 import ProductRating from '../components/ProductRating'
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 
-const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
+const ProductDetailsTab = ({product, versions, parentClass, reviews, allProducts}) => {
     const componentClass = `c-product-details-tab`
     const versionClass = versions.map(el => (`${componentClass}--${el}`)).join(" ")
     const parent = `${parentClass}__${componentClass.replace("c-", "")}`
@@ -33,6 +35,9 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
         }
         return 0
     };
+    console.log({
+        product
+    })
     const avgReview     = isNaN(getAvg(reviews)) ? 0 : getAvg(reviews)
     const totalReview   = reviews && reviews.length || 0
     const productFaq    = product.faqcontent && product.faqcontent.filter(faq => faq.title !== "" && faq.description !== "")
@@ -139,22 +144,57 @@ const ProductDetailsTab = ({product, versions, parentClass, reviews}) => {
             <TabContent activeTab={currentTab} >
                 <TabPane tabId="0">
                     <TabContainer isActive={currentTab === "0"} >
-                        <div className="col-lg-3 col-md-6 c-product-details-tab__contain-col c-product-details-tab__contain-col--detail">
-                            <TitleList parentClass="c-product-details-tab" title="Total Cbd" >
-                                {`${totalcbdmg} mg`}
-                            </TitleList>
-                            <TitleList parentClass="c-product-details-tab" title={"Cbd per unit"} >
-                                {cbdperunitmg}
-                            </TitleList>
-                        </div>
-                        <div className="col-lg-3 offset-lg-1 col-md-6 c-product-details-tab__contain-col c-product-details-tab__contain-col--detail">
-                            <TitleList parentClass="c-product-details-tab" title="Total Servings" >
-                                {servings}
-                            </TitleList>
-                            <TitleList parentClass="c-product-details-tab" title="Servings Size" >
-                                {servingsize}
-                            </TitleList>
-                        </div>
+                        {
+                            product.combo ? <div className="col-12">
+                                <div className="row justify-content-center">
+                                    <div className="col-lg-10">
+                                        <div className="row">
+                                            {
+                                                product.products.map( item => {
+                                                    const productItem = allProducts.find(product => product._id === item.combo_pid)
+                                                    if(!productItem)
+                                                        return null
+                    
+                                                    const title = getProductTitle(productItem)
+                                                    const desc  = getProductShortDesc(productItem)
+                                                    console.log({
+                                                        productItem
+                                                    })
+                                                    return <div key={item.combo_pid} className="col-lg-6 col-md-6 col-12 c-product-details-tab__contain-col">
+                                                        <TitleList parentClass="c-product-details-tab" versions={["wide-title", "height-100p"]} title={
+                                                            <Link href={`/shop/${item.combo_pid}`}>
+                                                                <a>
+                                                                    {title}
+                                                                </a>
+                                                            </Link>
+                                                        } >
+                                                            {desc}
+                                                        </TitleList>
+                                                    </div>
+                                                }) 
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>: <>
+                                <div className="col-lg-3 col-md-6 c-product-details-tab__contain-col c-product-details-tab__contain-col--detail">
+                                    <TitleList parentClass="c-product-details-tab" title="Total Cbd" >
+                                        {`${totalcbdmg} mg`}
+                                    </TitleList>
+                                    <TitleList parentClass="c-product-details-tab" title={"Cbd per unit"} >
+                                        {cbdperunitmg}
+                                    </TitleList>
+                                </div>
+                                <div className="col-lg-3 offset-lg-1 col-md-6 c-product-details-tab__contain-col c-product-details-tab__contain-col--detail">
+                                    <TitleList parentClass="c-product-details-tab" title="Total Servings" >
+                                        {servings}
+                                    </TitleList>
+                                    <TitleList parentClass="c-product-details-tab" title="Servings Size" >
+                                        {servingsize}
+                                    </TitleList>
+                                </div>
+                            </>
+                        }
                     </TabContainer>
                 </TabPane>
                 <TabPane tabId="1">

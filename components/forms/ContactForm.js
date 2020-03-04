@@ -4,8 +4,9 @@ import Button from '../form-components/Button';
 import { contactUs } from '../../services/api';
 import regex from '../../services/helpers/regex';
 import reactComponentDebounce from 'react-component-debounce';
-
-
+import { Modal } from "../modal";
+import { msgSent, msgFailed, msgSentTitle, msgFailedTitle, } from '../../constants/constantMessage'
+import Loader from '../Loader';
 
 const DebounceInput = reactComponentDebounce({
     valuePropName: 'value',
@@ -16,7 +17,10 @@ class Contact extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            isLoading: false
+            isLoading: false,
+            isModal: false,
+            modalText: "",
+            modalTitle: ""
         }
     }
     onSubmit = (e) => {
@@ -24,16 +28,32 @@ class Contact extends React.Component {
         this.props.form.validateFields((err, values) => {
             if(!err){
                 console.log({values})
-                contactUs(values)
-                .then(res => {
-                    console.log({
-                        res
+                this.setState({
+                    isLoading: true
+                }, ()=> {
+                    contactUs(values)
+                    .then(res => {
+                        this.setState({
+                            isLoading: false,
+                            isModal: true,
+                            modalText: res.data.status ? msgSent : msgFailed,
+                            modalTitle: res.data.status ? msgSentTitle : msgFailedTitle,
+                        })
+                        if(res.data.status){
+    
+                        }else{
+    
+                        }
+                        console.log({
+                            res
+                        })
                     })
+                    .catch(console.log)
                 })
-                .catch(console.log)
             }
         })
     }
+    toggle = () => this.setState(prevState => ({isModal: !prevState.isModal}))
     render (){
         const {
             Item
@@ -42,7 +62,7 @@ class Contact extends React.Component {
             getFieldDecorator
         } = this.props.form
         const {
-            isLoading
+            isLoading, isModal, modalTitle, modalText
         } = this.state
         return (
             <div className="c-contact-form">
@@ -90,15 +110,19 @@ class Contact extends React.Component {
                                         
                                         rules: [
                                             { required: true, message: 'Please input your name!' },
+                                            { 
+                                                pattern: regex.name, 
+                                                message: 'Please enter a valid name!' 
+                                            },
                                             {max: 20}
                                         ],
                                     })(
                                         <DebounceInput versions={["light"]}
-                                        pattern={[
-                                            '^.{8,}$', // min 8 chars
-                                            '(?=.*\\d)', // number required
-                                            '(?=.*[A-Z])', // uppercase letter
-                                          ]}
+                                        // pattern={[
+                                        //     '^.{8,}$', // min 8 chars
+                                        //     '(?=.*\\d)', // number required
+                                        //     '(?=.*[A-Z])', // uppercase letter
+                                        //   ]}
                                          parentClass="c-contact-form" label="Name" />
                                     )}
                                 </Item>
@@ -148,6 +172,16 @@ class Contact extends React.Component {
                         </div>
                     </div>
                 </Form>
+                
+                <Modal
+                isOpen={isModal}
+                heading={modalTitle}
+                toggle={this.toggle}
+                >
+                <div className="col-12 text-center">
+                    <p className="h4 p-5">{modalText}</p>
+                </div>
+                </Modal>
             </div>            
         )
     }

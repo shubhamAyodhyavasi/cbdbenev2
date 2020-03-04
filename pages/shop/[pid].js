@@ -73,7 +73,7 @@ const Product = ({product, allProducts, ...props}) => {
                     </div>
                 </HImgSection>
                 <div className="c-product-single__details-wrapper">
-                    <ProductDetailsTab product={product} reviews={props.reviews} parentClass="c-product-single" />
+                    <ProductDetailsTab product={product} reviews={props.reviews} allProducts={allProducts} parentClass="c-product-single" />
                 </div>
                 <div className="c-product-single__related-section">
                     <div className="row">
@@ -93,12 +93,22 @@ const Product = ({product, allProducts, ...props}) => {
 }
 Product.getInitialProps = async ({query, res: resMain}) => {
     
-    const {
-        baseUrl
-    } = projectSettings
-    const res           = await fetch(baseUrl+"/products/api/getbyid/"+query.pid)
+    // const {
+    //     baseUrl
+    // } = projectSettings
+    let product         = null;
+    // const res           = await fetch(apiList.getProductByName+query.pid)
+    const res           = await fetch(apiList.getProductById+query.pid)
     const productObj    = await res.json()
-    const product       = getVisibleProducts([productObj.product_details])
+
+    if(!productObj.product_details){
+        const res           = await fetch(apiList.getProductById+query.pid)
+        const productObj    = await res.json()
+        product       = getVisibleProducts([productObj.product_details])
+
+    }else{
+        product       = getVisibleProducts([productObj.product_details])
+    }
     
     const reviewRes     = await fetch(apiList.getReviews+query.pid)
     const reviews       = await reviewRes.json()
@@ -108,6 +118,7 @@ Product.getInitialProps = async ({query, res: resMain}) => {
     const allProducts   = getVisibleProducts(allProductObj.products).filter(el => el._id !== query.pid)
     if(product.length && product[0] && productObj.status){
         return {
+            res,
             product: product.length && product[0],
             productObj,
             allProducts,

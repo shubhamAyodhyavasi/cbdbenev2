@@ -1,7 +1,8 @@
 import axios from 'axios'
 import apiList from "./apiList";
 
-export const getProductById = id    => axios.get(apiList.getProductById + id)
+export const getProductById     = id    => axios.get(apiList.getProductById + id)
+export const getProductByName   = name  => axios.get(apiList.getProductByName + name)
 
 export const getAllProducts = ()    => axios.get(apiList.getAllProducts)
 export const getAllCombos   = ()    => axios.get(apiList.getAllCombos)
