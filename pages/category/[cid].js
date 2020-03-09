@@ -37,7 +37,7 @@ const Category = ({ productList, combos, ...props }) => {
         <Layout headerVersions={["bg-light"]} fixed={true} headerTheme="dark">
              {/* <Layout headerVersions={["bg-dark"]} className="c-consult-page" title="Category">  */}
             <div className="c-category-page">
-                <HImgSection parentClass="c-category-page" version={["full", "content-bottom"]} image={"/images/oil-page.jpg"} >
+                <HImgSection parentClass="c-category-page" version={["full", "content-bottom"]} image={"/images/oil-page.png"} >
                     <div>
                         <Heading parentClass="c-category-page" versions={['lft-br', 'large']} >{parse(bannerTitle)}</Heading>
                     </div>

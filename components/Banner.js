@@ -36,6 +36,6 @@ const Banner = ({
     )
 }
 Banner.defaultProps = {
-    versions: []
+    versions: [],
 }
 export default Banner

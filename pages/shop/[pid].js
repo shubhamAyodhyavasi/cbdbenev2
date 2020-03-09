@@ -1,6 +1,7 @@
 import Layout from '../../components/Layouts/Layout'
 import ProductInfo from '../../components/ProductInfo'
 import { getProductById } from '../../services/api'
+import { useEffect, useState } from 'react'
 import HImgSection from '../../components/HImgSection'
 import {getProductImage, getProductAttributes, getVisibleProducts, getProductDescription} from '../../services/helpers/product'
 import Heading from '../../components/Heading'
@@ -21,6 +22,11 @@ const product = {
 
 const Product = ({product, allProducts, ...props}) => {
     
+    const [ isScrolled, setIsScrolled ] = useState(false)
+    useEffect(()=> {
+        setIsScrolled(true)
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }, isScrolled);
     const router = useRouter()
     const { pid } = router.query
     

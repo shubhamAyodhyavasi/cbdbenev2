@@ -57,7 +57,7 @@ class ProductViewSlider extends Component {
     return (
       <CarouselProvider
         naturalSlideWidth={100}
-        naturalSlideHeight={80}
+        naturalSlideHeight={100}
         totalSlides={this.props.imgArr.length}
         className="product-view"
       >
