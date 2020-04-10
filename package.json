@@ -34,6 +34,7 @@
     "pure-react-carousel": "1.17.0",
     "react": "16.11.0",
     "react-animate-on-scroll": "^2.1.5",
+    "react-bootstrap": "^1.0.0",
     "react-component-debounce": "0.0.4",
     "react-custom-scroll": "^4.1.5",
     "react-dom": "16.11.0",
