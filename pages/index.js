@@ -91,6 +91,8 @@ class Home extends React.Component {
 		}
 	};
 	render() {
+		let nextIcon = <span className="glyphicon glyphicon-glass"></span>;
+		let prevIcon = <span className="glyphicon glyphicon-glass"></span>;
 		const {
 			activeCategory,
 			products,
@@ -139,44 +141,48 @@ class Home extends React.Component {
 			>
 				<Carousel>
 					<Carousel.Item>
-						<Banner
-							image="/images/bundle_3.jpg"
-							mobileImage="/images/home-banner-mobile.png"
-							versions={["brand-heading"]}
-							// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
-							heading={parse(bannerTitle)}
-							// content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
-							content={parse(bannerContent)}
-						>
-							<Button
-								parentClass="c-home"
-								type="link"
-								link="/shop"
-								theme={"outline-brand"}
+						<div>
+							<Banner
+								image="/images/bundle_3.jpg"
+								mobileImage="/images/home-banner-mobile.png"
+								versions={["brand-heading"]}
+								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
+								heading={parse(bannerTitle)}
+								// content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
+								content={parse(bannerContent)}
 							>
-								{parse(bannerBtnText)}
-							</Button>
-						</Banner>
+								<Button
+									parentClass="c-home"
+									type="link"
+									link="/shop"
+									theme={"outline-brand"}
+								>
+									{parse(bannerBtnText)}
+								</Button>
+							</Banner>
+						</div>
 					</Carousel.Item>
 					<Carousel.Item>
-						<Banner
-							image="/images/home-banner-1.png"
-							mobileImage="/images/scene_rollon_1-mobile.png"
-							versions={["brand-heading"]}
-							// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
-							heading={parse(bannerTitle)}
-							// content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
-							content={parse(bannerContent)}
-						>
-							<Button
-								parentClass="c-home"
-								type="link"
-								link="/shop"
-								theme={"outline-brand"}
+						<div>
+							<Banner
+								image="/images/home-banner-1.png"
+								mobileImage="/images/scene_rollon_1-mobile.png"
+								versions={["brand-heading"]}
+								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
+								heading={parse(bannerTitle)}
+								// content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
+								content={parse(bannerContent)}
 							>
-								{parse(bannerBtnText)}
-							</Button>
-						</Banner>
+								<Button
+									parentClass="c-home"
+									type="link"
+									link="/shop"
+									theme={"outline-brand"}
+								>
+									{parse(bannerBtnText)}
+								</Button>
+							</Banner>
+						</div>
 					</Carousel.Item>
 				</Carousel>
 
