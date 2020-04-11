@@ -114,7 +114,7 @@ const CartDrawer = ({
 			)}
 			{!hasItems && (
 				<>
-					<Heading parentClass="c-cart-item" versions={["white"]}>
+					<Heading parentClass="c-cart-item" versions={["dark"]}>
 						0 Items
 					</Heading>
 					<Heading parentClass="c-cart-item" versions={["gold", "btm-br"]}>

@@ -52,12 +52,18 @@
 			line-height: 1.8;
 		}
 	}
+	&--dark {
+		text-transform: $dark-color-1;
+	}
 }
 .c-heading,
 .c-sub-heading {
 	//versions
 	&--upper {
 		text-transform: uppercase;
+	}
+	&--dark {
+		text-transform: $dark-color-1;
 	}
 	&--gold {
 		color: $brand-color-1;

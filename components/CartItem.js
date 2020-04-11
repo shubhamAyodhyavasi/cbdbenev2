@@ -56,7 +56,7 @@ const CartItem = ({
 					</Heading>
 					<Heading
 						parentClass="c-cart-item"
-						versions={["small", "white"]}
+						versions={["small", "dark"]}
 						subHeading={true}
 					>
 						{subTitle}
@@ -83,7 +83,7 @@ const CartItem = ({
 				<div className="col c-cart-item__price-wrapper flex-grow-0">
 					<Heading
 						parentClass="c-cart-item"
-						versions={["default", "white"]}
+						versions={["default", "brand"]}
 						subHeading={true}
 					>
 						{price}

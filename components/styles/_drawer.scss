@@ -1,11 +1,11 @@
 .c-drawer {
 	.ant-drawer-header {
 		border-bottom: none;
-		background-color: $dark-color-1;
+		background-color: $light-color-2;
 		color: $brand-color-1;
 	}
 	.ant-drawer-content {
-		background-color: $dark-color-1;
+		background-color: $light-color-2;
 		padding-left: 40px;
 		padding-right: 40px;
 		@include bpm-xs {

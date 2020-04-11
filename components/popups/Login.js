@@ -124,7 +124,7 @@ class LoginForm extends React.Component {
 								]
 							})(
 								<DebounceInput
-									versions={["dark"]}
+									versions={[""]}
 									parentClass="c-login"
 									label="E-mail"
 								/>
@@ -140,7 +140,7 @@ class LoginForm extends React.Component {
 								<DebounceInput
 									type="password"
 									parentClass="c-login"
-									versions={["dark"]}
+									versions={[""]}
 									label="Password"
 								/>
 							)}
