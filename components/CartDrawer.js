@@ -16,8 +16,10 @@ const CartDrawer = ({
 	cart,
 	modifyItem,
 	removeFromCart,
-	hideCartBar
+	hideCartBar,
+	background
 }) => {
+	console.log("back", background);
 	const qtyChange = (qty, oldItem) => {
 		modifyItem({
 			oldItem,
@@ -55,6 +57,7 @@ const CartDrawer = ({
 							onQtyChange={e => {
 								if (cart.isEditable) qtyChange(e, el);
 							}}
+							background={background}
 						/>
 					))}
 					<div className="mt-auto"></div>
@@ -66,6 +69,7 @@ const CartDrawer = ({
 								price={`$${numberFormat(parseFloat(cart.subTotal))}`}
 								total={true}
 								versions={["small", "no-border"]}
+								background={background}
 							/>
 							<CartItem
 								small={true}
@@ -73,6 +77,7 @@ const CartDrawer = ({
 								price={`$${shippingCharge}`}
 								total={true}
 								versions={cart.taxPercent ? ["small", "no-border"] : ["small"]}
+								background={background}
 							/>
 							{taxPrice > 0 && (
 								<CartItem
@@ -82,6 +87,7 @@ const CartDrawer = ({
 									price={`$${taxPrice}`}
 									total={true}
 									versions={["small"]}
+									background={background}
 								/>
 							)}
 							<CartItem
@@ -89,6 +95,7 @@ const CartDrawer = ({
 								price={`$${grandTotal}`}
 								total={true}
 								versions={["no-border"]}
+								background={background}
 							/>
 						</>
 					)}
@@ -114,7 +121,7 @@ const CartDrawer = ({
 			)}
 			{!hasItems && (
 				<>
-					<Heading parentClass="c-cart-item" versions={["white"]}>
+					<Heading parentClass="c-cart-item" versions={["dark"]}>
 						0 Items
 					</Heading>
 					<Heading parentClass="c-cart-item" versions={["gold", "btm-br"]}>

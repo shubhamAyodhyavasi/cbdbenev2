@@ -1,6 +1,6 @@
 .c-login {
 	&__heading {
-		color: $light-color-2;
+		color: $dark-color-2;
 		font-size: 28px;
 		@include bp-xl {
 			font-size: 40px;
@@ -31,12 +31,12 @@
 	&__inst {
 		padding: 10px;
 		text-align: center;
-		color: $brand-color-1;
+		color: $dark-color-1;
 	}
 	&__link {
-		color: $light-color-2;
+		color: $brand-color-1;
 		cursor: pointer;
-		text-decoration: underline;
+
 		&--gold {
 			color: $brand-color-1;
 		}

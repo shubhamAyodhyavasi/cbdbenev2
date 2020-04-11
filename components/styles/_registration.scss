@@ -1,41 +1,40 @@
-.c-registration{
-    &__heading{
-        color: $light-color-2;
-        font-size: 28px;
-        @include bp-xl{
-            font-size: 40px;
-        }
-    }
-    &__info{
-        color: $brand-color-1;
-        font-family: $sub-font;
-        @include bp-xl{
-            font-size: 20px;
-        }
-    }
-    &__error-block{
-        padding-top: 20px;
-        padding-bottom: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: $error-color;
-    }
-    &__error{
-        text-transform: uppercase;
-    }
-    &__spinner{
-        color: $brand-color-1;
-    }
-    &__inst {
-        padding: 10px;
-        text-align: center;
-        color: $brand-color-1;
-    }
-    &__link{
-        color: $light-color-2;
-        cursor: pointer;
-        text-decoration: underline;
-    }
+.c-registration {
+	&__heading {
+		color: $dark-color-2;
+		font-size: 28px;
+		@include bp-xl {
+			font-size: 40px;
+		}
+	}
+	&__info {
+		color: $brand-color-1;
+		font-family: $sub-font;
+		@include bp-xl {
+			font-size: 20px;
+		}
+	}
+	&__error-block {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: $error-color;
+	}
+	&__error {
+		text-transform: uppercase;
+	}
+	&__spinner {
+		color: $brand-color-1;
+	}
+	&__inst {
+		padding: 10px;
+		text-align: center;
+		color: $dark-color-1;
+	}
+	&__link {
+		color: $brand-color-1;
+		cursor: pointer;
+	}
 }

@@ -125,7 +125,7 @@ class RegistrationForm extends React.Component {
 								]
 							})(
 								<DebounceInput
-									versions={["dark"]}
+									versions={[""]}
 									parentClass="c-registration"
 									label="E-mail"
 								/>
@@ -141,7 +141,7 @@ class RegistrationForm extends React.Component {
 								<DebounceInput
 									type="password"
 									parentClass="c-registration"
-									versions={["dark"]}
+									versions={[""]}
 									label="Password"
 								/>
 							)}
