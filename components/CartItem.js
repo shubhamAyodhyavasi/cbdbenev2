@@ -13,22 +13,25 @@ const CartItem = ({
 	parentClass,
 	versions,
 	isDisabled,
+	background,
 	...props
 }) => {
-	const componentClass = "c-cart-item";
+	console.log("background", background);
+	const componentClass = background ? "c-cart-item-dark" : "c-cart-item";
 	const versionClass = versions.map(el => `${componentClass}--${el}`).join(" ");
 	const parent = `${parentClass}__${componentClass.replace("c-", "")}`;
 	const className = classNames(componentClass, {
 		[versionClass]: versions,
 		[parent]: parentClass
 	});
+	console.log("classname", className, props.backgroud);
 	if (total) {
 		return (
 			<div className={className}>
 				<div className="row c-cart-item__row">
 					<div className="col c-cart-item__title-wrapper">
 						<Heading
-							parentClass="c-cart-item"
+							parentClass={componentClass}
 							versions={["default", "white", "upper"]}
 						>
 							{title}
@@ -36,7 +39,7 @@ const CartItem = ({
 					</div>
 					<div className="col c-cart-item__price-wrapper flex-grow-0">
 						<Heading
-							parentClass="c-cart-item"
+							parentClass={componentClass}
 							versions={["default", "white"]}
 							subHeading={true}
 						>
@@ -51,11 +54,11 @@ const CartItem = ({
 		<div className={className}>
 			<div className="row c-cart-item__row">
 				<div className="col c-cart-item__title-wrapper">
-					<Heading parentClass="c-cart-item" versions={["default", "white"]}>
+					<Heading parentClass={componentClass} versions={["default", "white"]}>
 						{title}
 					</Heading>
 					<Heading
-						parentClass="c-cart-item"
+						parentClass={componentClass}
 						versions={["small", "dark"]}
 						subHeading={true}
 					>
@@ -77,12 +80,12 @@ const CartItem = ({
 						isDisabled={isDisabled}
 						onChange={onQtyChange}
 						value={quantity}
-						parentClass="c-cart-item"
+						parentClass={componentClass}
 					/>
 				</div>
 				<div className="col c-cart-item__price-wrapper flex-grow-0">
 					<Heading
-						parentClass="c-cart-item"
+						parentClass={componentClass}
 						versions={["default", "brand"]}
 						subHeading={true}
 					>
