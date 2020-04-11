@@ -195,7 +195,7 @@ class Contact extends React.Component {
 								<Button
 									type="link"
 									link="/consult/get-in-touch"
-									versions={["outline-gold", "block"]}
+									versions={["outline-brand", "block"]}
 								>
 									Get in touch
 								</Button>
