@@ -110,7 +110,7 @@ const CartDrawer = ({
 							/>
 							<div className="c-cart-drawer__btn-wrapper">
 								<Link href="/checkout">
-									<a className="c-btn c-btn--block c-btn--outline-brand mt-5">
+									<a className="c-btn c-btn--block c-btn--brand mt-5">
 										Proceed to checkout
 									</a>
 								</Link>

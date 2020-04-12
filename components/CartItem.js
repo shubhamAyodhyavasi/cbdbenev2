@@ -25,6 +25,7 @@ const CartItem = ({
 		[parent]: parentClass
 	});
 	console.log("classname", className, props.backgroud);
+	const bold = background ? "" : "bold";
 	if (total) {
 		return (
 			<div className={className}>
@@ -32,7 +33,7 @@ const CartItem = ({
 					<div className="col c-cart-item__title-wrapper">
 						<Heading
 							parentClass={componentClass}
-							versions={["default", "white", "upper"]}
+							versions={["default", "white", "upper", `${bold}`]}
 						>
 							{title}
 						</Heading>

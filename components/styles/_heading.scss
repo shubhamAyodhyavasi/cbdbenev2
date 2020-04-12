@@ -11,8 +11,11 @@
 			margin-bottom: 30px;
 		}
 	}
+	&--bold {
+		font-weight: $wg-bold;
+	}
 	&--light {
-		font-weight: 300;
+		font-weight: $wg-normal;
 	}
 	&--large {
 		@media (min-width: 1400px) {
@@ -66,6 +69,9 @@
 		text-transform: $dark-color-1;
 	}
 	&--gold {
+		color: $brand-color-1;
+	}
+	&--brand {
 		color: $brand-color-1;
 	}
 	&--white {

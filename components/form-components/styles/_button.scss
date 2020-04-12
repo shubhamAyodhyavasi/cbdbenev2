@@ -52,10 +52,40 @@
 			}
 		}
 	}
+	&--btm-brand {
+		color: $brand-color-1;
+		position: relative;
+		margin-right: 50px;
+		&:after {
+			content: "";
+			display: block;
+			width: 100%;
+			position: absolute;
+			bottom: 3px;
+			right: -50px;
+			height: 1px;
+			background-color: $brand-color-1;
+			transition: all 0.3s;
+		}
+		&:hover {
+			color: $Hover-color;
+			&:after {
+				right: 0;
+			}
+		}
+	}
 	&--btm-br-gold {
 		color: $brand-color-1;
 		&:hover {
 			color: $brand-color-1;
+		}
+	}
+	&--brand {
+		background-color: $brand-color-1;
+		color: $light-color;
+		&:hover {
+			background-color: $Hover-color;
+			color: $light-color;
 		}
 	}
 	&--btm-br-light {

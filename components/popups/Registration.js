@@ -172,7 +172,7 @@ class RegistrationForm extends React.Component {
 									onClick={() => {
 										drawerToDisplay("login");
 									}}
-									className="c-registration__link"
+									className="c-registration__link c-registration__link--bold c-registration__link--brand"
 								>
 									SIGN IN
 								</span>

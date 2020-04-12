@@ -36,5 +36,11 @@
 	&__link {
 		color: $brand-color-1;
 		cursor: pointer;
+		&--bold {
+			font-weight: $wg-bold;
+		}
+		&--brand {
+			color: $brand-color-1;
+		}
 	}
 }

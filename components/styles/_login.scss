@@ -40,6 +40,12 @@
 		&--gold {
 			color: $brand-color-1;
 		}
+		&--brand {
+			color: $brand-color-1;
+		}
+		&--bold {
+			font-weight: $wg-bold;
+		}
 	}
 	&__forget {
 		text-align: right;
