@@ -34,7 +34,7 @@
 		}
 	}
 	&--link {
-		color: $dark-color-1;
+		color: $brand-color-1;
 	}
 	.c-title-list {
 		position: relative;
@@ -87,7 +87,7 @@
 
 .ant-tabs-nav .ant-tabs-tab-active,
 .ant-tabs-nav .ant-tabs-tab:hover {
-	color: black;
+	color: $brand-color-1;
 }
 
 .ant-tabs {
