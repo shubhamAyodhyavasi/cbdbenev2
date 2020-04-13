@@ -1,175 +1,176 @@
+.c-nav {
+	@include bpm-md {
+		display: none;
+	}
+	&__list {
+		display: flex;
+		padding: 0;
+		margin-bottom: auto;
+		margin-top: auto;
+		@include bpm-md {
+			position: absolute;
+			left: 20px;
+			right: 0;
+			padding: 20px;
+			flex-direction: column;
+			z-index: 10;
+		}
+	}
+	&__link {
+		text-decoration: none;
+		color: $base-color;
+		padding-left: 5px;
+		padding-right: 5px;
+		font-weight: 500;
+		@include bpm-md {
+			color: $brand-color-1;
+		}
+		cursor: pointer;
+		&:hover {
+			text-decoration: none;
+			color: $brand-color-1;
+		}
+	}
+	&__list-item {
+		font-size: 16px;
+		font-weight: $wg-bold;
+		padding-left: 2px;
+		padding-right: 2px;
+		display: flex;
+		line-height: 2.7;
+		@include bp-lg {
+			padding-left: 10px;
+			padding-right: 10px;
+			&:first-child {
+				padding-left: 2px;
+			}
+			&:last-child {
+				padding-right: 2px;
+			}
+		}
+		svg {
+			width: auto;
+			height: 1em;
+			&:hover {
+				path,
+				circle {
+					color: $brand-color-1;
+				}
+			}
+		}
+	}
 
-.c-nav{
-    @include bpm-md{
-        display: none;
-    }
-    &__list{
-        display: flex;
-        padding: 0;
-        margin-bottom: auto;
-        margin-top: auto;
-        @include bpm-md{
-            position: absolute;
-            left: 20px;
-            right: 0;
-            padding: 20px;
-            flex-direction: column;
-            z-index: 10;         
-        }
-    }
-    &__link{
-        text-decoration: none;
-        color: $base-color;
-        padding-left: 5px;
-        padding-right: 5px;
-        font-weight: 500;
-        @include bpm-md{
-            color: $brand-color-1;
-        }
-        cursor: pointer;
-        &:hover{
-            text-decoration: none;
-            color: $brand-color-1;
-        }
-    }
-    &__list-item{
-        padding-left: 2px;
-        padding-right: 2px;
-        display: flex;
-        line-height: 2.7;
-        @include bp-lg{
-            padding-left: 10px;
-            padding-right: 10px;
-            &:first-child{
-                padding-left: 2px;
-            }
-            &:last-child{
-                padding-right: 2px;
-            }
-        }
-        svg{
-            width: auto;
-            height: 1em;
-            &:hover {
-                path, circle{
-                    color: $brand-color-1;
-                }
-            }
-        }
-    }
-    
-    &__sub-menu{
-        display: flex;
-        align-items: center;
-        padding-left: 30px;
-        list-style: none;
-        flex-wrap:wrap;
-        @include bpm-md{
-           padding-left:0;
-           margin-top: 25px;
-        }
-    }
-    &__sub-menu-item{
-        @include bpm-md{
-            width:100%;
-        }
-    }
-    &__sub-menu-tgl{
-        padding-left: 5px;
-        cursor: pointer;
-    }
+	&__sub-menu {
+		display: flex;
+		align-items: center;
+		padding-left: 30px;
+		list-style: none;
+		flex-wrap: wrap;
+		@include bpm-md {
+			padding-left: 0;
+			margin-top: 25px;
+		}
+	}
+	&__sub-menu-item {
+		@include bpm-md {
+			width: 100%;
+		}
+	}
+	&__sub-menu-tgl {
+		padding-left: 5px;
+		cursor: pointer;
+	}
 
-
-    //
-    &__menu-tgl{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 30px;
-        height: 25px;
-        &:before,
-        &:after{
-            content: "";
-            display: block;
-            height: 2px;
-            // background-color: $dark-color-1;
-            background-color: currentColor;
-            border-radius: 5px;
-        }
-        &:before{
-            width: 20px;
-        }
-        &:after{
-            margin-top: 10px;
-            width: 25px;
-        }
-    }
-    &__icon-menu-wrapper{
-        &--mobile{
-            display: flex;
-            justify-content: flex-end;
-            flex: 1;
-            @include bp-md{
-                display: none;
-            }
-        }
-    }
-    //versions 
-    &--right{
-        .c-nav{
-            &__list{
-                justify-content: flex-end;
-            }
-        }
-    }
-    &--mobile{
-        display: block;
-        @include bp-md{
-            display: none;
-        }
-        .c-nav{
-            &__list{
-                pointer-events: none;
-                &--opened{
-                    pointer-events: all;
-                }
-            }
-        }
-    }
+	//
+	&__menu-tgl {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 30px;
+		height: 25px;
+		&:before,
+		&:after {
+			content: "";
+			display: block;
+			height: 2px;
+			// background-color: $dark-color-1;
+			background-color: currentColor;
+			border-radius: 5px;
+		}
+		&:before {
+			width: 20px;
+		}
+		&:after {
+			margin-top: 10px;
+			width: 25px;
+		}
+	}
+	&__icon-menu-wrapper {
+		&--mobile {
+			display: flex;
+			justify-content: flex-end;
+			flex: 1;
+			@include bp-md {
+				display: none;
+			}
+		}
+	}
+	//versions
+	&--right {
+		.c-nav {
+			&__list {
+				justify-content: flex-end;
+			}
+		}
+	}
+	&--mobile {
+		display: block;
+		@include bp-md {
+			display: none;
+		}
+		.c-nav {
+			&__list {
+				pointer-events: none;
+				&--opened {
+					pointer-events: all;
+				}
+			}
+		}
+	}
 }
 .c-cart-icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &__count {
-        position: absolute;
-        z-index: 2;
-        left: 0;
-        right: 0;
-        text-align: center;
-        bottom: 0;
-        top: 0;
-        margin: auto;
-        padding-top: 0.6em;
-        pointer-events: none;
-        font-size: 1.2em;
-        @include bp-md{
-            font-size: 0.8em;
-        }
-    }
-    
-    svg {
-        height: 2.5em;
-        @include bp-md{
-            height: 1.5em;
-        }
-    }
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&__count {
+		position: absolute;
+		z-index: 2;
+		left: 0;
+		right: 0;
+		text-align: center;
+		bottom: 0;
+		top: 0;
+		margin: auto;
+		padding-top: 0.6em;
+		pointer-events: none;
+		font-size: 1.2em;
+		@include bp-md {
+			font-size: 0.8em;
+		}
+	}
+
+	svg {
+		height: 2.5em;
+		@include bp-md {
+			height: 1.5em;
+		}
+	}
 }
 
 .c-header--light .c-cart-icon__count {
-    color: #000
+	color: #000;
 }
 .c-header--dark .c-cart-icon__count {
-    color: #fff
+	color: #fff;
 }

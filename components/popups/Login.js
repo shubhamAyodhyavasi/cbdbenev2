@@ -150,7 +150,7 @@ class LoginForm extends React.Component {
 								onClick={() => {
 									drawerToDisplay("forget");
 								}}
-								className="c-login__link c-login__link--gold"
+								className="c-login__link c-login__link--brand"
 							>
 								Forgot Password?
 							</span>
@@ -173,7 +173,7 @@ class LoginForm extends React.Component {
 									onClick={() => {
 										drawerToDisplay("register");
 									}}
-									className="c-login__link"
+									className="c-login__link c-login__link--brand c-login__link--bold"
 								>
 									REGISTER
 								</span>
