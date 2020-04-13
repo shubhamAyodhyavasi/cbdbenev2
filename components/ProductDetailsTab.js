@@ -200,7 +200,9 @@ const ProductDetailsTab = ({
 																		productItem
 																	).replace(/ /g, "-")}`}
 																>
-																	{title}
+																	<a className="c-product-details-tab--link">
+																		{title}
+																	</a>
 																</Link>
 															}
 														>
