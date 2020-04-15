@@ -6,9 +6,9 @@
 	flex-wrap: wrap;
 	position: relative;
 	color: $brand-color-1;
-	text-align: right;
+	text-align: left;
 	// flex-direction:column;
-	// margin-top: -$header-height;
+	// margin-top: $header-height;
 	@include bp-md {
 		align-items: center;
 	}
@@ -131,7 +131,7 @@
 		.c-banner {
 			&__heading {
 				padding-left: 20px;
-				border-left: 1px solid $brand-color-1;
+				// border-left: 1px solid $brand-color-1;
 			}
 		}
 	}
