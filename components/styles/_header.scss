@@ -1,90 +1,96 @@
-.c-header{
-    padding: 8px 35px;
-    display: flex;
-    align-items: center;
-    transition: all .3s;
-    position: relative;
-    z-index: 99;
-    &__affix{
-        position: relative;
-        z-index: 99;
-    }
-    &__nav{
-        width: 50%;
-        &.nav--right{
-            text-align: right;
-        }
-    }
-    &__logo, &__nav{
-        @include bpm-md{
-            flex: 1;
-        }
-    }
-    &__wrapper{
-        .c-header{
-            translate: all .4s;
-            transform: translateY(0);
-        }
-        &--hidden{
-            .c-header{
-                translate: all .4s;
-                transform: translateY(-100%);
-            }
-        }
-    }
-    &--active {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top:0; 
-        visibility: visible;
-        transition: all 200ms ease-in;
-        border-bottom: 1px solid $border-color;
-      }
-    &--hidden {
-        transition: all 200ms ease-out;
-        transform: translate(0, -100%);
-      }
-      &--top {
-        border-bottom:none;
-        transition: all 200ms ease-out;
-      }
-    &--fixed{
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        z-index: 99;
-        // background: $light-color-2;
-        color:black;
-
-    }
-    &--scrollup{
-        transform: translateY(20px)
-    }
-    &--pinned{
-        background-color: $dark-color-1;
-    }
-    &--light{
-        * {
-            color: $light-color-2;
-        }
-    }
-    &--black
-    *{
-        color:black;
-    }
-    &--dark {
-        * {
-            color: $base-color;
-        }
-        &.c-header{
-            &--pinned{
-                background-color: $light-color-2;
-            }
-        }
-    }
-    &--bg-light{
-        background-color: $light-color-2;
-    }
+.c-header {
+	padding: 8px 35px;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	background-color: $light-color;
+	// margin-left: 3rem;
+	z-index: 99;
+	&__affix {
+		position: relative;
+		z-index: 99;
+	}
+	&__nav {
+		width: 50%;
+		&.nav--right {
+			text-align: right;
+		}
+	}
+	&__logo,
+	&__nav {
+		@include bpm-md {
+			flex: 1;
+		}
+	}
+	&__wrapper {
+		// position: fixed;
+		// background-color: #ffffff;
+		.c-header {
+			translate: all 0.4s;
+			transform: translateY(0);
+		}
+		&--hidden {
+			.c-header {
+				translate: all 0.4s;
+				transform: translateY(-100%);
+			}
+		}
+	}
+	&--active {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		visibility: visible;
+		transition: all 200ms ease-in;
+		border-bottom: 1px solid $border-color;
+	}
+	&--hidden {
+		transition: all 200ms ease-out;
+		transform: translate(0, -100%);
+	}
+	&--top {
+		border-bottom: none;
+		transition: all 200ms ease-out;
+	}
+	&--fixed {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: 99;
+		// background: $light-color-2;
+		color: black;
+	}
+	&--scrollup {
+		transform: translateY(20px);
+	}
+	&--pinned {
+		background-color: $dark-color-1;
+	}
+	&--light {
+		* {
+			color: $light-color-2;
+		}
+	}
+	&--black * {
+		color: black;
+	}
+	&--dark {
+		* {
+			color: $base-color;
+		}
+		&.c-header {
+			&--pinned {
+				background-color: $light-color-2;
+			}
+		}
+	}
+	&--bg-light {
+		background-color: $light-color;
+	}
 }

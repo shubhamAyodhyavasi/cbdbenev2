@@ -1,68 +1,71 @@
-.c-footer{
-    padding: 40px;
-    background-color: $light-color-2;
-    &__heading{
-        font-size: 18px;
-        font-family: $sub-font;
-        margin-bottom: 20px;
-        @include bp-xxl{
-            font-size: 20px;
-        }
-    }
-    &__menu-list{
-        padding-left: 0;
-        display: block;
-    }
-    &__list-item{
-        display: block;
-        margin-bottom: 10px;
-    }
-    &__link{
-        color: $base-color;
-        text-decoration: none;
-        font-size: 14px;
-        @include bp-xxl{
-            font-size: 16px;
-        }
-        &:hover{
-            text-decoration: none;
-            color: $brand-color-1;
-        }
-    }
-    &__col{
-        padding-left: 15px;
-        padding-right: 15px;
-        width: 100%;
-        margin-bottom: 40px;
-        @media (min-width: 768px){
-            width: 50%;
-        }
-        @media(min-width: 1200px){
-            &--1, &--5{
-                width: 25%;
-            }
-            &--2,&--3,&--4{
-                width: 16.5%;
-            }
-        }
-    }
-    &__text{
-        font-size: 14px;
-        
-        @include bp-xxl{
-            font-size: 16px;
-        }
-    }
-    &__logo-wrapper{
-        padding-bottom: 40px;
-        display: inline-block;
-        @media(min-width: 1400px){
-            padding-bottom: 80px;
-        }
-    }
-    &__logo{
-        .c-logo__img{
-            width: 100px;
-        }
-    }
+.c-footer {
+	padding: 40px;
+	background-color: $light-color;
+	&__heading {
+		font-size: 18px;
+		font-family: $sub-font;
+		margin-bottom: 20px;
+		@include bp-xxl {
+			font-size: 20px;
+		}
+	}
+	&__menu-list {
+		padding-left: 0;
+		display: block;
+	}
+	&__list-item {
+		display: block;
+		margin-bottom: 10px;
+	}
+	&__link {
+		color: $base-color;
+		text-decoration: none;
+		font-size: 14px;
+		@include bp-xxl {
+			font-size: 16px;
+		}
+		&:hover {
+			text-decoration: none;
+			color: $brand-color-1;
+		}
+	}
+	&__col {
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 100%;
+		margin-bottom: 40px;
+		@media (min-width: 768px) {
+			width: 50%;
+		}
+		@media (min-width: 1200px) {
+			&--1,
+			&--5 {
+				width: 25%;
+			}
+			&--2,
+			&--3,
+			&--4 {
+				width: 16.5%;
+			}
+		}
+	}
+	&__text {
+		font-size: 14px;
+
+		@include bp-xxl {
+			font-size: 16px;
+		}
+	}
+	&__logo-wrapper {
+		padding-bottom: 40px;
+		display: inline-block;
+		@media (min-width: 1400px) {
+			padding-bottom: 80px;
+		}
+	}
+	&__logo {
+		.c-logo__img {
+			width: 100px;
+		}
+	}
 }

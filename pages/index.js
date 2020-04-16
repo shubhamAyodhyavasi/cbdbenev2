@@ -17,7 +17,7 @@ import Slide from "react-reveal/Slide";
 import { Collapse } from "reactstrap";
 import { home as homeData } from "../site-content/index";
 import parse from "html-react-parser";
-import Carousel from "react-bootstrap/Carousel";
+import { Carousel } from "react-bootstrap";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -31,16 +31,16 @@ class Home extends React.Component {
 			products: props.products.featured || [],
 			combos: [],
 			isLrSection: false,
-			isWillness: false
+			isWillness: false,
 		};
 	}
 	static getDerivedStateFromProps(nextProps, prevState) {
 		if (nextProps.products.products !== prevState.allProducts) {
 			console.log({
-				allProducts: nextProps.products.products
+				allProducts: nextProps.products.products,
 			});
 			return {
-				allProducts: nextProps.products.products
+				allProducts: nextProps.products.products,
 			};
 		} else return null;
 	}
@@ -52,41 +52,41 @@ class Home extends React.Component {
 
 	componentDidMount() {
 		this.props.getProducts();
-		getAllCombos().then(res => {
+		getAllCombos().then((res) => {
 			console.log({
-				res
+				res,
 			});
 			if (res.data && res.data.combos) {
 				this.setState({
-					combos: res.data.combos
+					combos: res.data.combos,
 				});
 			}
 		});
 	}
-	changeCategory = activeCategory => {
+	changeCategory = (activeCategory) => {
 		const { products } = this.props;
 		console.log({
 			activeCategory,
-			products
+			products,
 		});
 		if (activeCategory.title === "Featured") {
 			this.setState({
 				products: products.featured,
-				activeCategory: activeCategory.title
+				activeCategory: activeCategory.title,
 			});
 		} else if (activeCategory.title === "All") {
 			this.setState({
 				products: products.products,
-				activeCategory: activeCategory.title
+				activeCategory: activeCategory.title,
 			});
 		} else {
 			const activeCategoryArr =
 				products.categories.find(
-					el => el.category.categorytitle === activeCategory.title
+					(el) => el.category.categorytitle === activeCategory.title
 				) || {};
 			this.setState({
 				products: activeCategoryArr.products,
-				activeCategory: activeCategory.title
+				activeCategory: activeCategory.title,
 			});
 		}
 	};
@@ -98,38 +98,38 @@ class Home extends React.Component {
 			products,
 			combos,
 			isLrSection,
-			isWillness
+			isWillness,
 		} = this.state;
 		// const {
 		//   products
 		// } = this.props
 		console.log({
 			props: this.props,
-			products
+			products,
 		});
 		const {
 			banner: {
 				title: bannerTitle,
 				content: bannerContent,
-				btnText: bannerBtnText
+				btnText: bannerBtnText,
 			},
 			categorySlider: { title: categoryTitle },
 			thirdSection: {
 				bigTitle: thirdBirTitle,
 				title: thirdTitle,
 				content: thirdContent,
-				btnText: thirdBtnText
+				btnText: thirdBtnText,
 			},
 			bundlesSlider: {
 				title: bundlesTitle,
 				subTitle: bundlesSubTitle,
-				btnText: bundlesBtnText
+				btnText: bundlesBtnText,
 			},
 			fifthSection: {
 				title: fifthTitle,
 				content: fifthContent,
-				btnText: fifthBtnText
-			}
+				btnText: fifthBtnText,
+			},
 		} = homeData;
 
 		return (
@@ -138,6 +138,7 @@ class Home extends React.Component {
 				headerTheme="dark"
 				homeLogo={false}
 				pageClass={"c-home"}
+				// headerVersions={["fixed"]}
 			>
 				<Carousel>
 					<Carousel.Item>
@@ -185,7 +186,6 @@ class Home extends React.Component {
 						</div>
 					</Carousel.Item>
 				</Carousel>
-
 				{products && products.length > 0 && (
 					<Fade>
 						<CategoryProducts
@@ -204,8 +204,8 @@ class Home extends React.Component {
 						subHeading={parse(thirdTitle)}
 						linkText={parse(thirdBtnText)}
 						onLinkClick={() => {
-							this.setState(prevState => ({
-								isLrSection: !prevState.isLrSection
+							this.setState((prevState) => ({
+								isLrSection: !prevState.isLrSection,
 							}));
 						}}
 						// Link="/"
@@ -277,8 +277,8 @@ class Home extends React.Component {
 										type="link"
 										versions={["btm-br-light"]}
 										onClick={() => {
-											this.setState(prevState => ({
-												isWillness: !prevState.isWillness
+											this.setState((prevState) => ({
+												isWillness: !prevState.isWillness,
 											}));
 										}}
 										theme={["btm-br"]}
@@ -298,4 +298,4 @@ class Home extends React.Component {
 	}
 }
 
-export default connect(state => state, { getProducts })(Home);
+export default connect((state) => state, { getProducts })(Home);

@@ -14,16 +14,18 @@ const ProductCard = ({
 	price,
 	addToCart,
 	product,
-	showCartBar
+	showCartBar,
 }) => {
 	const componentClass = `c-product-card`;
-	const versionClass = versions.map(el => `${componentClass}--${el}`).join(" ");
+	const versionClass = versions
+		.map((el) => `${componentClass}--${el}`)
+		.join(" ");
 	const parent = `${parentClass}__${componentClass.replace("c-", "")}`;
 	const className = classNames(componentClass, {
 		[versionClass]: versions,
-		[parent]: parentClass
+		[parent]: parentClass,
 	});
-	const addToCartFn = product => {
+	const addToCartFn = (product) => {
 		if (product) {
 			addToCart(directAddToCart(product));
 			showCartBar();
@@ -44,7 +46,7 @@ const ProductCard = ({
 		<div
 			onClick={() =>
 				console.log({
-					product
+					product,
 				})
 			}
 			className={className}
@@ -63,7 +65,7 @@ const ProductCard = ({
 				<Button
 					onClick={() => addToCartFn(product)}
 					parentClass={componentClass}
-					theme="outline-brand"
+					theme="brand"
 				>
 					Add to Cart
 				</Button>
@@ -72,6 +74,6 @@ const ProductCard = ({
 	);
 };
 ProductCard.defaultProps = {
-	versions: []
+	versions: [],
 };
 export default connect(null, { addToCart, showCartBar })(ProductCard);
