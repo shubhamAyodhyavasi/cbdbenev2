@@ -47,6 +47,7 @@ const ProductSlider = ({ products, parentClass, versions }) => {
 						pageDots: false,
 						cellAlign: "left",
 						contain: true,
+						prevNextButtons: true,
 						on: {
 							ready: () => {
 								flickityInit();
