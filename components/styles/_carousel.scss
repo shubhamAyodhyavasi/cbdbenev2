@@ -21,10 +21,12 @@
 		// z-index: 50;
 	}
 	&-prev {
+		display: none;
 		justify-content: flex-start !important;
 		z-index: 50;
 	}
 	&-next {
+		display: none;
 		justify-content: flex-end !important;
 		z-index: 50;
 	}
