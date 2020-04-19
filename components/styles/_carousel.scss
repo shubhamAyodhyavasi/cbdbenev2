@@ -1,0 +1,33 @@
+.carousel-indicators .active {
+	background-color: $brand-color-1;
+}
+.carousel-indicators li {
+	width: 0.7rem !important;
+	height: 0.7rem !important;
+	border-radius: 50%;
+	border: 1px solid $brand-color-1;
+}
+.carousel-control {
+	&-next-icon {
+		justify-content: flex-end !important;
+		// background-color: $brand-color-1;
+		// width: 2rem;
+		// height: 2rem;
+		// padding: 0.2rem;
+		// z-index: 50;
+	}
+	&-prev-icon {
+		color: $brand-color-1;
+		// z-index: 50;
+	}
+	&-prev {
+		display: none;
+		justify-content: flex-start !important;
+		z-index: 50;
+	}
+	&-next {
+		display: none;
+		justify-content: flex-end !important;
+		z-index: 50;
+	}
+}

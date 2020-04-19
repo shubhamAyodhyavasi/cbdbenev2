@@ -1,99 +1,99 @@
 @import "~breakpoint-sass/stylesheets/breakpoint";
 @import "~susy/sass/susy";
-@import 'variables';
-@import 'mixins/mixins';
+@import "variables";
+@import "mixins/mixins";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins/breakpoints";
 @import "~bootstrap/scss/bootstrap";
 @import "~antd/dist/antd.css";
 @import "~animate.css/animate.min.css";
-@import 'override';
-@import '../form-components/styles/all';
-@import '../forms/styles/all';
-@import 'fonts';
-@import 'base';
-@import 'logo';
-@import 'heading';
-@import 'nav';
+@import "override";
+@import "../form-components/styles/all";
+@import "../forms/styles/all";
+@import "fonts";
+@import "base";
+@import "logo";
+@import "heading";
+@import "nav";
+
+@import "carousel";
 // @import 'button';
-@import 'title-list';
-@import 'tabs';
-@import 'subscribe-form';
-@import 'header';
-@import 'footer';
-@import 'banner';
-@import 'product-info';
-@import 'product-slider';
-@import 'product-card';
-@import 'lr-section';
-@import 'cart-item';
-@import 'cart-drawer';
-@import 'drawer';
-@import 'hh-section';
-@import 'h-img-section';
-@import 'slider-line';
-@import 'address-form';
-@import 'category-products';
-@import 'checkout-layout';
-@import 'checkout-payment';
-@import 'registration';
-@import 'login';
-@import 'modal';
-@import 'consultTabs';
-@import 'userDetails';
-@import 'personalDetails';
-@import 'success';
-@import 'scheduling';
-@import 'intakeDetails';
-@import 'order-list-item';
-@import 'account-inner';
-@import 'pages/all';
-@import 'wellness';
-@import 'reviews';
-@import 'fetchloader';
-@import 'productRating';
-@import 'loader';
-@import 'ambassator/login';
-@import '../doctors/appointment/all';
-@import 'chatbot';
-@import 'top-alert';
-
-
+@import "title-list";
+@import "tabs";
+@import "subscribe-form";
+@import "header";
+@import "footer";
+@import "banner";
+@import "product-info";
+@import "product-slider";
+@import "product-card";
+@import "lr-section";
+@import "cart-item";
+@import "cart-drawer";
+@import "drawer";
+@import "hh-section";
+@import "h-img-section";
+@import "slider-line";
+@import "address-form";
+@import "category-products";
+@import "checkout-layout";
+@import "checkout-payment";
+@import "registration";
+@import "login";
+@import "modal";
+@import "consultTabs";
+@import "userDetails";
+@import "personalDetails";
+@import "success";
+@import "scheduling";
+@import "intakeDetails";
+@import "order-list-item";
+@import "account-inner";
+@import "pages/all";
+@import "wellness";
+@import "reviews";
+@import "fetchloader";
+@import "productRating";
+@import "loader";
+@import "ambassator/login";
+@import "../doctors/appointment/all";
+@import "chatbot";
+@import "top-alert";
 
 // extra can be transfer in file
 .c-less-more__less {
-    line-height:2em;
-    height: 2em;
-    overflow: hidden;
-    font-size: 16px;
-    @include bp-xxl{
-        font-size: $font-size-xxl;
-    }
-    &--large{
-        height: 6em;
-        @include bpm-xs{
-            height: 10em;
-        }
-    }
+	line-height: 2em;
+	height: 2em;
+	overflow: hidden;
+	font-size: 16px;
+	@include bp-xxl {
+		font-size: $font-size-xxl;
+	}
+	&--large {
+		height: 6em;
+		@include bpm-xs {
+			height: 10em;
+		}
+	}
 }
 
-.c-less-more__whole{
-    overflow: hidden;
+.c-less-more__whole {
+	overflow: hidden;
 }
 
 .c-less-more__whole-inner {
-    margin-top: -2em;
-    line-height: 2em;
-    font-size: 16px;
-    @include bp-xxl{
-        font-size: $font-size-xxl;
-    }
-    
-    &--large{
-        margin-top: -6em;
-        @include bpm-xs{
-            margin-top: -10em;
-        }
-    }
+	margin-top: -2em;
+	line-height: 2em;
+	font-size: 16px;
+	@include bp-xxl {
+		font-size: $font-size-xxl;
+	}
+
+	&--large {
+		margin-top: -6em;
+		@include bpm-xs {
+			margin-top: -10em;
+		}
+	}
 }
