@@ -80,19 +80,17 @@
 			border: none;
 			color: $light-color-2;
 			transform: translateY(-20rem);
+			// position: absolute;
 			&.previous {
 				width: 2rem;
 				height: 2rem;
 				border-radius: 50%;
-				position: absolute;
-				left: 1rem;
 			}
 			&.next {
 				border-radius: 50%;
 				width: 2rem;
 				height: 2rem;
-				position: absolute;
-				right: 1rem;
+				float: right;
 			}
 		}
 	}
