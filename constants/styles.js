@@ -2,6 +2,10 @@ const fonts = {
     mainfont: `'PlayFair Display', serif`,
     subfont: `'Monsterrat', sans-serif`
 }
+//const fonts = {
+//    subfont: `'PlayFair Display', serif`,
+//    mainfont: `'Monsterrat', sans-serif`
+//}
 const colors = {
     dark: "#333",
     lightGrey: "#ccc",
