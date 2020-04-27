@@ -15,21 +15,25 @@
 //Whenever the user selects an option, Class of active need to be added, so that styling could be done. Code below which has been commented is unable to achieve that since the elements are part of a list and are not an input element. 
 
 //Not Working
-.learn__collapse[type="submit"]:focus, .learn__collapse[type="submit"]:active {
-    color: $brand-color-1;
-    border: 1px solid $brand-color-1;
-    border-radius: 5px;
-    padding: 0.5em;
-}
+//.learn__collapse[type="submit"]:focus, .learn__collapse[type="submit"]:active {
+//    color: $brand-color-1;
+//    border: 1px solid $brand-color-1;
+//    border-radius: $border-radius;
+//    padding: $list-item-padding;
+//}
+
 
 //Working
 .learn__collapse:hover {
     border: 1px solid $brand-color-1;
-    border-radius: 5px;
+    border-radius: $border-radius;
+    margin-bottom: 0.15rem !important;
 }
 
 //Coloring description boxes in learn page.
 .boxed-collapse-wrapper{
+    border-radius: $border-radius;
     background: $brand-color-1;
     color: $light-color-2;
+    padding: $list-item-padding;
 }

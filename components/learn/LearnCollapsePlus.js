@@ -22,7 +22,7 @@ const LearnCollapsePlus = props => {
       </Collapse>
       <style jsx>{`
         .boxed-collapse-wrapper{
-          border: 1px solid;padding: 10px;
+          border: 1px solid;
         }
       `}</style>
     </div>
