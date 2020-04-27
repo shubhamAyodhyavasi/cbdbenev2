@@ -26,5 +26,10 @@
 .learn__collapse:hover {
     border: 1px solid $brand-color-1;
     border-radius: 5px;
-    padding: 0.5em;
+}
+
+//Coloring description boxes in learn page.
+.boxed-collapse-wrapper{
+    background: $brand-color-1;
+    color: $light-color-2;
 }
