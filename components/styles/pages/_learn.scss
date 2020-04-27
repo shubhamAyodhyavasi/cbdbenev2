@@ -14,13 +14,15 @@
 
 //Whenever the user selects an option, Class of active need to be added, so that styling could be done. Code below which has been commented is unable to achieve that since the elements are part of a list and are not an input element. 
 
-//.learn__collapse[type="submit"]:focus, .learn__collapse[type="submit"]:active {
-//    color: $brand-color-1;
-//    border: 1px solid $brand-color-1;
-//    border-radius: 5px;
-//    padding: 0.5em;
-//}
+//Not Working
+.learn__collapse[type="submit"]:focus, .learn__collapse[type="submit"]:active {
+    color: $brand-color-1;
+    border: 1px solid $brand-color-1;
+    border-radius: 5px;
+    padding: 0.5em;
+}
 
+//Working
 .learn__collapse:hover {
     border: 1px solid $brand-color-1;
     border-radius: 5px;
