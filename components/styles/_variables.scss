@@ -29,22 +29,36 @@ $g-bp-lg: 1200px;
 $g-bp-xl: 1400px;
 $g-bp-xxl: 1800px;
 
-// fonts
+// Fonts
 $main-font: "PlayFair Display", serif;
 $sub-font: "Montserrat", sans-serif;
 
-//colors
-$base-color: #1a1811;
+//White Shades & Colors
 $light-color: #ffffff;
 $light-color-2: #fdfdfd;
-$brand-color-1: #ff3d00;
-$dark-color-1: #c30000;
-$dark-color-2: #ff7539;
+$border-color: #fab49a;
+
+////Orange Theme Main Color
+//$brand-color-1: #ff3d00;//Original Shade
+//$dark-color-1: #c30000;//Dark Shade
+//$dark-color-2: #ff7539;//Light Shade
+
+
+//Blue Theme Main Color
+$brand-color-1: #7c4dff;//Original Shade
+$dark-color-1: #3f1dcb;//Dark Shade
+$dark-color-2: #b47cff;//Light Shade
+
+
+//Error colors
 $error-color: red;
 $error-color-2: #c30000;
-$border-color: #fab49a;
+
+//Black Shades & color
+$base-color: #1a1811;
 $black: #000;
-// extra colors
+
+// Extra colors
 $light-color-3: #b47cff;
 
 $Hover-color: $brand-color-1;
