@@ -36,6 +36,14 @@
 .boxed-collapse-wrapper{
     border-radius: $border-radius;
     background: $brand-color-1;
-    color: $light-color-2;
+    color: $light-color;
     padding: $list-item-padding;
+}
+
+//Styling the item in description boxes like twitter Help Center Cards
+.boxed-collapse-item{
+    background: $light-color;
+    border-radius: 2px;
+    padding: $list-item-padding;
+    color: $base-color;
 }
