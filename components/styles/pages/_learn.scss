@@ -6,9 +6,15 @@
         padding-top: 42px;
     }
 }
-.border-right-gold{
-    border-right:1px solid $brand-color-1;
-}
-.learn__collapse:last-child {
-    border-bottom: 1px solid;
+
+//No need of borders
+//.border-right-gold{
+//    border-right:1px solid $brand-color-1;
+//}
+
+.learn__collapse:first-child {
+    color: $brand-color-1;
+    border: 1px solid $brand-color-1;
+    border-radius: 5px;
+    padding: 0.5em;
 }

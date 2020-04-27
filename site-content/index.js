@@ -1,6 +1,8 @@
+//Added a Highlight class in title, wherever necessary.
+
 export const home = {
     banner: {
-        title: `<span><span style="fontSize: 1em;color: #333">bené</span>fits <br/> your life</span>`,
+        title: `<span><span class="highlight">bené</span>fits <br/> your life</span>`,
         content: `<span>Organic. Effective. Affordable.<br />Experience the diverse benefits of CBD for a new and improved you. </span>`,
         btnText: `Shop all products`
     },
