@@ -36,15 +36,15 @@ $sub-font: "Montserrat", sans-serif;
 //colors
 $base-color: #1a1811;
 $light-color: #ffffff;
-$light-color-2: #f2f2f2;
-$brand-color-1: #f24503;
-$dark-color-1: #302d23;
-$dark-color-2: #000000;
+$light-color-2: #fdfdfd;
+$brand-color-1: #ff3d00;
+$dark-color-1: #c30000;
+$dark-color-2: #ff7539;
 $error-color: red;
-$error-color-2: #c40000;
+$error-color-2: #c30000;
 $border-color: #fab49a;
 $black: #000;
 // extra colors
-$light-color-3: #fdfdfd;
+$light-color-3: #b47cff;
 
-$Hover-color: #f13100;
+$Hover-color: $brand-color-1;
