@@ -1,3 +1,5 @@
+//Added a Highlight class in title, wherever necessary.
+
 export const home = {
 	banner: {
 		title: `<span><span style="fontSize: 1.3em">bené</span> fits <br />your life</span>`,

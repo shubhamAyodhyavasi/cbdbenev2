@@ -1,3 +1,6 @@
+
+//Corrected the Sub-heading font-family.
+
 .c-lr-section{
     padding: 40px;
     display: flex;
@@ -19,7 +22,7 @@
         font-size: 30px;
         color: $brand-color-1;
         letter-spacing: 0.5px;
-        font-family: $sub-font;
+        font-family: $main-font;
         @media (min-width: 1200px){
             font-size: 40px;
         }
