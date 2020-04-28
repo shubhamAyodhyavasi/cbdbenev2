@@ -18,6 +18,8 @@ import { Collapse } from "reactstrap";
 import { home as homeData } from "../site-content/index";
 import parse from "html-react-parser";
 import { Carousel } from "react-bootstrap";
+import { adminUrl } from "../constants/projectSettings";
+import Axios from "axios";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -32,6 +34,32 @@ class Home extends React.Component {
 			combos: [],
 			isLrSection: false,
 			isWillness: false,
+			homeData: {
+				banner: {
+					title: "",
+					content: "",
+					btnText: "",
+				},
+				categorySlider: {
+					title: "",
+				},
+				thirdSection: {
+					bigTitle: "",
+					title: "",
+					content: "",
+					btnText: "",
+				},
+				bundlesSlider: {
+					title: "",
+					subTitle: "",
+					btnText: "",
+				},
+				fifthSection: {
+					title: "",
+					content: "",
+					btnText: "",
+				},
+			},
 		};
 	}
 	static getDerivedStateFromProps(nextProps, prevState) {
@@ -51,6 +79,16 @@ class Home extends React.Component {
 	}
 
 	componentDidMount() {
+		console.log("Comp mounted");
+		Axios.get(`${adminUrl}/Home/get`)
+			.then((result) => {
+				console.log("Result got md", result);
+				this.setState({
+					homeData: result.data.data,
+				});
+			})
+			.catch((err) => console.log(err));
+
 		this.props.getProducts();
 		getAllCombos().then((res) => {
 			console.log({
@@ -130,7 +168,7 @@ class Home extends React.Component {
 				content: fifthContent,
 				btnText: fifthBtnText,
 			},
-		} = homeData;
+		} = this.state.homeData;
 
 		return (
 			<Layout
@@ -158,7 +196,7 @@ class Home extends React.Component {
 									link="/shop"
 									theme={"outline-brand"}
 								>
-									{parse(bannerBtnText)}
+									{bannerBtnText}
 								</Button>
 							</Banner>
 						</div>
