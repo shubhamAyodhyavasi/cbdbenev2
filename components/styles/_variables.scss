@@ -1,5 +1,3 @@
-//Yet to edit the Master variables. 
-
 $container-width: 1200px;
 
 //sizes
@@ -29,25 +27,21 @@ $g-bp-lg: 1200px;
 $g-bp-xl: 1400px;
 $g-bp-xxl: 1800px;
 
-// Fonts
-$main-font: "PlayFair Display", serif;
-$sub-font: "Montserrat", sans-serif;
-
 //White Shades & Colors
 $light-color: #ffffff;
 $light-color-2: #fdfdfd;
 $border-color: #fab49a;
 
-//Orange Theme Main Color
-$brand-color-1: #ff3d00;//Original Shade
-$dark-color-1: #c30000;//Dark Shade
-$dark-color-2: #ff7539;//Light Shade
+//#ForHims Theme
 
-//
-////Blue Theme Main Color
-//$brand-color-1: #7c4dff;//Original Shade
-//$dark-color-1: #3f1dcb;//Dark Shade
-//$dark-color-2: #b47cff;//Light Shade
+// Fonts
+$main-font: "SofiaProWeb", "Helvetica", "Arial", sans-serif;
+$sub-font: "Helvetica", "Arial", sans-serif;
+
+// Colors
+$brand-color-1: #cc835c;//Original Shade
+$dark-color-1: #d5dade;//Dark Shade
+$dark-color-2: rgba(0,0,0,0.88);//Light Shade
 
 
 //Error colors
@@ -62,3 +56,48 @@ $black: #000;
 $light-color-3: #b47cff;
 
 $Hover-color: $brand-color-1;
+
+
+
+///////////////////////////////////////
+//////////////////////////////////////
+/////////////////////////////////////
+////Blue Theme Main Color
+//$brand-color-1: #7c4dff;//Original Shade
+//$dark-color-1: #3f1dcb;//Dark Shade
+//$dark-color-2: #b47cff;//Light Shade
+
+
+////#ORIGINAL THEME
+//
+//// Fonts
+//$main-font: "PlayFair Display", serif;
+//$sub-font: "Montserrat", sans-serif;
+//
+////Orange Theme Main Color
+//$brand-color-1: #ff3d00;//Original Shade
+//$dark-color-1: #c30000;//Dark Shade
+//$dark-color-2: #ff7539;//Light Shade
+
+
+////#Aesop Theme
+//
+//// Fonts
+//$main-font: "PlayFair Display", serif;
+//$sub-font: "Montserrat", sans-serif;
+//
+//// Colors
+//$brand-color-1: #ff3d00;//Original Shade
+//$dark-color-1: #c30000;//Dark Shade
+//$dark-color-2: #ff7539;//Light Shade
+//
+////#Ritual Theme
+//
+//// Fonts
+//$main-font: "PlayFair Display", serif;
+//$sub-font: "Montserrat", sans-serif;
+//
+//// Colors
+//$brand-color-1: #ff3d00;//Original Shade
+//$dark-color-1: #c30000;//Dark Shade
+//$dark-color-2: #ff7539;//Light Shade
