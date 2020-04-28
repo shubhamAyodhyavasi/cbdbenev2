@@ -1,31 +1,31 @@
 //Added a Highlight class in title, wherever necessary.
 
 export const home = {
-    banner: {
-        title: `<span><span class="highlight Biggerfont">bené </span>fits <br/> your life</span>`,
-        content: `<span>Organic. Effective. Affordable.<br />Experience the diverse benefits of CBD for a new and improved you. </span>`,
-        btnText: `Shop all products`
-    },
-    categorySlider: {
-        title: `DISCOVER OUR PRODUCTS`
-    },
-    thirdSection: {
-        bigTitle: `bené`,
-        title: `Organic Hemp for the Body and Mind`,
-        content: `Give your body the goodness from within with our entire line of premium products containing organically grown hemp extract. Rejuvenate your body and mind by Products which are easy to use, certified by a third-party lab and free from solvents and harsh chemicals. `,
-        btnText: `Read More`,
-    },
-    bundlesSlider: {
-        title: `Curated Bundles for you!`,
-        subTitle: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price!`,
-        btnText: `Shop All`
-    },
-    fifthSection: {
-        title: `bené stands for <b>wellness</b> in Italian <br/>Which is also what we stand for!`,
-        content: ` The product line is a curation, to suit a wide range of tastes and needs by providing you with the highest quality CBD you can find! <br />  We’re dedicated to availing you get the products that perfectly suit you, as well as your pets. That's right, we have CBD products for pets too! `,
-        btnText: `Read More`
-    }
-}
+	banner: {
+		title: `<span><span style="fontSize: 1.3em">bené</span> fits <br />your life</span>`,
+		content: `<span> Organic. Effective. Affordable. <br /> Experience the diverse benefits of CBD for a new and improved you. </span>`,
+		btnText: `Shop all products`,
+	},
+	categorySlider: {
+		title: `DISCOVER OUR PRODUCTS`,
+	},
+	thirdSection: {
+		bigTitle: `bené`,
+		title: `Organic Hemp for the Body and Mind`,
+		content: `Give your body the goodness from within with our entire line of premium products containing organically grown hemp extract. Rejuvenate your body and mind by Products which are easy to use, certified by a third-party lab and free from solvents and harsh chemicals. `,
+		btnText: `Read More`,
+	},
+	bundlesSlider: {
+		title: `Curated Bundles for you!`,
+		subTitle: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price!`,
+		btnText: `Shop All`,
+	},
+	fifthSection: {
+		title: `bené stands for <b>wellness</b> in Italian <br/>Which is also what we stand for!`,
+		content: ` The product line is a curation, to suit a wide range of tastes and needs by providing you with the highest quality CBD you can find! <br />  We’re dedicated to availing you get the products that perfectly suit you, as well as your pets. That's right, we have CBD products for pets too! `,
+		btnText: `Read More`,
+	},
+};
 
 export const category = {
     topicals: {
