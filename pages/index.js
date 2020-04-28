@@ -18,6 +18,7 @@ import { Collapse } from "reactstrap";
 import { home as homeData } from "../site-content/index";
 import parse from "html-react-parser";
 import { Carousel } from "react-bootstrap";
+import { adminUrl } from "../constants/projectSettings";
 import Axios from "axios";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
@@ -79,7 +80,7 @@ class Home extends React.Component {
 
 	componentDidMount() {
 		console.log("Comp mounted");
-		Axios.get("http://localhost:5000/Home/get")
+		Axios.get(`${adminUrl}/Home/get`)
 			.then((result) => {
 				console.log("Result got md", result);
 				this.setState({

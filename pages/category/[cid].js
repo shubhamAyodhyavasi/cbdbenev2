@@ -8,6 +8,7 @@ import Heading from "../../components/Heading";
 import Logo from "../../components/Logo";
 import apiList from "../../services/apis/apiList";
 import ProductCard from "../../components/ProductCard";
+import { adminUrl } from "../constants/projectSettings";
 import Axios from 'axios'
 import {
 	getProductImage,
@@ -76,7 +77,7 @@ const Category = ({ productList, combos, ...props }) => {
 	}})
 	useEffect(() => {
 		console.log('UseEffect')
-		Axios.get("http://localhost:5000/Category/get")
+		Axios.get(`${adminUrl}/Category/get`)
 			.then((result) => {
 				console.log("Result got md", result);
 				setCategoryData(result.data.data)

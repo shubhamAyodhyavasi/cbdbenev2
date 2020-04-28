@@ -2,6 +2,7 @@ export const projectName = "bene";
 export const baseUrl = "http://localhost:4000";
 export const docMzUrl = "http://localhost:3001";
 export const serverUrl = "https://admin.cbdbene.com/";
+export const adminUrl = "http://localhost:5000";
 export const googleApiKey = "AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk";
 export const shippingFreeAfter = 75;
 export const shippingExtraRate = 5;
