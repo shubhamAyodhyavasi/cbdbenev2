@@ -9,7 +9,7 @@ import Heading from "../../components/Heading";
 import Logo from "../../components/Logo";
 import apiList from "../../services/apis/apiList";
 import ProductCard from "../../components/ProductCard";
-import { adminUrl } from "../constants/projectSettings";
+import { adminUrl } from "../../constants/projectSettings";
 import Axios from "axios";
 import {
 	getProductImage,
