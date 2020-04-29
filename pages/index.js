@@ -182,7 +182,7 @@ class Home extends React.Component {
 					<Carousel.Item>
 						<div>
 							<Banner
-								image="/images/bundle_3.jpg"
+								image="/images/Banner-Image-1.jpg"
 								mobileImage="/images/home-banner-mobile.png"
 								versions={["brand-heading"]}
 								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
@@ -204,7 +204,7 @@ class Home extends React.Component {
 					<Carousel.Item>
 						<div>
 							<Banner
-								image="/images/home-banner-1.png"
+								image="/images/Banner-Image-2.png"
 								mobileImage="/images/scene_rollon_1-mobile.png"
 								versions={["brand-heading"]}
 								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
@@ -247,7 +247,7 @@ class Home extends React.Component {
 							}));
 						}}
 						// Link="/"
-						image="/images/bundle2.png"
+						image="/images/bundle.png"
 					>
 						<div className="c-less-more">
 							<div className="c-less-more__less">{parse(thirdContent)}</div>
@@ -288,7 +288,7 @@ class Home extends React.Component {
 						<div className="wellness-wrapper__img">
 							<img
 								className="wellness-wrapper__img--img img-fluid"
-								src="/images/consult-image.jpg"
+								src="/images/Consult-Image.png"
 							/>
 						</div>
 						<div className="wellness-wrapper__desp">
@@ -326,7 +326,10 @@ class Home extends React.Component {
 								</div>
 							</div>
 							<div className="willness-img">
-								<img className="img-fluid" src="/images/cbd-wellness.png"></img>
+								<img
+									className="img-fluid"
+									src="/images/Wellness-Image.png"
+								></img>
 							</div>
 						</div>
 					</div>
