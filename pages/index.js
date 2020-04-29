@@ -18,7 +18,7 @@ import { Collapse } from "reactstrap";
 import { home as homeData } from "../site-content/index";
 import parse from "html-react-parser";
 import { Carousel } from "react-bootstrap";
-import { adminUrl } from "../constants/projectSettings";
+import { adminUrl, imageUrl } from "../constants/projectSettings";
 import Axios from "axios";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
@@ -182,8 +182,8 @@ class Home extends React.Component {
 					<Carousel.Item>
 						<div>
 							<Banner
-								image="/images/Banner-Image-1.png"
-								mobileImage="/images/home-banner-mobile.png"
+								image={`${imageUrl}/Banner-Image-1.png`}
+								mobileImage={`${imageUrl}/Banner-Image-1.png`}
 								versions={["brand-heading"]}
 								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
 								heading={parse(bannerTitle)}
@@ -204,8 +204,8 @@ class Home extends React.Component {
 					<Carousel.Item>
 						<div>
 							<Banner
-								image="/images/Banner-Image-2.png"
-								mobileImage="/images/scene_rollon_1-mobile.png"
+								image={`${imageUrl}/Banner-Image-2.png`}
+								mobileImage={`${imageUrl}/Banner-Image-2.png`}
 								versions={["brand-heading"]}
 								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
 								heading={parse(bannerTitle)}
@@ -247,7 +247,7 @@ class Home extends React.Component {
 							}));
 						}}
 						// Link="/"
-						image="/images/Bundle-Image.png"
+						image={`${imageUrl}/Bundle-Image.png`}
 					>
 						<div className="c-less-more">
 							<div className="c-less-more__less">{parse(thirdContent)}</div>
@@ -288,7 +288,7 @@ class Home extends React.Component {
 						<div className="wellness-wrapper__img">
 							<img
 								className="wellness-wrapper__img--img img-fluid"
-								src="/images/Consult-Image.png"
+								src={`${imageUrl}/Consult-Image.png`}
 							/>
 						</div>
 						<div className="wellness-wrapper__desp">
@@ -328,7 +328,7 @@ class Home extends React.Component {
 							<div className="willness-img">
 								<img
 									className="img-fluid"
-									src="/images/Wellness-Image.png"
+									src={`${imageUrl}/Wellness-Image.png`}
 								></img>
 							</div>
 						</div>

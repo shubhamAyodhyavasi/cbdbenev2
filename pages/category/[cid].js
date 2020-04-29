@@ -118,7 +118,7 @@ const Category = ({ productList, combos, ...props }) => {
 				<HImgSection
 					parentClass="c-category-page"
 					version={["full", "content-bottom"]}
-					image={"/images/Oil-Page-Image.png"}
+					image={`${imageUrl}/Oil-Page-Image.png`}
 				>
 					<div>
 						<Heading
