@@ -182,7 +182,7 @@ class Home extends React.Component {
 					<Carousel.Item>
 						<div>
 							<Banner
-								image="/images/Banner-Image-1.jpg"
+								image="/images/Banner-Image-1.png"
 								mobileImage="/images/home-banner-mobile.png"
 								versions={["brand-heading"]}
 								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
@@ -247,7 +247,7 @@ class Home extends React.Component {
 							}));
 						}}
 						// Link="/"
-						image="/images/bundle.png"
+						image="/images/Bundle-Image.png"
 					>
 						<div className="c-less-more">
 							<div className="c-less-more__less">{parse(thirdContent)}</div>

@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Layout from "../../components/Layouts/Layout";
 import HImgSection from "../../components/HImgSection";
@@ -9,87 +9,90 @@ import Logo from "../../components/Logo";
 import apiList from "../../services/apis/apiList";
 import ProductCard from "../../components/ProductCard";
 import { adminUrl } from "../constants/projectSettings";
-import Axios from 'axios'
+import Axios from "axios";
 import {
 	getProductImage,
 	getProductTitle,
 	getProductShortDesc,
 	getBasicPrice,
 	addSlugToProduct,
-	getVisibleProducts
+	getVisibleProducts,
 } from "../../services/helpers/product";
 import projectSettings from "../../constants/projectSettings";
 import fetch from "isomorphic-unfetch";
 // import { category as categoryData } from "../../site-content";
 import parse from "html-react-parser";
 const Category = ({ productList, combos, ...props }) => {
-	let [categoryData,setCategoryData]=useState({category = {
-		topicals: {
-			bannerTitle: `Ultimate Boon for your Skin.`,
-			title: `Experience our topicals`,
-			content: `Pamper your skin and provide it with the qualities of premium CBD. Reset your skincare routine and Revive your natural radiance.`,
-			bundleTitle: `Curated Bundles for you!`,
-			bundleContent: `Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price!`,
+	let [categoryData, setCategoryData] = useState({
+		category: {
+			topicals: {
+				bannerTitle: `Ultimate Boon for your Skin.`,
+				title: `Experience our topicals`,
+				content: `Pamper your skin and provide it with the qualities of premium CBD. Reset your skincare routine and Revive your natural radiance.`,
+				bundleTitle: `Curated Bundles for you!`,
+				bundleContent: `Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price!`,
+			},
+			pets: {
+				bannerTitle: `Quality CBD for your Four Legged Friend.`,
+				title: `Experience our Pets line`,
+				content: ` Our Pet products have been crafted to promote overall well-being and provide some extra comfort when your pet needs it. Buy the highest quality organic hemp to promote overall health while also encouraging a healthy appetite for your Pet.`,
+				bundleTitle: ` Curated Bundles for you!`,
+				bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
+			},
+			edibles: {
+				bannerTitle: `The Taste of Earthly Paradise!`,
+				title: `Savour our Edibles `,
+				content: ` No matter how old we are, we have to take care of our bodies and hearts. Buy our Edibles which are a treat for your taste buds and your body system as well. Your favorite products with Premium CBD for the happiness of your Body and Heart.`,
+				bundleTitle: `Curated Bundles for you!`,
+				bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
+			},
+			capsules: {
+				bannerTitle: `Pop, Swallow and Go on!`,
+				title: `Experience our Capsules`,
+				content: `They are perfect for when you are on the go, as each of these gel caps has been perfectly balanced to give you the correct amount of CBD. CBD capsules, make the most sense as part of your regular daily regimen. While you eat, just add in an extra CBD gel cap to get your cannabidiol serving!`,
+				bundleTitle: `Curated Bundles for You!`,
+				bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
+			},
+			oils: {
+				bannerTitle: `Reduce and Relieve your Pain!`,
+				title: `Experience our Oils`,
+				content: ` CBD oil is fast-acting, convenient, and easy to use! Our CBD oil tinctures come in several concentrations to fit your needs and promote overall well-being.`,
+				bundleTitle: `Curated Bundles for you!`,
+				bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price!`,
+			},
+			bundles: {
+				bannerTitle: "",
+				title: "",
+				content: "",
+				bundleTitle: ` Curated Bundles for you! `,
+				bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
+			},
+
+			default: {
+				bannerTitle: "",
+				title: "",
+				content: "",
+				bundleTitle: "",
+				bundleContent: "",
+			},
 		},
-		pets: {
-			bannerTitle: `Quality CBD for your Four Legged Friend.`,
-			title: `Experience our Pets line`,
-			content: ` Our Pet products have been crafted to promote overall well-being and provide some extra comfort when your pet needs it. Buy the highest quality organic hemp to promote overall health while also encouraging a healthy appetite for your Pet.`,
-			bundleTitle: ` Curated Bundles for you!`,
-			bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
-		},
-		edibles: {
-			bannerTitle: `The Taste of Earthly Paradise!`,
-			title: `Savour our Edibles `,
-			content: ` No matter how old we are, we have to take care of our bodies and hearts. Buy our Edibles which are a treat for your taste buds and your body system as well. Your favorite products with Premium CBD for the happiness of your Body and Heart.`,
-			bundleTitle: `Curated Bundles for you!`,
-			bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
-		},
-		capsules: {
-			bannerTitle: `Pop, Swallow and Go on!`,
-			title: `Experience our Capsules`,
-			content: `They are perfect for when you are on the go, as each of these gel caps has been perfectly balanced to give you the correct amount of CBD. CBD capsules, make the most sense as part of your regular daily regimen. While you eat, just add in an extra CBD gel cap to get your cannabidiol serving!`,
-			bundleTitle: `Curated Bundles for You!`,
-			bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
-		},
-		oils: {
-			bannerTitle: `Reduce and Relieve your Pain!`,
-			title: `Experience our Oils`,
-			content: ` CBD oil is fast-acting, convenient, and easy to use! Our CBD oil tinctures come in several concentrations to fit your needs and promote overall well-being.`,
-			bundleTitle: `Curated Bundles for you!`,
-			bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price!`,
-		},
-		bundles: {
-			bannerTitle: "",
-			title: "",
-			content: "",
-			bundleTitle: ` Curated Bundles for you! `,
-			bundleContent: ` Give our selected range of bundles a try with our 30-day, money-back guarantee. Gift someone goodness and enjoy premium CBD at an incredible price! `,
-		},
-	
-		default:
-		{bannerTitle: "",
-		title:"",
-		content:"",
-		bundleTitle:"",
-		bundleContent:""}
-		
-	}})
+	});
+
 	useEffect(() => {
-		console.log('UseEffect')
+		console.log("UseEffect");
 		Axios.get(`${adminUrl}/Category/get`)
 			.then((result) => {
 				console.log("Result got md", result);
-				setCategoryData(result.data.data)
+				setCategoryData(result.data.data);
 			})
 			.catch((err) => console.log(err));
-		return () => {
-		}
-	}, [])
-	const products = productList.map(el => {
+		return () => {};
+	}, []);
+
+	const products = productList.map((el) => {
 		console.log({
 			price: getBasicPrice(el),
-			el
+			el,
 		});
 		return {
 			image: el.productImage
@@ -98,7 +101,7 @@ const Category = ({ productList, combos, ...props }) => {
 			title: getProductTitle(el),
 			subTitle: getProductShortDesc(el),
 			price: getBasicPrice(el),
-			...el
+			...el,
 		};
 	});
 	const currentCategory = categoryData[props.category] || categoryData;
@@ -146,7 +149,7 @@ const Category = ({ productList, combos, ...props }) => {
 								<hr />
 							</div>
 						</div>
-						{products.map(el => (
+						{products.map((el) => (
 							<div key={el._id} className="col-lg-4 col-md-6">
 								<ProductCard
 									product={el}
@@ -201,8 +204,8 @@ Category.getInitialProps = async ({ query }) => {
 
 		return {
 			category: query.cid,
-			productList: visibleProducts.map(el => addSlugToProduct(el)),
-			combos: []
+			productList: visibleProducts.map((el) => addSlugToProduct(el)),
+			combos: [],
 		};
 	} else {
 		const res = await fetch(apiList.getAllProducts);
@@ -213,11 +216,11 @@ Category.getInitialProps = async ({ query }) => {
 		const comboList = await comboRes.json();
 		const visibleCombo = getVisibleProducts(comboList.combos);
 
-		const categoryProduct = visibleProducts.filter(el => {
+		const categoryProduct = visibleProducts.filter((el) => {
 			if (el.categoryid) {
 				if (el.categoryid.constructor === Array) {
 					return el.categoryid.some(
-						elx =>
+						(elx) =>
 							elx.categorytitle &&
 							elx.categorytitle.toLowerCase() === query.cid.toLowerCase()
 					);
@@ -232,8 +235,8 @@ Category.getInitialProps = async ({ query }) => {
 		});
 		return {
 			category: query.cid,
-			productList: categoryProduct.map(el => addSlugToProduct(el)),
-			combos: visibleCombo.map(el => addSlugToProduct(el))
+			productList: categoryProduct.map((el) => addSlugToProduct(el)),
+			combos: visibleCombo.map((el) => addSlugToProduct(el)),
 		};
 	}
 };
