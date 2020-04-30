@@ -8,7 +8,7 @@ import Heading from "../../components/Heading";
 import Logo from "../../components/Logo";
 import apiList from "../../services/apis/apiList";
 import ProductCard from "../../components/ProductCard";
-import { adminUrl } from "../constants/projectSettings";
+import { adminUrl, imageUrl } from "../../constants/projectSettings";
 import Axios from "axios";
 import {
 	getProductImage,
@@ -83,7 +83,7 @@ const Category = ({ productList, combos, ...props }) => {
 		Axios.get(`${adminUrl}/Category/get`)
 			.then((result) => {
 				console.log("Result got md", result);
-				setCategoryData(result.data.data);
+				setCategoryData({ category: result.data.data });
 			})
 			.catch((err) => console.log(err));
 		return () => {};
@@ -104,13 +104,14 @@ const Category = ({ productList, combos, ...props }) => {
 			...el,
 		};
 	});
-	const currentCategory = categoryData[props.category] || categoryData;
+	const currentCategory =
+		categoryData[props.category] || categoryData.category.default;
 
-	const bannerTitle = currentCategory.default.bannerTitle;
-	const title = currentCategory.default.title;
-	const content = currentCategory.default.content;
-	const bundleTitle = currentCategory.default.bundleTitle;
-	const bundleContent = currentCategory.default.bundleContent;
+	const bannerTitle = currentCategory.bannerTitle;
+	const title = currentCategory.title;
+	const content = currentCategory.content;
+	const bundleTitle = currentCategory.bundleTitle;
+	const bundleContent = currentCategory.bundleContent;
 	return (
 		<Layout headerVersions={["bg-light"]} fixed={true} headerTheme="dark">
 			{/* <Layout headerVersions={["bg-dark"]} className="c-consult-page" title="Category">  */}

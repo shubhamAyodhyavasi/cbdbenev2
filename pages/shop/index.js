@@ -9,7 +9,7 @@ import Heading from "../../components/Heading";
 import Logo from "../../components/Logo";
 import apiList from "../../services/apis/apiList";
 import ProductCard from "../../components/ProductCard";
-import { adminUrl } from "../constants/projectSettings";
+import { adminUrl } from "../../constants/projectSettings";
 import Axios from "axios";
 import {
 	getProductImage,
@@ -42,7 +42,7 @@ const Shop = ({ productList, combos, ...props }) => {
 		Axios.get(`${adminUrl}/Shop/get`)
 			.then((result) => {
 				console.log("Result got md", result);
-				setShopData(result.data.data);
+				setShopData(result.data.data.shop);
 			})
 			.catch((err) => console.log(err));
 		return () => {};
