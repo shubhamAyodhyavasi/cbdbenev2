@@ -17,8 +17,9 @@ import errors from "./errors";
 import extras from "./extras";
 import loading from "./loading";
 import appointment from "./appointment";
-
+import blog from "./blog";
 export default {
+	blog,
 	cart,
 	user,
 	location,
