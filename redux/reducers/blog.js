@@ -14,6 +14,7 @@ const add = (state, action) => {
 			article: action.payload,
 			pageNo: action.pageNo,
 			tag: action.tag,
+			current: {},
 		};
 	} else {
 		let curValue = state.article;
@@ -33,12 +34,19 @@ const setCurrent = (state, action) => {
 		current: state.article[action.index],
 	};
 };
+
+const clearCurrent = (state, action) => {
+	console.log("clear reducr");
+	return state;
+};
 const reducer = (state = initiaState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_ALL:
 			return add(state, action);
 		case actionTypes.GET_ARTICLE:
 			return setCurrent(state, action);
+		case "CLEAR":
+			return clearCurrent(state, action);
 		default:
 			return state;
 	}

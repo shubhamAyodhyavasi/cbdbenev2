@@ -8,13 +8,19 @@
 		margin-bottom: 3em;
 		&-image {
 			margin-top: 2rem;
-			background-image: url("/images/sampleimg.png");
+			// background-image: url("/images/sampleimg.png");
 			height: 43rem;
 			width: 48%;
 			margin-right: 2em;
-			background-size: cover;
-			background-position: center 25%;
-			background-repeat: no-repeat;
+
+			&--item {
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
+			}
+			// background-size: cover;
+			// background-position: center 25%;
+			// background-repeat: no-repeat;
 		}
 
 		&-info {

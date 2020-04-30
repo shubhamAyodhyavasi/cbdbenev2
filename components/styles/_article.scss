@@ -1,0 +1,76 @@
+.article {
+	margin-top: 11rem;
+	display: flex;
+	flex-direction: column;
+	margin-left: 20%;
+	margin-right: 20%;
+	border-top: 0.5rem solid black;
+	justify-content: center;
+	align-items: center;
+	&-nav {
+		margin-top: 5rem;
+		display: flex;
+		width: 100%;
+		&-tag {
+			color: $color-secondary2;
+			width: 50%;
+			text-transform: uppercase;
+			&--left {
+				float: left;
+			}
+			&--right {
+				text-align: right;
+				// float: right;
+			}
+		}
+	}
+	&-heading {
+		margin-top: 5rem;
+		margin-bottom: 5rem;
+		font-size: $font-large;
+		font-weight: $wg-normal;
+		line-height: 1.4;
+	}
+	&-image-wrapper {
+		&--image {
+			width: 100%;
+		}
+	}
+	&-review-wrapper {
+		margin-top: 2rem;
+		display: flex;
+		height: 10%;
+
+		&--image {
+			width: 10%;
+			border-radius: 50%;
+		}
+		&--item {
+			font-size: 2 px;
+			margin-left: 1rem;
+			margin-top: 0.5rem;
+			font-weight: $wg-bold;
+		}
+	}
+	&-content {
+		margin-top: 3rem;
+		line-height: 2;
+	}
+	&-footer {
+		margin-top: 3rem;
+		font-size: $font-small;
+		opacity: 0.4;
+	}
+	// width: 50rem;
+}
+.highlight {
+	color: $color-secondary2;
+	font-weight: $wg-bold;
+	font-size: 16px;
+}
+
+@media only screen and (max-width: 500px) {
+	.article {
+		margin-top: 14rem;
+	}
+}
