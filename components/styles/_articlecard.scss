@@ -1,0 +1,73 @@
+.articlecard {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 1em;
+	&-wrapper {
+		display: flex;
+
+		margin-bottom: 3em;
+		&-image {
+			margin-top: 2rem;
+			// background-image: url("/images/sampleimg.png");
+			height: 43rem;
+			width: 48%;
+			margin-right: 2em;
+
+			&--item {
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
+			}
+			// background-size: cover;
+			// background-position: center 25%;
+			// background-repeat: no-repeat;
+		}
+
+		&-info {
+			&-small {
+				font-size: 1.3rem;
+				color: $color-secondary2;
+				font-weight: 800;
+				text-transform: uppercase;
+				&-link {
+					cursor: pointer;
+				}
+			}
+			&-primary {
+				margin-top: 1em;
+				font-size: 3.4rem;
+				color: $color-font-black;
+				font-weight: 600;
+				line-height: 1.2;
+				cursor: pointer;
+			}
+			&-secondary {
+				margin-top: 1em;
+				font-size: 1.5rem;
+				color: $color-font-black;
+				font-weight: 700;
+			}
+			&-link {
+				margin-top: 3em;
+				font-size: 1.2rem;
+				letter-spacing: 1px;
+				color: $color-font-black;
+				cursor: pointer;
+				font-weight: 800;
+				.underline-text {
+					margin-top: 2px;
+					width: 20%;
+					height: 2px;
+					background-color: $color-font-black;
+				}
+			}
+		}
+	}
+}
+
+.divider-down {
+	margin-top: 1em;
+	width: 100%;
+	background-color: $color-primary2;
+	height: 2.5px;
+}

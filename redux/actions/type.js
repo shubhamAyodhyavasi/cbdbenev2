@@ -89,3 +89,7 @@ export const LOADING = "LOADING";
 // appointments
 export const SET_CURRENT_APPOINTMENT = "SET_CURRENT_APPOINTMENT";
 export const UNSET_CURRENT_APPOINTMENT = "UNSET_CURRENT_APPOINTMENT";
+
+//Blog
+export const GET_ALL = "GET_ALL";
+export const GET_ARTICLE = "GET_ARTICLE";

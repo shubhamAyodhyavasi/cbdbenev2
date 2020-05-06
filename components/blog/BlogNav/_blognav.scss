@@ -1,0 +1,29 @@
+.blognav {
+  margin-top: 2em;
+
+  padding-bottom: 1em;
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3em;
+    &-items {
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: $color-font-muted;
+      line-height: 1.2;
+      cursor: pointer;
+      &:hover {
+        color: $color-font-black;
+      }
+      &:active {
+        color: $color-font-black;
+      }
+    }
+  }
+}
+.divider-down {
+  margin-top: 1em;
+  width: 100%;
+  background-color: $color-primary2;
+  height: 2.5px;
+}

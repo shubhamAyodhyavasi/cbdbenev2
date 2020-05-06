@@ -61,6 +61,17 @@
 @import "chatbot";
 @import "top-alert";
 
+//------------Blog----------
+
+@import "./abstracts/base";
+
+//components
+@import "./blogheader";
+@import "./mainsection";
+@import "blognav";
+@import "articlecard";
+@import "article";
+
 // extra can be transfer in file
 .c-less-more__less {
 	line-height: 2em;
