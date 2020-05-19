@@ -18,11 +18,13 @@ const CartItem = ({
 }) => {
 	console.log("background", background);
 	const componentClass = background ? "c-cart-item-dark" : "c-cart-item";
-	const versionClass = versions.map(el => `${componentClass}--${el}`).join(" ");
+	const versionClass = versions
+		.map((el) => `${componentClass}--${el}`)
+		.join(" ");
 	const parent = `${parentClass}__${componentClass.replace("c-", "")}`;
 	const className = classNames(componentClass, {
 		[versionClass]: versions,
-		[parent]: parentClass
+		[parent]: parentClass,
 	});
 	console.log("classname", className, props.backgroud);
 	const bold = background ? "" : "bold";
@@ -100,6 +102,6 @@ const CartItem = ({
 
 CartItem.defaultProps = {
 	versions: [],
-	isDisabled: false
+	isDisabled: false,
 };
 export default CartItem;
