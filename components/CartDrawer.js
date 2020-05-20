@@ -3,7 +3,7 @@ import Button from "./form-components/Button";
 import { connect } from "react-redux";
 import {
 	getProductTitle,
-	getProductShortDesc
+	getProductShortDesc,
 } from "../services/helpers/product";
 import { getGrandTotal } from "../services/helpers/cart";
 import { numberFormat } from "../services/helpers/misc";
@@ -17,7 +17,7 @@ const CartDrawer = ({
 	modifyItem,
 	removeFromCart,
 	hideCartBar,
-	background
+	background,
 }) => {
 	console.log("back", background);
 	const qtyChange = (qty, oldItem) => {
@@ -25,8 +25,8 @@ const CartDrawer = ({
 			oldItem,
 			newItem: {
 				...oldItem,
-				qty
-			}
+				qty,
+			},
 		});
 	};
 	const grandTotal = getGrandTotal(
@@ -54,7 +54,7 @@ const CartDrawer = ({
 							quantity={el.qty}
 							onRemove={() => removeFromCart(el)}
 							isDisabled={!cart.isEditable}
-							onQtyChange={e => {
+							onQtyChange={(e) => {
 								if (cart.isEditable) qtyChange(e, el);
 							}}
 							background={background}
@@ -145,13 +145,13 @@ const CartDrawer = ({
 
 CartDrawer.defaultProps = {
 	complete: false,
-	cart: initialCart
+	cart: initialCart,
 };
-const mapStateToProps = state => ({
-	cart: state.cart
+const mapStateToProps = (state) => ({
+	cart: state.cart,
 });
 export default connect(mapStateToProps, {
 	modifyItem,
 	removeFromCart,
-	hideCartBar
+	hideCartBar,
 })(CartDrawer);
