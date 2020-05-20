@@ -247,7 +247,7 @@ class Home extends React.Component {
 							}));
 						}}
 						// Link="/"
-						image={`${imageUrl}/Bundle-Image.png`}
+						image={`images/Bundle-Image.png`}
 					>
 						<div className="c-less-more">
 							<div className="c-less-more__less">{parse(thirdContent)}</div>

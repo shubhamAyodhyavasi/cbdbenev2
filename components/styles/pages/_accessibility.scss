@@ -1,14 +1,16 @@
-.c-accessibility{
-    &__page-title{
-        padding: 10px 40px;
-        background-color: $light-color-2;
-    }
-    &__content{
-        padding-left: 15px;
-        padding-right: 15px;
-        @include bp-md{
-            padding-left: 40px;
-            padding-right: 40px;
-        }
-    }
+.c-accessibility {
+	&__page-title {
+		padding-top: 40px;
+		padding-left: 40px;
+		padding-bottom: 10px;
+		background-color: $light-color-2;
+	}
+	&__content {
+		padding-left: 15px;
+		padding-right: 15px;
+		@include bp-md {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
 }
