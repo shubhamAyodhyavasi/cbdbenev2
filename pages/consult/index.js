@@ -15,16 +15,16 @@ class Contact extends React.Component {
 		this.state = {
 			activeCategory: "Featured",
 			allProducts: props.products.products || [],
-			products: props.products.featured || []
+			products: props.products.featured || [],
 		};
 	}
 	static getDerivedStateFromProps(nextProps, prevState) {
 		if (nextProps.products.products !== prevState.allProducts) {
 			console.log({
-				allProducts: nextProps.products.products
+				allProducts: nextProps.products.products,
 			});
 			return {
-				allProducts: nextProps.products.products
+				allProducts: nextProps.products.products,
 			};
 		} else return null;
 	}
@@ -37,30 +37,30 @@ class Contact extends React.Component {
 	componentDidMount() {
 		this.props.getProducts();
 	}
-	changeCategory = activeCategory => {
+	changeCategory = (activeCategory) => {
 		const { products } = this.props;
 		console.log({
 			activeCategory,
-			products
+			products,
 		});
 		if (activeCategory.title === "Featured") {
 			this.setState({
 				products: products.featured,
-				activeCategory: activeCategory.title
+				activeCategory: activeCategory.title,
 			});
 		} else if (activeCategory.title === "All") {
 			this.setState({
 				products: products.products,
-				activeCategory: activeCategory.title
+				activeCategory: activeCategory.title,
 			});
 		} else {
 			const activeCategoryArr =
 				products.categories.find(
-					el => el.category.categorytitle === activeCategory.title
+					(el) => el.category.categorytitle === activeCategory.title
 				) || {};
 			this.setState({
 				products: activeCategoryArr.products,
-				activeCategory: activeCategory.title
+				activeCategory: activeCategory.title,
 			});
 		}
 	};
@@ -91,7 +91,7 @@ class Contact extends React.Component {
 						"btm-logo",
 						"content",
 						"no-overlay",
-						"brand-heading"
+						"brand-heading",
 					]}
 					extraButton={
 						<Button
@@ -155,7 +155,7 @@ class Contact extends React.Component {
 						<div className="col-md-4 offset-lg-1">
 							<img
 								className="d-block mr-0 ml-auto c-consult-page__img-set"
-								src="/images/consult-image.jpg"
+								src="/images/Consult-Image.png"
 							/>
 						</div>
 					</div>
@@ -208,10 +208,10 @@ class Contact extends React.Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	products: state.products
+const mapStateToProps = (state) => ({
+	products: state.products,
 });
 Contact.defaultProps = {
-	products: {}
+	products: {},
 };
 export default connect(mapStateToProps, { getProducts })(Contact);
