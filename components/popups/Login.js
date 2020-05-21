@@ -13,7 +13,7 @@ import reactComponentDebounce from "react-component-debounce";
 
 const DebounceInput = reactComponentDebounce({
 	valuePropName: "value",
-	triggerMs: 1000
+	triggerMs: 1000,
 })(Input);
 
 class LoginForm extends React.Component {
@@ -22,10 +22,10 @@ class LoginForm extends React.Component {
 		this.state = {
 			isLoading: false,
 			error: null,
-			isAlreadyUser: false
+			isAlreadyUser: false,
 		};
 	}
-	handleSubmit = e => {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
@@ -33,15 +33,15 @@ class LoginForm extends React.Component {
 				const { email, password } = values;
 				this.setState({
 					isLoading: true,
-					error: null
+					error: null,
 				});
 				loginUser({
 					email,
-					password
+					password,
 				})
-					.then(res => {
+					.then((res) => {
 						this.setState({
-							isLoading: false
+							isLoading: false,
 						});
 						console.log({ res });
 						if (res.status === 200) {
@@ -55,21 +55,21 @@ class LoginForm extends React.Component {
 										error:
 											message === "User not found"
 												? msgStrings.LOGIN_ERROR
-												: message
+												: message,
 									});
 								} else {
 									this.setState({
-										error: error
+										error: error,
 									});
 								}
 							}
 						} else {
 						}
 					})
-					.catch(err => {
+					.catch((err) => {
 						console.log({ err });
 						this.setState({
-							isLoading: false
+							isLoading: false,
 						});
 					});
 			}
@@ -78,7 +78,7 @@ class LoginForm extends React.Component {
 	render() {
 		const {
 			drawerToDisplay,
-			form: { getFieldDecorator }
+			form: { getFieldDecorator },
 		} = this.props;
 		const { isLoading, error, isAlreadyUser } = this.state;
 
@@ -115,13 +115,13 @@ class LoginForm extends React.Component {
 									{ required: true, message: "Please input your e-mail!" },
 									{
 										max: 40,
-										message: "You can't use more than 40 characters."
+										message: "You can't use more than 40 characters.",
 									},
 									{
 										pattern: regex.email,
-										message: "Please enter a valid E-mail!"
-									}
-								]
+										message: "Please enter a valid E-mail!",
+									},
+								],
 							})(
 								<DebounceInput
 									versions={[""]}
@@ -134,8 +134,11 @@ class LoginForm extends React.Component {
 							{getFieldDecorator("password", {
 								rules: [
 									{ required: true, message: "Please input your password!" },
-									{ max: 20, message: "You can't use more than 20 characters." }
-								]
+									{
+										max: 20,
+										message: "You can't use more than 20 characters.",
+									},
+								],
 							})(
 								<DebounceInput
 									type="password"
@@ -179,11 +182,7 @@ class LoginForm extends React.Component {
 								</span>
 							</p>
 						</div>
-						<Button
-							theme="outline-brand"
-							disabled={isLoading}
-							versions={["block"]}
-						>
+						<Button theme="brand" disabled={isLoading} versions={["block"]}>
 							Login
 						</Button>
 					</Form>
@@ -239,6 +238,6 @@ const Login = Form.create({ name: "login" })(LoginForm);
 const mapActionToProps = {
 	setUser,
 	toggleRegBar,
-	drawerToDisplay
+	drawerToDisplay,
 };
-export default connect(state => state, mapActionToProps)(Login);
+export default connect((state) => state, mapActionToProps)(Login);
