@@ -37,7 +37,7 @@ class BlogPage extends React.Component {
 	loadItems = (page) => {
 		console.log("loaditems", page);
 		this.props
-			.get(page, "All")
+			.get(page, this.props.tag)
 			.then(() => {
 				console.log("ok");
 				if (prev !== this.props.article.length) {
@@ -108,6 +108,7 @@ const mapStateToProps = (state) => {
 	return {
 		article: state.blog.article,
 		current: state.blog.current,
+		tag: state.blog.currentTag,
 	};
 };
 

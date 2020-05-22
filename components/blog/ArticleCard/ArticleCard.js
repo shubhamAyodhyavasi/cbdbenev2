@@ -1,6 +1,7 @@
 import React from "react";
 import { imageUrl } from "../../../constants/projectSettings";
 const ArticleCard = ({ data, ...props }) => {
+	// console.log("data", data);
 	const tags = data.tags.map((elem, index) => {
 		if (index === data.tags.length - 1)
 			return (
@@ -33,7 +34,7 @@ const ArticleCard = ({ data, ...props }) => {
 					<div className="articlecard-wrapper-image">
 						<img
 							// src={`${imageUrl}/sampleimg.png`}
-							src={`${imageUrl}/${values.image}`}
+							src={`${imageUrl}/bundle.jpg`}
 							alt="article"
 							className="articlecard-wrapper-image--item"
 							// style={{ width: "100%", height: "43rem", objectFit: "cover" }}
@@ -41,7 +42,10 @@ const ArticleCard = ({ data, ...props }) => {
 					</div>
 					<div className="articlecard-wrapper-info">
 						<div className="articlecard-wrapper-info-small">{tags}</div>
-						<div className="articlecard-wrapper-info-primary">
+						<div
+							className="articlecard-wrapper-info-primary"
+							onClick={props.onClick}
+						>
 							{data.heading}
 						</div>
 						<div className="articlecard-wrapper-info-secondary">
