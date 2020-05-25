@@ -185,10 +185,20 @@ class Home extends React.Component {
 								image={`${imageUrl}/Banner-Image-1.png`}
 								mobileImage={`${imageUrl}/Banner-Image-1.png`}
 								versions={["brand-heading"]}
-								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
-								heading={parse(bannerTitle)}
-								// content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
-								content={parse(bannerContent)}
+								heading={
+									<span>
+										<span style={{ fontSize: "1.4em" }}>bené</span> fits <br />
+										your life
+									</span>
+								}
+								// heading={parse(bannerTitle)}
+								content={
+									<span style={{ fontSize: "12px" }}>
+										In our own quest to enhance total balance and <br />
+										reduce stress, we set out to understand, what is CBD.
+									</span>
+								}
+								// content={parse(bannerContent)}
 							>
 								<Button
 									parentClass="c-home"
@@ -201,7 +211,7 @@ class Home extends React.Component {
 							</Banner>
 						</div>
 					</Carousel.Item>
-					<Carousel.Item>
+					{/* <Carousel.Item>
 						<div>
 							<Banner
 								image={`${imageUrl}/Banner-Image-2.png`}
@@ -222,7 +232,7 @@ class Home extends React.Component {
 								</Button>
 							</Banner>
 						</div>
-					</Carousel.Item>
+					</Carousel.Item>*/}
 				</Carousel>
 				{products && products.length > 0 && (
 					<Fade>
@@ -280,7 +290,7 @@ class Home extends React.Component {
 						/>
 					</HHSection>
 				</Fade>
-				<section className="wellness">
+				{/* <section className="wellness">
 					<div className="wellness__heading">
 						<h3 className="wellness__heading--text">{parse(fifthTitle)}</h3>
 					</div>
@@ -303,12 +313,12 @@ class Home extends React.Component {
 										</div>
 									</div>
 								</Fade>
-							</div>
+							</div> */}
 
-							{/* <p className="wellness-wrapper__desp--text">
+				{/* <p className="wellness-wrapper__desp--text">
                 Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
                 </p> */}
-							<div className="wellness-wrapper__btn">
+				{/* <div className="wellness-wrapper__btn">
 								<div className="mt-4 mb-4">
 									<Button
 										parentClass="c-home"
@@ -331,6 +341,39 @@ class Home extends React.Component {
 									src={`${imageUrl}/Wellness-Image-1.png`}
 								></img>
 							</div>
+						</div>
+					</div>
+				</section> */}
+				<section className="fifth-section">
+					<div className="fifth-section__wrapper">
+						<div className="col-sm-4">
+							<div className="fifth-section__wrapper-heading">
+								Radical and nuanced
+							</div>
+							<div className="fifth-section__wrapper-title">
+								Charlotte Perriand
+							</div>
+							<div className="fifth-section__wrapper-content">
+								The inspiration behind Rōzu, Charlotte Perriand was committed to
+								improving the lives of others through intelligent design. Every
+								facet of Rōzu embodies an olfactory link to her remarkable life
+								and work.
+							</div>
+							<div>
+								<a
+									className="c-btn c-btn--outline-brand c-home__btn "
+									href="/shop"
+								>
+									Discover the inspiration
+								</a>
+							</div>
+						</div>
+						<div className="col-sm-8">
+							<img
+								src="images/Bundle-Image.png"
+								alt="image"
+								className="fifth-section__wrapper--image"
+							/>
 						</div>
 					</div>
 				</section>
