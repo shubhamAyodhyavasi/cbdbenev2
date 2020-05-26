@@ -754,7 +754,7 @@ class CheckoutInfo extends React.Component {
                                 }
                             </div>
                         }
-                        <Button parentClass="c-checkout" theme="outline-brand" versions={["block"]} >Continue to Shipping</Button>
+                        <Button parentClass="c-checkout" theme="outline" versions={["block"]} >Continue to Shipping</Button>
                     </TitleList>
                 </Form>
             </div>

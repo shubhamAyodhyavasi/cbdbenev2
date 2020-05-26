@@ -1,60 +1,58 @@
-.c-category-page {
-	&__products-wrapper,
-	&__combos-wrapper {
-		background-color: $light-color;
-		padding: 40px;
-	}
-	&__combos-wrapper {
-		padding-bottom: 0;
-		background-color: $light-color;
-	}
-	&__heading-wrapper {
-		padding-top: 50px;
-		@include bp-md {
-			padding-top: 100px;
-			width: 400px;
-			max-width: 100%;
-		}
-	}
-	&__sub-heading {
-		font-size: 18px;
-	}
-	&__h-img-section {
-		position: relative;
-		min-height: calc(90vh - 80px);
-		&:after {
-			@include bpm-xs {
-				content: "";
-				display: block;
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				z-index: 1;
-				background-color: rgba($light-color-2, 0.6);
-			}
-		}
-		.c-h-img-section {
-			@include bpm-md {
-				&__content-wrapper {
-					position: relative;
-					z-index: 2;
-				}
-				&__img-wrapper {
-					position: absolute;
-					left: 0;
-					right: 0;
-					top: 0;
-					bottom: 0;
-					z-index: 0;
-				}
-			}
-			&__content-wrapper {
-				@include bpm-xs {
-					padding: 15px;
-				}
-			}
-		}
-	}
+.c-category-page{
+    &__products-wrapper, &__combos-wrapper{
+        padding: 40px;
+    }
+    &__combos-wrapper{
+        padding-bottom: 0;
+        background-color: $light-color;
+    }
+    &__heading-wrapper{
+        padding-top: 50px;
+        @include bp-md{
+            padding-top: 100px;
+            width: 400px;
+            max-width: 100%;
+        }
+    }
+    &__sub-heading{
+        font-size: 18px;
+    }
+    &__h-img-section{
+        position: relative;
+        min-height: calc(90vh - 80px);
+        &:after{
+            @include bpm-xs{
+                content: "";
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 1;
+                background-color: rgba($light-color-2, .6);
+            }
+        }
+        .c-h-img-section{
+            @include bpm-md{
+                &__content-wrapper{
+                    position: relative;
+                    z-index: 2;
+                }
+                &__img-wrapper{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 0;
+                }
+            }
+            &__content-wrapper{
+                @include bpm-xs{
+                    padding: 15px;
+                }
+            }
+        }
+    }
 }

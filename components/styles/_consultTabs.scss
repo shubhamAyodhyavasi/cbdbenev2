@@ -1,135 +1,132 @@
-.c-product-details-tab {
-	&__contain {
-		animation-duration: 1.5s;
-	}
-	&__title-list {
-		@include bpm-md {
-			.c-title-list {
-				&__title-wrap {
-					margin-bottom: 20px;
-				}
-			}
-		}
-	}
-	&__stars {
-		@include bp-xxl {
-			font-size: 30px;
-		}
-	}
-	&__review-para {
-		@include bp-xxl {
-			font-size: 18px;
-		}
-	}
-	&__review-heading {
-		@include bp-xxl {
-			font-size: 50px;
-		}
-	}
-	&__contain-col {
-		@include bp-xxl {
-			&--detail {
-				max-width: 320px;
-			}
-		}
-	}
-	&--link {
-		color: $brand-color-1;
-	}
-	.c-title-list {
-		position: relative;
-		padding-top: 20px;
-		padding-bottom: 20px;
-		text-align: justify;
-		width: 1000px;
-		max-width: 100%;
-		&:after {
-			content: "";
-			display: block;
-			width: 1000px;
-			max-width: 100%;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: 1px;
-			background-color: $base-color;
-		}
-	}
-	.ant-tabs-nav {
-		@include bpm-sm {
-			padding-top: 0;
-		}
-	}
-	.ant-tabs-nav .ant-tabs-tab-active:after {
-		opacity: 0;
-	}
+.c-product-details-tab{
+    &__contain{
+        animation-duration: 1.5s;
+    }
+    &__title-list{
+        @include bpm-md{
+            .c-title-list{
+                &__title-wrap{
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+    &__stars{
+        @include bp-xxl{
+            font-size: 30px;
+        }
+    }
+    &__review-para{
+        @include bp-xxl{
+            font-size: 18px;
+        }
+    }
+    &__review-heading{
+        @include bp-xxl{
+            font-size: 50px;
+        }
+    }
+    &__contain-col{
+        @include bp-xxl{
+            &--detail{
+                max-width: 320px;
+            }
+        }
+    }
+    .c-title-list {
+        position: relative;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: justify;
+        width: 1000px;
+        max-width: 100%;
+        &:after{
+            content: "";
+            display: block;
+            width: 1000px;
+            max-width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: $base-color;
+        }
+    }
+    .ant-tabs-nav{
+        @include bpm-sm{
+            padding-top: 0;
+        }
+    }
+    .ant-tabs-nav .ant-tabs-tab-active:after{
+        opacity: 0;
+    }
 }
-.ant-tabs-nav > div {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	font-size: 30px;
+.ant-tabs-nav > div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
 }
 
-.ant-tabs-nav {
-	width: 100%;
+.ant-tabs-nav{
+    width:100%;
 }
 
-.ant-tabs-tab-active {
-	position: relative;
+.ant-tabs-tab-active{
+    position: relative;
 }
 
-.ant-tabs-ink-bar {
-	background-color: transparent;
+.ant-tabs-ink-bar{
+    background-color: transparent;
 }
 
-.ant-tabs-nav .ant-tabs-tab-active,
-.ant-tabs-nav .ant-tabs-tab:hover {
-	color: $brand-color-1;
+.ant-tabs-nav .ant-tabs-tab-active ,.ant-tabs-nav .ant-tabs-tab:hover{
+    color:black;
 }
 
-.ant-tabs {
-	background: $light-color-2;
+.ant-tabs{
+background: $light-color-2;
 }
 
-.ant-tabs-nav {
-	padding-top: 50px;
+.ant-tabs-nav{
+    padding-top:50px;
 }
 
-.ant-tabs-nav .ant-tabs-tab-active:after {
-	background-color: $black;
-	position: absolute !important;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	content: "";
-	pointer-events: none;
-	color: $black;
-	height: 3px;
+.ant-tabs-nav .ant-tabs-tab-active:after{
+    background-color: $black;
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    content: '';
+    pointer-events: none;
+    color: $black;
+    height: 3px;
 }
 
-@media (max-width: 768px) {
-	.c-product-details-tab,
-	.c-consultTabs {
-		.ant-tabs-tab {
-			width: 100%;
-			margin: auto;
-			padding-left: 5px;
-			padding-right: 5px;
-		}
-		.ant-tabs-nav > div {
-			justify-content: center;
-			display: block;
-			align-items: center;
-		}
-		.c-tabs .ant-tabs-tab {
-			margin-left: 0;
-			margin: auto;
-		}
-		.ant-tabs-tab {
-			text-align: center;
-		}
-	}
+
+@media (max-width:768px){
+    .c-product-details-tab, .c-consultTabs{
+        .ant-tabs-tab {
+            width: 100%;
+            margin: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .ant-tabs-nav > div {
+            justify-content: center;
+            display: block;
+            align-items: center;
+        }
+        .c-tabs .ant-tabs-tab {
+            margin-left: 0;
+            margin: auto;
+        }
+        .ant-tabs-tab {
+            text-align: center;
+        }    
+    }
 }
+
