@@ -1,0 +1,19 @@
+.main-section {
+  background-color: $color-secondary;
+  padding-top: 7em;
+  padding-bottom: 3em;
+  &-small {
+    font-size: 1.8rem;
+    color: $color-secondary2;
+    text-align: center;
+    font-weight: 600;
+  }
+  &-heading-primary {
+    margin-top: 0.5em;
+    font-size: 6rem;
+    color: $color-font-black;
+    font-weight: 800;
+    line-height: 1.09;
+    text-align: center;
+  }
+}

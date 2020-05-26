@@ -17,25 +17,27 @@ import errors from "./errors";
 import extras from "./extras";
 import loading from "./loading";
 import appointment from "./appointment";
+import blog from "./blog";
 
 export default {
-  cart,
-  user,
-  location,
-  ambassadoruser,
-  wishList,
-  products,
-  checkout,
-  wishListLogin,
-  referrer,
-  address,
-  cards,
-  reviews,
-  firstSetting,
-  drawers,
-  subMenus,
-  errors,
-  extras,
-  appointment,
-  loading
+	blog,
+	cart,
+	user,
+	location,
+	ambassadoruser,
+	wishList,
+	products,
+	checkout,
+	wishListLogin,
+	referrer,
+	address,
+	cards,
+	reviews,
+	firstSetting,
+	drawers,
+	subMenus,
+	errors,
+	extras,
+	appointment,
+	loading,
 };
