@@ -13,16 +13,14 @@ const Banner = ({
 	versions,
 	parentClass,
 	extraButton,
-	mobileImage,
+	mobileImage
 }) => {
 	const componentClass = "c-banner";
-	const versionClass = versions
-		.map((el) => `${componentClass}--${el}`)
-		.join(" ");
+	const versionClass = versions.map(el => `${componentClass}--${el}`).join(" ");
 	const parent = `${parentClass}__${componentClass.replace("c-", "")}`;
 	const className = classNames(componentClass, {
 		[versionClass]: versions,
-		[parent]: parentClass,
+		[parent]: parentClass
 	});
 	return (
 		<div className={className}>
@@ -31,7 +29,7 @@ const Banner = ({
 				<LazyLoadImage
 					effect="opacity"
 					className={classNames("c-banner__bg", {
-						"c-banner__bg--desktop": mobileImage,
+						"c-banner__bg--desktop": mobileImage
 					})}
 					srcSet={`${image2x} 2x, ${image || image2x} 1x`}
 					src={image}
@@ -42,7 +40,7 @@ const Banner = ({
 				<LazyLoadImage
 					effect="opacity"
 					className={classNames("c-banner__bg", {
-						"c-banner__bg--desktop": mobileImage,
+						"c-banner__bg--desktop": mobileImage
 					})}
 					src={image}
 					alt={imgAlt ? imgAlt : "banner"}
@@ -69,6 +67,6 @@ const Banner = ({
 	);
 };
 Banner.defaultProps = {
-	versions: [],
+	versions: []
 };
 export default Banner;

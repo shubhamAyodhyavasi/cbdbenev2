@@ -7,12 +7,12 @@ class Drawer extends React.Component {
 	constructor({ props }) {
 		super(props);
 		this.state = {
-			width: 800,
+			width: 800
 		};
 	}
 	componentDidMount() {
 		this.setState({
-			width: window.innerWidth > 800 ? 800 : "100vw",
+			width: window.innerWidth > 800 ? 800 : window.innerWidth
 		});
 	}
 	render() {
@@ -23,17 +23,17 @@ class Drawer extends React.Component {
 			title,
 			children,
 			versions,
-			parentClass,
+			parentClass
 		} = this.props;
 
 		const componentClass = `c-drawer`;
 		const versionClass = versions
-			.map((el) => `${componentClass}--${el}`)
+			.map(el => `${componentClass}--${el}`)
 			.join(" ");
 		const parent = `${parentClass}__${componentClass.replace("c-", "")}`;
 		const className = classNames(componentClass, {
 			[versionClass]: versions,
-			[parent]: parentClass,
+			[parent]: parentClass
 		});
 		return (
 			<AntDrawer
@@ -53,7 +53,7 @@ class Drawer extends React.Component {
 const DrawerTitle = ({ onClose, title }) => (
 	<div className="c-drawer-title c-drawer__title">
 		<div className="c-drawer-title__go-back-wrapper">
-			<Icon className="c-drawer-title__back" type="right" onClick={onClose} />
+			<Icon className="c-drawer-title__back" type="left" onClick={onClose} />
 		</div>
 		<div className="c-drawer-title__header">
 			<div className="row">
@@ -66,7 +66,7 @@ const DrawerTitle = ({ onClose, title }) => (
 					</Heading>
 				</div>
 				<div className="col flex-grow-0">
-					{/* <Logo parentClass="c-cart-title" /> */}
+					<Logo parentClass="c-cart-title" />
 				</div>
 			</div>
 		</div>
@@ -74,6 +74,6 @@ const DrawerTitle = ({ onClose, title }) => (
 );
 Drawer.defaultProps = {
 	versions: [],
-	placement: "right",
+	placement: "right"
 };
 export default Drawer;

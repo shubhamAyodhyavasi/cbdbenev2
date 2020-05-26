@@ -1,206 +1,209 @@
-.c-submit-r {
-	&__item {
-		padding: 120px 0;
-		padding-bottom: 30px;
-	}
-	&__row {
-		margin-right: 25px;
-		margin-left: 25px;
-	}
-	&__heading {
-		padding-bottom: 20px;
-		&__title {
-			font-size: 25px;
-		}
-	}
-	&__item-row {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-end;
-		justify-content: space-around;
-		width: 100%;
-		border-bottom: 1px solid $black;
-		margin: 30px auto;
-	}
+.c-submit-r{
+    &__item{
+        padding: 120px 0;
+        padding-bottom: 30px;
+    }
+    &__row{
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+    &__heading{
+        padding-bottom: 20px;
+        &__title{
+            font-size: 25px;
+        }
+    }
+    &__item-row {
+        display: flex; 
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-around;
+        width: 100%;
+        border-bottom: 1px solid $black;
+        margin: 30px auto;
+    }
 
-	&__img-wrap {
-		width: 200px;
-		max-width: 100%;
-		padding-left: 70px;
-	}
-	&__about {
-		&--center {
-			text-align: center;
-		}
-	}
-	&__rating {
-		margin: 60px 0;
-		&__wrapper {
-			display: flex;
-			align-items: center;
-		}
-		&--name {
-			padding-right: 50px;
-			border-right: 1px solid $brand-color-1;
-			text-align: left;
-			&__small {
-				font-size: 20px;
-			}
-		}
-		&--star {
-			padding-left: 50px;
-		}
-	}
+    &__img-wrap {
+        width: 200px;
+        max-width: 100%;
+        padding-left: 70px;
+    }
+    &__about{
+        &--center{
+            text-align: center;
+        }
+    }
+    &__rating{
+        margin: 60px 0;
+        &__wrapper {
+            display: flex;
+            align-items: center;
+        }
+        &--name {
+            padding-right: 50px;
+            border-right: 1px solid $brand-color-1;
+            text-align: left;
+            &__small{
+                font-size:20px;
+            }
+        }
+        &--star {
+            padding-left: 50px;
+        }
+    }   
 }
-.s-review {
-	&__from-heading {
-		text-align: center;
-		text-transform: uppercase;
-		margin: 40px 0;
-	}
+.s-review{
+    &__from-heading{
+        text-align:center;
+        text-transform: uppercase;
+        margin: 40px 0;
+    }
 }
-.b-border-none {
-	border-bottom: none;
-	span.ant-radio {
-		margin-top: 0px;
-	}
+.b-border-none{
+    border-bottom:none;
+    span.ant-radio{
+        margin-top: 0px;
+    }
 }
-.radio__wrapper {
-	display: flex;
-	align-items: center;
+.radio__wrapper{
+    display: flex;
+    align-items: center;
 }
+
 
 .c-submit-r__product-selector {
-	text-align: center;
+    text-align: center;
 }
 
 .modal-content {
-	border: 0;
-	border-radius: 0;
+    border:0;
+    border-radius: 0;
 }
 
 .modal-dismiss {
-	text-align: right;
-	color: $light-color-2;
-	// width: 100%;
-	right: 10px;
-	position: absolute;
-	background: transparent;
-	cursor: pointer;
-	@include bp-md {
-		width: 10%;
-		position: static;
-		background: $brand-color-1;
-		padding: 10px 20px;
-	}
+    text-align: right;
+    color: $brand-color-1;
+    // width: 100%;
+    right: 10px;
+    position: absolute;
+    background: transparent;
+    @include bp-md{
+        width: 10%;
+        position:static;
+        background: $dark-color-1;
+        padding:10px 20px;
+    }
 }
 
 .modal__logo-img {
-	width: 100%;
+    width: 100%;
 }
 
 .c-submit-r__product-selector {
-	display: flex;
-	flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 .c-susbmit-r__wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	padding: 60px 20px;
-	flex-wrap: wrap;
-	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .c-susbmit-r__p-selector-wrap {
-	width: 100%;
-	max-width: 100%;
-	margin: 20px 0;
-	@include bp-md {
-		width: 30%;
-	}
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+    @include bp-md{
+        width: 30%;
+    }
 }
 
 .modal__full-width {
-	max-width: 800px;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 0;
-	margin-bottom: 0;
-	@include bp-md {
-		width: calc(100% - 40px);
-	}
+    max-width: 800px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    margin-top: 0;
+    margin-bottom: 0;
+    @include bp-md{
+        width: calc(100% - 40px);
+    }
+
 }
-.modal__button {
-	min-height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: auto;
+.modal__button{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
 .modal__logo-wrapper {
-	background-color: $brand-color-1;
-	display: flex;
-	align-items: center;
-	width: 100%;
-	position: relative;
-	padding: 20px 13px 13px;
-	@include bp-md {
-		width: 90%;
-		padding: 0 13px 13px;
-	}
+    background-color: $dark-color-1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position:relative;
+    padding: 20px 13px 13px;
+    @include bp-md{
+    width: 90%;
+    padding: 0 13px 13px;
+    }
 }
-.modal-header {
-	background: $dark-color-1;
-	border-radius: 0;
+.modal-header{
+    background: $dark-color-1;
+    border-radius:0;
 }
 .modal-footer__logo {
-	width: 85px;
-	display: block;
-	padding: 15px;
-	@include bp-md {
-		width: 100px;
-	}
+    width: 85px;
+    display: block;
+    padding: 15px;
+    @include bp-md{
+        width: 100px;
+    }
 }
 .modal-header .close,
 .modal-title {
-	color: $brand-color-1;
+    color: $brand-color-1;
 }
 
 .modal__heading {
-	text-align: left;
-	width: 80%;
-	padding: 15px;
-	border-left: 1px solid $light-color-2;
-	@include bp-md {
-		width: 80%;
-		padding: 20px;
-		margin-left: 30px;
-	}
-}
-.modal-content {
-	text-align: center;
+    text-align: left;
+    width: 80%;
+    padding: 15px;
+    border-left: 1px solid $brand-color-1;  
+    @include bp-md{
+    width: 80%;
+    padding: 20px;
+    margin-left: 30px;
+    }
+}   
+.modal-content{
+    text-align: center;
 }
 
 .modal__heading-text {
-	color: $light-color-2;
-	@include bpm-md {
-		font-size: 20px;
-	}
+    color: $brand-color-1;
+    @include bpm-md{
+        font-size:20px;
+    }
 }
-.modal .full-modal.modal-dialog {
-	position: absolute;
-	top: 50px;
-	left: 50%;
-	transform: translate(-50%, 0%);
+.modal .full-modal.modal-dialog{
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
+
 
 input#normal_login_name,
 input#normal_login_title,
 input#normal_login_details {
-	background: transparent;
-	border: none;
+    background: transparent;
+    border:none
+    
 }
