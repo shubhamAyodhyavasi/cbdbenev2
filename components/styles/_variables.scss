@@ -6,18 +6,8 @@ $base-font-size: 16px;
 $font-size-xxl: 20px;
 $header-height: 124px;
 
-//Extra sizes
-$base-font-size-big: 150%;
-
-//Border Radius
-$border-radius: 5px;
-
-//Padding
-$list-item-padding: 10px;
-
 //Font weight
-$wg-normal: 400;
-$wg-bolder: 700;
+$wg-normal: 300;
 $wg-bold: 600;
 
 $g-bp-xxs: 375px;
@@ -28,13 +18,9 @@ $g-bp-lg: 1200px;
 $g-bp-xl: 1400px;
 $g-bp-xxl: 1800px;
 
-//White Shades & Colors
-// $light-color: #ffffff;
-// $light-color-2: #fdfdfd;
-// $border-color: #fab49a;
-
-$font-large: 20px;
-$font-small: 12px;
+// fonts
+$main-font: "Montserrat", sans-serif;
+$sub-font: "Ovo", serif;
 
 //colors
 $base-color: #1a1811;
@@ -51,76 +37,3 @@ $black: #000;
 $light-color-3: #fdfdfd;
 
 $Hover-color: #f13100;
-
-//---blog------------------
-$color-primary: #b7c7c9;
-$color-secondary: #f7f1e9;
-$color-secondary2: #e8972c;
-$color-font-muted: rgba(0, 0, 0, 0.44);
-$color-font-black: rgba(0, 0, 0, 0.88);
-$color-primary2: rgb(238, 226, 215);
-////#ForHims Theme
-//
-//// Fonts
-//$main-font: "SofiaProWeb", "Helvetica", "Arial", sans-serif;
-//$sub-font: "Helvetica", "Arial", sans-serif;
-
-//// Colors
-//$brand-color-1: #cc835c;//Original Shade
-//$dark-color-1: #d5dade;//Dark Shade
-//$dark-color-2: rgba(0,0,0,0.88);//Light Shade
-//
-//
-////Error colors
-$error-color: red;
-$error-color-2: #c30000;
-//
-////Black Shades & color
-$base-color: #1a1811;
-$black: #000;
-//
-//// Extra colors
-$light-color-3: #b47cff;
-
-$Hover-color: $brand-color-1;
-
-///////////////////////////////////////
-//////////////////////////////////////
-/////////////////////////////////////
-////Blue Theme Main Color
-//$brand-color-1: #7c4dff;//Original Shade
-//$dark-color-1: #3f1dcb;//Dark Shade
-//$dark-color-2: #b47cff;//Light Shade
-
-//#ORIGINAL THEME
-
-// Fonts
-$main-font: "PlayFair Display", serif;
-$sub-font: "Montserrat", sans-serif;
-
-//Orange Theme Main Color
-$brand-color-1: #ff3d00; //Original Shade
-$dark-color-1: #c30000; //Dark Shade
-$dark-color-2: #ff7539; //Light Shade
-
-////#Aesop Theme
-//
-//// Fonts
-//$main-font: "PlayFair Display", serif;
-//$sub-font: "Montserrat", sans-serif;
-//
-//// Colors
-//$brand-color-1: #ff3d00;//Original Shade
-//$dark-color-1: #c30000;//Dark Shade
-//$dark-color-2: #ff7539;//Light Shade
-//
-////#Ritual Theme
-//
-//// Fonts
-//$main-font: "PlayFair Display", serif;
-//$sub-font: "Montserrat", sans-serif;
-//
-//// Colors
-// $brand-color-1: #ff3d00;//Original Shade
-// $dark-color-1: #c30000;//Dark Shade
-// $dark-color-2: #ff7539;//Light Shade

@@ -12,7 +12,7 @@ import reactComponentDebounce from "react-component-debounce";
 
 const DebounceInput = reactComponentDebounce({
 	valuePropName: "value",
-	triggerMs: 1000,
+	triggerMs: 1000
 })(Input);
 
 class RegistrationForm extends React.Component {
@@ -21,10 +21,10 @@ class RegistrationForm extends React.Component {
 		this.state = {
 			isLoading: false,
 			error: null,
-			isAlreadyUser: false,
+			isAlreadyUser: false
 		};
 	}
-	handleSubmit = (e) => {
+	handleSubmit = e => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
@@ -32,7 +32,7 @@ class RegistrationForm extends React.Component {
 				const { email, password } = values;
 				this.setState({
 					isLoading: true,
-					error: null,
+					error: null
 				});
 				registerUser({
 					email,
@@ -40,11 +40,11 @@ class RegistrationForm extends React.Component {
 					password2: password,
 					firstname: "null",
 					lastname: "null",
-					phonenumber: "null",
+					phonenumber: "null"
 				})
-					.then((res) => {
+					.then(res => {
 						this.setState({
-							isLoading: false,
+							isLoading: false
 						});
 						console.log({ res });
 						if (res.status === 200) {
@@ -55,25 +55,25 @@ class RegistrationForm extends React.Component {
 								const { error } = res.data;
 								if (error.endsWith("is already taken")) {
 									this.setState({
-										isAlreadyUser: true,
+										isAlreadyUser: true
 									});
 								} else {
 									this.setState({
-										error: res.data.error,
+										error: res.data.error
 									});
 								}
 							}
 						} else {
 							this.setState({
-								error: "something wrong",
+								error: "something wrong"
 							});
 						}
 					})
-					.catch((err) => {
+					.catch(err => {
 						console.log({ err });
 						this.setState({
 							isLoading: false,
-							error: "something wrong",
+							error: "something wrong"
 						});
 					});
 			}
@@ -82,7 +82,7 @@ class RegistrationForm extends React.Component {
 	render() {
 		const {
 			drawerToDisplay,
-			form: { getFieldDecorator },
+			form: { getFieldDecorator }
 		} = this.props;
 		const { isLoading, error, isAlreadyUser } = this.state;
 		return (
@@ -114,15 +114,15 @@ class RegistrationForm extends React.Component {
 								rules: [
 									{
 										max: 40,
-										message: "You can't use more than 40 characters.",
+										message: "You can't use more than 40 characters."
 									},
 									{ required: true, message: "Please input your e-mail!" },
 
 									{
 										pattern: regex.email,
-										message: "Please enter a valid E-mail.",
-									},
-								],
+										message: "Please enter a valid E-mail."
+									}
+								]
 							})(
 								<DebounceInput
 									versions={[""]}
@@ -135,11 +135,8 @@ class RegistrationForm extends React.Component {
 							{getFieldDecorator("password", {
 								rules: [
 									{ required: true, message: "Please input your password!" },
-									{
-										max: 20,
-										message: "You can't use more than 20 characters.",
-									},
-								],
+									{ max: 20, message: "You can't use more than 20 characters." }
+								]
 							})(
 								<DebounceInput
 									type="password"
@@ -159,10 +156,10 @@ class RegistrationForm extends React.Component {
 										{
 											required: true,
 											message: "Please agree the terms and conditions.",
-											transform: (value) => value || undefined,
-											type: "boolean",
-										},
-									],
+											transform: value => value || undefined,
+											type: "boolean"
+										}
+									]
 								})(
 									<Checkbox versions={["gold"]}>
 										I agree to Terms and Conditions and Privacy Policy
@@ -192,7 +189,11 @@ class RegistrationForm extends React.Component {
 							)}
 							{error && <p className="c-registration__error">{error}</p>}
 						</div>
-						<Button theme="brand" disabled={isLoading} versions={["block"]}>
+						<Button
+							theme="outline-brand"
+							disabled={isLoading}
+							versions={["block"]}
+						>
 							Register
 						</Button>
 					</Form>
@@ -225,6 +226,6 @@ const Registration = Form.create({ name: "registration" })(RegistrationForm);
 const mapActionToProps = {
 	drawerToDisplay,
 	setUser,
-	toggleRegBar,
+	toggleRegBar
 };
-export default connect((state) => state, mapActionToProps)(Registration);
+export default connect(state => state, mapActionToProps)(Registration);

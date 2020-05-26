@@ -1,17 +1,17 @@
-.c-privacy {
-	&__page-title {
-		padding: 10px 40px;
-		background-color: $light-color-2;
-	}
-	&__content {
-		padding-left: 15px;
-		padding-right: 15px;
-		@include bp-md {
-			padding-left: 40px;
-			padding-right: 40px;
-		}
-	}
-	&__mt-110 {
-		margin-top: 110px;
-	}
+.c-privacy{
+    &__page-title{
+        padding: 10px 40px;
+        background-color: $light-color-2;
+    }
+    &__content{
+        padding-left: 15px;
+        padding-right: 15px;
+        @include bp-md{
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
+    &__mt-85{
+        margin-top:85px;
+    }    
 }

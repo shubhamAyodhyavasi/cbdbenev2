@@ -18,8 +18,6 @@ import { Collapse } from "reactstrap";
 import { home as homeData } from "../site-content/index";
 import parse from "html-react-parser";
 import { Carousel } from "react-bootstrap";
-import { adminUrl, imageUrl } from "../constants/projectSettings";
-import Axios from "axios";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -34,32 +32,6 @@ class Home extends React.Component {
 			combos: [],
 			isLrSection: false,
 			isWillness: false,
-			homeData: {
-				banner: {
-					title: "",
-					content: "",
-					btnText: "",
-				},
-				categorySlider: {
-					title: "",
-				},
-				thirdSection: {
-					bigTitle: "",
-					title: "",
-					content: "",
-					btnText: "",
-				},
-				bundlesSlider: {
-					title: "",
-					subTitle: "",
-					btnText: "",
-				},
-				fifthSection: {
-					title: "",
-					content: "",
-					btnText: "",
-				},
-			},
 		};
 	}
 	static getDerivedStateFromProps(nextProps, prevState) {
@@ -79,16 +51,6 @@ class Home extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log("Comp mounted");
-		Axios.get(`${adminUrl}/Home/get`)
-			.then((result) => {
-				console.log("Result got md", result);
-				this.setState({
-					homeData: result.data.data,
-				});
-			})
-			.catch((err) => console.log(err));
-
 		this.props.getProducts();
 		getAllCombos().then((res) => {
 			console.log({
@@ -168,7 +130,7 @@ class Home extends React.Component {
 				content: fifthContent,
 				btnText: fifthBtnText,
 			},
-		} = this.state.homeData;
+		} = homeData;
 
 		return (
 			<Layout
@@ -182,40 +144,8 @@ class Home extends React.Component {
 					<Carousel.Item>
 						<div>
 							<Banner
-								image={`${imageUrl}/Banner-Image-1.png`}
-								mobileImage={`${imageUrl}/Banner-Image-1.png`}
-								versions={["brand-heading"]}
-								heading={
-									<span>
-										<span style={{ fontSize: "1.4em" }}>bené</span> fits <br />
-										your life
-									</span>
-								}
-								// heading={parse(bannerTitle)}
-								content={
-									<span style={{ fontSize: "12px" }}>
-										In our own quest to enhance total balance and <br />
-										reduce stress, we set out to understand, what is CBD.
-									</span>
-								}
-								// content={parse(bannerContent)}
-							>
-								<Button
-									parentClass="c-home"
-									type="link"
-									link="/shop"
-									theme={"outline-brand"}
-								>
-									{bannerBtnText}
-								</Button>
-							</Banner>
-						</div>
-					</Carousel.Item>
-					{/* <Carousel.Item>
-						<div>
-							<Banner
-								image={`${imageUrl}/Banner-Image-2.png`}
-								mobileImage={`${imageUrl}/Banner-Image-2.png`}
+								image="/images/bundle_3.jpg"
+								mobileImage="/images/home-banner-mobile.png"
 								versions={["brand-heading"]}
 								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
 								heading={parse(bannerTitle)}
@@ -232,7 +162,29 @@ class Home extends React.Component {
 								</Button>
 							</Banner>
 						</div>
-					</Carousel.Item>*/}
+					</Carousel.Item>
+					<Carousel.Item>
+						<div>
+							<Banner
+								image="/images/home-banner-1.png"
+								mobileImage="/images/scene_rollon_1-mobile.png"
+								versions={["brand-heading"]}
+								// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
+								heading={parse(bannerTitle)}
+								// content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
+								content={parse(bannerContent)}
+							>
+								<Button
+									parentClass="c-home"
+									type="link"
+									link="/shop"
+									theme={"outline-brand"}
+								>
+									{parse(bannerBtnText)}
+								</Button>
+							</Banner>
+						</div>
+					</Carousel.Item>
 				</Carousel>
 				{products && products.length > 0 && (
 					<Fade>
@@ -257,7 +209,7 @@ class Home extends React.Component {
 							}));
 						}}
 						// Link="/"
-						image={`images/Bundle-Image.png`}
+						image="/images/bundle2.png"
 					>
 						<div className="c-less-more">
 							<div className="c-less-more__less">{parse(thirdContent)}</div>
@@ -290,7 +242,7 @@ class Home extends React.Component {
 						/>
 					</HHSection>
 				</Fade>
-				{/* <section className="wellness">
+				<section className="wellness">
 					<div className="wellness__heading">
 						<h3 className="wellness__heading--text">{parse(fifthTitle)}</h3>
 					</div>
@@ -298,7 +250,7 @@ class Home extends React.Component {
 						<div className="wellness-wrapper__img">
 							<img
 								className="wellness-wrapper__img--img img-fluid"
-								src={`${imageUrl}/Consult-Image.png`}
+								src="/images/consult-image.jpg"
 							/>
 						</div>
 						<div className="wellness-wrapper__desp">
@@ -313,12 +265,12 @@ class Home extends React.Component {
 										</div>
 									</div>
 								</Fade>
-							</div> */}
+							</div>
 
-				{/* <p className="wellness-wrapper__desp--text">
+							{/* <p className="wellness-wrapper__desp--text">
                 Today we're confident that were providing you with the highest quality CBD you can find. Our product line  is a collection, to suit a wide range of tastes and needs. We're dedicated to helping you get the products that suit you,  as well as your pets. That's right, we have CBD products for pets  too.
                 </p> */}
-				{/* <div className="wellness-wrapper__btn">
+							<div className="wellness-wrapper__btn">
 								<div className="mt-4 mb-4">
 									<Button
 										parentClass="c-home"
@@ -336,44 +288,8 @@ class Home extends React.Component {
 								</div>
 							</div>
 							<div className="willness-img">
-								<img
-									className="img-fluid"
-									src={`${imageUrl}/Wellness-Image-1.png`}
-								></img>
+								<img className="img-fluid" src="/images/cbd-wellness.png"></img>
 							</div>
-						</div>
-					</div>
-				</section> */}
-				<section className="fifth-section">
-					<div className="fifth-section__wrapper">
-						<div className="col-sm-4">
-							<div className="fifth-section__wrapper-heading">
-								Radical and nuanced
-							</div>
-							<div className="fifth-section__wrapper-title">
-								Charlotte Perriand
-							</div>
-							<div className="fifth-section__wrapper-content">
-								The inspiration behind Rōzu, Charlotte Perriand was committed to
-								improving the lives of others through intelligent design. Every
-								facet of Rōzu embodies an olfactory link to her remarkable life
-								and work.
-							</div>
-							<div>
-								<a
-									className="c-btn c-btn--outline-brand c-home__btn "
-									href="/shop"
-								>
-									Discover the inspiration
-								</a>
-							</div>
-						</div>
-						<div className="col-sm-8">
-							<img
-								src="images/Bundle-Image.png"
-								alt="image"
-								className="fifth-section__wrapper--image"
-							/>
 						</div>
 					</div>
 				</section>

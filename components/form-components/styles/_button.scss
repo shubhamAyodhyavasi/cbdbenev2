@@ -1,8 +1,8 @@
 .c-btn {
-	padding: 10px;
+	padding: 5px;
 	display: inline-block;
 	font-family: $sub-font;
-	font-size: 16px;
+	font-size: 15px;
 	text-align: center;
 	color: $base-color;
 	border: none;
@@ -97,7 +97,7 @@
 	&--outline {
 		min-width: 150px;
 		border: 1px solid $base-color;
-		padding: 20px 30px;
+		padding: 6px 25px;
 		border-radius: 0;
 		// font-weight: 600;
 		letter-spacing: 0.5px;
@@ -109,7 +109,7 @@
 	&--outline-brand {
 		min-width: 150px;
 		border: 1px solid $brand-color-1;
-		padding: 20px 30px;
+		padding: 6px 25px;
 		color: $brand-color-1;
 		// font-weight: 600;
 		letter-spacing: 0.5px;

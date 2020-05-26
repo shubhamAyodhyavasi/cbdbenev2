@@ -3,20 +3,16 @@ import { SET_USER, UNSET_USER } from "../actions/type";
 const initialState = {};
 
 export default (state = initialState, action) => {
-	const { payload, type } = action;
-	console.log(action);
-	switch (type) {
-		case SET_USER:
-			return payload;
+  const { payload, type } = action;
 
-		case UNSET_USER: {
-			console.log("reducer");
-			return payload;
-		}
+  switch (type) {
+    case SET_USER:
+      return payload;
 
-		default: {
-			console.log("default");
-			return state;
-		}
-	}
+    case UNSET_USER:
+      return payload;
+
+    default:
+      return state;
+  }
 };
