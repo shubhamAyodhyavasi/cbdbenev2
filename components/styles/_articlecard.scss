@@ -24,6 +24,7 @@
 		}
 
 		&-info {
+			width: 52%;
 			&-small {
 				font-size: 1.3rem;
 				color: $color-secondary2;
@@ -35,9 +36,9 @@
 			}
 			&-primary {
 				margin-top: 1em;
-				font-size: 3.4rem;
+				font-size: 3rem;
 				color: $color-font-black;
-				font-weight: 600;
+				// font-weight: 600;
 				line-height: 1.2;
 				cursor: pointer;
 			}
@@ -45,7 +46,7 @@
 				margin-top: 1em;
 				font-size: 1.5rem;
 				color: $color-font-black;
-				font-weight: 700;
+				// font-weight: 700;
 			}
 			&-link {
 				margin-top: 3em;
@@ -53,7 +54,7 @@
 				letter-spacing: 1px;
 				color: $color-font-black;
 				cursor: pointer;
-				font-weight: 800;
+				font-weight: 600;
 				.underline-text {
 					margin-top: 2px;
 					width: 20%;
@@ -70,4 +71,18 @@
 	width: 100%;
 	background-color: $color-primary2;
 	height: 2.5px;
+}
+
+@media screen and (max-width: 480px) {
+	.articlecard {
+		&-wrapper {
+			flex-direction: column;
+			&-image {
+				width: 100%;
+			}
+			&-info {
+				width: 100%;
+			}
+		}
+	}
 }

@@ -12,7 +12,7 @@ class Drawer extends React.Component {
 	}
 	componentDidMount() {
 		this.setState({
-			width: window.innerWidth > 800 ? 800 : window.innerWidth,
+			width: window.innerWidth > 800 ? 800 : "100vw",
 		});
 	}
 	render() {
@@ -53,7 +53,7 @@ class Drawer extends React.Component {
 const DrawerTitle = ({ onClose, title }) => (
 	<div className="c-drawer-title c-drawer__title">
 		<div className="c-drawer-title__go-back-wrapper">
-			<Icon className="c-drawer-title__back" type="left" onClick={onClose} />
+			<Icon className="c-drawer-title__back" type="right" onClick={onClose} />
 		</div>
 		<div className="c-drawer-title__header">
 			<div className="row">

@@ -1,19 +1,19 @@
 import * as actionTypes from "../actions/type";
 const initiaState = {
 	article: [],
-	currentTag: "",
+	currentTag: "All",
 	current: {},
 	pageNo: 0,
 };
 
 const add = (state, action) => {
-	console.log("in reducer", action.payload);
-	if (state.tag !== action.tag) {
+	console.log("in reducer", action, state);
+	if (state.currentTag !== action.tag) {
 		return {
 			...state,
 			article: action.payload,
 			pageNo: action.pageNo,
-			tag: action.tag,
+			currentTag: action.tag,
 			current: {},
 		};
 	} else {

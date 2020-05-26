@@ -4,12 +4,14 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import sessionStorage from "redux-persist/lib/storage/session";
 import thunk from "redux-thunk";
+import logger from "redux-logger";
 import rootReducer from "./reducers";
 import { createStateSyncMiddleware } from "redux-state-sync";
 
 const SET_CLIENT_STATE = "SET_CLIENT_STATE";
 const middlewares = [
 	thunk,
+	logger,
 	createStateSyncMiddleware({
 		// blacklist: ["extras", "products"]
 		whitelist: [
