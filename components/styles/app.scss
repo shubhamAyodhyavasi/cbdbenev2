@@ -106,3 +106,13 @@
 		}
 	}
 }
+
+.modal-open {
+	overflow: auto;
+	padding-right: 0 !important;
+	// padding-top: 2rem !important;
+}
+
+.col {
+	min-width: auto;
+}
