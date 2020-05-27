@@ -1,0 +1,10 @@
+.navRight {
+	display: flex;
+	position: relative;
+	&-item {
+		margin-left: 2rem;
+		margin-right: 2rem;
+		font-weight: $wg-bolder;
+		font-size: small;
+	}
+}
