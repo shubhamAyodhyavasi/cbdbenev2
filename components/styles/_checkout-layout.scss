@@ -1,121 +1,124 @@
-.c-checkout-layout {
-	display: flex;
-	@include bp-md {
-		min-height: 100vh;
-	}
-	> * {
-		width: 100%;
-		@include bpm-md {
-			width: auto;
-		}
-	}
-	&__row {
-		width: calc(100% + 30px);
-	}
-	&__main {
-		padding-top: 100px;
-		padding-left: 40px;
-		padding-right: 60px;
-		background-color: $light-color;
-		@media (min-width: 1400px) {
-			padding-left: 80px;
-			padding-right: 100px;
-		}
-		@include bpm-md {
-			padding-left: 30px;
-			padding-right: 30px;
-		}
-	}
-	&__logo {
-		margin-bottom: 40px;
-		display: block;
-		.c-logo__img {
-			width: 100px;
-		}
-	}
-	&__cart-col {
-		background: $brand-color-1;
-		padding: 40px;
-		@media (min-width: 1400px) {
-			padding: 80px;
-		}
-		@include bpm-xs {
-			padding-left: 15px;
-			padding-right: 15px;
-		}
-	}
-	&__heading {
-		&.c-heading {
-			&--small {
-				font-size: 15px;
-			}
-		}
-	}
-	&__cart-icon svg {
-		width: 30px;
-		height: 15px;
-	}
+.c-checkout-layout{
+    display: flex;
+    @include bp-md{
+        min-height: 100vh;
+    }
+    > * {
+        width: 100%;
+        @include bpm-md{
+            width:auto;
+        }
+    }
+    &__row{
+        width: calc(100% + 30px);
+    }
+    &__main{
+        padding-top: 100px;
+        padding-left: 40px;
+        padding-right: 60px;
+        background-color: $light-color-2;
+        @media(min-width: 1400px){
+            padding-left: 80px;
+            padding-right: 100px;
+        }
+        @include bpm-md{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+    &__logo{
+        margin-bottom: 40px;
+        display: block;
+        .c-logo__img{
+            width: 100px;
+        }
+    }
+    &__cart-col{
+        background: $dark-color-1;
+        padding: 40px;
+        @media(min-width: 1400px){
+            padding: 80px;
+        }
+        @include bpm-xs{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    &__heading{
+        &.c-heading{
+            &--small{
+                font-size:15px;
+            }
+        }        
+    }
+    &__cart-icon svg {
+        width: 30px;
+        height: 15px;
+    }
 
-	// override and design
+    // override and design
 
-	.ant-steps-item-icon {
-		display: none !important;
-	}
-	.ant-steps-item-title::after {
-		display: none !important;
-	}
-	.ant-steps-item {
-		flex: none !important;
-	}
-	.ant-steps-item-title {
-		cursor: pointer;
-	}
+    
+    .ant-steps-item-icon{
+        display: none !important;
+    }
+    .ant-steps-item-title::after{
+        display: none !important;
+    }
+    .ant-steps-item{
+        flex: none !important;
+    }
+    .ant-steps-item-title{
+        cursor: pointer;
 
-	@include bpm-md {
-		.ant-steps-horizontal.ant-steps-label-horizontal {
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-		}
-	}
+    }
+    
+    @include bpm-md{
+        .ant-steps-horizontal.ant-steps-label-horizontal{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+
 }
 
-.c-checkout {
-	color: $brand-color-1;
-	&__nav-wrapper {
-		.ant-steps-item-title {
-			@include bpm-xs {
-				font-size: 14px;
-				padding-right: 5px;
-			}
-		}
-	}
-	&__btn {
-		@include bpm-xs {
-			width: 100%;
-		}
-	}
-	.c-title-list {
-		&__title {
-			@include bpm-xs {
-				color: $brand-color-1;
-			}
-		}
-		&__title-wrap {
-			margin-bottom: 10px;
-		}
-	}
+.c-checkout{
+    &__nav-wrapper{
+        .ant-steps-item-title{
+            @include bpm-xs{
+                font-size: 14px;
+                padding-right: 5px;
+            }
+        }
+    }
+    &__btn{
+        @include bpm-xs{
+            width: 100%;
+        }
+    }
+    .c-title-list{
+        &__title{
+            @include bpm-xs{
+                color: $brand-color-1;
+            }
+        }
+        &__title-wrap{
+            margin-bottom: 10px;
+        }
+    }
 }
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	margin: 0;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 
 // extra need to remove later
 
-#CheckoutPayment_expiry {
-	height: 36px;
+#CheckoutPayment_expiry{
+    height: 36px;
 }

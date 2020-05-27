@@ -1,75 +1,75 @@
-.c-product-single {
-	&__list {
-		padding-top: 50px;
-		@media (min-width: 1200px) {
-			padding-right: 100px;
-		}
-	}
-	&__title-list {
-		border-bottom: 1px solid $dark-color-2;
-		padding-top: 20px;
-		padding-bottom: 20px;
-		@include bpm-md {
-			.c-title-list {
-				&__title-wrap {
-					margin-bottom: 20px;
-				}
-			}
-		}
-		&:last-child {
-			border-bottom: none;
-		}
-	}
-	&__details-wrapper {
-		background-color: $light-color-2;
-		padding: 30px 40px;
-		@include bp-md {
-			padding: 100px 40px;
-		}
-	}
-	&__related-section {
-		padding: 100px 40px;
-		background-color: $light-color;
-	}
-	&__h-img-section {
-		background-color: $light-color;
-		.c-h-img-section {
-			&__content-wrapper {
-				position: relative;
-				order: 1px;
-			}
-			&__img-wrapper {
-				order: 0px;
-			}
-		}
-		.c-heading {
-			font-weight: 500;
-			@include bpm-xl {
-				font-weight: 400;
-				font-size: 28px;
-			}
-			@include bpm-xs {
-				font-size: 20px;
-			}
-		}
-	}
-	&__related-section {
-		.c-heading {
-			font-weight: 500;
-			@include bpm-xl {
-				font-size: 28px;
-				margin-bottom: 20px;
-			}
-			@include bpm-xs {
-				font-weight: 400;
-				font-size: 20px;
-			}
-		}
-	}
-	&__product-slider {
-		@include bpm-xs {
-			padding-left: 0;
-			padding-right: 0;
-		}
-	}
+.c-product-single{
+    &__list{
+        padding-top: 50px;
+        @media(min-width: 1200px){
+            padding-right: 100px;
+        }
+    }
+    &__title-list{
+        border-bottom: 1px solid $dark-color-2;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        @include bpm-md{
+            .c-title-list{
+                &__title-wrap{
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        &:last-child{
+            border-bottom: none;
+        }
+    }
+    &__details-wrapper{
+        background-color: $light-color-2;
+        padding:30px 40px;
+        @include bp-md{
+            padding: 100px 40px;            
+        }
+    }
+    &__related-section{
+        padding: 100px 40px;
+        background-color: $light-color-2;
+    }
+    &__h-img-section{
+        background-color: $light-color;
+        .c-h-img-section{
+            &__content-wrapper{
+                position: relative;
+                order: 1px;
+            }
+            &__img-wrapper{
+                order: 0px;
+            }
+        }
+        .c-heading{
+            font-weight: 500;
+            @include bpm-xl{
+                font-weight: 400;
+                font-size: 28px;
+            }
+            @include bpm-xs{
+                font-size: 20px;
+            }
+        }
+    }
+    &__related-section{
+        .c-heading{
+            font-weight: 500;
+            @include bpm-xl{
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+            @include bpm-xs{
+                font-weight: 400;
+                font-size: 20px;
+            }
+        }
+    }
+    &__product-slider{
+        @include bpm-xs{
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
 }
