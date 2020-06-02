@@ -118,6 +118,7 @@ export const customRates = [
 	},
 ];
 export const topBarText = "Free shipping on all orders above $75."; // make it empty string ("") to hide tha bar
+
 export default {
 	projectName,
 	baseUrl,
