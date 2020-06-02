@@ -1,6 +1,7 @@
 // validation error messages
 // registration
 //first name missing
+import { projectName } from "./projectSettings";
 export const firstNameMissingErrMsg = "First Name is required";
 
 //last name missing
@@ -24,7 +25,7 @@ export const passwordShortErrMsg = "Password should be 6 characters";
 
 //Password Valid
 export const passwordValidErrMsg =
-  "A minimum 6 characters password contains a combination of uppercase and lowercase letter and number";
+	"A minimum 6 characters password contains a combination of uppercase and lowercase letter and number";
 
 //Password match
 export const onlyDigits = "Only Digits";
@@ -52,7 +53,8 @@ export const faceBookMissingErrMsg = "Facebook is required";
 export const faceBookValidErrMsg = "Facebook Url is  Not Valid";
 
 // new password message
-export const newPasswordSuccessMsg = "Your password has been updated successfully";
+export const newPasswordSuccessMsg =
+	"Your password has been updated successfully";
 
 export const faxMissingErrMsg = "Fax Number is required";
 export const faxValidErrMsg = "Fax Number is  Not Valid";
@@ -89,12 +91,12 @@ export const oldPasswordRequired = "Old Password is required";
 export const noRatingMsg = "Please select a star rating";
 //---------------------------------------------------------------------------------------
 
-export const projectName = "Bené";
+// export const projectName = projectName;
 export const contactNumber = "+1.646.367.3725 (USA)";
 
 // login page message
 export const loginHeading = "Hello";
-export const loginMsg = " Welcome to Bené";
+export const loginMsg = ` Welcome to ${projectName}`;
 export const userNotActiveMsg = "Your Account is not yet Approved";
 
 // registration page
@@ -106,7 +108,7 @@ export const sendEmailHeading = "";
 export const sendEmailMsg = "We've emailed you a link to reset your password.";
 
 export const loginFailMSg =
-  "Something's not right with your username or Password";
+	"Something's not right with your username or Password";
 export const passIncorrect = "Your password is incorrect";
 export const userNotFound = "We cannot find an account with that email address";
 
@@ -126,14 +128,14 @@ export const warningText = "Warning";
 
 // Favourites page
 export const favouritesAlreadyProductIntoCartMessage =
-  "Product already added in your cart.";
+	"Product already added in your cart.";
 
 export const emptyCart = "YOUR BAG IS EMPTY";
 
 // profile Update Page
 export const profileUpdateMessage = "Your account updated successfully . ";
 export const formErrorMessage =
-  "Something's not right with this form details. ";
+	"Something's not right with this form details. ";
 
 // contact page
 export const msgSent = "Thank you for contacting us. We will contact you asap!";
@@ -143,9 +145,9 @@ export const msgFailedTitle = "Error";
 
 // my order page
 export const myOrderPageFooterDetails = [
-  { details: "Find the estimated delivery date for your recent purchase" },
-  { details: "Track any returns for your order" },
-  { details: "See where the order is being shipped" }
+	{ details: "Find the estimated delivery date for your recent purchase" },
+	{ details: "Track any returns for your order" },
+	{ details: "See where the order is being shipped" },
 ];
 
 // payment method page
@@ -153,24 +155,23 @@ export const cardDetailsSave = "Card details updated  successfully";
 export const cardDetailsfail = "Card details updated  failed";
 
 export const enableCheckoutCheckboxDetails =
-  "Express checkout allows you to skip the regular checkout process and accelerate right to order review using your saved shipping and payment information.";
+	"Express checkout allows you to skip the regular checkout process and accelerate right to order review using your saved shipping and payment information.";
 export const shippingAddressDetails =
-  "Saved address allow you to check out faster since you won't have to enter in your shipping information each time. You'll be able to select the express checkout option.";
+	"Saved address allow you to check out faster since you won't have to enter in your shipping information each time. You'll be able to select the express checkout option.";
 export const stripePaymentDetails =
-  "Saved payment information allows you to check out faster - you won't have to enter in your credit card, gift card, or other payment information each time you checkout. This also allows you to use the express checkout option.";
+	"Saved payment information allows you to check out faster - you won't have to enter in your credit card, gift card, or other payment information each time you checkout. This also allows you to use the express checkout option.";
 
 export const paymentMethodTollTippMessage =
-  "Entering a default payment method here means you won't have to enter a payment method each time you check out . Make sure you fill in all required fields on your";
+	"Entering a default payment method here means you won't have to enter a payment method each time you check out . Make sure you fill in all required fields on your";
 export const shippingAddressTollTippMessage =
-  "Entering a default shipping address here means you won't have to enter an address each time you check out";
+	"Entering a default shipping address here means you won't have to enter an address each time you check out";
 
 // footer
 
-export const footerSubscriptionDetails =
-  "I would like to receive communications about Bené products and services.";
+export const footerSubscriptionDetails = `I would like to receive communications about ${projectName} products and services.`;
 export const footerSubscriptioSuccessHeadingMessage = "Thanks for subscribing";
 export const footerSubscriptioSuccessDetailsMessage =
-  "We are always pleased to share our passionate interests with like-minded individuals.";
+	"We are always pleased to share our passionate interests with like-minded individuals.";
 export const footerSubModalTitle = "Subscribed";
 //checkout Header
 
@@ -181,11 +182,11 @@ export const checkoutHeaderRightSideIconSecurepayment = "Secure payment";
 
 // ambassador-portal  Page
 export const ambassadorAccountUpdateMessage =
-  "Your Ambassador Portal Account  updated  successfully . ";
+	"Your Ambassador Portal Account  updated  successfully . ";
 export const ambassadorBankUpdateMessage =
-  "Your Ambassador Portal Bank Details  updated  successfully . ";
+	"Your Ambassador Portal Bank Details  updated  successfully . ";
 export const ambassadorTaxUpdateMessage =
-  "Your Ambassador Portal Tax Details  updated  successfully . ";
+	"Your Ambassador Portal Tax Details  updated  successfully . ";
 
 export const nameMissingErrMsg = "Name is required";
 export const currencyMissingErrMsg = "Currency is required";
@@ -193,9 +194,9 @@ export const currencyValidErrMsg = "Currency is not valid";
 export const accountNumberMissingMsg = "Checking account number is required";
 export const accountNumberValidMsg = "Checking account number is not valid";
 export const accountNumberConfirmMissingMsg =
-  "Checking account number is required";
+	"Checking account number is required";
 export const accountNumberConfirmValidMsg =
-  "Checking account numbers do not match.";
+	"Checking account numbers do not match.";
 export const accountHolderMissingMsg = "Account Holder Name is required";
 export const accountHolderNameValidMsg = "Account Holder Name is not valid";
 export const accountBankMissingMsg = "Bank Name is required";
@@ -205,7 +206,7 @@ export const invalidOldPass = "Incorrect Old Password";
 
 export const routingTypeMissingMsg = "Bank routing number is required.";
 export const routingTypeValidMsg =
-  "Bank routing number must be exactly nine digits.";
+	"Bank routing number must be exactly nine digits.";
 export const drivingLicenseMissingErr = "Driver's license number is required.";
 export const drivingLicenseValidMsg = "Driver's license number is not valid.";
 
@@ -240,7 +241,7 @@ export const reviewOrderMsg = "4. Review Your Order";
 
 export const checkoutPageTitle = "Checkout";
 export const checkoutPageSubTitle =
-  "Please Enter Your Details Below to Complete Your Purchase.";
+	"Please Enter Your Details Below to Complete Your Purchase.";
 
 //
 export const defaultOrderStatus = "Transaction completed - label generated";
@@ -265,6 +266,6 @@ export const trackLabel = "Track Your Order";
 
 //
 export const enterMsg =
-  "You must be 18 years or older to order CBD products. If you are of legal age click Enter.";
+	"You must be 18 years or older to order CBD products. If you are of legal age click Enter.";
 
 export const zipCodeInvalidShippingError = "Pelase enter a valid zip code .";
