@@ -41,6 +41,7 @@
     "react-flickity-component": "^3.4.0",
     "react-icons": "^3.8.0",
     "react-icons-kit": "^1.3.1",
+    "react-infinite-scroller": "^1.2.4",
     "react-input-mask": "^2.0.4",
     "react-lazy-load-image-component": "^1.3.2",
     "react-moment": "^0.9.7",
@@ -63,6 +64,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.4.1",
     "susy": "^3.0.5",
+    "underscore": "^1.10.2",
     "validator": "^12.1.0"
   }
 }
