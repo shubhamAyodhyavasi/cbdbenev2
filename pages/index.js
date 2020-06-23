@@ -17,6 +17,7 @@ import Slide from "react-reveal/Slide";
 import { Collapse } from "reactstrap";
 import { home as homeData } from "../site-content/index";
 import parse from "html-react-parser";
+import { imageUrl } from "../constants/projectSettings";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -137,8 +138,8 @@ class Home extends React.Component {
 				pageClass={"c-home"}
 			>
 				<Banner
-					image="/images/home-banner-1.png"
-					mobileImage="/images/home-banner-1.png"
+					image={`${imageUrl}/Banner-Image-1.png`}
+					mobileImage={`${imageUrl}/Banner-Image-1.png`}
 					versions={["black-heading"]}
 					// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
 					heading={parse(bannerTitle)}
@@ -177,7 +178,7 @@ class Home extends React.Component {
 							}));
 						}}
 						// Link="/"
-						image="/images/bundle2.png"
+						image={`${imageUrl}/Bundle-Image.png`}
 					>
 						<div className="c-less-more">
 							<div className="c-less-more__less">{parse(thirdContent)}</div>
@@ -218,7 +219,7 @@ class Home extends React.Component {
 						<div className="wellness-wrapper__img">
 							<img
 								className="wellness-wrapper__img--img img-fluid"
-								src="/images/consult-image.jpg"
+								src={`${imageUrl}/Consult-Image.png`}
 							/>
 						</div>
 						<div className="wellness-wrapper__desp">
@@ -256,7 +257,10 @@ class Home extends React.Component {
 								</div>
 							</div>
 							<div className="willness-img">
-								<img className="img-fluid" src="/images/cbd-wellness.png"></img>
+								<img
+									className="img-fluid"
+									src={`${imageUrl}/Wellness-Image.png`}
+								></img>
 							</div>
 						</div>
 					</div>
