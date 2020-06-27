@@ -14,15 +14,18 @@ import apiList from "../../services/apis/apiList";
 import { addReviews, getOrders, getProductById } from "../../services/api";
 import projectSettings, { projectName } from "../../constants/projectSettings";
 import { FullModal } from "../../components/modal";
+import { warning } from "react-icons-kit/fa/";
+import Link from 'next/link'  
 // import Dropdown from '../../components/form-components/Dropdown';
 import {
-	getProductTitle,
+	getProductTitle, 
 	getProductImage,
 	getProductAttributes,
 	getVisibleProducts,
 	getProductDescription,
 } from "../../services/helpers/product";
-
+import ErrorBlock from "../../components/ErrorBlock";
+import FadeTransition from "../../services/extra/FadeTransition";
 // import {Button} from 'antd';
 class SubmitReviews extends React.Component {
 	constructor() {
@@ -31,6 +34,7 @@ class SubmitReviews extends React.Component {
 			isLoading: true,
 			isError: false,
 			selectedProduct: null,
+			
 		};
 	}
 	static async getInitialProps({ query }) {
@@ -38,6 +42,8 @@ class SubmitReviews extends React.Component {
 			orderId: query.oid,
 		};
 	}
+
+
 	componentDidMount() {
 		if (this.props.user && this.props.user._id) {
 			this.getOrders(this.props.user.userMetaId);
@@ -95,15 +101,16 @@ class SubmitReviews extends React.Component {
 				this.setState({
 					isLoading: false,
 				});
-				console.log({ err });
+				console.log({ err }); 
 			});
 	};
 	render() {
-		const { isLoading, isError, order, selectedProduct } = this.state;
+		const { isLoading, isError, order, selectedProduct,showModal } = this.state;
 		if (isError) return <Error statusCode="404" />;
 
 		return (
 			<Layout headerVersions={["bg-light"]} headerTheme="dark">
+				
 				{isLoading && <Loader />}
 				{order &&
 					order.products &&
@@ -148,7 +155,7 @@ class SubmitReviews extends React.Component {
 					selectedProduct={selectedProduct}
 					order={order}
 				/>
-				<FullModal isOpen={!selectedProduct}>
+				 <FullModal isOpen={!selectedProduct}>
 					<div className="c-submit-r__product-selector">
 						<div className="modal__logo-wrapper">
 							<a className="c-logo  modal-footer__logo" href="/">
@@ -183,7 +190,8 @@ class SubmitReviews extends React.Component {
 								))}
 						</div>
 					</div>
-				</FullModal>
+				</FullModal> 
+				
 			</Layout>
 		);
 	}
@@ -194,8 +202,11 @@ class NormalLoginForm extends React.Component {
 		super();
 		this.state = {
 			isLoading: false,
+			showModal: false,
+			
 		};
 	}
+	
 	handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -240,7 +251,9 @@ class NormalLoginForm extends React.Component {
 												res,
 											});
 											if (res.data.status) {
-												// alert("success")
+											
+												this.setState({isLoading:false,
+													showModal:true})
 											}
 										})
 										.catch((err) => {
@@ -272,8 +285,38 @@ class NormalLoginForm extends React.Component {
 
 	render() {
 		const { getFieldDecorator } = this.props.form;
-		const { isLoading } = this.state;
+	
+		const { isLoading,showModal} = this.state;
 		return (
+			<>
+			<FullModal isOpen={showModal}>
+					<div className="c-submit-r__product-selector">
+						<div className="modal__logo-wrapper">
+							<a className="c-logo  modal-footer__logo" href="/">
+								<img
+									src="/images/logo-new.png"
+									className="modal__logo-img"
+									alt={projectName}
+								/>
+							</a>
+							<div className="modal__heading">
+								<h2 className="modal__heading-text">Thank You!!</h2>
+							</div>
+						</div>
+						<div className="modal-dismiss" onClick={this.toggle}>
+							<ReactIcon icon={ic_clear} size={"32"} />
+						</div>
+						<div className="c-susbmit-r__wrapper">
+						<Link
+                    href={"/shop"}
+                  >
+                    <a 
+                    className="btn or-btn btn-outline-shopping btn-icon c-btn c-btn--outline my-order__shopping"
+                     >Continue Shopping</a>
+                  </Link>
+						</div>
+					</div>
+				</FullModal> 
 			<Form onSubmit={this.handleSubmit} className="login-form">
 				{isLoading && <Loader />}
 				<section className="c-submit-r__rating">
@@ -480,6 +523,7 @@ class NormalLoginForm extends React.Component {
 					</div>
 				</div>
 			</Form>
+			</>
 		);
 	}
 }

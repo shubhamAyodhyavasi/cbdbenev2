@@ -19,7 +19,7 @@ const CartDrawer = ({ complete, cart, modifyItem, removeFromCart, hideCartBar })
                 }
             },
         );
-    }
+    } 
     const grandTotal = getGrandTotal(
         cart.subTotal,
         cart.taxPercent,

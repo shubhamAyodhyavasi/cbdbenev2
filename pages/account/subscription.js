@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Link from "next/link";
 import classNames from "classnames";
 import BasicFunction from "../../services/extra/basicFunction";
+import onlyLogin from "../../components/hoc/onlyLogin"
 
 import { Select } from "antd";
 import { FullModal } from "../../components/modal";
@@ -806,7 +807,7 @@ const mapStateToProps = (state) => ({
 });
 export default connect(mapStateToProps, {
 	getCards,
-})(MySubscription);
+})(onlyLogin(MySubscription));
 
 // subscription page
 // 2nd date static

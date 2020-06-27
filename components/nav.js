@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
+import Router from 'next/router'
 import { Flip } from 'react-reveal';
 import classNames from 'classnames'
 import { FiPlus, FiMinus } from 'react-icons/fi'
@@ -9,6 +10,7 @@ import Drawer from './Drawer'
 import CartDrawer from './CartDrawer'
 import { toggleCartBar, hideCartBar, toggleRegBar } from '../redux/actions/drawers'
 import { unsetUser } from '../redux/actions/user'
+import { clearCart } from '../redux/actions/cart'
 // import { c } from '../redux/actions/cart'
 // import $ from 'jquery';
 import Registration from './popups/Registration';
@@ -18,7 +20,7 @@ import { Menu, Dropdown } from 'antd';
 import CartIcon from './CartIcon';
 const Nav = ({
   parent, items, isRight, isCartOpen, toggleCartBar, hideCartBar,
-  toggleRegBar, isRegOpen, loginDisplay, user, unsetUser
+  toggleRegBar, isRegOpen, loginDisplay, user, unsetUser,clearCart,props
 }) => {
   const inputEl = useRef(null);
   const [isOpen, setOpen] = useState(false)
@@ -35,7 +37,12 @@ const Nav = ({
       toggleRegBar()
     }
     if (action === "logout") {
-      unsetUser()
+      console.log(props);
+      
+      unsetUser();
+      localStorage.clear();
+      clearCart();
+      Router.push('/')
     }
   }
   // useEffect(()=> {
@@ -170,4 +177,4 @@ const mapStateToProps = state => ({
   loginDisplay: state.drawers.toDisplay,
   user: state.user
 })
-export default connect(mapStateToProps, { toggleCartBar, hideCartBar, toggleRegBar, unsetUser })(Nav)
+export default connect(mapStateToProps, { toggleCartBar, hideCartBar, toggleRegBar, unsetUser,clearCart })(Nav)

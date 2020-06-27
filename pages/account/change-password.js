@@ -139,4 +139,4 @@ const mapStateToProps = state => ({
   user: state.user,
   countryCode: state.location.countryCode
 });
-export default connect(mapStateToProps)(ChangePassword);
+export default connect(mapStateToProps)(onlyLogin(ChangePassword));
