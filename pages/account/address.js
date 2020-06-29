@@ -8,6 +8,7 @@ import { getAddress } from "../../redux/actions/address";
 import SingleAddress from "../../components/address/singleAddress";
 import classNames from "classnames";
 
+import onlyLogin from "../../components/hoc/onlyLogin"
 import Layout from '../../components/Layouts/Layout'
 
 import {
@@ -168,4 +169,4 @@ export default connect(
   {
     getAddress
   }
-)(ListAddress);
+)(onlyLogin(ListAddress));

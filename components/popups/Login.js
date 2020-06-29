@@ -111,7 +111,7 @@ class LoginForm extends React.Component{
                                 },
                             ],
                         })(
-                            <DebounceInput versions={["dark"]} parentClass="c-login" label="E-mail" />
+                            <DebounceInput versions={["light"]} parentClass="c-login" label="E-mail" />
                         )}
                     </Form.Item>
                     <Form.Item>
@@ -121,7 +121,7 @@ class LoginForm extends React.Component{
                                 {max:20, message:"You can't use more than 20 characters."}
                             ],
                         })(
-                            <DebounceInput type="password" parentClass="c-login" versions={["dark"]} label="Password" />
+                            <DebounceInput type="password" parentClass="c-login" versions={["light"]} label="Password" />
                         )}
                     </Form.Item>
                     <div className="c-login__forget">

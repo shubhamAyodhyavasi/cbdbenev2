@@ -706,7 +706,39 @@ class CheckoutPayment extends React.Component {
                         </TitleList>
                     }
                     
-                    <TitleList parentClass={componentClass} title={<span onClick={this.tglCard} >Pay with card </span>} >
+                    <TitleList parentClass={componentClass} title={<span  >Pay with card </span>} >
+                    <Form.Item>
+                    
+                                    
+                                   {getFieldDecorator('cardpayment', {
+                                    
+                                })(
+                                    <Radio.Group
+                                        className="bordered"
+                                        onChange={(e) => {
+                                            const {
+                                                value
+                                            } = e.target
+                                            if (value !== null) {
+                                                // setFieldsValue({
+                                                //     newAddress: false
+                                                // })
+                                                this.props.form.setFieldsValue({
+                                                    paymentProfile: null,
+                                                    bankpayment:null
+                                                })
+                                                console.log(value);
+                                                
+                                                this.setState({
+                                                    collapseKey: ["card"]
+                                                })
+                                            }
+                                        }}
+                                    ><Radio value="Pay with New Card">Pay with New Card</Radio><span></span>
+                                    
+                                    </Radio.Group>
+                                )}
+                                    </Form.Item>
                         <Collapse destroyInactivePanel={true} bordered={false} activeKey={collapseKey} >
                             <Panel header={null} key="card">
                                 <>
@@ -787,9 +819,42 @@ class CheckoutPayment extends React.Component {
                                     </Form.Item>}
                                 </>
                             </Panel>
-                        </Collapse>
+                        </Collapse>        
                     </TitleList>
-                    <TitleList versions={["sm-border"]} parentClass={componentClass} title={<span onClick={this.tglCard} >Pay with account</span>} >
+                    <TitleList versions={["sm-border"]} parentClass={componentClass} title={<span >Pay with account</span>} >
+                    <Form.Item>
+                    
+                                    
+                    {getFieldDecorator('bankpayment', {
+                     
+                 })(
+                     <Radio.Group
+                         className="bordered"
+                         onChange={(e) => {
+                             const {
+                                 value
+                             } = e.target
+                             if (value !== null) {
+                                 // setFieldsValue({
+                                 //     newAddress: false
+                                 // })
+                                 this.props.form.setFieldsValue({
+                                     paymentProfile: null,
+                                     cardpayment:null
+                                 })
+                                 console.log(value);
+                                 
+                                 this.setState({
+                                     collapseKey: ["bank"]
+                                 })
+                             }
+                         }}
+                     ><Radio value="Pay with New Card">Pay with New Card</Radio><span></span>
+                     
+                     </Radio.Group>
+                 )}
+                     </Form.Item>
+                       
                         <Collapse destroyInactivePanel={true} bordered={false} activeKey={collapseKey} >
                             <Panel header={null} key="bank">
                                 <>

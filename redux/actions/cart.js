@@ -116,7 +116,7 @@ export const clearCart = (userMetaId = null) => dispatch => {
   }
 };
 export const clearCartA = ()=> {
-  // console.log("clear AAAAAAAAAA")
+   //console.log("clear AAAAAAAAAA")
   return({
     type: CLEAR_CART
   })

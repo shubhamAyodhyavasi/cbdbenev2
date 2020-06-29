@@ -23,7 +23,7 @@ export default class UserDetails extends Component{
             <div className="container-fluid">
                 <div className="row c-userDetails">
                 
-                    <Button className="tab__btn" onClick={this.next}>Next </Button>
+                    {/* <Button className="tab__btn" onClick={this.next}>Next </Button> */}
                 </div>
             </div>
         </form>

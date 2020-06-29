@@ -7,6 +7,7 @@ import SingleCard from "../../components/cardDetails/SingleCard";
 import { Card, CardBody, CardTitle, Collapse } from "reactstrap";
 import CardForm from "../../components/cardDetails/CardForm";
 import CheckForm from "../../components/cardDetails/CheckForm";
+import onlyLogin from "../../components/hoc/onlyLogin"
 import {
   ic_library_add
   // ic_add, ic_clear
@@ -294,4 +295,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getCards }
-)(ListCard);
+)(onlyLogin(ListCard));

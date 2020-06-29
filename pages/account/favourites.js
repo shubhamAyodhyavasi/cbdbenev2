@@ -35,6 +35,7 @@ import Link from 'next/link'
 import MyAccountSidebar from "../../components/MyAccountSidebar";
 import Loader from '../../components/Loader'
 import BasicFunction from "../../services/extra/basicFunction";
+import onlyLogin from "../../components/hoc/onlyLogin"
 const basicFunction = new BasicFunction();
 const {
     filePath
@@ -678,4 +679,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { setFav, addToCart, setWishList, toggleCartBar }
-)(Favourites);
+)(onlyLogin(Favourites));
