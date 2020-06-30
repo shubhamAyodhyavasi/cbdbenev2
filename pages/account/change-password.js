@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { Helmet } from "react-helmet";
 import MyAccountSidebar from "../../components/MyAccountSidebar";
-
+import onlyLogin from "../../components/hoc/onlyLogin"
 import classNames from "classnames";
 import Layout from '../../components/Layouts/Layout'
 import {
