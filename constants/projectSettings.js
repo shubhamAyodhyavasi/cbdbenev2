@@ -1,6 +1,7 @@
 export const projectName = "Bene";
 export const baseUrl = "http://localhost:4000";
 export const docMzUrl = "http://localhost:3001";
+export const contentUrl = "http://localhost:5000";
 export const imageUrl = "/images";
 export const serverUrl = "https://admin.cbdbene.com/";
 export const googleApiKey = "AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk";
