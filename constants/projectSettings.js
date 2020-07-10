@@ -1,6 +1,7 @@
 export const projectName = "Bene";
 export const baseUrl = "http://localhost:4003";
 export const docMzUrl = "http://localhost:3001";
+export const contentUrl = "http://localhost:5000";
 export const imageUrl = "/images";
 export const serverUrl = "https://admin.cbdbene.com/";
 export const googleApiKey = "AIzaSyBXxXfKy5wtHEO9XniOvGEKPME-_ldClVk";
@@ -120,6 +121,7 @@ export const customRates = [
 export const topBarText = "Free shipping on all orders above $75."; // make it empty string ("") to hide tha bar
 
 export default {
+	imageUrl,
 	projectName,
 	baseUrl,
 	serverUrl,

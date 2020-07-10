@@ -6,7 +6,7 @@ import LRSection from "../components/LRSection";
 import HHSection from "../components/HHSection";
 import CategoryProducts from "../components/CategoryProducts";
 import categoryList from "../constants/categoryList";
-import { getProducts } from "../redux/actions";
+import { getProducts, homeData } from "../redux/actions";
 import { connect } from "react-redux";
 import Button from "../components/form-components/Button";
 import { getAllCombos } from "../services/api";
@@ -15,8 +15,9 @@ import ScrollAnimation from "react-animate-on-scroll";
 import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import { Collapse } from "reactstrap";
-import { home as homeData } from "../site-content/index";
-import parse from "html-react-parser";
+// import { home as homeData } from "../site-content/index";
+import parser from "html-react-parser";
+import { imageUrl } from "../constants/projectSettings";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
@@ -31,6 +32,30 @@ class Home extends React.Component {
 			combos: [],
 			isLrSection: false,
 			isWillness: false,
+			homeData: {
+				banner: {
+					title: "",
+					content: "",
+					btnText: "",
+				},
+				categorySlider: { title: "" },
+				thirdSection: {
+					bigTitle: "",
+					title: "",
+					content: "",
+					btnText: "",
+				},
+				bundlesSlider: {
+					title: "",
+					subTitle: "",
+					btnText: "",
+				},
+				fifthSection: {
+					title: "",
+					content: "",
+					btnText: "",
+				},
+			},
 		};
 	}
 	static getDerivedStateFromProps(nextProps, prevState) {
@@ -51,6 +76,12 @@ class Home extends React.Component {
 
 	componentDidMount() {
 		this.props.getProducts();
+		homeData().then((data) => {
+			console.log(data);
+			this.setState({
+				homeData: data,
+			});
+		});
 		getAllCombos().then((res) => {
 			console.log({
 				res,
@@ -127,7 +158,7 @@ class Home extends React.Component {
 				content: fifthContent,
 				btnText: fifthBtnText,
 			},
-		} = homeData;
+		} = this.state.homeData;
 
 		return (
 			<Layout
@@ -137,13 +168,13 @@ class Home extends React.Component {
 				pageClass={"c-home"}
 			>
 				<Banner
-					image="/images/home-banner-1.png"
-					mobileImage="/images/home-banner-1.png"
+					image={`${imageUrl}/Banner-Image-1.png`}
+					mobileImage={`${imageUrl}/Banner-Image-1.png`}
 					versions={["black-heading"]}
 					// heading={<span><span style={{fontSize: "1.3em"}}>bené</span> fits <br />your life</span>}
-					heading={parse(bannerTitle)}
+					heading={parser(bannerTitle)}
 					// content={<span>In our own quest to enhance total balance and <br />reduce stress, we set out to understand, what is CBD.</span>}
-					content={parse(bannerContent)}
+					content={parser(bannerContent)}
 				>
 					<Button
 						parentClass="c-home"
@@ -151,7 +182,7 @@ class Home extends React.Component {
 						link="/shop"
 						theme={"outline"}
 					>
-						{parse(bannerBtnText)}
+						{parser(bannerBtnText)}
 					</Button>
 				</Banner>
 				{products && products.length > 0 && (
@@ -162,29 +193,29 @@ class Home extends React.Component {
 							activeCategory={activeCategory}
 							onCategoryChange={this.changeCategory}
 							products={products}
-							heading={parse(categoryTitle)}
+							heading={parser(categoryTitle)}
 						/>
 					</Fade>
 				)}
 				<Fade>
 					<LRSection
-						heading={parse(thirdBirTitle)}
-						subHeading={parse(thirdTitle)}
-						linkText={parse(thirdBtnText)}
+						heading={thirdBirTitle}
+						subHeading={thirdTitle}
+						linkText={thirdBtnText}
 						onLinkClick={() => {
 							this.setState((prevState) => ({
 								isLrSection: !prevState.isLrSection,
 							}));
 						}}
 						// Link="/"
-						image="/images/bundle2.png"
+						image={`${imageUrl}/Bundle-Image.png`}
 					>
 						<div className="c-less-more">
-							<div className="c-less-more__less">{parse(thirdContent)}</div>
+							<div className="c-less-more__less">{parser(thirdContent)}</div>
 							<Collapse isOpen={isLrSection}>
 								<div className="c-less-more__whole">
 									<div className="c-less-more__whole-inner">
-										{parse(thirdContent)}
+										{parser(thirdContent)}
 									</div>
 								</div>
 							</Collapse>
@@ -193,9 +224,9 @@ class Home extends React.Component {
 				</Fade>
 				<Fade>
 					<HHSection
-						heading={parse(bundlesTitle)}
-						subHeading={parse(bundlesSubTitle)}
-						linkText={parse(bundlesBtnText)}
+						heading={parser(bundlesTitle)}
+						subHeading={parser(bundlesSubTitle)}
+						linkText={parser(bundlesBtnText)}
 						link="/shop"
 						bg="light-2"
 						// images={[
@@ -212,24 +243,24 @@ class Home extends React.Component {
 				</Fade>
 				<section className="wellness">
 					<div className="wellness__heading">
-						<h3 className="wellness__heading--text">{parse(fifthTitle)}</h3>
+						<h3 className="wellness__heading--text">{parser(fifthTitle)}</h3>
 					</div>
 					<div className="wellness-wrapper">
 						<div className="wellness-wrapper__img">
 							<img
 								className="wellness-wrapper__img--img img-fluid"
-								src="/images/consult-image.jpg"
+								src={`${imageUrl}/Consult-Image.png`}
 							/>
 						</div>
 						<div className="wellness-wrapper__desp">
 							<div className="c-less-more">
 								<div className="c-less-more__less c-less-more__less--large">
-									{parse(fifthContent)}
+									{parser(fifthContent)}
 								</div>
 								<Fade when={isWillness}>
 									<div className="c-less-more__whole">
 										<div className="c-less-more__whole-inner  c-less-more__whole-inner--large">
-											{parse(fifthContent)}
+											{parser(fifthContent)}
 										</div>
 									</div>
 								</Fade>
@@ -251,12 +282,15 @@ class Home extends React.Component {
 										}}
 										theme={["btm-br"]}
 									>
-										{parse(fifthBtnText)}
+										{parser(fifthBtnText)}
 									</Button>
 								</div>
 							</div>
 							<div className="willness-img">
-								<img className="img-fluid" src="/images/cbd-wellness.png"></img>
+								<img
+									className="img-fluid"
+									src={`${imageUrl}/Wellness-Image.png`}
+								></img>
 							</div>
 						</div>
 					</div>
