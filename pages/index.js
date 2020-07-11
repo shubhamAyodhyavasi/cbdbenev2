@@ -289,7 +289,7 @@ class Home extends React.Component {
 							<div className="willness-img">
 								<img
 									className="img-fluid"
-									src={`${imageUrl}/Wellness-Image.png`}
+									src={`${imageUrl}/Wellness-Image-1.png`}
 								></img>
 							</div>
 						</div>
