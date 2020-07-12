@@ -7,7 +7,7 @@ import Heading from "../../components/Heading";
 import Logo from "../../components/Logo";
 import apiList from "../../services/apis/apiList";
 import ProductCard from "../../components/ProductCard";
-import {
+import { 
 	getProductImage,
 	getProductTitle,
 	getProductShortDesc,
@@ -16,6 +16,7 @@ import {
 	getVisibleProducts,
 } from "../../services/helpers/product";
 import projectSettings from "../../constants/projectSettings";
+import { imageUrl } from "../../constants/projectSettings";
 import fetch from "isomorphic-unfetch";
 import { category as categoryData } from "../../site-content";
 import parse from "html-react-parser";
