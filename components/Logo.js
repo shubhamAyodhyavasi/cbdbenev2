@@ -1,6 +1,6 @@
 import Link from "next/link";
 import classNames from "classnames";
-import { projectName } from "../constants/projectSettings";
+import { projectName,imageUrl } from "../constants/projectSettings";
 const Logo = ({ versions, parentClass, full, text }) => {
 	const componentClass = `c-logo`;
 	const versionClass = versions
@@ -17,7 +17,7 @@ const Logo = ({ versions, parentClass, full, text }) => {
 			<Link href="/">
 				<a className={className}>
 					<img
-						src="/images/logo-text.png"
+						src={`${imageUrl}/Logo-nav.png`}
 						className="c-logo__img"
 						alt={projectName}
 					/>
@@ -30,14 +30,14 @@ const Logo = ({ versions, parentClass, full, text }) => {
 			<a className={className}>
 				{!full && (
 					<img
-						src="/images/logo-new.png"
+						src={`${imageUrl}/Logo-chat.png`}
 						className="c-logo__img"
 						alt={projectName}
 					/>
 				)}
 				{full && (
 					<img
-						src="/images/logo.png"
+						src={`${imageUrl}/Logo.png`}
 						className="c-logo__img"
 						alt={projectName}
 					/>

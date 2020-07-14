@@ -13,7 +13,7 @@ import ChatMsgList from "./ChatMsgList";
 import ChatOrderList from "./ChatOrderList";
 import LearnResponse from "./LearnResponse";
 import { isEmpty, isEmail } from "validator";
-import { chatTheme } from "../../constants/projectSettings";
+import { chatTheme,imageUrl } from "../../constants/projectSettings";
 
 const chatMsgList = new ChatMsgList();
 const {
@@ -371,7 +371,7 @@ class ChatBotElement extends Component {
               }}
               enableMobileAutoFocus={true}
               floating={true}
-              botAvatar={"/images/logo-new.png"}
+              botAvatar={`${imageUrl}/Logo-chat.png`}
               bubbleStyle={{
                 borderRadius: 0,
                 marginBottom: 0,
