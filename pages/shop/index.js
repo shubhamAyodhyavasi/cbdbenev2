@@ -15,10 +15,11 @@ import SearchBox from "../../components/form-components/SearchBox";
 import fetch from "isomorphic-unfetch";
 import { Collapse } from "reactstrap";
 import { Icon } from 'antd'
-import { shop as shopData } from '../../site-content'
+import { shopData } from "../../redux/actions";
+//import { shop as shopData } from '../../site-content'
+
 import parse from "html-react-parser"
-const Shop = ({ productList, combos, ...props }) => {
-    
+const Shop = ({ productList, combos,shopdata, ...props }) => {
     const [searchValue, setSearchValue] = useState("")
     const [isFilter, setIsFilter] = useState(false)
     const [selectedFilters, setSelectedFilters] = useState("");
@@ -72,7 +73,9 @@ const Shop = ({ productList, combos, ...props }) => {
                 <div className="container-fluid">
                     <div className="c-shop-page__row c-shop-page__row--light-bg row">
                         <div className="col-md-6">
-                            <Heading versions={["lft-br"]} parentClass="c-shop-page" >{parse(shopData.title)}</Heading>
+                            <Heading versions={["lft-br"]} parentClass="c-shop-page" >{
+                            parse(shopdata.title)
+                            }</Heading>
                         </div>
                         <div className="col-md-6 mt-5 mt-md-0">
                             <div className="c-shop-page__filter-box">
@@ -123,12 +126,16 @@ const Shop = ({ productList, combos, ...props }) => {
                     <div className="c-category-page__row row" >
                         <div className="col-md-6 col-lg-4 offset-lg-1 mb-md-0 mb-3" >
                             <Heading parentClass="c-category-page" versions={['large']} >
-                                {parse(shopData.bundleTitle)}
+                                {
+                                parse(shopdata.bundleTitle)
+                                }
                             </Heading>
                         </div>
                         <div className="col-md-6" >
                             <Heading parentClass="c-category-page" subHeading={true} versions={['lft-br']}  >
-                                {parse(shopData.bundleSubTitle)}
+                                {
+                                parse(shopdata.bundleSubTitle)
+                                }
                             </Heading>
                         </div>
                         <div className="col-12">
@@ -152,15 +159,17 @@ Shop.getInitialProps = async ({ query }) => {
     const res = await fetch(apiList.getAllProducts)
     const productList = await res.json()
     const visibleProducts = getVisibleProducts(productList.products)
+    const Shopdata = await shopData();
     
     const comboRes      = await fetch(apiList.getAllCombos)
     const comboList     = await comboRes.json()
     const visibleCombo  = getVisibleProducts(comboList.combos)
-
+    
     return {
         category: query.cid,
         productList: visibleProducts.map(el => addSlugToProduct(el)),
         combos: visibleCombo.map(el => addSlugToProduct(el)),
+        shopdata:Shopdata.shop
     }
 }
-export default connect(null)(Shop)
+export default connect(null)(Shop) 

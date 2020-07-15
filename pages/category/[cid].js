@@ -18,9 +18,9 @@ import {
 import projectSettings from "../../constants/projectSettings";
 import { imageUrl } from "../../constants/projectSettings";
 import fetch from "isomorphic-unfetch";
-import { category as categoryData } from "../../site-content";
+import { categoryData } from "../../redux/actions";
 import parse from "html-react-parser";
-const Category = ({ productList, combos, ...props }) => {
+const Category = ({ productList,categoryData, combos, ...props }) => {
 	const products = productList.map((el) => {
 		console.log({
 			price: getBasicPrice(el),
@@ -36,8 +36,8 @@ const Category = ({ productList, combos, ...props }) => {
 			...el,
 		};
 	});
+	
 	const currentCategory = categoryData[props.category] || categoryData;
-
 	const bannerTitle = currentCategory.bannerTitle;
 	const title = currentCategory.title;
 	const content = currentCategory.content;
@@ -129,17 +129,7 @@ const Category = ({ productList, combos, ...props }) => {
 	);
 };
 Category.getInitialProps = async ({ query }) => {
-	if (query.cid.toLowerCase() === "bundles") {
-		const res = await fetch(apiList.getAllCombos);
-		const productList = await res.json();
-		const visibleProducts = getVisibleProducts(productList.combos);
 
-		return {
-			category: query.cid,
-			productList: visibleProducts.map((el) => addSlugToProduct(el)),
-			combos: [],
-		};
-	} else {
 		const res = await fetch(apiList.getAllProducts);
 		const productList = await res.json();
 		const visibleProducts = getVisibleProducts(productList.products);
@@ -165,11 +155,13 @@ Category.getInitialProps = async ({ query }) => {
 			}
 			return false;
 		});
+		const Category = await categoryData();
 		return {
 			category: query.cid,
 			productList: categoryProduct.map((el) => addSlugToProduct(el)),
 			combos: visibleCombo.map((el) => addSlugToProduct(el)),
+			categoryData:Category
 		};
-	}
+	
 };
 export default connect(null)(Category);
