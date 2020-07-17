@@ -1,43 +1,43 @@
 .blognav {
-	margin-top: 2em;
-
-	padding-bottom: 1em;
-	&-wrapper {
-		display: flex;
-		justify-content: space-between;
-		padding: 0 3em;
-		overflow: auto;
-
-		&-items {
-			font-size: 2.5rem;
-			font-weight: 500;
-			color: $color-font-muted;
-			line-height: 1.2;
-			cursor: pointer;
-			&:hover {
-				color: $color-font-black;
-			}
-			&:active {
-				color: $color-font-black;
-			}
-		}
-	}
+    margin-top: 2em;
+    padding-bottom: 1em;
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 3em;
+        overflow: auto;
+        &-items {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: $color-font-muted;
+            line-height: 1.2;
+            min-width: 125px;
+            cursor: pointer;
+            &:hover {
+                color: $color-font-black;
+            }
+            &:active {
+                color: $color-font-black;
+            }
+        }
+    }
 }
+
 .divider-down {
-	margin-top: 1em;
-	width: 100%;
-	background-color: $color-primary2;
-	height: 2.5px;
+    margin-top: 1em;
+    width: 100%;
+    background-color: $color-primary2;
+    height: 2.5px;
 }
 
 @media screen and (max-width: 480px) {
-	.blognav {
-		&-wrapper {
-			// flex-direction: column;
-			&-items {
-				margin: 0rem 2rem 2rem 2rem;
-				white-space: nowrap;
-			}
-		}
-	}
+    .blognav {
+        &-wrapper {
+            // flex-direction: column;
+            &-items {
+                margin: 0rem 2rem 2rem 2rem;
+                white-space: nowrap;
+            }
+        }
+    }
 }

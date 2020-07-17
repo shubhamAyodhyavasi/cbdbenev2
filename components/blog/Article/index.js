@@ -40,7 +40,7 @@ export default class index extends Component {
 						Back to blog
 					</div>
 				</div>
-				<div className="article-heading">{values.heading}</div>
+				<div className="article-heading"><h1>{values.heading}</h1></div>
 				<div className="article-image-wrapper">
 					<img
 						src={`${imageUrl}/${values.image}`}
