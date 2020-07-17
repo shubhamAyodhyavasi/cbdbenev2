@@ -4,7 +4,8 @@ import { imageUrl } from "../../../constants/projectSettings";
 export default class index extends Component {
 	render() {
 		let values = this.props.data;
-		const tags = values.tags.map((elem, index) => {
+		const tags =values.tags.map((elem, index) => {
+			console.log("elem",elem);
 			if (index === values.tags.length - 1)
 				return (
 					<span
@@ -42,7 +43,7 @@ export default class index extends Component {
 				<div className="article-heading">{values.heading}</div>
 				<div className="article-image-wrapper">
 					<img
-						src={`${imageUrl}/bundle.jpg`}
+						src={`${imageUrl}/${values.image}`}
 						className="article-image-wrapper--image"
 						alt="Article image"
 					/>

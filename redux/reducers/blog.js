@@ -7,7 +7,7 @@ const initiaState = {
 };
 
 const add = (state, action) => {
-	console.log("in reducer", action, state);
+	
 	if (state.currentTag !== action.tag) {
 		return {
 			...state,
