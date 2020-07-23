@@ -22,10 +22,7 @@ import { categoryData } from "../../redux/actions";
 import parse from "html-react-parser";
 const Category = ({ productList,categoryData, combos, ...props }) => {
 	const products = productList.map((el) => {
-		console.log({
-			price: getBasicPrice(el),
-			el,
-		});
+		
 		return {
 			image: el.productImage
 				? projectSettings.serverUrl + el.productImage
@@ -44,13 +41,20 @@ const Category = ({ productList,categoryData, combos, ...props }) => {
 	const bundleTitle = currentCategory.bundleTitle;
 	const bundleContent = currentCategory.bundleContent;
 	return (
-		<Layout headerVersions={["bg-light"]} fixed={true} headerTheme="dark">
+		<Layout 
+		headerVersions={["bg-light"]} 
+		fixed={true} 
+		headerTheme="dark" 
+		description={[content,bundleContent,title]}
+		keywords={products.map(e=> e.title)}
+		>
 			{/* <Layout headerVersions={["bg-dark"]} className="c-consult-page" title="Category">  */}
 			<div className="c-category-page">
 				<HImgSection
 					parentClass="c-category-page"
 					version={["full", "content-bottom"]}
 					image={`${imageUrl}/Oil-Page-Image.png`}
+					alt="Oil-Page-Image"
 				>
 					<div>
 						<Heading

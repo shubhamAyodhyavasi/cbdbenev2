@@ -74,12 +74,14 @@ const CategoryProducts = ({ heading, subHeading, categoryList, activeCategory, o
                     reloadOnUpdate={true}
                     className="c-category-products__slider"
 				>
-                    {products.filter(product => product.visibilitytype ).map((el, i) => (
+                    {products.filter(product => product.visibilitytype ).map((el, i) => 
+                       
+                        (
                         <Link key={i} href={`/shop/${getProductTitle(el).replace(/ /g, "-")}`}>
                             <div className="col-lg-4 c-category-products__product">
                                 <img
                                     src={projectSettings.serverUrl + el.productImage}
-                                    alt={el.title}
+                                    alt={el.title ? el.title:"product"}
                                     onLoad={() => {
                                       flResize();
                                     }}

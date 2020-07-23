@@ -131,9 +131,14 @@ class Home extends React.Component {
 		// const {
 		//   products
 		// } = this.props
+		let keywords = categoryList.map(e=>{
+			//console.log(e);
+			return Object.values(e)
+		})
 		console.log({
 			props: this.props,
 			products,
+			keywords
 		});
 		const {
 			banner: {
@@ -159,6 +164,7 @@ class Home extends React.Component {
 				btnText: fifthBtnText,
 			},
 		} = this.state.homeData;
+		let description=  [bannerContent,thirdContent,fifthContent];
 
 		return (
 			<Layout
@@ -166,6 +172,8 @@ class Home extends React.Component {
 				headerTheme="dark"
 				homeLogo={false}
 				pageClass={"c-home"}
+				description={description}
+				keywords={keywords}
 			>
 				<Banner
 					image={`${imageUrl}/Banner-Image-1.png`}
@@ -250,6 +258,7 @@ class Home extends React.Component {
 							<img
 								className="wellness-wrapper__img--img img-fluid"
 								src={`${imageUrl}/Consult-Image.png`}
+								alt="consult"
 							/>
 						</div>
 						<div className="wellness-wrapper__desp">
@@ -290,6 +299,7 @@ class Home extends React.Component {
 								<img
 									className="img-fluid"
 									src={`${imageUrl}/Wellness-Image-1.png`}
+									alt="wellness"
 								></img>
 							</div>
 						</div>

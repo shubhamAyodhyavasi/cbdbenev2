@@ -16,7 +16,7 @@ const Favourites = props => {
                 <div className="row c-favourites__row">
                     <div className="c-favourites__item-row">
                         <div className="c-favourites__img-wrap">
-                            <img className="img-fluid" src="images/cbd-oil.png" />
+                            <img className="img-fluid" src="images/cbd-oil.png" alt="cbd-oil"/>
                         </div>
                         <div className="c-favourites__heading">
                             <h3 className="c-favourites__heading__title" >CBD ISOLATE 500MG</h3>

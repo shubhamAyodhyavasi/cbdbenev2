@@ -32,7 +32,7 @@ class DrCardLong extends Component {
                     <div className="row justify-content-around" >
                         <div className="c-dr-card-long__left-col" >
                             <div className="c-dr-card-long__img-wrap" >
-                                <img src={this.props.image} className="c-dr-card-long__img img-fluid" />
+                                <img src={this.props.image} className="c-dr-card-long__img img-fluid" alt={title} />
                             </div>
                             <div className="c-dr-card-long__description" >
                                 <div className="c-dr-card-long__rate-wrapper">

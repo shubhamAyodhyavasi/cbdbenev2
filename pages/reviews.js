@@ -105,11 +105,11 @@ class Home extends React.Component {
 							</h1>
 						</div>
 						<div clasName="reviews__icon">
-							<img className="img-fluid" src="/images/logo-new.png" />
+							<img className="img-fluid" src="/images/logo-new.png" alt="logo" />
 						</div>
 					</div>
 					<div className="reviews__img">
-						<img className="img-fluid" src="/images/reviews-bnr.png" />
+						<img className="img-fluid" src="/images/reviews-bnr.png" alt="reviews" />
 					</div>
 				</div>
 
