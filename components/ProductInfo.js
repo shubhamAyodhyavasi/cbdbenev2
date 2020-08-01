@@ -1,6 +1,7 @@
 import Heading from "./Heading";
 import { Rate, Icon, Select,  } from 'antd'
 import TitleList from "./TItleList";
+import PropTypes from 'prop-types';
 import Checkbox from "./form-components/Checkbox";
 import Button from "./form-components/Button";
 import Quantity from "./form-components/Quantity";
@@ -14,6 +15,7 @@ import {getProductImageArray, } from '../services/helpers/product'
 import projectSettings from '../constants/projectSettings'
 import BasicFunction from "../services/extra/basicFunction";
 import {addToWishList, deleteWishList} from "../services/api";
+import { setFav, setWishList, toggleCartBar } from "../redux/actions";
 import ImageZoom from "./ImageZoom"
 import { Collapse, } from 'reactstrap';
 const basicFunction = new BasicFunction();
@@ -27,7 +29,7 @@ class ProductInfo extends React.Component {
             isAllIngredient: false
         }
     }
-    
+     
   hartState = (_id, productmainId, productDetails, productSlug) => {
     const removeIndex = basicFunction.checkProductInWishList(
       this.props.wishList,
@@ -45,11 +47,12 @@ class ProductInfo extends React.Component {
           .catch();
       }
       wishListArray.splice(removeIndex, 1);
-      this.props.setWishList(wishListArray);
+      setWishList(wishListArray);
       this.setState({
         SpinnerToggle: false
       });
     } else {
+        console.log(this.props.user._id);
       if (this.props.user._id) {
         const userid = this.props.user._id;
         addToWishList(userid, productmainId, _id, productSlug)
@@ -78,7 +81,7 @@ class ProductInfo extends React.Component {
                 };
               }
 
-              this.props.setWishList([...wishListArray, wishlist]);
+              setWishList([...wishListArray, wishlist]);
               this.setState({
                 SpinnerToggle: false
               });
@@ -92,8 +95,8 @@ class ProductInfo extends React.Component {
           productDetails: productDetails,
           productSlug
         };
-
-        this.props.setWishList([...wishListArray, wishListDetails]);
+        console.log(wishListDetails);
+        setWishList([...wishListArray, wishListDetails]);
       }
     }
   };
@@ -146,6 +149,7 @@ class ProductInfo extends React.Component {
         const { Option } = Select;
         const gallery = getProductImageArray(product)
         const avgReviews = this.getAvg(this.props.reviews).toFixed(1)
+        console.log(this.props);
         
         const reviewsLength = this.props.reviews ? this.props.reviews.length : 0
         const headingAndReviews = () => <>
@@ -260,6 +264,7 @@ class ProductInfo extends React.Component {
         )
     }
 }
+
 const mapStateToProps = state => ({
     cart : state.cart,
     wishList: state.wishList,
