@@ -54,7 +54,7 @@ const Product = ({ product, allProducts, ...props }) => {
 			},
 		],
 	};
-
+ 
 	const { productList } = state;
 	const productAttr = getProductAttributes(product, allProducts);
 	const image = getProductImage(product, "sectionB"); //|| "/images/cbd-oil.png"

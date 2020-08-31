@@ -17,7 +17,7 @@ const SubmitReviews = props => {
                     <div className="row c-submit-r__row">
                         <div className="c-submit-r__item-row">
                             <div className="c-submit-r__img-wrap">
-                                <img className="img-fluid" src="images/cbd-oil.png" />
+                                <img className="img-fluid" src="images/cbd-oil.png" alt="cbd-oil"/>
                             </div>
                             <div className="c-submit-r__heading">
                                 <h3 className="c-submit-r__heading__title" >CBD ISOLATE 500MG</h3>

@@ -1,3 +1,6 @@
+import {categoryList} from "../redux/actions"
+import { localFontList } from "./Constants";
+
 const mainMenus = [
     {
         label: "Shop",

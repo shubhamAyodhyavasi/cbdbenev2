@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 
-const HImgSection = ({image, children, parentClass, version}) => {
+const HImgSection = ({image, children, parentClass, version,alt}) => {
+   
     const parent = `${parentClass}__h-img-section`
     const versionClass = version.map(el => `c-h-img-section--${el}`).join(" ")
     return (
@@ -15,7 +16,7 @@ const HImgSection = ({image, children, parentClass, version}) => {
                     </div>
                 </div>
                 <div className="col-lg-6 c-h-img-section__img-wrapper">
-                    <img src={image} className="c-h-img-section__img" />
+                    <img src={image} className="c-h-img-section__img" alt={alt}/>
                 </div>
             </div>
         </div>

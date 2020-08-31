@@ -143,4 +143,5 @@ export default {
 	customRates,
 	chatTheme,
 	topBarText,
+	contentUrl
 };

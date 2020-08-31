@@ -1,7 +1,7 @@
 import React from "react";
 import { imageUrl } from "../../../constants/projectSettings";
 const ArticleCard = ({ data, ...props }) => {
-	// console.log("data", data);
+	
 	const tags = data.tags.map((elem, index) => {
 		if (index === data.tags.length - 1)
 			return (
@@ -32,13 +32,13 @@ const ArticleCard = ({ data, ...props }) => {
 			<article className="articlecard ">
 				<div className="articlecard-wrapper ">
 					<div className="articlecard-wrapper-image">
-						<img
+						<div
 							// src={`${imageUrl}/sampleimg.png`}
-							src={`${imageUrl}/bundle.jpg`}
+							style={{backgroundImage:`url(${imageUrl}/${data.image})`}}
 							alt="article"
 							className="articlecard-wrapper-image--item"
 							// style={{ width: "100%", height: "43rem", objectFit: "cover" }}
-						/>
+						></div>
 					</div>
 					<div className="articlecard-wrapper-info">
 						<div className="articlecard-wrapper-info-small">{tags}</div>

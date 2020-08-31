@@ -2,11 +2,11 @@ import { getBlogs } from "../../services/apis/blog";
 import * as actionTypes from "./type";
 
 export const get = (pageNo, tag) => {
-	console.log("getAll action", pageNo, tag);
+	
 	return (dispatch) => {
 		return getBlogs(pageNo, tag)
 			.then((result) => {
-				console.log(result);
+			
 				dispatch({
 					type: actionTypes.GET_ALL,
 					payload: result.data.data,

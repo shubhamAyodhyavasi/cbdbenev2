@@ -1,19 +1,20 @@
 
-import React, { useState, useRef, useMemo, Fragment } from 'react'
+import React, { useState, useEffect,useRef, useMemo, Fragment } from 'react'
 import Logo from "./Logo";
 import Nav from "./nav";
 import { useScrollPosition } from "../services/helpers/scroll"
 import { Affix } from 'antd'
 import classNames from 'classnames'
 import projectSettings from "../constants/projectSettings"
-import mainMenus from '../constants/mainMenus'
+//import mainMenus from '../constants/mainMenus';
+import {categoryList} from "../redux/actions"
 import rightMenus from "../constants/rightMenus";
 import NavMobile from './navMobile';
-import mobileMenus from '../constants/mobileMenus';
+//import mobileMenus from '../constants/mobileMenus';
 import mobileMenusRight from '../constants/mobileMenusRight';
 
 
-
+ 
 
 const Header = ({bg, theme, versions, fixed, homeLogo}) => {
     const versionClass = versions.map(el => (`c-header--${el}`)).join(" ")
@@ -21,7 +22,44 @@ const Header = ({bg, theme, versions, fixed, homeLogo}) => {
     const [show, setIsShow] = useState(true)
     const [isAtTop, setIsAtTop] = useState(true)
    const [hideOnScroll, setHideOnScroll] = useState(true)
-
+   const [mainMenus,setMainMenus]=useState([]);
+   const [mobileMenus,setMobileMenus]=useState([]);
+  
+  useEffect(()=>{
+      const getMenu =async()=>{
+         const  List = await categoryList();
+        const subList = List.map(x=>{
+            return {
+                    label: x.categorytitle,
+                    link: `/category/?cid=${x.categorytitle.toLowerCase()}`,
+                    action: "link",
+                    as: `/category/${x.categorytitle.toLowerCase()}`,
+            }
+        });
+        subList.push({
+            
+                label: "Bundles",
+                link: "/category/?cid=bundles",
+                action: "link",
+                as: "/category/bundles",
+            
+        });
+        setMainMenus([{
+            label: "Shop",
+            link: "/shop",
+            subMenus:subList
+        }])
+        setMobileMenus([{
+            label: "Shop",
+            link: "/shop",
+            action: "link",
+            subMenus:subList
+        }])
+      };
+      getMenu(); 
+  },mainMenus)
+console.log(mainMenus);
+   
   useScrollPosition(
     ({ prevPos, currPos }) => {
         let showNav = currPos.y > prevPos.y;

@@ -128,6 +128,7 @@ class SubmitReviews extends React.Component {
 											projectSettings.serverUrl +
 												getProductImage(selectedProduct)
 										}
+										alt="product"
 									/>
 								</div>
 								<div className="c-submit-r__heading">

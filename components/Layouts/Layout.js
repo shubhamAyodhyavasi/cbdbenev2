@@ -18,6 +18,8 @@ import { setEntryMsg } from "../../redux/actions";
 
 const Layout = ({
 	title,
+	description,
+	keywords,
 	children,
 	isHeaderBg,
 	headerTheme,
@@ -38,6 +40,12 @@ const Layout = ({
 			>
 				<Head>
 					<title>{title ? title : projectSettings.projectName}</title>
+					<meta property="og:title" content={title ? title : projectSettings.projectName} key="title" />
+					<meta property="og:description" content={title ? title : projectSettings.projectName} key="description" />
+					<meta name="description" content={description ? description : projectSettings.projectName} />
+					<meta name="keywords" content={keywords ? keywords : projectSettings.projectName} />
+					<meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+					<meta name="viewport" content="width=device-width, initial-scale=1"/>
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 				<Header

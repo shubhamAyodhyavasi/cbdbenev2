@@ -21,7 +21,7 @@ import {
   ButtonGroup,
   Button
   // Modal
-} from "reactstrap";
+} from "reactstrap"; 
 import { setFav, addToCart, setWishList, toggleCartBar } from "../../redux/actions";
 import { Modal } from "../../components/modal";
 import { variablePriceSet } from "../../services/extra/cartHealpers";
@@ -222,6 +222,7 @@ class Favourites extends Component {
         getProductById(id)
         .then(res => {
             const resJson = res.data
+           
           if (resJson.product_details.producttype === "variable") {
             if (
               resJson.product_details.attributes &&
@@ -287,7 +288,7 @@ class Favourites extends Component {
                 }
               }
             } else {
-              history.push("/shop/" + getProductTitle(productItem).replace(/ /g, "-"));
+              history.push("/shop/" + resJson.product_details.productid.producttitle.replace(/ /g, "-"));
             }
           } else {
             const product = resJson.product_details;
@@ -361,7 +362,7 @@ class Favourites extends Component {
     const { modalData, showModal, wishList } = this.state;
     const { location, className } = this.props;
     // const {wishList} = this.props;
-
+   
     return (
         <Layout headerVersions={[ 'bg-light' ]} headerTheme="dark" fixed={true}>
       <div
@@ -414,9 +415,7 @@ class Favourites extends Component {
                           </thead>
                           <tbody>
                             {wishList.map((itm, index) => {
-                              console.log({
-                                item: itm
-                              });
+                             
                               if (itm.combo) {
                                 const {
                                   featureimage,
@@ -518,8 +517,8 @@ class Favourites extends Component {
                                         <ButtonGroup>
                                           <Link
                                             href={
-                                              "/shop/" +
-                                              getProductTitle(itm).replace(/ /g, "-")
+                                              "/shop/" 
+                                              + itm.productDetails.productid.producttitle.replace(/ /g, "-")
                                             }
                                           >
                                             <a className="btn9 mobile-remove-btn-padding my-order__t-btn">
@@ -588,8 +587,8 @@ class Favourites extends Component {
                                         <ButtonGroup>
                                           <Link
                                             href={
-                                              "/shop/" +
-                                              getProductTitle(itm).replace(/ /g, "-")
+                                              "/shop/"
+                                              + itm.productDetails.productid.producttitle.replace(/ /g, "-")
                                             }
                                           >
                                             <a

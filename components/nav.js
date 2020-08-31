@@ -25,6 +25,7 @@ const Nav = ({
   const inputEl = useRef(null);
   const [isOpen, setOpen] = useState(false)
   // const [isCartOpen, setIsCartOpen] = useState(false)
+  console.log(items);
   const onClick = (e, action) => {
     if (action === "link") {
 

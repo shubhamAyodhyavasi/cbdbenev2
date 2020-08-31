@@ -13,12 +13,13 @@ import * as actionCreators from "../../redux/actions/blog";
 let prev = 0;
 let more = true;
 class BlogPage extends React.Component {
+
 	state = {
 		toggle: false,
 	};
+
 	articleClickHandler = (index) => {
-		console.log("i got aclick");
-		console.log(index);
+		
 		this.props.getArticle(index);
 		this.setState({
 			toggle: true,
@@ -26,20 +27,20 @@ class BlogPage extends React.Component {
 	};
 	navClickHandler = (tag) => {
 		this.props.get(0, tag);
-		console.log("i got aclick in nav");
-		console.log(tag);
+		this.setState({
+			toggle: false,
+		});
 	};
 	backHandler = () => {
-		console.log("back clicked");
-		this.setState({ toggle: !this.state.toggle });
+		this.setState({ toggle: false });
 	};
 
 	loadItems = (page) => {
-		console.log("loaditems", page);
+	
 		this.props
 			.get(page, this.props.tag)
 			.then(() => {
-				console.log("ok");
+				
 				if (prev !== this.props.article.length) {
 					prev = this.props.article.length;
 					more = true;
@@ -50,25 +51,18 @@ class BlogPage extends React.Component {
 			.catch((err) => console.log(err));
 	};
 
-	componentDidMount = () => {
-		console.log("component mounted");
-		// const func = this.props.get;
-		// func(0, "All")
-		// 	.then(() => console.log("ok"))
-		// 	.catch((err) => console.log(err));
-		this.props
-			.get(0, "All")
-			.then(() => {
-				prev = this.props.article.length;
-				console.log("ok", prev);
-			})
-			.catch((err) => console.log(err));
+	componentDidMount =  () => {
+		if(this.props.isPersist){
+			this.props.get(0, this.props.tag)	
+		}
 	};
 	hasmoreHandler = () => {
 		console.log("hasmore");
 	};
+	
 	render() {
-		const loader = <div>Loading...</div>;
+		
+		const loader = <div key={prev}>Loading...</div>;
 		return (
 			<Layout
 				title="Home"
@@ -86,6 +80,7 @@ class BlogPage extends React.Component {
 					<>
 						<Header />
 						<InfiniteScroll
+
 							pageStart={0}
 							loadMore={this.loadItems.bind(this)}
 							hasMore={more}

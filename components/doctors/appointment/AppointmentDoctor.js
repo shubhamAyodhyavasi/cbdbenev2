@@ -34,7 +34,7 @@ componentDidMount(){
               <Avatar size={200} icon="user" />
               <img src={require('./doctor(1).png')} width='200' />
           } */}
-            <img src={require('./doctor(1).png')} width='200' />
+            <img src={require('./doctor(1).png')} width='200' alt="doctor" />
       </div>
       <h4 className="c-appointment-form__doctor-title">
           <strong>{name}</strong>
