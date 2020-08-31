@@ -18,3 +18,4 @@ export * from "./extras";
 export * from "./loading";
 export * from "./appointment";
 export * from "./content";
+export * from "./category";

@@ -21,7 +21,7 @@ import { imageUrl } from "../constants/projectSettings";
 // import Head from 'next/head'
 // import Nav from '../components/nav'
 // import Header from '../components/Header'
-
+ 
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
@@ -131,7 +131,7 @@ class Home extends React.Component {
 		// const {
 		//   products
 		// } = this.props
-		let keywords = categoryList.map(e=>{
+		let keywords = categoryList.map(e=>{	
 			//console.log(e);
 			return Object.values(e)
 		})
@@ -207,9 +207,9 @@ class Home extends React.Component {
 				)}
 				<Fade>
 					<LRSection
-						heading={thirdBirTitle}
-						subHeading={thirdTitle}
-						linkText={thirdBtnText}
+						heading={parser(thirdBirTitle)}
+						subHeading={parser(thirdTitle)}
+						linkText={parser(thirdBtnText)}
 						onLinkClick={() => {
 							this.setState((prevState) => ({
 								isLrSection: !prevState.isLrSection,
@@ -251,7 +251,7 @@ class Home extends React.Component {
 				</Fade>
 				<section className="wellness">
 					<div className="wellness__heading">
-						<h3 className="wellness__heading--text">{parser(fifthTitle)}</h3>
+						{parser(fifthTitle)}
 					</div>
 					<div className="wellness-wrapper">
 						<div className="wellness-wrapper__img">
