@@ -65,6 +65,6 @@
     "styled-components": "^4.4.1",
     "susy": "^3.0.5",
     "underscore": "^1.10.2",
-    "validator": "^12.1.0"
+    "validator": "^13.7.0"
   }
 }
